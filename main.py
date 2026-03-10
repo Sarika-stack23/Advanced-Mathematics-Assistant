@@ -498,12 +498,17 @@ def build_pipeline(pdf_paths=None, urls=None, text_paths=None, force_rebuild=Fal
 # ║  STEP 5 — QUERY PROCESSING & AI ENGINE                              ║
 # ╚══════════════════════════════════════════════════════════════════════╝
 
-SYSTEM_TEMPLATE = """You are a mathematics teacher solving problems on a whiteboard.
+SYSTEM_TEMPLATE = """You are an expert Indian mathematics teacher who teaches Class 1 to Class 12 (NCERT/CBSE syllabus) as well as JEE and competitive math.
+
+Detect the difficulty level from the question and respond accordingly:
+- Class 1–5: Use very simple language, basic steps, real-life examples
+- Class 6–10: Clear step-by-step, show all working, NCERT style
+- Class 11–12 / JEE: Detailed working, mention theorems/formulas used
 
 EXACT FORMAT — follow this every time:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Question: [restate the question]
+Question: [restate the question clearly]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Step 1 — [title]
@@ -513,19 +518,21 @@ Step 2 — [title]
    [working]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ Answer: [final answer]
+✅ Answer: [final answer, boxed and clear]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 STRICT RULES:
-- Each step must be DIFFERENT — never write the same line twice
-- Simple problems need only 1 step — do not pad with fake steps
-- Each step must add NEW information — if you have nothing new to say, STOP
-- Maximum 5 steps total
-- Use $...$ for all math
+- Always complete the full solution — never stop mid-answer
+- Each step must be DIFFERENT — never repeat a step
+- Simple problems need only 1–2 steps — do not pad with fake steps
+- Each step must add NEW information only
+- Maximum 8 steps for complex problems
+- Use $...$ for all inline math expressions
 - NEVER repeat a step
-- STOP after the answer — do not add notes or commentary
+- STOP after the answer — no extra notes or commentary
+- If question is in Hindi or mixed language, answer in the same language
 
-Context:
+Context from knowledge base:
 {context}
 """
 
@@ -665,7 +672,7 @@ class MathAIEngine:
         from langchain_groq import ChatGroq
         logger.info(f"Initializing Groq LLM: {LLM_MODEL}")
         return ChatGroq(groq_api_key=GROQ_API_KEY, model_name=LLM_MODEL,
-                        temperature=0.1, max_tokens=2048)
+                        temperature=0.1, max_tokens=4096)
 
     def _retrieve_context(self, query: str) -> Tuple[list, str]:
         if not self.vector_store or not self.vector_store.is_ready():
@@ -711,7 +718,15 @@ class MathAIEngine:
             answer = self.llm.invoke(messages).content
         except Exception as e:
             logger.error(f"LLM error: {e}")
-            answer = f"Error: {e}\n\nPlease check your GROQ_API_KEY."
+            err = str(e).lower()
+            if "api" in err or "key" in err or "auth" in err:
+                answer = "⚠️ API key issue. Please check your GROQ_API_KEY in the .env file."
+            elif "rate" in err or "limit" in err:
+                answer = "⚠️ Rate limit reached. Please wait a few seconds and try again."
+            elif "timeout" in err or "connect" in err:
+                answer = "⚠️ Connection timeout. Please check your internet and try again."
+            else:
+                answer = "⚠️ Something went wrong. Please try again in a moment."
 
         self.memory.add_message("human", user_input)
         self.memory.add_message("assistant", answer)
@@ -1121,7 +1136,7 @@ def run_streamlit_app():
         background: var(--border2) !important;
         color: var(--tx) !important;
     }}
-    /* ── Theme toggle — ghost icon button ── */
+    /* ── Theme toggle ghost button ── */
     [data-testid="stButton-theme_toggle"] > button {{
         background: var(--card2) !important;
         border: 1px solid var(--border2) !important;
@@ -1199,8 +1214,8 @@ def run_streamlit_app():
     .stAlert {{ border-radius: 10px !important; }}
     .stMetric {{ background: var(--card) !important; border: 1px solid var(--border) !important; border-radius: 10px !important; padding: 0.6rem !important; }}
     .stMetric label, [data-testid="stMetricLabel"], [data-testid="stMetricLabel"] p {{
-        color: var(--tx3) !important; font-family: 'DM Mono', monospace !important; font-size: 0.65rem !important;
-        text-transform: uppercase !important; letter-spacing: 0.08em !important;
+        color: var(--tx3) !important; font-family: 'DM Mono', monospace !important;
+        font-size: 0.65rem !important; text-transform: uppercase !important; letter-spacing: 0.08em !important;
     }}
     [data-testid="stMetricValue"], [data-testid="stMetricValue"] > div,
     .stMetric [data-testid="metric-container"] > div:last-child {{
@@ -1540,12 +1555,24 @@ def run_streamlit_app():
             clean = re.sub(r'\$(.+?)\$', r'\1', clean)
             clean = re.sub(r'━+', '─────────────────', clean)
             with st.expander("📋 Copy plain text", expanded=False):
-                st.code(clean, language=None)
+                import html as _html
+                _bg = "#1e293b" if dark else "#f8fafc"
+                _tx = "#e2e8f0" if dark else "#0f172a"
+                _br = "#334155" if dark else "#cbd5e1"
+                st.markdown(f'<div style="background:{_bg};color:{_tx};border:1px solid {_br};border-radius:8px;padding:1rem 1.2rem;font-family:monospace;font-size:0.82rem;line-height:1.9;word-break:break-word;">{_html.escape(clean).replace(chr(10),"<br>")}</div>', unsafe_allow_html=True)
             if msg.get("sources"):
                 tags = "".join(
                     f'<span class="tag">{s["topic"].replace("_"," ").title()}</span>'
                     for s in msg["sources"])
-                st.markdown(f'<div style="margin:0.3rem 0 1rem">{tags}</div>', unsafe_allow_html=True)
+                st.markdown(f'<div style="margin:0.3rem 0 0.5rem">{tags}</div>', unsafe_allow_html=True)
+            # ── Feedback buttons ──────────────────────────────────────
+            fb_col1, fb_col2, fb_col3 = st.columns([1, 1, 8])
+            with fb_col1:
+                if st.button("👍", key=f"up_{i}", help="Helpful"):
+                    st.toast("Thanks for the feedback! 🎉")
+            with fb_col2:
+                if st.button("👎", key=f"dn_{i}", help="Not helpful"):
+                    st.toast("Thanks! We'll improve. 🙏")
 
     st.markdown('<div class="input-label">Ask a question</div>', unsafe_allow_html=True)
     col1, col2 = st.columns([5, 1])
