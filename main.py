@@ -762,10 +762,19 @@ def render_graph(expression: str, x_range: tuple = (-10, 10), title: str = ""):
     try:
         import numpy as np
         import matplotlib.pyplot as plt
-        plt.style.use("dark_background")
+        _dark     = st.session_state.get("theme", "dark") == "dark"
+        _fig_bg   = "#1e2235" if _dark else "#ffffff"
+        _ax_bg    = "#0f1117" if _dark else "#f8fafc"
+        _axis_col = "#4a5568" if _dark else "#cbd5e1"
+        _tick_col = "#8892b0" if _dark else "#475569"
+        _title_col= "#e8eaf6" if _dark else "#0f172a"
+        _leg_face = "#1e2235" if _dark else "#ffffff"
+        _leg_edge = "#2d3561" if _dark else "#e2e8f0"
+        _leg_lbl  = "#e8eaf6" if _dark else "#0f172a"
+        plt.style.use("dark_background" if _dark else "default")
         fig, ax = plt.subplots(figsize=(8, 5))
-        fig.patch.set_facecolor("#1e2235")
-        ax.set_facecolor("#0f1117")
+        fig.patch.set_facecolor(_fig_bg)
+        ax.set_facecolor(_ax_bg)
         x = np.linspace(x_range[0], x_range[1], 1000)
         ns = {"__builtins__": {}, "x": x, "np": np,
               "sin": np.sin, "cos": np.cos, "tan": np.tan, "exp": np.exp,
@@ -781,21 +790,21 @@ def render_graph(expression: str, x_range: tuple = (-10, 10), title: str = ""):
                         label=f"y = {expr.strip()}", alpha=0.9)
             except Exception:
                 st.warning(f"Could not plot: {expr.strip()}")
-        ax.axhline(0, color="#4a5568", linewidth=0.8, alpha=0.7)
-        ax.axvline(0, color="#4a5568", linewidth=0.8, alpha=0.7)
-        ax.grid(True, alpha=0.15, color="#4a5568", linestyle="--")
+        ax.axhline(0, color=_axis_col, linewidth=0.8, alpha=0.7)
+        ax.axvline(0, color=_axis_col, linewidth=0.8, alpha=0.7)
+        ax.grid(True, alpha=0.15, color=_axis_col, linestyle="--")
         for spine in ax.spines.values():
-            spine.set_color("#2d3561")
+            spine.set_color(_leg_edge)
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
-        ax.tick_params(colors="#8892b0")
-        ax.set_xlabel("x", color="#8892b0", fontsize=11)
-        ax.set_ylabel("y", color="#8892b0", fontsize=11)
+        ax.tick_params(colors=_tick_col)
+        ax.set_xlabel("x", color=_tick_col, fontsize=11)
+        ax.set_ylabel("y", color=_tick_col, fontsize=11)
         if title:
-            ax.set_title(title, color="#e8eaf6", fontsize=13, pad=15)
+            ax.set_title(title, color=_title_col, fontsize=13, pad=15)
         if "," in expression:
-            ax.legend(facecolor="#1e2235", edgecolor="#2d3561",
-                      labelcolor="#e8eaf6", fontsize=9)
+            ax.legend(facecolor=_leg_face, edgecolor=_leg_edge,
+                      labelcolor=_leg_lbl, fontsize=9)
         plt.tight_layout()
         st.pyplot(fig)
         plt.close(fig)
@@ -876,8 +885,8 @@ def run_streamlit_app():
         letter-spacing: 0.15em;
         text-transform: uppercase;
         color: var(--cyan);
-        background: rgba(34,211,238,0.08);
-        border: 1px solid rgba(34,211,238,0.25);
+        background: rgba(34,211,238,0.12);
+        border: 1px solid rgba(34,211,238,0.35);
         padding: 4px 14px;
         border-radius: 100px;
         margin-bottom: 1rem;
@@ -887,7 +896,7 @@ def run_streamlit_app():
         font-size: 2.6rem;
         font-weight: 800;
         letter-spacing: -0.03em;
-        background: linear-gradient(135deg, #f1f5f9 0%, #60a5fa 50%, #22d3ee 100%);
+        background: {'linear-gradient(135deg, #f1f5f9 0%, #60a5fa 50%, #22d3ee 100%)' if dark else 'linear-gradient(135deg, #0f172a 0%, #2563eb 50%, #0891b2 100%)'};
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -958,15 +967,15 @@ def run_streamlit_app():
         width: 100%;
         margin-bottom: 0.5rem;
     }}
-    .status-ok  {{ background: rgba(16,185,129,0.1); color: #10b981; border: 1px solid rgba(16,185,129,0.25); }}
-    .status-err {{ background: rgba(239,68,68,0.1);  color: #ef4444; border: 1px solid rgba(239,68,68,0.25); }}
+    .status-ok  {{ background: rgba(16,185,129,0.12); color: #059669; border: 1px solid rgba(16,185,129,0.35); }}
+    .status-err {{ background: rgba(239,68,68,0.12);  color: #dc2626; border: 1px solid rgba(239,68,68,0.35); }}
     .dot {{ width: 6px; height: 6px; border-radius: 50%; background: currentColor; display: inline-block; }}
     .dot-pulse {{ animation: pulse 1.5s infinite; }}
     @keyframes pulse {{ 0%,100%{{opacity:1}} 50%{{opacity:0.4}} }}
 
     /* ── Chat Messages ── */
     .msg-user {{
-        background: linear-gradient(135deg, #0f1e3a, #132244);
+        background: var(--card2);
         border: 1px solid var(--border2);
         border-left: 3px solid var(--blue);
         padding: 1rem 1.2rem;
@@ -974,6 +983,7 @@ def run_streamlit_app():
         margin: 0.8rem 0;
         font-size: 0.95rem;
         line-height: 1.6;
+        color: var(--tx);
     }}
     .msg-user-name {{
         font-family: 'DM Mono', monospace;
@@ -1005,14 +1015,14 @@ def run_streamlit_app():
     /* ── Topic Tags ── */
     .tag {{
         display: inline-block;
-        background: rgba(59,130,246,0.08);
+        background: rgba(59,130,246,0.12);
         color: var(--blue2);
         font-size: 0.65rem;
         font-family: 'DM Mono', monospace;
         padding: 3px 10px;
         border-radius: 100px;
         margin: 2px 3px;
-        border: 1px solid rgba(59,130,246,0.2);
+        border: 1px solid rgba(59,130,246,0.35);
         letter-spacing: 0.05em;
     }}
 
@@ -1111,15 +1121,36 @@ def run_streamlit_app():
         background: var(--border2) !important;
         color: var(--tx) !important;
     }}
+    /* ── Theme toggle — ghost icon button ── */
+    [data-testid="stButton-theme_toggle"] > button {{
+        background: var(--card2) !important;
+        border: 1px solid var(--border2) !important;
+        color: var(--tx) !important;
+        font-size: 1.1rem !important;
+        padding: 0.3rem 0.55rem !important;
+        border-radius: 8px !important;
+        box-shadow: none !important;
+    }}
+    [data-testid="stButton-theme_toggle"] > button:hover {{
+        background: var(--border2) !important;
+        border-color: var(--blue) !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }}
 
     /* ── Inputs ── */
     .stTextArea textarea, .stTextInput input {{
         background: var(--bg2) !important;
         color: var(--tx) !important;
+        caret-color: var(--blue) !important;
         border: 1px solid var(--border2) !important;
         border-radius: 10px !important;
         font-family: 'DM Mono', monospace !important;
         font-size: 0.88rem !important;
+    }}
+    .stTextArea textarea::placeholder, .stTextInput input::placeholder {{
+        color: var(--tx3) !important;
+        opacity: 1 !important;
     }}
     .stTextArea textarea:focus, .stTextInput input:focus {{
         border-color: var(--blue) !important;
@@ -1131,10 +1162,34 @@ def run_streamlit_app():
         border-radius: 10px !important;
         color: var(--tx) !important;
     }}
+    /* ── File Uploader & Browse button ── */
     .stFileUploader {{
         background: var(--card) !important;
         border: 1px dashed var(--border2) !important;
         border-radius: 12px !important;
+    }}
+    /* The "Browse files" button Streamlit renders inside the uploader */
+    [data-testid="stFileUploadDropzone"] button,
+    .stFileUploader button,
+    [data-testid="baseButton-secondary"][kind="secondary"] {{
+        background: var(--card2) !important;
+        color: var(--tx) !important;
+        border: 1px solid var(--border2) !important;
+        border-radius: 8px !important;
+    }}
+    [data-testid="stFileUploadDropzone"] button:hover,
+    .stFileUploader button:hover {{
+        background: var(--border2) !important;
+        color: var(--tx) !important;
+        border-color: var(--blue) !important;
+    }}
+    [data-testid="stFileUploadDropzone"] span,
+    [data-testid="stFileUploadDropzone"] p,
+    [data-testid="stFileUploadDropzone"] small,
+    .stFileUploader span,
+    .stFileUploader p,
+    .stFileUploader small {{
+        color: var(--tx2) !important;
     }}
 
     /* ── Dividers & misc ── */
@@ -1143,8 +1198,15 @@ def run_streamlit_app():
     .stExpander {{ background: var(--card) !important; border: 1px solid var(--border) !important; border-radius: 10px !important; }}
     .stAlert {{ border-radius: 10px !important; }}
     .stMetric {{ background: var(--card) !important; border: 1px solid var(--border) !important; border-radius: 10px !important; padding: 0.6rem !important; }}
-    .stMetric label {{ color: var(--tx3) !important; font-family: 'DM Mono', monospace !important; font-size: 0.65rem !important; }}
-    .stMetric [data-testid="metric-container"] > div:last-child {{ color: var(--blue2) !important; font-family: 'Syne', sans-serif !important; font-size: 1.4rem !important; }}
+    .stMetric label, [data-testid="stMetricLabel"], [data-testid="stMetricLabel"] p {{
+        color: var(--tx3) !important; font-family: 'DM Mono', monospace !important; font-size: 0.65rem !important;
+        text-transform: uppercase !important; letter-spacing: 0.08em !important;
+    }}
+    [data-testid="stMetricValue"], [data-testid="stMetricValue"] > div,
+    .stMetric [data-testid="metric-container"] > div:last-child {{
+        color: var(--blue2) !important; font-family: 'Syne', sans-serif !important;
+        font-size: 1.4rem !important; font-weight: 700 !important;
+    }}
 
     /* ── Scrollbar ── */
     ::-webkit-scrollbar {{ width: 5px; }}
@@ -1152,8 +1214,9 @@ def run_streamlit_app():
     ::-webkit-scrollbar-thumb {{ background: var(--border2); border-radius: 10px; }}
 
     /* ── Radio ── */
-    .stRadio > div {{{{ gap: 0.5rem !important; }}}}
-    .stRadio label {{{{ font-size: 0.82rem !important; color: var(--tx2) !important; }}}}
+    .stRadio > div {{ gap: 0.4rem !important; }}
+    .stRadio > div label {{ padding: 4px 8px; border-radius: 8px; cursor: pointer; }}
+    .stRadio > div label p {{ font-size: 0.82rem !important; color: var(--tx2) !important; font-family: 'DM Sans', sans-serif !important; }}
     </style>
     """, unsafe_allow_html=True)
 
@@ -1171,7 +1234,7 @@ def run_streamlit_app():
             <div class="sidebar-logo">
                 <span>∫</span> MathAI
             </div>
-            <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#94a3b8;margin-bottom:0.5rem;">
+            <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--tx2);margin-bottom:0.5rem;">
                 Advanced Mathematics Assistant
             </div>
             """, unsafe_allow_html=True)
@@ -1305,7 +1368,7 @@ def run_streamlit_app():
                     st.info(f"📝 **Detected:** {extracted}")
 
                     # ── Edit box ──────────────────────────────────────
-                    st.markdown("<small style='color:#8892b0'>✏️ Edit if needed:</small>",
+                    st.markdown("<small style='color:var(--tx2)'>✏️ Edit if needed:</small>",
                                 unsafe_allow_html=True)
                     edited = st.text_input(
                         "Edit:", value=extracted,
@@ -1369,9 +1432,22 @@ def run_streamlit_app():
                 st.info("💡 Try uploading a clearer image or type your problem manually.")
 
         st.markdown('<div class="sidebar-section">Session</div>', unsafe_allow_html=True)
-        c1, c2 = st.columns(2)
-        c1.metric("Queries",  st.session_state.query_count)
-        c2.metric("Messages", len(st.session_state.messages))
+        _cb  = "#111827" if dark else "#ffffff"
+        _cbr = "#1e293b" if dark else "#e2e8f0"
+        _lc  = "#475569" if dark else "#94a3b8"
+        _nc  = "#60a5fa" if dark else "#2563eb"
+        st.markdown(f"""
+        <div style="display:flex;gap:0.5rem;margin-bottom:0.6rem;">
+            <div style="flex:1;background:{_cb};border:1px solid {_cbr};border-radius:10px;padding:0.55rem 0.7rem;">
+                <div style="font-family:'DM Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:{_lc};margin-bottom:0.2rem;">Queries</div>
+                <div style="font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:700;color:{_nc};">{st.session_state.query_count}</div>
+            </div>
+            <div style="flex:1;background:{_cb};border:1px solid {_cbr};border-radius:10px;padding:0.55rem 0.7rem;">
+                <div style="font-family:'DM Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:{_lc};margin-bottom:0.2rem;">Messages</div>
+                <div style="font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:700;color:{_nc};">{len(st.session_state.messages)}</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
         if st.button("🗑️ Clear Chat", use_container_width=True):
             st.session_state.messages    = []
             st.session_state.query_count = 0
@@ -1404,7 +1480,7 @@ def run_streamlit_app():
                      if st.session_state.engine.vector_store else 0)
         st.markdown(f"""
         <div style="text-align:center;margin-bottom:0.5rem;">
-            <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#475569;letter-spacing:0.08em;">
+            <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--tx2);letter-spacing:0.08em;">
                 📚 {doc_count} CHUNKS &nbsp;·&nbsp; {LLM_MODEL} &nbsp;·&nbsp; SESSION {st.session_state.session_id.upper()}
             </span>
         </div>
