@@ -809,18 +809,351 @@ def run_streamlit_app():
     st.set_page_config(page_title="Advanced Mathematics Assistant",
                        page_icon="∫", layout="wide")
 
-    st.markdown("""
+    # ── Theme: dark (default) or light ────────────────────────────────
+    if "theme" not in st.session_state:
+        st.session_state.theme = "dark"
+
+    dark = st.session_state.theme == "dark"
+    theme_vars = """
+    :root {
+        --bg:       #080c14;
+        --bg2:      #0d1220;
+        --card:     #111827;
+        --card2:    #161f30;
+        --blue:     #3b82f6;
+        --blue2:    #60a5fa;
+        --cyan:     #22d3ee;
+        --green:    #10b981;
+        --gold:     #f59e0b;
+        --purple:   #8b5cf6;
+        --tx:       #f1f5f9;
+        --tx2:      #94a3b8;
+        --tx3:      #475569;
+        --border:   #1e293b;
+        --border2:  #243044;
+        --glow:     rgba(59,130,246,0.15);
+    }""" if dark else """
+    :root {
+        --bg:       #f8fafc;
+        --bg2:      #f1f5f9;
+        --card:     #ffffff;
+        --card2:    #f8fafc;
+        --blue:     #2563eb;
+        --blue2:    #1d4ed8;
+        --cyan:     #0891b2;
+        --green:    #059669;
+        --gold:     #d97706;
+        --purple:   #7c3aed;
+        --tx:       #0f172a;
+        --tx2:      #475569;
+        --tx3:      #94a3b8;
+        --border:   #e2e8f0;
+        --border2:  #cbd5e1;
+        --glow:     rgba(37,99,235,0.1);
+    }"""
+
+    st.markdown(f"""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
-    :root{--bg:#0f1117;--bg2:#1a1d2e;--card:#1e2235;--blue:#4f8ef7;--green:#4ecca3;--gold:#f5c842;--tx:#e8eaf6;--tx2:#8892b0;--border:#2d3561;}
-    .stApp{background-color:var(--bg);color:var(--tx);}
-    .main-h{font-family:'Merriweather',serif;font-size:2.1rem;font-weight:700;color:var(--blue);text-align:center;padding:1.5rem 0 .3rem;}
-    .sub-h{font-family:'Inter',sans-serif;font-size:.95rem;color:var(--tx2);text-align:center;margin-bottom:1.5rem;}
-    .msg-u{background:linear-gradient(135deg,#1a2a4a,#1e3057);border-left:3px solid var(--blue);padding:1rem 1.2rem;border-radius:0 12px 12px 12px;margin:.6rem 0;font-family:'Inter',sans-serif;font-size:0.95rem;}
-    .tag{display:inline-block;background:#1a2a3a;color:var(--gold);font-size:.7rem;font-family:'JetBrains Mono',monospace;padding:2px 8px;border-radius:4px;margin:2px;border:1px solid #2a3a4a;}
-    .hint{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--gold);padding:3px 10px;background:#1a1a2e;border-radius:4px;margin:4px 0;display:inline-block;}
-    .stButton>button{background:linear-gradient(135deg,var(--blue),#3a6fd8)!important;color:#fff!important;border:none!important;border-radius:8px!important;font-weight:500!important;}
-    .stTextArea textarea{font-family:'JetBrains Mono',monospace!important;font-size:.9rem!important;background-color:var(--bg2)!important;color:var(--tx)!important;border:1px solid var(--border)!important;}
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+    {theme_vars}
+
+    /* ── Base ── */
+    .stApp {{ background-color: var(--bg) !important; color: var(--tx) !important; font-family: 'DM Sans', sans-serif; }}
+    .main .block-container {{ padding-top: 1.5rem !important; max-width: 900px; }}
+    section[data-testid="stSidebar"] {{ background: var(--bg2) !important; border-right: 1px solid var(--border) !important; }}
+    section[data-testid="stSidebar"] .block-container {{ padding-top: 1.5rem !important; }}
+
+    /* ── Hero Header ── */
+    .hero-wrap {{
+        text-align: center;
+        padding: 2.5rem 1rem 1.5rem;
+        position: relative;
+    }}
+    .hero-badge {{
+        display: inline-block;
+        font-family: 'DM Mono', monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        background: rgba(34,211,238,0.08);
+        border: 1px solid rgba(34,211,238,0.25);
+        padding: 4px 14px;
+        border-radius: 100px;
+        margin-bottom: 1rem;
+    }}
+    .hero-title {{
+        font-family: 'Syne', sans-serif;
+        font-size: 2.6rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        background: linear-gradient(135deg, #f1f5f9 0%, #60a5fa 50%, #22d3ee 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 0 0 0.5rem;
+        line-height: 1.15;
+    }}
+    .hero-sub {{
+        font-size: 1rem;
+        color: var(--tx2);
+        font-weight: 300;
+        letter-spacing: 0.01em;
+        margin-bottom: 0.3rem;
+    }}
+    .hero-stats {{
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1.2rem;
+        padding-top: 1.2rem;
+        border-top: 1px solid var(--border);
+    }}
+    .stat-item {{ text-align: center; }}
+    .stat-num {{
+        font-family: 'Syne', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--blue2);
+    }}
+    .stat-label {{
+        font-size: 0.7rem;
+        color: var(--tx3);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-family: 'DM Mono', monospace;
+    }}
+
+    /* ── Sidebar ── */
+    .sidebar-logo {{
+        font-family: 'Syne', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--tx);
+        letter-spacing: -0.02em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 0.2rem;
+    }}
+    .sidebar-logo span {{ color: var(--cyan); }}
+    .sidebar-section {{
+        font-family: 'DM Mono', monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--tx3);
+        margin: 1.2rem 0 0.6rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid var(--border);
+    }}
+    .status-pill {{
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.75rem;
+        font-family: 'DM Mono', monospace;
+        padding: 5px 12px;
+        border-radius: 100px;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }}
+    .status-ok  {{ background: rgba(16,185,129,0.1); color: #10b981; border: 1px solid rgba(16,185,129,0.25); }}
+    .status-err {{ background: rgba(239,68,68,0.1);  color: #ef4444; border: 1px solid rgba(239,68,68,0.25); }}
+    .dot {{ width: 6px; height: 6px; border-radius: 50%; background: currentColor; display: inline-block; }}
+    .dot-pulse {{ animation: pulse 1.5s infinite; }}
+    @keyframes pulse {{ 0%,100%{{opacity:1}} 50%{{opacity:0.4}} }}
+
+    /* ── Chat Messages ── */
+    .msg-user {{
+        background: linear-gradient(135deg, #0f1e3a, #132244);
+        border: 1px solid var(--border2);
+        border-left: 3px solid var(--blue);
+        padding: 1rem 1.2rem;
+        border-radius: 4px 16px 16px 16px;
+        margin: 0.8rem 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }}
+    .msg-user-name {{
+        font-family: 'DM Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--blue2);
+        margin-bottom: 0.4rem;
+    }}
+    .msg-ai-label {{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 1.5rem 0 0.5rem;
+    }}
+    .msg-ai-line {{
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, var(--green), transparent);
+    }}
+    .msg-ai-tag {{
+        font-family: 'DM Mono', monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--green);
+    }}
+
+    /* ── Topic Tags ── */
+    .tag {{
+        display: inline-block;
+        background: rgba(59,130,246,0.08);
+        color: var(--blue2);
+        font-size: 0.65rem;
+        font-family: 'DM Mono', monospace;
+        padding: 3px 10px;
+        border-radius: 100px;
+        margin: 2px 3px;
+        border: 1px solid rgba(59,130,246,0.2);
+        letter-spacing: 0.05em;
+    }}
+
+    /* ── Input Area ── */
+    .input-wrap {{
+        background: var(--card);
+        border: 1px solid var(--border2);
+        border-radius: 16px;
+        padding: 1rem 1.2rem 0.8rem;
+        margin-top: 1rem;
+        box-shadow: 0 0 40px rgba(59,130,246,0.05);
+    }}
+    .input-label {{
+        font-family: 'DM Mono', monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--tx3);
+        margin-bottom: 0.5rem;
+    }}
+
+    /* ── Welcome Screen ── */
+    .welcome-wrap {{
+        text-align: center;
+        padding: 3rem 1.5rem;
+    }}
+    .welcome-symbols {{
+        font-size: 2.2rem;
+        letter-spacing: 0.5rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.6;
+    }}
+    .welcome-title {{
+        font-family: 'Syne', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--tx);
+        margin-bottom: 0.5rem;
+    }}
+    .welcome-sub {{
+        color: var(--tx2);
+        font-size: 0.9rem;
+        line-height: 1.7;
+        max-width: 500px;
+        margin: 0 auto 1.5rem;
+    }}
+    .feature-grid {{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+        max-width: 500px;
+        margin: 0 auto;
+    }}
+    .feature-card {{
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 0.9rem 1rem;
+        text-align: left;
+    }}
+    .feature-icon {{ font-size: 1.3rem; margin-bottom: 0.3rem; }}
+    .feature-title {{
+        font-family: 'Syne', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--tx);
+        margin-bottom: 0.2rem;
+    }}
+    .feature-desc {{ font-size: 0.72rem; color: var(--tx2); line-height: 1.4; }}
+
+    /* ── Buttons ── */
+    .stButton > button {{
+        background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;
+        color: #fff !important;
+        border: 1px solid rgba(96,165,250,0.3) !important;
+        border-radius: 10px !important;
+        font-family: 'DM Sans', sans-serif !important;
+        font-weight: 500 !important;
+        font-size: 0.85rem !important;
+        letter-spacing: 0.01em !important;
+        transition: all 0.2s !important;
+        padding: 0.45rem 1rem !important;
+    }}
+    .stButton > button:hover {{
+        background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+        border-color: rgba(96,165,250,0.6) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 20px rgba(59,130,246,0.3) !important;
+    }}
+    .stButton > button[kind="secondary"] {{
+        background: var(--card2) !important;
+        border: 1px solid var(--border2) !important;
+        color: var(--tx2) !important;
+    }}
+    .stButton > button[kind="secondary"]:hover {{
+        background: var(--border2) !important;
+        color: var(--tx) !important;
+    }}
+
+    /* ── Inputs ── */
+    .stTextArea textarea, .stTextInput input {{
+        background: var(--bg2) !important;
+        color: var(--tx) !important;
+        border: 1px solid var(--border2) !important;
+        border-radius: 10px !important;
+        font-family: 'DM Mono', monospace !important;
+        font-size: 0.88rem !important;
+    }}
+    .stTextArea textarea:focus, .stTextInput input:focus {{
+        border-color: var(--blue) !important;
+        box-shadow: 0 0 0 2px rgba(59,130,246,0.15) !important;
+    }}
+    .stSelectbox > div > div {{
+        background: var(--bg2) !important;
+        border: 1px solid var(--border2) !important;
+        border-radius: 10px !important;
+        color: var(--tx) !important;
+    }}
+    .stFileUploader {{
+        background: var(--card) !important;
+        border: 1px dashed var(--border2) !important;
+        border-radius: 12px !important;
+    }}
+
+    /* ── Dividers & misc ── */
+    hr {{ border-color: var(--border) !important; opacity: 0.5 !important; }}
+    .stCaption {{ color: var(--tx3) !important; font-family: 'DM Mono', monospace !important; font-size: 0.7rem !important; }}
+    .stExpander {{ background: var(--card) !important; border: 1px solid var(--border) !important; border-radius: 10px !important; }}
+    .stAlert {{ border-radius: 10px !important; }}
+    .stMetric {{ background: var(--card) !important; border: 1px solid var(--border) !important; border-radius: 10px !important; padding: 0.6rem !important; }}
+    .stMetric label {{ color: var(--tx3) !important; font-family: 'DM Mono', monospace !important; font-size: 0.65rem !important; }}
+    .stMetric [data-testid="metric-container"] > div:last-child {{ color: var(--blue2) !important; font-family: 'Syne', sans-serif !important; font-size: 1.4rem !important; }}
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar {{ width: 5px; }}
+    ::-webkit-scrollbar-track {{ background: var(--bg); }}
+    ::-webkit-scrollbar-thumb {{ background: var(--border2); border-radius: 10px; }}
+
+    /* ── Radio ── */
+    .stRadio > div {{{{ gap: 0.5rem !important; }}}}
+    .stRadio label {{{{ font-size: 0.82rem !important; color: var(--tx2) !important; }}}}
     </style>
     """, unsafe_allow_html=True)
 
@@ -831,18 +1164,30 @@ def run_streamlit_app():
             st.session_state[k] = v
 
     with st.sidebar:
-        st.markdown("## ∫ Math Assistant")
-        st.markdown(f"<small style='color:#8892b0'>Session `{st.session_state.session_id}`</small>",
-                    unsafe_allow_html=True)
-        st.divider()
+        # ── Logo + Theme Toggle ───────────────────────────────────────
+        logo_col, theme_col = st.columns([3, 1])
+        with logo_col:
+            st.markdown("""
+            <div class="sidebar-logo">
+                <span>∫</span> MathAI
+            </div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#94a3b8;margin-bottom:0.5rem;">
+                Advanced Mathematics Assistant
+            </div>
+            """, unsafe_allow_html=True)
+        with theme_col:
+            st.markdown("<br>", unsafe_allow_html=True)
+            theme_icon = "☀️" if dark else "🌙"
+            if st.button(theme_icon, key="theme_toggle", help="Toggle dark/light mode"):
+                st.session_state.theme = "light" if dark else "dark"
+                st.rerun()
 
         if GROQ_API_KEY and GROQ_API_KEY != "your_groq_api_key_here":
-            st.success("✅ Groq API Connected")
+            st.markdown(f'<div class="status-pill status-ok"><span class="dot dot-pulse"></span> Groq LLM · {LLM_MODEL.split("-")[0].upper()}</div>', unsafe_allow_html=True)
         else:
-            st.error("❌ Add GROQ_API_KEY to .env")
+            st.markdown('<div class="status-pill status-err"><span class="dot"></span> No API Key — check .env</div>', unsafe_allow_html=True)
 
-        st.divider()
-        st.markdown("**📚 Quick Examples**")
+        st.markdown('<div class="sidebar-section">Quick Examples</div>', unsafe_allow_html=True)
         examples = {
             "🔢 Quadratic":   "Solve 2x² + 5x - 3 = 0 step by step",
             "📐 Derivatives": "Find the derivative of f(x) = x³sin(x)",
@@ -858,16 +1203,14 @@ def run_streamlit_app():
                 st.session_state.pending = question
                 st.rerun()
 
-        st.divider()
-        st.markdown("**📉 Graph Plotter**")
+        st.markdown('<div class="sidebar-section">Graph Plotter</div>', unsafe_allow_html=True)
         gexpr  = st.text_input("Function(s):", placeholder="x**2, sin(x)")
         grange = st.slider("x range", -20, 20, (-10, 10))
         gtitle = st.text_input("Title:", placeholder="My Graph")
         if st.button("📊 Plot", use_container_width=True) and gexpr:
             render_graph(gexpr, grange, gtitle)
 
-        st.divider()
-        st.markdown("**⚡ Symbolic Compute**")
+        st.markdown('<div class="sidebar-section">Symbolic Compute</div>', unsafe_allow_html=True)
         sym_in  = st.text_input("Expression:", placeholder="x**3 + 2*x")
         sym_act = st.selectbox("Action:", ["Differentiate", "Integrate", "Solve (=0)", "Simplify"])
         if st.button("⚡ Compute", use_container_width=True) and sym_in:
@@ -878,10 +1221,7 @@ def run_streamlit_app():
                       sym.try_solve(sym_in))
             st.success(result) if result else st.warning("Could not compute symbolically")
 
-        # ── PDF Upload ────────────────────────────────────────────────
-        st.divider()
-        st.markdown("**📄 Upload PDF**")
-        st.caption("Upload textbook, notes or question paper")
+        st.markdown('<div class="sidebar-section">Upload PDF</div>', unsafe_allow_html=True)
         uploaded_pdf = st.file_uploader(
             "Choose PDF file", type=["pdf"], label_visibility="collapsed")
 
@@ -916,10 +1256,7 @@ def run_streamlit_app():
                     if os.path.exists(tmp_path):
                         os.remove(tmp_path)
 
-        # ── Camera / Image Scan ───────────────────────────────────────
-        st.divider()
-        st.markdown("**📷 Scan Math Problem**")
-        st.caption("Snap or upload a photo of any math problem")
+        st.markdown('<div class="sidebar-section">Scan Problem</div>', unsafe_allow_html=True)
 
         scan_method = st.radio(
             "Choose input:",
@@ -944,56 +1281,94 @@ def run_streamlit_app():
                 image = PILImage.open(scanned_image)
                 st.image(image, caption="📸 Captured Image", use_column_width=True)
 
-                with st.spinner("🔍 Reading math problem from image..."):
-                    extracted = ocr_extract_text(image)
+                # ── Get image hash to track new vs same image ─────────
+                import hashlib as _hl
+                img_hash = _hl.md5(scanned_image.getvalue()).hexdigest()
+                is_new_image = st.session_state.get("last_img_hash") != img_hash
+
+                # ── Only run OCR when image changes ───────────────────
+                if is_new_image:
+                    with st.spinner("🔍 Reading math problem from image..."):
+                        extracted = ocr_extract_text(image)
+                    st.session_state.last_img_hash    = img_hash
+                    st.session_state.last_ocr_text    = extracted
+                    st.session_state.ocr_auto_solved  = False
+                else:
+                    extracted = st.session_state.get("last_ocr_text", "")
 
                 if extracted == "ERROR_NO_PYTESSERACT":
                     st.error("❌ pytesseract not installed!")
                     st.code("pip install pytesseract pillow\nbrew install tesseract")
 
-                elif extracted:
-                    st.success("✅ Problem detected!")
-                    st.info(f"📝 **Detected text:** {extracted}")
+                elif extracted and extracted.strip():
+                    st.success("✅ Math problem detected!")
+                    st.info(f"📝 **Detected:** {extracted}")
 
-                    # ── Edit box — in case OCR made a mistake ─────────
-                    st.markdown("<small style='color:#8892b0'>✏️ Edit if OCR made a mistake, then choose action:</small>",
+                    # ── Edit box ──────────────────────────────────────
+                    st.markdown("<small style='color:#8892b0'>✏️ Edit if needed:</small>",
                                 unsafe_allow_html=True)
                     edited = st.text_input(
-                        "Edit detected text:", value=extracted, label_visibility="collapsed")
+                        "Edit:", value=extracted,
+                        key=f"edit_{img_hash}",
+                        label_visibility="collapsed")
 
-                    # ── Action buttons ────────────────────────────────
+                    # ── Action buttons (4 buttons in 2x2 grid) ────────
                     b1, b2 = st.columns(2)
                     with b1:
-                        if st.button("🧮 Solve", use_container_width=True, type="primary"):
+                        if st.button("🧮 Solve", key=f"solve_{img_hash}", use_container_width=True, type="primary"):
                             st.session_state.pending = f"Solve this math problem step by step: {edited}"
+                            st.session_state.ocr_auto_solved = True
                             st.rerun()
-                        if st.button("📋 Summarize", use_container_width=True):
+                        if st.button("📋 Summarize", key=f"sum_{img_hash}", use_container_width=True):
                             st.session_state.pending = f"Summarize and explain this math problem: {edited}"
+                            st.session_state.ocr_auto_solved = True
                             st.rerun()
                     with b2:
-                        if st.button("💡 Give Hint", use_container_width=True):
+                        if st.button("💡 Hint", key=f"hint_{img_hash}", use_container_width=True):
                             st.session_state.pending = f"Give me a hint to solve: {edited}"
+                            st.session_state.ocr_auto_solved = True
                             st.rerun()
-                        if st.button("📊 Similar Examples", use_container_width=True):
-                            st.session_state.pending = f"Show me similar example problems like: {edited}"
+                        if st.button("📊 Similar", key=f"sim_{img_hash}", use_container_width=True):
+                            st.session_state.pending = f"Show similar example problems like: {edited}"
+                            st.session_state.ocr_auto_solved = True
                             st.rerun()
 
-                    # ── AUTO SOLVE — fires immediately after OCR ──────
-                    if "last_scanned" not in st.session_state or st.session_state.last_scanned != extracted:
-                        st.session_state.last_scanned = extracted
+                    # ── AUTO SOLVE only once per new image ────────────
+                    if is_new_image and not st.session_state.get("ocr_auto_solved", False):
+                        st.session_state.ocr_auto_solved = True
                         st.session_state.pending = f"Solve this math problem step by step: {extracted}"
                         st.rerun()
 
                 else:
-                    st.warning("⚠️ Could not read text. Try better lighting or type manually.")
-                    st.info("💡 Tips: Good lighting, flat surface, clear handwriting works best!")
+                    # ── Wrong image or unreadable ─────────────────────
+                    st.warning("⚠️ Could not read any math text from this image.")
+                    st.markdown("""
+                    **Possible reasons:**
+                    - Image is not a math problem
+                    - Text is too small or blurry
+                    - Lighting is poor
+                    - Handwriting is unclear
+                    """)
+                    st.info("✏️ Type your problem manually below instead:")
+                    manual = st.text_input(
+                        "Type problem here:",
+                        placeholder="e.g. Solve x² + 5x + 6 = 0",
+                        key=f"manual_{img_hash}",
+                        label_visibility="collapsed")
+                    if st.button("🧮 Solve Manually", key=f"manual_solve_{img_hash}", use_container_width=True, type="primary"):
+                        if manual.strip():
+                            st.session_state.pending = f"Solve this math problem step by step: {manual}"
+                            st.rerun()
+                        else:
+                            st.error("Please type a problem first!")
 
             except ImportError:
                 st.error("❌ Pillow not installed. Run: pip install pillow")
             except Exception as e:
                 st.error(f"Scan error: {e}")
+                st.info("💡 Try uploading a clearer image or type your problem manually.")
 
-        st.divider()
+        st.markdown('<div class="sidebar-section">Session</div>', unsafe_allow_html=True)
         c1, c2 = st.columns(2)
         c1.metric("Queries",  st.session_state.query_count)
         c2.metric("Messages", len(st.session_state.messages))
@@ -1004,8 +1379,13 @@ def run_streamlit_app():
                 st.session_state.engine.clear_memory()
             st.rerun()
 
-    st.markdown('<h1 class="main-h">Advanced Mathematics Assistant</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="sub-h">Powered by LLaMA 3 × Groq × RAG Knowledge Base</p>', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="hero-wrap">
+        <div class="hero-badge">⚡ Powered by LLaMA 3.3 · Groq · RAG</div>
+        <h1 class="hero-title">Advanced Mathematics<br>Assistant</h1>
+        <p class="hero-sub">Step-by-step AI solutions · Symbolic computation · Graph plotting</p>
+    </div>
+    """, unsafe_allow_html=True)
 
     if st.session_state.engine is None:
         with st.spinner("🔧 Building knowledge base (first run only)..."):
@@ -1022,34 +1402,64 @@ def run_streamlit_app():
     if st.session_state.kb_ready and st.session_state.engine:
         doc_count = (st.session_state.engine.vector_store.get_document_count()
                      if st.session_state.engine.vector_store else 0)
-        st.caption(f"📚 {doc_count} chunks indexed | Model: {LLM_MODEL} | Session: {st.session_state.session_id}")
+        st.markdown(f"""
+        <div style="text-align:center;margin-bottom:0.5rem;">
+            <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:#475569;letter-spacing:0.08em;">
+                📚 {doc_count} CHUNKS &nbsp;·&nbsp; {LLM_MODEL} &nbsp;·&nbsp; SESSION {st.session_state.session_id.upper()}
+            </span>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.divider()
 
     if not st.session_state.messages:
         st.markdown("""
-        <div style="text-align:center;padding:3rem 2rem;color:#8892b0">
-            <div style="font-size:3rem;margin-bottom:1rem">∫ ∑ ∂ π</div>
-            <h3 style="color:#e8eaf6">Welcome to the Math Assistant</h3>
-            <p>Ask me anything — algebra, calculus, linear algebra, statistics, and beyond.</p>
-            <p>📷 <strong>New:</strong> Scan handwritten problems with your camera!</p>
-            <p>📄 <strong>New:</strong> Upload PDF textbooks or question papers!</p>
-            <p style="font-size:.85rem">Use the sidebar for graphs, symbolic compute, PDF upload and camera scan.</p>
-        </div>""", unsafe_allow_html=True)
+        <div class="welcome-wrap">
+            <div class="welcome-symbols">∫ ∑ ∂ π</div>
+            <div class="welcome-title">What would you like to solve?</div>
+            <p class="welcome-sub">
+                Ask any math question and get clear, step-by-step solutions.<br>
+                From basic algebra to advanced calculus — I've got you covered.
+            </p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧮</div>
+                    <div class="feature-title">Step-by-Step Solutions</div>
+                    <div class="feature-desc">Clear explanations for every problem, just like a teacher</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📷</div>
+                    <div class="feature-title">Camera Scan</div>
+                    <div class="feature-desc">Snap a photo of any handwritten problem — auto-solves instantly</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <div class="feature-title">PDF Upload</div>
+                    <div class="feature-desc">Upload textbooks or question papers and ask anything</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <div class="feature-title">Graph Plotter</div>
+                    <div class="feature-desc">Visualize any mathematical function instantly</div>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
     for i, msg in enumerate(st.session_state.messages):
         if msg["role"] == "user":
-            st.markdown(
-                f'<div class="msg-u"><strong>🧑 You</strong><br>{msg["content"]}</div>',
-                unsafe_allow_html=True)
+            st.markdown(f"""
+            <div class="msg-user">
+                <div class="msg-user-name">▸ You</div>
+                {msg["content"]}
+            </div>""", unsafe_allow_html=True)
         else:
-            st.markdown(
-                '<p style="border-left:3px solid #4ecca3;padding-left:10px;'
-                'color:#4ecca3;font-size:0.85rem;font-weight:700;margin:16px 0 6px 0;">'
-                '∫ Assistant</p>',
-                unsafe_allow_html=True)
+            st.markdown("""
+            <div class="msg-ai-label">
+                <div class="msg-ai-tag">∫ MathAI</div>
+                <div class="msg-ai-line"></div>
+            </div>""", unsafe_allow_html=True)
             st.markdown(msg["content"])
-            st.divider()
             clean = re.sub(r'\$\$(.+?)\$\$', r'\1', msg["content"], flags=re.DOTALL)
             clean = re.sub(r'\$(.+?)\$', r'\1', clean)
             clean = re.sub(r'━+', '─────────────────', clean)
@@ -1057,26 +1467,40 @@ def run_streamlit_app():
                 st.code(clean, language=None)
             if msg.get("sources"):
                 tags = "".join(
-                    f'<span class="tag">📖 {s["topic"].replace("_", " ").title()}</span>'
+                    f'<span class="tag">{s["topic"].replace("_"," ").title()}</span>'
                     for s in msg["sources"])
-                st.markdown(f'<div style="margin-bottom:8px">{tags}</div>',
-                            unsafe_allow_html=True)
+                st.markdown(f'<div style="margin:0.3rem 0 1rem">{tags}</div>', unsafe_allow_html=True)
 
-    st.divider()
+    st.markdown('<div class="input-label">Ask a question</div>', unsafe_allow_html=True)
     col1, col2 = st.columns([5, 1])
     with col1:
         default    = st.session_state.get("pending") or ""
         user_input = st.text_area(
-            "Question:", value=default, height=100,
-            placeholder="e.g., Solve x² - 5x + 6 = 0   or   Find the derivative of sin(x)·x²",
+            "Question:", value=default, height=90,
+            placeholder="e.g.  Solve 2x² + 5x - 3 = 0   ·   Find derivative of x³·sin(x)   ·   Explain eigenvalues",
             key="user_input", label_visibility="collapsed")
     with col2:
         st.markdown("<br>", unsafe_allow_html=True)
-        send = st.button("Ask ∫", use_container_width=True, type="primary")
+        send = st.button("Solve →", use_container_width=True, type="primary")
 
-    if st.session_state.get("pending"):
+    # ── AUTO-SEND when pending is set by sidebar buttons ──────────────
+    # This is the KEY fix: pending must be processed BEFORE clearing it
+    pending_query = st.session_state.get("pending")
+    if pending_query:
         st.session_state.pending = None
+        st.session_state.messages.append({"role": "user", "content": pending_query})
+        st.session_state.query_count += 1
+        with st.spinner("🧮 Computing solution..."):
+            result = st.session_state.engine.query(pending_query)
+        st.session_state.messages.append({
+            "role":          "assistant",
+            "content":       result["answer"],
+            "sources":       result.get("sources", []),
+            "symbolic_hint": result.get("symbolic_hint"),
+        })
+        st.rerun()
 
+    # ── Manual send via text box ───────────────────────────────────────
     if send and user_input.strip():
         st.session_state.messages.append({"role": "user", "content": user_input.strip()})
         st.session_state.query_count += 1
