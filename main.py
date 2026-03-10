@@ -1183,7 +1183,6 @@ def run_streamlit_app():
         border: 1px dashed var(--border2) !important;
         border-radius: 12px !important;
     }}
-    /* The "Browse files" button Streamlit renders inside the uploader */
     [data-testid="stFileUploadDropzone"] button,
     .stFileUploader button,
     [data-testid="baseButton-secondary"][kind="secondary"] {{
@@ -1232,6 +1231,91 @@ def run_streamlit_app():
     .stRadio > div {{ gap: 0.4rem !important; }}
     .stRadio > div label {{ padding: 4px 8px; border-radius: 8px; cursor: pointer; }}
     .stRadio > div label p {{ font-size: 0.82rem !important; color: var(--tx2) !important; font-family: 'DM Sans', sans-serif !important; }}
+
+    /* ════════════════════════════════════════════════════════
+       FIX 1 — Expander label & content text in BOTH themes
+       ════════════════════════════════════════════════════════ */
+    /* Expander toggle/summary text */
+    .stExpander details summary,
+    .stExpander details summary p,
+    .stExpander details summary span,
+    [data-testid="stExpander"] summary,
+    [data-testid="stExpander"] summary p {{
+        color: var(--tx) !important;
+        background: var(--card) !important;
+    }}
+    /* Expander body */
+    .stExpander details,
+    [data-testid="stExpander"] details,
+    [data-testid="stExpanderDetails"],
+    .stExpander details > div {{
+        background: var(--card) !important;
+        color: var(--tx) !important;
+    }}
+    /* Text inside expander */
+    .stExpander p,
+    .stExpander li,
+    .stExpander span,
+    [data-testid="stExpanderDetails"] p,
+    [data-testid="stExpanderDetails"] li {{
+        color: var(--tx) !important;
+    }}
+
+    /* ════════════════════════════════════════════════════════
+       FIX 2 — st.code inside expander (copy text block)
+       ════════════════════════════════════════════════════════ */
+    .stExpander pre,
+    .stExpander pre code,
+    [data-testid="stExpanderDetails"] pre,
+    [data-testid="stExpanderDetails"] pre code,
+    [data-testid="stCode"] pre,
+    [data-testid="stCode"] code {{
+        background: var(--bg2) !important;
+        color: var(--tx) !important;
+        border: 1px solid var(--border2) !important;
+        border-radius: 8px !important;
+        font-family: 'DM Mono', monospace !important;
+        font-size: 0.82rem !important;
+        line-height: 1.75 !important;
+        white-space: pre-wrap !important;
+        word-break: break-word !important;
+    }}
+    /* Copy button on st.code */
+    [data-testid="stCode"] button {{
+        background: var(--card2) !important;
+        color: var(--tx2) !important;
+        border: 1px solid var(--border2) !important;
+        border-radius: 6px !important;
+    }}
+    [data-testid="stCode"] button:hover {{
+        background: var(--border2) !important;
+        color: var(--tx) !important;
+    }}
+
+    /* ════════════════════════════════════════════════════════
+       FIX 3 — st.warning / st.error / st.info visibility
+       Always show proper contrast regardless of theme
+       ════════════════════════════════════════════════════════ */
+    [data-testid="stAlert"] {{
+        border-radius: 10px !important;
+    }}
+    /* Warning — amber */
+    [data-testid="stAlert"][data-baseweb="notification"][kind="warning"],
+    div[data-testid="stAlert"].st-ae {{
+        background: rgba(245,158,11,0.12) !important;
+        border: 1px solid rgba(245,158,11,0.5) !important;
+    }}
+    [data-testid="stAlert"] p,
+    [data-testid="stAlert"] div,
+    [data-testid="stAlert"] span,
+    div.stAlert p {{
+        color: var(--tx) !important;
+        opacity: 1 !important;
+    }}
+    /* Force warning icon & text colour in light mode */
+    .element-container .stAlert > div {{
+        color: var(--tx) !important;
+    }}
     </style>
     """, unsafe_allow_html=True)
 
@@ -1297,42 +1381,177 @@ def run_streamlit_app():
                       sym.integrate(sym_in)             if sym_act == "Integrate"    else
                       sym.solve_equation(sym_in + "=0") if sym_act == "Solve (=0)"  else
                       sym.try_solve(sym_in))
-            st.success(result) if result else st.warning("Could not compute symbolically")
+            if result:
+                st.success(result)
+            else:
+                st.warning("Could not compute symbolically")
 
         st.markdown('<div class="sidebar-section">Upload PDF</div>', unsafe_allow_html=True)
         uploaded_pdf = st.file_uploader(
             "Choose PDF file", type=["pdf"], label_visibility="collapsed")
 
         if uploaded_pdf is not None:
-            tmp_path = f"temp_{uploaded_pdf.name}"
-            with open(tmp_path, "wb") as f:
-                f.write(uploaded_pdf.read())
-            with st.spinner("📖 Reading PDF..."):
-                try:
-                    pdf_docs = MathDataLoader().load_pdf(tmp_path)
-                    clean    = MathDataPreprocessor().preprocess_documents(pdf_docs)
-                    chunks   = MathTextSplitter().split_documents(clean)
-                    if st.session_state.engine and chunks:
-                        st.session_state.engine.vector_store.add_documents(chunks)
-                        st.success(f"✅ Loaded {len(pdf_docs)} page(s) from PDF!")
-                        # ── NEW: PDF action buttons ───────────────────
-                        st.markdown("**Ask about this PDF:**")
-                        if st.button("📝 Solve all problems in this PDF", use_container_width=True, type="primary"):
-                            st.session_state.pending = "Solve all the math problems from the uploaded PDF step by step"
-                            st.rerun()
-                        if st.button("📋 Summarize this PDF", use_container_width=True):
-                            st.session_state.pending = "Summarize the key math concepts from the uploaded PDF"
-                            st.rerun()
-                        if st.button("❓ What topics are in this PDF?", use_container_width=True):
-                            st.session_state.pending = "What math topics are covered in the uploaded PDF?"
-                            st.rerun()
-                    else:
-                        st.warning("⚠️ No content found in PDF")
-                except Exception as e:
-                    st.error(f"PDF error: {e}")
-                finally:
-                    if os.path.exists(tmp_path):
-                        os.remove(tmp_path)
+            import hashlib as _hl
+            pdf_hash = _hl.md5(uploaded_pdf.getvalue()).hexdigest()
+
+            # ── Only process once per unique uploaded file ─────────────
+            if st.session_state.get("last_pdf_hash") != pdf_hash:
+                st.session_state.last_pdf_hash     = pdf_hash
+                st.session_state.pdf_status        = None
+                st.session_state.pdf_detected_type = None
+
+                tmp_path = f"temp_{uploaded_pdf.name}"
+                with open(tmp_path, "wb") as f2:
+                    f2.write(uploaded_pdf.getvalue())
+
+                with st.spinner("📖 Reading PDF..."):
+                    try:
+                        pdf_docs    = MathDataLoader().load_pdf(tmp_path)
+                        all_text    = " ".join(d.page_content.lower() for d in pdf_docs)
+                        total_words = len(all_text.split())
+
+                        if not pdf_docs or total_words < 30:
+                            st.session_state.pdf_status = "empty"
+                        else:
+                            # ── Strict math-only keywords (not in everyday English) ──
+                            STRICT_MATH = [
+                                "equation", "derivative", "integral", "differentiate",
+                                "integrate", "calculus", "algebra", "trigonometry",
+                                "polynomial", "quadratic", "eigenvalue", "determinant",
+                                "theorem", "logarithm", "exponent", "coefficient",
+                                "binomial", "permutation", "combination", "modular",
+                                "arithmetic", "geometry", "probability", "variance",
+                                "matrix", "gradient", "divergence", "laplace", "fourier",
+                                "numerator", "denominator", "hypotenuse", "asymptote",
+                                "parabola", "hyperbola", "ellipse", "congruent",
+                                "factorize", "simplify", "differentiation", "integration",
+                                "d/dx", "dy/dx", "f(x)", "g(x)", "ax²", "bx+c",
+                                "∫", "∑", "∂", "√", "∞", "±", "²", "³",
+                            ]
+                            import re as _re
+                            math_hits  = sum(1 for kw in STRICT_MATH if kw in all_text)
+                            math_lines = len(_re.findall(
+                                r'\b\d+[\+\-\*/\^=]\d+\b|=\s*[\d\-]|\bx\s*=|\by\s*=', all_text))
+                            is_math_pdf = (math_hits >= 4) or (math_hits >= 2 and math_lines >= 3)
+
+                            if not is_math_pdf:
+                                DOC_TYPES = {
+                                    "📄 Resume / CV": [
+                                        "experience", "skills", "education", "resume",
+                                        "curriculum vitae", "employment", "linkedin",
+                                        "references", "internship", "bachelor", "master",
+                                        "gpa", "cgpa", "projects", "achievements",
+                                        "objective", "career", "certification"],
+                                    "📰 News / Article": [
+                                        "published", "reporter", "journalist", "editor",
+                                        "breaking news", "according to", "press release",
+                                        "subscribe", "headline", "sources said"],
+                                    "📖 Story / Novel / Essay": [
+                                        "chapter", "once upon", "he said", "she said",
+                                        "fiction", "narrative", "plot", "character",
+                                        "dialogue", "protagonist", "author"],
+                                    "🧾 Invoice / Receipt": [
+                                        "invoice", "receipt", "total amount", "payment",
+                                        "billing", "gst", "quantity", "order number",
+                                        "due date", "subtotal", "discount", "vendor"],
+                                    "⚖️ Legal Document": [
+                                        "hereby", "clause", "agreement", "whereas",
+                                        "plaintiff", "defendant", "jurisdiction",
+                                        "contract", "liability", "terms and conditions"],
+                                    "🍽️ Recipe / Food": [
+                                        "ingredients", "tablespoon", "teaspoon", "bake",
+                                        "recipe", "preheat", "oven", "serving", "cuisine",
+                                        "cook", "boil", "fry", "garnish"],
+                                    "💼 Business / Report": [
+                                        "revenue", "profit", "quarterly", "stakeholder",
+                                        "strategy", "market share", "fiscal", "kpi",
+                                        "roi", "budget", "forecast", "annual report"],
+                                    "🔬 Science (Non-Math)": [
+                                        "biology", "chemistry", "organism", "cell",
+                                        "molecule", "species", "evolution", "experiment",
+                                        "hypothesis", "dna", "protein", "ecosystem"],
+                                }
+                                detected_type = "📁 Unknown document type"
+                                best_score    = 0
+                                for dtype, kws in DOC_TYPES.items():
+                                    score = sum(1 for kw in kws if kw in all_text)
+                                    if score > best_score:
+                                        best_score    = score
+                                        detected_type = dtype
+                                if total_words < 100:
+                                    detected_type = "🖼️ Scanned / Image-based PDF (no readable text)"
+
+                                st.session_state.pdf_status        = "wrong"
+                                st.session_state.pdf_detected_type = detected_type
+                                st.session_state.pdf_math_hits     = math_hits
+                            else:
+                                clean  = MathDataPreprocessor().preprocess_documents(pdf_docs)
+                                chunks = MathTextSplitter().split_documents(clean)
+                                if st.session_state.engine and chunks:
+                                    st.session_state.engine.vector_store.add_documents(chunks)
+                                    st.session_state.pdf_status    = "ok"
+                                    st.session_state.pdf_pages     = len(pdf_docs)
+                                    st.session_state.pdf_math_hits = math_hits
+                                else:
+                                    st.session_state.pdf_status = "empty"
+
+                    except Exception as e:
+                        st.session_state.pdf_status = f"error:{e}"
+                    finally:
+                        if os.path.exists(tmp_path):
+                            os.remove(tmp_path)
+
+            # ── Show stored result (persists across all reruns) ─────────
+            status = st.session_state.get("pdf_status")
+
+            if status == "empty":
+                st.markdown(f"""
+                <div style="background:{'rgba(239,68,68,0.12)' if dark else '#fff1f2'};
+                    border:1px solid {'rgba(239,68,68,0.45)' if dark else '#fca5a5'};
+                    border-radius:10px;padding:0.9rem 1rem;margin:0.4rem 0;">
+                    <div style="color:{'#f87171' if dark else '#dc2626'};font-weight:600;font-size:0.85rem;">
+                        ❌ PDF is empty or unreadable
+                    </div>
+                    <div style="color:{'#fca5a5' if dark else '#991b1b'};font-size:0.75rem;margin-top:0.3rem;">
+                        No text could be extracted. Try a different PDF.
+                    </div>
+                </div>""", unsafe_allow_html=True)
+
+            elif status == "wrong":
+                detected_type = st.session_state.get("pdf_detected_type", "📁 Unknown")
+                math_hits     = st.session_state.get("pdf_math_hits", 0)
+                st.markdown(f"""
+                <div style="background:{'rgba(239,68,68,0.12)' if dark else '#fff1f2'};
+                    border:1px solid {'rgba(239,68,68,0.45)' if dark else '#fca5a5'};
+                    border-radius:10px;padding:0.9rem 1rem;margin:0.4rem 0;">
+                    <div style="color:{'#f87171' if dark else '#dc2626'};font-weight:600;font-size:0.85rem;margin-bottom:0.4rem;">
+                        ❌ Wrong PDF — Not a Math document
+                    </div>
+                    <div style="color:{'#fca5a5' if dark else '#991b1b'};font-size:0.78rem;line-height:1.8;">
+                        <b>Detected as:</b> {detected_type}<br>
+                        <b>Math keywords found:</b> {math_hits} (need at least 4)<br><br>
+                        Please upload a <b>maths textbook, question paper, or class notes</b>.
+                    </div>
+                </div>""", unsafe_allow_html=True)
+
+            elif status == "ok":
+                pages     = st.session_state.get("pdf_pages", "?")
+                math_hits = st.session_state.get("pdf_math_hits", 0)
+                st.success(f"✅ Loaded {pages} page(s) · {math_hits} math keywords!")
+                st.markdown("**Ask about this PDF:**")
+                if st.button("📝 Solve all problems in this PDF", use_container_width=True, type="primary"):
+                    st.session_state.pending = "Solve all the math problems from the uploaded PDF step by step"
+                    st.rerun()
+                if st.button("📋 Summarize this PDF", use_container_width=True):
+                    st.session_state.pending = "Summarize the key math concepts from the uploaded PDF"
+                    st.rerun()
+                if st.button("❓ What topics are in this PDF?", use_container_width=True):
+                    st.session_state.pending = "What math topics are covered in the uploaded PDF?"
+                    st.rerun()
+
+            elif status and str(status).startswith("error:"):
+                st.error(f"PDF error: {str(status)[6:]}")
+
 
         st.markdown('<div class="sidebar-section">Scan Problem</div>', unsafe_allow_html=True)
 
@@ -1357,14 +1576,13 @@ def run_streamlit_app():
             try:
                 from PIL import Image as PILImage
                 image = PILImage.open(scanned_image)
-                st.image(image, caption="📸 Captured Image", use_column_width=True)
+                # FIX 1: deprecated use_column_width → use_container_width
+                st.image(image, caption="📸 Captured Image", use_container_width=True)
 
-                # ── Get image hash to track new vs same image ─────────
                 import hashlib as _hl
                 img_hash = _hl.md5(scanned_image.getvalue()).hexdigest()
                 is_new_image = st.session_state.get("last_img_hash") != img_hash
 
-                # ── Only run OCR when image changes ───────────────────
                 if is_new_image:
                     with st.spinner("🔍 Reading math problem from image..."):
                         extracted = ocr_extract_text(image)
@@ -1379,63 +1597,118 @@ def run_streamlit_app():
                     st.code("pip install pytesseract pillow\nbrew install tesseract")
 
                 elif extracted and extracted.strip():
-                    st.success("✅ Math problem detected!")
-                    st.info(f"📝 **Detected:** {extracted}")
+                    # FIX 2: validate OCR text is actually math before accepting
+                    import re as _re2
+                    txt_low = extracted.lower()
+                    MATH_OCR_SIGNALS = [
+                        # operators & symbols
+                        "=", "+", "-", "*", "/", "^", "²", "³", "√",
+                        "∫", "∑", "∂", "±", "∞", "π",
+                        # keywords
+                        "solve", "find", "equation", "integral", "derivative",
+                        "differentiate", "integrate", "matrix", "vector",
+                        "quadratic", "polynomial", "theorem", "proof",
+                        "calculate", "simplify", "factorize", "evaluate",
+                        "sin", "cos", "tan", "log", "ln",
+                        "f(x)", "g(x)", "d/dx", "dy/dx", "lim",
+                        "dx", "dy", "x²", "x^2", "ax", "bx",
+                    ]
+                    # Count signals present in extracted text
+                    ocr_math_hits = sum(1 for s in MATH_OCR_SIGNALS if s in txt_low or s in extracted)
+                    # Also check: has at least one digit near an operator
+                    has_math_pattern = bool(_re2.search(
+                        r'\d[\+\-\*/=^]|[\+\-\*/=^]\d|\bx\b|\by\b', extracted))
+                    is_math_image = ocr_math_hits >= 2 or has_math_pattern
 
-                    # ── Edit box ──────────────────────────────────────
-                    st.markdown("<small style='color:var(--tx2)'>✏️ Edit if needed:</small>",
-                                unsafe_allow_html=True)
-                    edited = st.text_input(
-                        "Edit:", value=extracted,
-                        key=f"edit_{img_hash}",
-                        label_visibility="collapsed")
+                    if is_math_image:
+                        st.success("✅ Math problem detected!")
+                        st.info(f"📝 **Detected:** {extracted}")
 
-                    # ── Action buttons (4 buttons in 2x2 grid) ────────
-                    b1, b2 = st.columns(2)
-                    with b1:
-                        if st.button("🧮 Solve", key=f"solve_{img_hash}", use_container_width=True, type="primary"):
-                            st.session_state.pending = f"Solve this math problem step by step: {edited}"
+                        st.markdown("<small style='color:var(--tx2)'>✏️ Edit if needed:</small>",
+                                    unsafe_allow_html=True)
+                        edited = st.text_input(
+                            "Edit:", value=extracted,
+                            key=f"edit_{img_hash}",
+                            label_visibility="collapsed")
+
+                        b1, b2 = st.columns(2)
+                        with b1:
+                            if st.button("🧮 Solve", key=f"solve_{img_hash}", use_container_width=True, type="primary"):
+                                st.session_state.pending = f"Solve this math problem step by step: {edited}"
+                                st.session_state.ocr_auto_solved = True
+                                st.rerun()
+                            if st.button("📋 Summarize", key=f"sum_{img_hash}", use_container_width=True):
+                                st.session_state.pending = f"Summarize and explain this math problem: {edited}"
+                                st.session_state.ocr_auto_solved = True
+                                st.rerun()
+                        with b2:
+                            if st.button("💡 Hint", key=f"hint_{img_hash}", use_container_width=True):
+                                st.session_state.pending = f"Give me a hint to solve: {edited}"
+                                st.session_state.ocr_auto_solved = True
+                                st.rerun()
+                            if st.button("📊 Similar", key=f"sim_{img_hash}", use_container_width=True):
+                                st.session_state.pending = f"Show similar example problems like: {edited}"
+                                st.session_state.ocr_auto_solved = True
+                                st.rerun()
+
+                        if is_new_image and not st.session_state.get("ocr_auto_solved", False):
                             st.session_state.ocr_auto_solved = True
-                            st.rerun()
-                        if st.button("📋 Summarize", key=f"sum_{img_hash}", use_container_width=True):
-                            st.session_state.pending = f"Summarize and explain this math problem: {edited}"
-                            st.session_state.ocr_auto_solved = True
-                            st.rerun()
-                    with b2:
-                        if st.button("💡 Hint", key=f"hint_{img_hash}", use_container_width=True):
-                            st.session_state.pending = f"Give me a hint to solve: {edited}"
-                            st.session_state.ocr_auto_solved = True
-                            st.rerun()
-                        if st.button("📊 Similar", key=f"sim_{img_hash}", use_container_width=True):
-                            st.session_state.pending = f"Show similar example problems like: {edited}"
-                            st.session_state.ocr_auto_solved = True
+                            st.session_state.pending = f"Solve this math problem step by step: {extracted}"
                             st.rerun()
 
-                    # ── AUTO SOLVE only once per new image ────────────
-                    if is_new_image and not st.session_state.get("ocr_auto_solved", False):
-                        st.session_state.ocr_auto_solved = True
-                        st.session_state.pending = f"Solve this math problem step by step: {extracted}"
-                        st.rerun()
+                    else:
+                        # OCR found text but it's NOT math (photo, selfie, food, etc.)
+                        st.markdown(f"""
+                        <div style="background:{'rgba(239,68,68,0.12)' if dark else '#fff1f2'};
+                            border:1px solid {'rgba(239,68,68,0.45)' if dark else '#fca5a5'};
+                            border-radius:10px;padding:0.9rem 1rem;margin:0.5rem 0;">
+                            <div style="color:{'#f87171' if dark else '#dc2626'};font-weight:600;font-size:0.88rem;margin-bottom:0.35rem;">
+                                ❌ This is not a Math image
+                            </div>
+                            <div style="color:{'#fca5a5' if dark else '#991b1b'};font-size:0.78rem;line-height:1.65;">
+                                Text was found but no math content detected.<br>
+                                <b>Math signals found:</b> {ocr_math_hits} (need at least 2)<br><br>
+                                Please upload an image of a <b>math problem, equation, or question paper</b>.
+                            </div>
+                        </div>""", unsafe_allow_html=True)
+                        st.markdown(f"<div style='color:var(--tx2);font-size:0.82rem;margin-top:0.4rem;'>✏️ Or type your problem manually:</div>", unsafe_allow_html=True)
+                        manual = st.text_input(
+                            "Type problem here:",
+                            placeholder="e.g. Solve x² + 5x + 6 = 0",
+                            key=f"manual_{img_hash}",
+                            label_visibility="collapsed")
+                        if st.button("🧮 Solve Manually", key=f"manual_solve_{img_hash}", use_container_width=True, type="primary"):
+                            if manual.strip():
+                                st.session_state.pending = f"Solve this math problem step by step: {manual}"
+                                st.rerun()
+                            else:
+                                st.error("Please type a problem first!")
 
                 else:
-                    # ── Wrong image or unreadable ─────────────────────
-                    st.warning("⚠️ Could not read any math text from this image.")
-                    st.markdown("""
-                    **Possible reasons:**
-                    - Image is not a math problem
-                    - Text is too small or blurry
-                    - Lighting is poor
-                    - Handwriting is unclear
-                    """)
-                    st.info("✏️ Type your problem manually below instead:")
-                    manual = st.text_input(
+                    # OCR found nothing at all (blank image, photo with no text)
+                    st.markdown(f"""
+                    <div style="background:{'rgba(239,68,68,0.12)' if dark else '#fff1f2'};
+                        border:1px solid {'rgba(239,68,68,0.45)' if dark else '#fca5a5'};
+                        border-radius:10px;padding:0.9rem 1rem;margin:0.5rem 0;">
+                        <div style="color:{'#f87171' if dark else '#dc2626'};font-weight:600;font-size:0.88rem;margin-bottom:0.35rem;">
+                            ❌ No text found in this image
+                        </div>
+                        <div style="color:{'#fca5a5' if dark else '#991b1b'};font-size:0.78rem;line-height:1.65;">
+                            This looks like a photo or image without any readable text.<br><br>
+                            • Make sure the image contains a <b>written or printed math problem</b><br>
+                            • Ensure good lighting and focus<br>
+                            • Avoid selfies, landscapes, or non-math images
+                        </div>
+                    </div>""", unsafe_allow_html=True)
+                    st.markdown(f"<div style='color:var(--tx2);font-size:0.82rem;margin-top:0.4rem;'>✏️ Type your problem manually instead:</div>", unsafe_allow_html=True)
+                    manual2 = st.text_input(
                         "Type problem here:",
                         placeholder="e.g. Solve x² + 5x + 6 = 0",
-                        key=f"manual_{img_hash}",
+                        key=f"manual2_{img_hash}",
                         label_visibility="collapsed")
-                    if st.button("🧮 Solve Manually", key=f"manual_solve_{img_hash}", use_container_width=True, type="primary"):
-                        if manual.strip():
-                            st.session_state.pending = f"Solve this math problem step by step: {manual}"
+                    if st.button("🧮 Solve Manually", key=f"manual_solve2_{img_hash}", use_container_width=True, type="primary"):
+                        if manual2.strip():
+                            st.session_state.pending = f"Solve this math problem step by step: {manual2}"
                             st.rerun()
                         else:
                             st.error("Please type a problem first!")
@@ -1551,20 +1824,31 @@ def run_streamlit_app():
                 <div class="msg-ai-line"></div>
             </div>""", unsafe_allow_html=True)
             st.markdown(msg["content"])
-            clean = re.sub(r'\$\$(.+?)\$\$', r'\1', msg["content"], flags=re.DOTALL)
+
+            # ── FIX: Clean plain text for copy ──────────────────────
+            clean = msg["content"]
+            clean = re.sub(r'\$\$(.+?)\$\$', r'\1', clean, flags=re.DOTALL)
             clean = re.sub(r'\$(.+?)\$', r'\1', clean)
-            clean = re.sub(r'━+', '─────────────────', clean)
+            clean = re.sub(r'━+', '─────────────────────', clean)
+            clean = re.sub(r'\*\*(.+?)\*\*', r'\1', clean)
+            clean = re.sub(r'\*(.+?)\*', r'\1', clean)
+            clean = re.sub(r'\\boxed\{(.+?)\}', r'[ \1 ]', clean)
+            clean = re.sub(r'\\frac\{(.+?)\}\{(.+?)\}', r'(\1)/(\2)', clean)
+            clean = re.sub(r'\\(pm|mp)', r'±', clean)
+            clean = re.sub(r'\\sqrt\{(.+?)\}', r'√(\1)', clean)
+            clean = re.sub(r'\\text\{(.+?)\}', r'\1', clean)
+            clean = re.sub(r'\\[a-zA-Z]+', '', clean)
+
+            # ── FIX: Use st.code for proper copy button ──────────────
             with st.expander("📋 Copy plain text", expanded=False):
-                import html as _html
-                _bg = "#1e293b" if dark else "#f8fafc"
-                _tx = "#e2e8f0" if dark else "#0f172a"
-                _br = "#334155" if dark else "#cbd5e1"
-                st.markdown(f'<div style="background:{_bg};color:{_tx};border:1px solid {_br};border-radius:8px;padding:1rem 1.2rem;font-family:monospace;font-size:0.82rem;line-height:1.9;word-break:break-word;">{_html.escape(clean).replace(chr(10),"<br>")}</div>', unsafe_allow_html=True)
+                st.code(clean, language=None)
+
             if msg.get("sources"):
                 tags = "".join(
                     f'<span class="tag">{s["topic"].replace("_"," ").title()}</span>'
                     for s in msg["sources"])
                 st.markdown(f'<div style="margin:0.3rem 0 0.5rem">{tags}</div>', unsafe_allow_html=True)
+
             # ── Feedback buttons ──────────────────────────────────────
             fb_col1, fb_col2, fb_col3 = st.columns([1, 1, 8])
             with fb_col1:
@@ -1586,8 +1870,6 @@ def run_streamlit_app():
         st.markdown("<br>", unsafe_allow_html=True)
         send = st.button("Solve →", use_container_width=True, type="primary")
 
-    # ── AUTO-SEND when pending is set by sidebar buttons ──────────────
-    # This is the KEY fix: pending must be processed BEFORE clearing it
     pending_query = st.session_state.get("pending")
     if pending_query:
         st.session_state.pending = None
@@ -1603,7 +1885,6 @@ def run_streamlit_app():
         })
         st.rerun()
 
-    # ── Manual send via text box ───────────────────────────────────────
     if send and user_input.strip():
         st.session_state.messages.append({"role": "user", "content": user_input.strip()})
         st.session_state.query_count += 1
