@@ -12,19 +12,24 @@
 ╚══════════════════════════════════════════════════════════════════════╝
 """
 
-import os, re, sys, json, time, uuid, hashlib, logging, argparse, unittest
-from datetime import datetime
+import os, re, sys, json, time, uuid, hashlib, logging, argparse, unittest, ast, tempfile
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 
 from dotenv import load_dotenv
-load_dotenv()
+# Load .env from same directory as this file — works regardless of where
+# Streamlit is launched from (fixes "key not found" when cwd != project dir)
+load_dotenv(dotenv_path=Path(__file__).parent / ".env", override=True)
 
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("math_assistant")
 
 GROQ_API_KEY       = os.getenv("GROQ_API_KEY", "")
+# llama-3.3-70b-versatile: powerful but low RPM on Groq free tier (30 RPM)
+# llama3-8b-8192: higher RPM limit (30 RPM but faster + less likely to hit TPM limits)
+# mixtral-8x7b-32768: good balance — use this if hitting rate limits
 LLM_MODEL          = os.getenv("LLM_MODEL", "llama-3.3-70b-versatile")
 EMBEDDING_MODEL    = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
 VECTOR_DB_TYPE     = os.getenv("VECTOR_DB_TYPE", "chroma").lower()
@@ -217,10 +222,13 @@ class MathDataLoader:
 
     def load_web_pages(self, urls: List[str]):
         from langchain_community.document_loaders import WebBaseLoader
+        import socket
         docs = []
         for url in urls:
             try:
-                docs.extend(WebBaseLoader(url).load())
+                loader = WebBaseLoader(url)
+                loader.requests_kwargs = {"timeout": 15}
+                docs.extend(loader.load())
                 logger.info(f"Loaded: {url}")
             except Exception as e:
                 logger.warning(f"Failed URL {url}: {e}")
@@ -379,13 +387,16 @@ class MathTextSplitter:
 # ║  STEP 4 — EMBEDDINGS, VECTOR DB & KNOWLEDGE BASE                   ║
 # ╚══════════════════════════════════════════════════════════════════════╝
 
+_EMBEDDINGS_CACHE = {}
 def get_embeddings():
-    from langchain_huggingface import HuggingFaceEmbeddings
-    logger.info(f"Loading embedding model: {EMBEDDING_MODEL}")
-    return HuggingFaceEmbeddings(
-        model_name=EMBEDDING_MODEL,
-        model_kwargs={"device": "cpu"},
-        encode_kwargs={"normalize_embeddings": True})
+    if "model" not in _EMBEDDINGS_CACHE:
+        from langchain_huggingface import HuggingFaceEmbeddings
+        logger.info(f"Loading embedding model: {EMBEDDING_MODEL}")
+        _EMBEDDINGS_CACHE["model"] = HuggingFaceEmbeddings(
+            model_name=EMBEDDING_MODEL,
+            model_kwargs={"device": "cpu"},
+            encode_kwargs={"normalize_embeddings": True})
+    return _EMBEDDINGS_CACHE["model"]
 
 
 class MathVectorStore:
@@ -419,7 +430,7 @@ class MathVectorStore:
                     persist_directory=str(persist_path))
                 logger.info(f"ChromaDB loaded ({self.vectorstore._collection.count()} docs)")
         except Exception as e:
-            logger.warning(f"ChromaDB failed ({e}), switching to FAISS")
+            logger.warning(f"ChromaDB failed ({type(e).__name__}: {e}), switching to FAISS")
             self.db_type = "faiss"
             if documents:
                 self._try_faiss(documents)
@@ -475,22 +486,29 @@ class MathVectorStore:
         try:
             return (self.vectorstore._collection.count() if self.db_type == "chroma"
                     else self.vectorstore.index.ntotal)
-        except Exception:
+        except Exception as e:
+            logger.error(f"get_document_count failed: {e}")
             return 0
 
     def is_ready(self) -> bool:
         return self.vectorstore is not None and self.get_document_count() > 0
 
 
+_PIPELINE_CACHE = {}
 def build_pipeline(pdf_paths=None, urls=None, text_paths=None, force_rebuild=False) -> MathVectorStore:
+    """Cached — runs once per process. Embedding model + KB build only happens on cold start."""
+    if "store" in _PIPELINE_CACHE and not force_rebuild:
+        return _PIPELINE_CACHE["store"]
     store = MathVectorStore()
     if store.is_ready() and not force_rebuild:
         logger.info(f"Knowledge base already built ({store.get_document_count()} docs).")
+        _PIPELINE_CACHE["store"] = store
         return store
     raw_docs   = MathDataLoader().load_all(pdf_paths=pdf_paths or [], urls=urls or [], text_paths=text_paths or [])
     clean_docs = MathDataPreprocessor().preprocess_documents(raw_docs)
     chunks     = MathTextSplitter().split_documents(clean_docs)
     store.build_knowledge_base(chunks)
+    _PIPELINE_CACHE["store"] = store
     return store
 
 
@@ -563,7 +581,7 @@ class MongoDBChatMemory:
 
     def add_message(self, role: str, content: str):
         msg = {"session_id": self.session_id, "role": role,
-               "content": content, "timestamp": datetime.utcnow()}
+               "content": content, "timestamp": datetime.now(timezone.utc)}
         if self.collection is not None:
             try:
                 self.collection.insert_one(msg)
@@ -656,12 +674,32 @@ class SymbolicMathEngine:
     def matrix_operations(matrix_str: str) -> Optional[Dict[str, Any]]:
         try:
             import sympy as sp
-            M = sp.Matrix(eval(matrix_str))
+            M = sp.Matrix(ast.literal_eval(matrix_str))
             return {"determinant": str(M.det()), "rank": M.rank(),
                     "eigenvalues": str(M.eigenvals()), "trace": str(M.trace())}
         except Exception:
             return None
 
+
+_LLM_CACHE = {}
+# Fallback model order — if primary hits daily token limit, auto-switch
+GROQ_MODEL_FALLBACKS = [
+    os.getenv("LLM_MODEL", "llama-3.3-70b-versatile"),
+    "llama3-8b-8192",
+    "mixtral-8x7b-32768",
+]
+
+def _get_llm(model=None):
+    key = model or GROQ_MODEL_FALLBACKS[0]
+    if key not in _LLM_CACHE:
+        from langchain_groq import ChatGroq
+        api_key = os.getenv("GROQ_API_KEY", "") or GROQ_API_KEY
+        if not api_key:
+            raise ValueError("GROQ_API_KEY not set. Add it to your .env file.")
+        logger.info(f"Initializing Groq LLM: {key}")
+        _LLM_CACHE[key] = ChatGroq(groq_api_key=api_key, model_name=key,
+                                    temperature=0.1, max_tokens=2048)
+    return _LLM_CACHE[key]
 
 class MathAIEngine:
     def __init__(self, vector_store: MathVectorStore = None, session_id: str = "default"):
@@ -672,17 +710,13 @@ class MathAIEngine:
         self.session_id   = session_id
 
     def _init_llm(self):
-        if not GROQ_API_KEY:
-            raise ValueError("GROQ_API_KEY not set. Get a free key at https://console.groq.com")
-        from langchain_groq import ChatGroq
-        logger.info(f"Initializing Groq LLM: {LLM_MODEL}")
-        return ChatGroq(groq_api_key=GROQ_API_KEY, model_name=LLM_MODEL,
-                        temperature=0.1, max_tokens=4096)
+        # Eagerly init the primary model; fallbacks are created on demand
+        return _get_llm(GROQ_MODEL_FALLBACKS[0])
 
     def _retrieve_context(self, query: str) -> Tuple[list, str]:
         if not self.vector_store or not self.vector_store.is_ready():
             return [], "No knowledge base available. Using general mathematical knowledge."
-        docs = self.vector_store.similarity_search(query, k=5)
+        docs = self.vector_store.similarity_search(query, k=3)
         if not docs:
             return [], "No specific context found."
         parts = [f"[Reference {i+1} - {d.metadata.get('topic','math')}]\n{d.page_content}"
@@ -709,31 +743,92 @@ class MathAIEngine:
     def query(self, user_input: str) -> Dict[str, Any]:
         hint        = self._symbolic_hint(user_input)
         source_docs, context = self._retrieve_context(user_input)
-        chat_history = self.memory.get_langchain_messages(limit=10)
+        chat_history = self.memory.get_langchain_messages(limit=4)
 
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", SYSTEM_TEMPLATE),
-            MessagesPlaceholder(variable_name="chat_history"),
-            ("human", "{input}"),
-        ])
+        # Build the messages list manually — NEVER pass math content through
+        # LangChain format_messages(), because curly braces in math (e.g. {x|x>0},
+        # set notation, matrices) are treated as template variables and crash with
+        # a KeyError, silently swallowed → user sees no answer at all.
+        system_text = SYSTEM_TEMPLATE.replace("{context}", context)
+        llm_messages = []
+        # System message — use LangChain tuple form which bypasses brace parsing
+        from langchain_core.messages import SystemMessage
+        llm_messages.append(SystemMessage(content=system_text))
+        # Inject chat history
+        for msg in chat_history:
+            llm_messages.append(msg)
+        # Current user question
+        llm_messages.append(HumanMessage(content=user_input))
 
-        try:
-            messages = prompt.format_messages(
-                context=context, chat_history=chat_history, input=user_input)
-            answer = self.llm.invoke(messages).content
-        except Exception as e:
-            logger.error(f"LLM error: {e}")
-            err = str(e).lower()
-            if "api" in err or "key" in err or "auth" in err:
-                answer = "⚠️ API key issue. Please check your GROQ_API_KEY in the .env file."
-            elif "rate" in err or "limit" in err:
-                answer = "⚠️ Rate limit reached. Please wait a few seconds and try again."
-            elif "timeout" in err or "connect" in err:
-                answer = "⚠️ Connection timeout. Please check your internet and try again."
-            else:
-                answer = "⚠️ Something went wrong. Please try again in a moment."
-
+        # Store human message BEFORE LLM call so history order is correct
         self.memory.add_message("human", user_input)
+
+        # Auto-retry with model fallback — if daily limit hit, switch to next model
+        answer      = None
+        last_error  = None
+        used_models = []
+        for model_name in GROQ_MODEL_FALLBACKS:
+            if model_name in used_models:
+                continue
+            used_models.append(model_name)
+            llm = _get_llm(model_name)
+            for _attempt in range(2):  # 2 attempts per model
+                try:
+                    raw = llm.invoke(llm_messages).content
+                    if raw and not any(p in raw.lower() for p in
+                                       ["rate limit", "too many requests", "service unavailable"]):
+                        answer = raw
+                        if model_name != GROQ_MODEL_FALLBACKS[0]:
+                            answer = f"*(Using fallback model: {model_name})*\n\n" + answer
+                        break
+                    else:
+                        raise Exception(raw or "Empty response")
+                except Exception as e:
+                    last_error = e
+                    err = str(e).lower()
+                    full_err = str(e)
+                    logger.warning(f"Model {model_name} attempt {_attempt+1} failed: {e}")
+                    if "per day" in full_err or "tokens per day" in full_err:
+                        # Daily limit — skip to next model immediately
+                        logger.info(f"Daily limit on {model_name}, trying next model...")
+                        break
+                    elif "429" in full_err or "rate_limit" in err:
+                        time.sleep(2 ** _attempt)
+                        continue
+                    elif "timeout" in err or "connect" in err or "503" in err:
+                        time.sleep(1)
+                        continue
+                    else:
+                        break  # non-retryable
+            if answer:
+                break
+
+        if answer is None:
+            full_err = str(last_error)
+            err      = full_err.lower()
+            logger.error(f"LLM failed: [{type(last_error).__name__}] {full_err}")
+
+            if "401" in full_err or "invalid_api_key" in err:
+                answer = "⚠️ Invalid API key. Check GROQ_API_KEY in your .env file."
+            elif "429" in full_err or "rate_limit_exceeded" in err:
+                # Extract the retry time from Groq's message if present
+                import re as _re
+                retry_match = _re.search(r'try again in (.+?)\.', full_err)
+                retry_info  = f" Groq says: try again in **{retry_match.group(1)}**." if retry_match else ""
+                # Check if it is TPD (daily) or TPM (per minute)
+                if "per day" in full_err or "tokens per day" in full_err or "TPD" in full_err:
+                    answer = f"⚠️ **Daily token limit reached** (Groq free tier: 100,000 tokens/day).{retry_info}\n\nTo keep using the app now, change your `.env`:\n```\nLLM_MODEL=llama3-8b-8192\n```\nThen restart Streamlit. The 8B model has a separate 500k/day quota."
+                else:
+                    answer = f"⚠️ **Rate limit hit** (too many requests per minute).{retry_info} Wait 20–30 seconds and try again."
+            elif "context_length" in err or ("context" in err and "length" in err):
+                answer = "⚠️ Question + context too long. Try a shorter question."
+            elif "connect" in err or "connection" in err:
+                answer = "⚠️ Cannot reach Groq API. Check your internet connection."
+            elif "timeout" in err:
+                answer = "⚠️ Request timed out. Try again."
+            else:
+                answer = f"⚠️ Error ({type(last_error).__name__}): {full_err}"
+
         self.memory.add_message("assistant", answer)
 
         sources = [{"topic":      d.metadata.get("topic", "unknown"),
@@ -1179,13 +1274,13 @@ def run_streamlit_app():
     }}
     /* ── Toast message text ── */
     [data-testid="stToast"] {{
-        background: {'#1e293b' if dark else '#1e293b'} !important;
-        color: #ffffff !important;
+        background: {'#1e293b' if dark else '#ffffff'} !important;
+        color: {'#ffffff' if dark else '#0f172a'} !important;
     }}
     [data-testid="stToast"] p,
     [data-testid="stToast"] span,
     [data-testid="stToast"] div {{
-        color: #ffffff !important;
+        color: {'#ffffff' if dark else '#0f172a'} !important;
     }}
     /* ── Tooltip popup text (help= on buttons) ── */
     div[data-testid="stTooltipContent"],
@@ -1394,6 +1489,7 @@ def run_streamlit_app():
 
         if GROQ_API_KEY and GROQ_API_KEY != "your_groq_api_key_here":
             st.markdown(f'<div class="status-pill status-ok"><span class="dot dot-pulse"></span> Groq LLM · {LLM_MODEL.split("-")[0].upper()}</div>', unsafe_allow_html=True)
+            st.markdown('<div style="font-family:DM Mono,monospace;font-size:0.6rem;color:var(--tx3);margin-top:-0.3rem;padding-left:2px;">Free tier: 30 req/min · auto-retry on</div>', unsafe_allow_html=True)
         else:
             st.markdown('<div class="status-pill status-err"><span class="dot"></span> No API Key — check .env</div>', unsafe_allow_html=True)
 
@@ -1439,8 +1535,7 @@ def run_streamlit_app():
             "Choose PDF file", type=["pdf"], label_visibility="collapsed")
 
         if uploaded_pdf is not None:
-            import hashlib as _hl
-            pdf_hash = _hl.md5(uploaded_pdf.getvalue()).hexdigest()
+            pdf_hash = hashlib.md5(uploaded_pdf.getvalue()).hexdigest()
 
             # ── Only process once per unique uploaded file ─────────────
             if st.session_state.get("last_pdf_hash") != pdf_hash:
@@ -1448,8 +1543,10 @@ def run_streamlit_app():
                 st.session_state.pdf_status        = None
                 st.session_state.pdf_detected_type = None
 
-                tmp_path = f"temp_{uploaded_pdf.name}"
-                with open(tmp_path, "wb") as f2:
+                # Use tempfile to avoid name collisions across concurrent sessions
+                suffix = Path(uploaded_pdf.name).suffix or ".pdf"
+                tmp_fd, tmp_path = tempfile.mkstemp(suffix=suffix)
+                with os.fdopen(tmp_fd, "wb") as f2:
                     f2.write(uploaded_pdf.getvalue())
 
                 with st.spinner("📖 Reading PDF..."):
@@ -1476,9 +1573,8 @@ def run_streamlit_app():
                                 "d/dx", "dy/dx", "f(x)", "g(x)", "ax²", "bx+c",
                                 "∫", "∑", "∂", "√", "∞", "±", "²", "³",
                             ]
-                            import re as _re
                             math_hits  = sum(1 for kw in STRICT_MATH if kw in all_text)
-                            math_lines = len(_re.findall(
+                            math_lines = len(re.findall(
                                 r'\b\d+[\+\-\*/\^=]\d+\b|=\s*[\d\-]|\bx\s*=|\by\s*=', all_text))
                             is_math_pdf = (math_hits >= 4) or (math_hits >= 2 and math_lines >= 3)
 
@@ -1624,11 +1720,9 @@ def run_streamlit_app():
             try:
                 from PIL import Image as PILImage
                 image = PILImage.open(scanned_image)
-                # FIX 1: deprecated use_column_width → use_container_width
                 st.image(image, caption="📸 Captured Image", use_container_width=True)
 
-                import hashlib as _hl
-                img_hash = _hl.md5(scanned_image.getvalue()).hexdigest()
+                img_hash = hashlib.md5(scanned_image.getvalue()).hexdigest()
                 is_new_image = st.session_state.get("last_img_hash") != img_hash
 
                 if is_new_image:
@@ -1667,8 +1761,7 @@ def run_streamlit_app():
                             st.error("Please type a problem first!")
 
                 elif extracted and extracted.strip():
-                    # FIX 2: validate OCR text is actually math before accepting
-                    import re as _re2
+                    # validate OCR text is actually math before accepting
                     txt_low = extracted.lower()
                     MATH_OCR_SIGNALS = [
                         # operators & symbols
@@ -1686,7 +1779,7 @@ def run_streamlit_app():
                     # Count signals present in extracted text
                     ocr_math_hits = sum(1 for s in MATH_OCR_SIGNALS if s in txt_low or s in extracted)
                     # Also check: has at least one digit near an operator
-                    has_math_pattern = bool(_re2.search(
+                    has_math_pattern = bool(re.search(
                         r'\d[\+\-\*/=^]|[\+\-\*/=^]\d|\bx\b|\by\b', extracted))
                     is_math_image = ocr_math_hits >= 2 or has_math_pattern
 
@@ -1823,16 +1916,19 @@ def run_streamlit_app():
     """, unsafe_allow_html=True)
 
     if st.session_state.engine is None:
-        with st.spinner("🔧 Building knowledge base (first run only)..."):
-            try:
-                store = build_pipeline()
-                st.session_state.engine   = MathAIEngine(
-                    vector_store=store, session_id=st.session_state.session_id)
-                st.session_state.kb_ready = True
-            except Exception as e:
-                st.error(f"Init error: {e}")
-                st.info("Make sure GROQ_API_KEY is set in .env and all packages are installed.")
-                st.stop()
+        _init_placeholder = st.empty()
+        _init_placeholder.info("⚡ Starting up… loading AI model (first run takes ~10 seconds, then it's instant)")
+        try:
+            store = build_pipeline()
+            engine = MathAIEngine(vector_store=store, session_id=st.session_state.session_id)
+            st.session_state.engine   = engine
+            st.session_state.kb_ready = True
+            _init_placeholder.empty()
+        except Exception as e:
+            _init_placeholder.empty()
+            st.error(f"Init error: {e}")
+            st.info("Make sure GROQ_API_KEY is set in .env and all packages are installed.")
+            st.stop()
 
     if st.session_state.kb_ready and st.session_state.engine:
         doc_count = (st.session_state.engine.vector_store.get_document_count()
@@ -1937,8 +2033,6 @@ def run_streamlit_app():
     st.markdown('<div class="input-label">Ask a question</div>', unsafe_allow_html=True)
     col1, col2 = st.columns([5, 1])
     with col1:
-        if st.session_state.get("pending") and "user_input" not in st.session_state:
-            st.session_state["user_input"] = st.session_state["pending"]
         user_input = st.text_area(
             "Question:", height=90,
             placeholder="e.g.  Solve 2x² + 5x - 3 = 0   ·   Find derivative of x³·sin(x)   ·   Explain eigenvalues",
@@ -1962,18 +2056,12 @@ def run_streamlit_app():
         })
         st.rerun()
 
-    if send and user_input.strip():
-        st.session_state.last_user_input = user_input.strip()
-        st.session_state.messages.append({"role": "user", "content": user_input.strip()})
-        st.session_state.query_count += 1
-        with st.spinner("🧮 Computing solution..."):
-            result = st.session_state.engine.query(user_input.strip())
-        st.session_state.messages.append({
-            "role":          "assistant",
-            "content":       result["answer"],
-            "sources":       result.get("sources", []),
-            "symbolic_hint": result.get("symbolic_hint"),
-        })
+    elif send and user_input.strip():
+        # Route through pending — same safe pattern used by Quick Examples.
+        # NEVER mutate st.session_state["user_input"] here: that key is bound
+        # to the text_area widget and setting it mid-run causes Streamlit to
+        # abort the script silently before query() is ever called.
+        st.session_state.pending = user_input.strip()
         st.rerun()
 
     with st.expander("💡 Tips", expanded=False):
