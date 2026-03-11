@@ -1,8 +1,27 @@
+<div align="center">
+
 # ∫ Advanced Mathematics Assistant
 
-> **Live Demo → [advanced-mathematics-assistant-zvlizldwugwffind.streamlit.app](https://advanced-mathematics-assistant-zvlizldwugwffind.streamlit.app/)**
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://advanced-mathematics-assistant-zvlizldwugwffind.streamlit.app/)
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![LangChain](https://img.shields.io/badge/LangChain-RAG-1C3C3C?style=for-the-badge&logo=chainlink&logoColor=white)](https://langchain.com)
+[![Groq](https://img.shields.io/badge/Groq-LLaMA%203.3-F55036?style=for-the-badge)](https://groq.com)
 
-An AI-powered mathematics assistant built with **Streamlit**, **LangChain**, **Groq LLM**, and **RAG**. Solves math problems step-by-step from Class 1 to JEE level with symbolic computation, graph plotting, PDF upload, and camera scan.
+**An AI-powered mathematics assistant that solves problems step-by-step from Class 1 to JEE level.**
+
+[**🚀 Try Live Demo**](https://advanced-mathematics-assistant-zvlizldwugwffind.streamlit.app/) · [Report Bug](https://github.com/sarika-stack23/AdvMAthAI/issues) · [Request Feature](https://github.com/sarika-stack23/AdvMAthAI/issues)
+
+</div>
+
+---
+
+## 📸 Screenshots
+
+| Dark Mode | Light Mode |
+|---|---|
+| ![Dark](https://via.placeholder.com/400x250/0d1220/60a5fa?text=Dark+Mode) | ![Light](https://via.placeholder.com/400x250/f8fafc/2563eb?text=Light+Mode) |
+
+> Replace placeholders above with real screenshots from your live app.
 
 ---
 
@@ -16,6 +35,7 @@ An AI-powered mathematics assistant built with **Streamlit**, **LangChain**, **G
 - 💬 **Chat memory** — remembers conversation context (MongoDB or in-memory)
 - 🌗 **Dark / light theme** — toggle in sidebar
 - 🔄 **Auto model fallback** — if Groq daily limit hit, silently switches to backup model
+- 🔒 **Secure** — no `eval()` on user input, all API keys via environment variables
 
 ---
 
@@ -35,10 +55,15 @@ An AI-powered mathematics assistant built with **Streamlit**, **LangChain**, **G
 
 ## ⚙️ Local Setup
 
+### Prerequisites
+
+- Python 3.11+
+- [Groq API key](https://console.groq.com) (free)
+
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/AdvMAthAI.git
+git clone https://github.com/sarika-stack23/AdvMAthAI.git
 cd AdvMAthAI
 ```
 
@@ -76,7 +101,7 @@ MONGODB_URI=                               # Optional — leave empty for in-mem
 streamlit run main.py
 ```
 
-Open **http://localhost:8501**
+Open **http://localhost:8501** 🎉
 
 ---
 
@@ -85,17 +110,17 @@ Open **http://localhost:8501**
 1. Go to [console.groq.com](https://console.groq.com)
 2. Sign up (free)
 3. Go to **API Keys** → **Create API Key**
-4. Paste in `.env` as `GROQ_API_KEY=...`
+4. Paste in `.env` as `GROQ_API_KEY=gsk_...`
 
-**Free tier limits:**
+**Free tier limits — app handles all of this automatically:**
 
-| Model | Tokens/Day | Auto-fallback |
+| Model | Tokens/Day | Role |
 |---|---|---|
-| llama-3.3-70b-versatile | 100,000 | Primary |
-| llama3-8b-8192 | 500,000 | Fallback 1 |
-| mixtral-8x7b-32768 | 500,000 | Fallback 2 |
+| llama-3.3-70b-versatile | 100,000 | Primary (best quality) |
+| llama3-8b-8192 | 500,000 | Fallback 1 (auto-switch) |
+| mixtral-8x7b-32768 | 500,000 | Fallback 2 (auto-switch) |
 
-> The app **automatically switches** to fallback models if the daily limit is hit — no `.env` changes needed.
+> When the primary model hits its daily limit, the app **automatically switches** to the next model and switches back the next day. No manual changes needed.
 
 ---
 
@@ -103,7 +128,7 @@ Open **http://localhost:8501**
 
 1. Push code to GitHub
 2. Go to [share.streamlit.io](https://share.streamlit.io) → **New app**
-3. Select your repo and `main.py`
+3. Select your repo → set main file to `main.py`
 4. Go to **Settings → Secrets** and paste:
 
 ```toml
@@ -135,9 +160,9 @@ AdvMAthAI/
 ├── main.py               # All 7 pipeline steps in one file
 ├── .env                  # Your API keys (never commit this)
 ├── .env.example          # Template — safe to commit
-├── .gitignore
-├── requirements.txt
-├── README.md
+├── .gitignore            # Excludes .env, venv, chroma_db etc.
+├── requirements.txt      # Python dependencies
+├── README.md             # This file
 ├── chroma_db/            # Vector DB (auto-created, gitignored)
 └── faiss_index/          # FAISS index (auto-created, gitignored)
 ```
@@ -160,18 +185,18 @@ python main.py --eval        # Evaluate RAG pipeline
 
 | Problem | Fix |
 |---|---|
-| No answer shown | Check Groq API key in Streamlit Cloud Secrets |
+| No answer shown | Check Groq API key in `.env` or Streamlit Cloud Secrets |
 | Daily token limit | App auto-switches model — just keep using it |
 | ChromaDB error | Delete `chroma_db/` folder and restart |
-| Slow first load | Normal — embedding model downloads once then cached |
-| OCR not working | `pip install pytesseract` + `brew install tesseract` |
-| README disappears on push | Run `git add README.md && git commit -m "docs: readme"` |
+| Slow first load | Normal — embedding model downloads once, then instant |
+| OCR not working | `pip install pytesseract` + `brew install tesseract` (Mac) |
+| App crashes on startup | Check Python version is 3.11+ |
 
 ---
 
 ## 📝 Changelog
 
-### Latest fixes
+### v1.1.0 — March 2026
 - ✅ Auto model fallback (70B → 8B → Mixtral) on daily token limit
 - ✅ Streamlit Cloud secrets support (`st.secrets` auto-loaded)
 - ✅ Fixed widget key bug — questions always get answers now
@@ -184,14 +209,24 @@ python main.py --eval        # Evaluate RAG pipeline
 - ✅ WebBaseLoader 15s timeout
 - ✅ Smart error messages with exact retry time from Groq
 
+### v1.0.0 — Initial Release
+- 🎉 Full RAG pipeline with ChromaDB / FAISS
+- 🎉 Streamlit UI with dark/light theme
+- 🎉 Symbolic math via SymPy
+- 🎉 PDF upload, camera scan, graph plotter
+- 🎉 MongoDB chat memory
+
 ---
 
 ## 🤝 Contributing
 
+Contributions are welcome!
+
 1. Fork the repo
 2. Create a branch: `git checkout -b fix/your-fix`
 3. Commit: `git commit -m "fix: description"`
-4. Push and open a Pull Request
+4. Push: `git push origin fix/your-fix`
+5. Open a Pull Request
 
 ---
 
@@ -202,6 +237,9 @@ MIT License — free to use, modify, and distribute.
 ---
 
 <div align="center">
-  Made with ❤️ by Sarika &nbsp;·&nbsp;
-  <a href="https://advanced-mathematics-assistant-zvlizldwugwffind.streamlit.app/">Live Demo</a>
+  Made with ❤️ by <strong>Sarika</strong>
+  <br><br>
+  <a href="https://advanced-mathematics-assistant-zvlizldwugwffind.streamlit.app/">🚀 Live Demo</a> &nbsp;·&nbsp;
+  <a href="https://github.com/sarika-stack23/AdvMAthAI/issues">🐛 Report Bug</a> &nbsp;·&nbsp;
+  <a href="https://github.com/sarika-stack23/AdvMAthAI/issues">💡 Request Feature</a>
 </div>
