@@ -500,12 +500,17 @@ def build_pipeline(pdf_paths=None, urls=None, text_paths=None, force_rebuild=Fal
 
 SYSTEM_TEMPLATE = """You are an expert Indian mathematics teacher who teaches Class 1 to Class 12 (NCERT/CBSE syllabus) as well as JEE and competitive math.
 
+⚠️ NON-MATH QUESTIONS — STRICT RULE:
+If the question is NOT about mathematics (e.g. today's date, general knowledge, medicine, biology, history, news, food, sports, greetings, or anything unrelated to math), respond with ONLY this one line and nothing else:
+"❌ I'm a Mathematics Assistant. I can only help with math questions. Please ask a math problem!"
+Do NOT use the step format. Do NOT try to answer. Stop immediately after this one line.
+
 Detect the difficulty level from the question and respond accordingly:
 - Class 1–5: Use very simple language, basic steps, real-life examples
 - Class 6–10: Clear step-by-step, show all working, NCERT style
 - Class 11–12 / JEE: Detailed working, mention theorems/formulas used
 
-EXACT FORMAT — follow this every time:
+EXACT FORMAT — follow this every time for math questions:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Question: [restate the question clearly]
@@ -514,7 +519,7 @@ Question: [restate the question clearly]
 Step 1 — [title]
    [working]
 
-Step 2 — [title]
+Step 2 — [title] (only if needed)
    [working]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -524,9 +529,9 @@ Step 2 — [title]
 STRICT RULES:
 - Always complete the full solution — never stop mid-answer
 - Each step must be DIFFERENT — never repeat a step
-- Simple problems need only 1–2 steps — do not pad with fake steps
+- Use ONLY as many steps as the problem genuinely needs — 1 step for trivial problems, 2 for simple, 3–5 for medium, up to 8 for complex
+- NEVER add fake or redundant steps just to reach a minimum count
 - Each step must add NEW information only
-- Maximum 8 steps for complex problems
 - Use $...$ for all inline math expressions
 - NEVER repeat a step
 - STOP after the answer — no extra notes or commentary
@@ -887,6 +892,17 @@ def run_streamlit_app():
     section[data-testid="stSidebar"] {{ background: var(--bg2) !important; border-right: 1px solid var(--border) !important; }}
     section[data-testid="stSidebar"] .block-container {{ padding-top: 1.5rem !important; }}
 
+    /* ── Light mode global text fixes ── */
+    .stMarkdown p, .stMarkdown li, .stMarkdown span,
+    .stMarkdown strong, .stMarkdown em,
+    [data-testid="stMarkdownContainer"] p,
+    [data-testid="stMarkdownContainer"] li,
+    [data-testid="stMarkdownContainer"] span,
+    [data-testid="stMarkdownContainer"] strong,
+    [data-testid="stMarkdownContainer"] em {{
+        color: var(--tx) !important;
+    }}
+
     /* ── Hero Header ── */
     .hero-wrap {{
         text-align: center;
@@ -1127,31 +1143,63 @@ def run_streamlit_app():
         transform: translateY(-1px) !important;
         box-shadow: 0 4px 20px rgba(59,130,246,0.3) !important;
     }}
-    .stButton > button[kind="secondary"] {{
+    /* ── Sidebar buttons (Quick Examples, Plot, Compute etc) — ORIGINAL style ── */
+    .stButton > button[kind="secondary"],
+    [data-testid="baseButton-secondary"] {{
         background: var(--card2) !important;
         border: 1px solid var(--border2) !important;
         color: var(--tx2) !important;
     }}
-    .stButton > button[kind="secondary"]:hover {{
+    .stButton > button[kind="secondary"]:hover,
+    [data-testid="baseButton-secondary"]:hover {{
         background: var(--border2) !important;
         color: var(--tx) !important;
     }}
-    /* ── Theme toggle ghost button ── */
-    [data-testid="stButton-theme_toggle"] > button {{
-        background: var(--card2) !important;
-        border: 1px solid var(--border2) !important;
-        color: var(--tx) !important;
-        font-size: 1.1rem !important;
-        padding: 0.3rem 0.55rem !important;
-        border-radius: 8px !important;
-        box-shadow: none !important;
+
+    /* ── 4 specific buttons: 👍 👎 ✏️ Edit + theme toggle ── */
+    .main [data-testid="baseButton-secondary"] {{
+        background: {'#2d3748' if dark else 'transparent'} !important;
+        border: 1px solid {'#4a5568' if dark else '#94a3b8'} !important;
+        color: {'#f1f5f9' if dark else '#1e293b'} !important;
     }}
-    [data-testid="stButton-theme_toggle"] > button:hover {{
-        background: var(--border2) !important;
-        border-color: var(--blue) !important;
-        transform: none !important;
-        box-shadow: none !important;
+    .main [data-testid="baseButton-secondary"]:hover {{
+        background: {'#4a5568' if dark else '#e2e8f0'} !important;
+        border-color: {'#60a5fa' if dark else '#2563eb'} !important;
+        color: {'#60a5fa' if dark else '#1e293b'} !important;
     }}
+    section[data-testid="stSidebar"] [data-testid="column"] [data-testid="baseButton-secondary"] {{
+        background: {'#2d3748' if dark else 'transparent'} !important;
+        border: 1px solid {'#4a5568' if dark else '#94a3b8'} !important;
+        color: {'#f1f5f9' if dark else '#1e293b'} !important;
+    }}
+    section[data-testid="stSidebar"] [data-testid="column"] [data-testid="baseButton-secondary"]:hover {{
+        background: {'#4a5568' if dark else '#e2e8f0'} !important;
+        border-color: {'#60a5fa' if dark else '#2563eb'} !important;
+        color: {'#60a5fa' if dark else '#1e293b'} !important;
+    }}
+    /* ── Toast message text ── */
+    [data-testid="stToast"] {{
+        background: {'#1e293b' if dark else '#1e293b'} !important;
+        color: #ffffff !important;
+    }}
+    [data-testid="stToast"] p,
+    [data-testid="stToast"] span,
+    [data-testid="stToast"] div {{
+        color: #ffffff !important;
+    }}
+    /* ── Tooltip popup text (help= on buttons) ── */
+    div[data-testid="stTooltipContent"],
+    div[data-testid="stTooltipContent"] p,
+    div[data-testid="stTooltipContent"] span,
+    [role="tooltip"],
+    [role="tooltip"] p {{
+        background: #1e293b !important;
+        color: #f1f5f9 !important;
+        border: 1px solid #334155 !important;
+        border-radius: 6px !important;
+        font-size: 0.75rem !important;
+    }}
+
 
     /* ── Inputs ── */
     .stTextArea textarea, .stTextInput input {{
@@ -1593,8 +1641,30 @@ def run_streamlit_app():
                     extracted = st.session_state.get("last_ocr_text", "")
 
                 if extracted == "ERROR_NO_PYTESSERACT":
-                    st.error("❌ pytesseract not installed!")
+                    st.markdown(f"""
+                    <div style="background:{'rgba(239,68,68,0.12)' if dark else '#fff1f2'};
+                        border:1px solid {'rgba(239,68,68,0.45)' if dark else '#fca5a5'};
+                        border-radius:10px;padding:0.9rem 1rem;margin:0.5rem 0;">
+                        <div style="color:{'#f87171' if dark else '#dc2626'};font-weight:600;font-size:0.88rem;margin-bottom:0.35rem;">
+                            ❌ pytesseract not installed!
+                        </div>
+                        <div style="color:{'#fca5a5' if dark else '#991b1b'};font-size:0.78rem;line-height:1.7;">
+                            OCR engine is missing. Run these commands in your terminal to install it:
+                        </div>
+                    </div>""", unsafe_allow_html=True)
                     st.code("pip install pytesseract pillow\nbrew install tesseract")
+                    st.markdown("<div style='color:var(--tx2);font-size:0.82rem;margin-top:0.6rem;'>✏️ Type your problem manually instead:</div>", unsafe_allow_html=True)
+                    manual_ocr = st.text_input(
+                        "Type problem here:",
+                        placeholder="e.g. Solve x² + 5x + 6 = 0",
+                        key=f"manual_ocr_{img_hash}",
+                        label_visibility="collapsed")
+                    if st.button("🧮 Solve Manually", key=f"manual_ocr_solve_{img_hash}", use_container_width=True, type="primary"):
+                        if manual_ocr.strip():
+                            st.session_state.pending = f"Solve this math problem step by step: {manual_ocr}"
+                            st.rerun()
+                        else:
+                            st.error("Please type a problem first!")
 
                 elif extracted and extracted.strip():
                     # FIX 2: validate OCR text is actually math before accepting
@@ -1737,8 +1807,9 @@ def run_streamlit_app():
         </div>
         """, unsafe_allow_html=True)
         if st.button("🗑️ Clear Chat", use_container_width=True):
-            st.session_state.messages    = []
-            st.session_state.query_count = 0
+            st.session_state.messages       = []
+            st.session_state.query_count    = 0
+            st.session_state.last_user_input = ""
             if st.session_state.engine:
                 st.session_state.engine.clear_memory()
             st.rerun()
@@ -1817,6 +1888,11 @@ def run_streamlit_app():
                 <div class="msg-user-name">▸ You</div>
                 {msg["content"]}
             </div>""", unsafe_allow_html=True)
+            edit_col, _ = st.columns([1, 9])
+            with edit_col:
+                if st.button("✏️ Edit", key=f"edit_msg_{i}", help="Edit this question"):
+                    st.session_state["user_input"] = msg["content"]
+                    st.rerun()
         else:
             st.markdown("""
             <div class="msg-ai-label">
@@ -1861,9 +1937,10 @@ def run_streamlit_app():
     st.markdown('<div class="input-label">Ask a question</div>', unsafe_allow_html=True)
     col1, col2 = st.columns([5, 1])
     with col1:
-        default    = st.session_state.get("pending") or ""
+        if st.session_state.get("pending") and "user_input" not in st.session_state:
+            st.session_state["user_input"] = st.session_state["pending"]
         user_input = st.text_area(
-            "Question:", value=default, height=90,
+            "Question:", height=90,
             placeholder="e.g.  Solve 2x² + 5x - 3 = 0   ·   Find derivative of x³·sin(x)   ·   Explain eigenvalues",
             key="user_input", label_visibility="collapsed")
     with col2:
@@ -1886,6 +1963,7 @@ def run_streamlit_app():
         st.rerun()
 
     if send and user_input.strip():
+        st.session_state.last_user_input = user_input.strip()
         st.session_state.messages.append({"role": "user", "content": user_input.strip()})
         st.session_state.query_count += 1
         with st.spinner("🧮 Computing solution..."):
