@@ -18,9 +18,17 @@ from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 
 from dotenv import load_dotenv
-# Load .env from same directory as this file — works regardless of where
-# Streamlit is launched from (fixes "key not found" when cwd != project dir)
+# Load .env locally — works regardless of launch directory
 load_dotenv(dotenv_path=Path(__file__).parent / ".env", override=True)
+
+# Streamlit Cloud: load secrets into environment variables
+try:
+    import streamlit as st
+    for _k, _v in st.secrets.items():
+        if _k not in os.environ:
+            os.environ[_k] = str(_v)
+except Exception:
+    pass  # Not running on Streamlit Cloud or secrets not configured
 
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
