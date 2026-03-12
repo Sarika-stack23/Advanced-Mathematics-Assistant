@@ -1751,15 +1751,37 @@ def run_streamlit_app():
                 _tess_available = False
                 try:
                     import pytesseract as _tess
-                    for _tp in ["/opt/homebrew/bin/tesseract", "/usr/local/bin/tesseract", "/usr/bin/tesseract"]:
+                    import subprocess
+                    # Try known binary paths first
+                    for _tp in [
+                        "/opt/homebrew/bin/tesseract",   # macOS Apple Silicon
+                        "/usr/local/bin/tesseract",       # macOS Intel
+                        "/usr/bin/tesseract",             # Linux / Streamlit Cloud
+                        "/usr/local/share/tessdata/../../../bin/tesseract",
+                    ]:
                         if os.path.exists(_tp):
                             _tess.pytesseract.tesseract_cmd = _tp
                             _tess_available = True
                             break
+                    # Fallback: try running tesseract from PATH
                     if not _tess_available:
-                        import subprocess
-                        if subprocess.run(["tesseract", "--version"], capture_output=True).returncode == 0:
+                        _r = subprocess.run(
+                            ["tesseract", "--version"],
+                            capture_output=True, timeout=5
+                        )
+                        if _r.returncode == 0:
                             _tess_available = True
+                    # Final fallback: find tesseract using `which`
+                    if not _tess_available:
+                        _r = subprocess.run(
+                            ["which", "tesseract"],
+                            capture_output=True, timeout=5
+                        )
+                        if _r.returncode == 0:
+                            _tp = _r.stdout.decode().strip()
+                            if _tp:
+                                _tess.pytesseract.tesseract_cmd = _tp
+                                _tess_available = True
                 except Exception:
                     _tess_available = False
 
