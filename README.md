@@ -48,6 +48,7 @@
 | Embeddings | HuggingFace sentence-transformers/all-MiniLM-L6-v2 |
 | Vector DB | ChromaDB (default) or FAISS |
 | Symbolic Math | SymPy |
+| OCR | Tesseract + pytesseract |
 | Memory | MongoDB Atlas (optional) or in-memory |
 | RAG Framework | LangChain |
 
@@ -70,7 +71,7 @@ cd AdvMAthAI
 ### 2. Create virtual environment
 
 ```bash
-python3 -m venv venv
+python3.11 -m venv venv
 source venv/bin/activate        # Mac/Linux
 venv\Scripts\activate           # Windows
 ```
@@ -81,7 +82,20 @@ venv\Scripts\activate           # Windows
 pip install -r requirements.txt
 ```
 
-### 4. Configure `.env`
+### 4. Install Tesseract (for camera scan)
+
+```bash
+# macOS
+brew install tesseract
+
+# Linux
+sudo apt install tesseract-ocr
+
+# Windows — download installer:
+# https://github.com/UB-Mannheim/tesseract/wiki
+```
+
+### 5. Configure `.env`
 
 ```bash
 cp .env.example .env
@@ -95,10 +109,10 @@ HUGGINGFACE_API_TOKEN=your_token_here      # Free at huggingface.co
 MONGODB_URI=                               # Optional — leave empty for in-memory
 ```
 
-### 5. Run
+### 6. Run
 
 ```bash
-streamlit run main.py
+python3.11 -m streamlit run main.py
 ```
 
 Open **http://localhost:8501** 🎉
@@ -172,11 +186,11 @@ AdvMAthAI/
 ## 🧪 CLI Commands
 
 ```bash
-streamlit run main.py        # Launch UI
-python main.py --setup       # Build knowledge base
-python main.py --rebuild     # Force rebuild knowledge base
-python main.py --test        # Run unit tests
-python main.py --eval        # Evaluate RAG pipeline
+python3.11 -m streamlit run main.py   # Launch UI
+python3.11 main.py --setup            # Build knowledge base
+python3.11 main.py --rebuild          # Force rebuild knowledge base
+python3.11 main.py --test             # Run unit tests
+python3.11 main.py --eval             # Evaluate RAG pipeline
 ```
 
 ---
@@ -189,12 +203,24 @@ python main.py --eval        # Evaluate RAG pipeline
 | Daily token limit | App auto-switches model — just keep using it |
 | ChromaDB error | Delete `chroma_db/` folder and restart |
 | Slow first load | Normal — embedding model downloads once, then instant |
-| OCR not working | `pip install pytesseract` + `brew install tesseract` (Mac) |
-| App crashes on startup | Check Python version is 3.11+ |
+| Meta tensor error on startup | Pinned versions in `requirements.txt` fix this — run `pip install -r requirements.txt` |
+| OCR / camera scan not working | Run `pip install pytesseract` then `brew install tesseract` (Mac) |
+| Wrong image shows pytesseract error | Fixed in v1.2.0 — update to latest `main.py` |
+| Math symbols look broken (π, ∑) | Fixed in v1.2.0 — app now uses plain Unicode, no LaTeX |
+| App crashes on startup | Make sure you run with `python3.11 -m streamlit run main.py` |
 
 ---
 
 ## 📝 Changelog
+
+### v1.2.0 — March 2026
+- ✅ Fixed OCR logic — wrong image no longer shows pytesseract install error
+- ✅ Fixed tesseract binary path for macOS Apple Silicon (`/opt/homebrew/bin/tesseract`)
+- ✅ Added `pytesseract` to `requirements.txt` — no more missing package on fresh install
+- ✅ OS-tabbed install instructions (macOS / Linux / Windows) in sidebar
+- ✅ Replaced broken LaTeX (`$\frac{\pi^2}{6}$`) with clean Unicode (π²/6)
+- ✅ Pinned `sentence-transformers==2.7.0` + `transformers==4.40.2` — fixes meta tensor crash
+- ✅ Added `numpy<2.0.0` pin — fixes torch 2.2.x compatibility
 
 ### v1.1.0 — March 2026
 - ✅ Auto model fallback (70B → 8B → Mixtral) on daily token limit

@@ -558,7 +558,12 @@ STRICT RULES:
 - Use ONLY as many steps as the problem genuinely needs — 1 step for trivial problems, 2 for simple, 3–5 for medium, up to 8 for complex
 - NEVER add fake or redundant steps just to reach a minimum count
 - Each step must add NEW information only
-- Use $...$ for all inline math expressions
+- NEVER use LaTeX or $ symbols. Write all math in plain Unicode text only.
+- Use these Unicode symbols directly: π, ², ³, √, ∑, ∫, ∞, ±, ≤, ≥, ≠, ×, ÷, α, β, θ
+- Write fractions as: (numerator)/(denominator) e.g. (π²)/6
+- Write powers as: x², x³, xⁿ or x^n
+- Write summations as: ∑(n=1 to ∞) 1/n²
+- Example answer: ✅ Answer: ∑(n=1 to ∞) 1/n² = π²/6
 - NEVER repeat a step
 - STOP after the answer — no extra notes or commentary
 - If question is in Hindi or mixed language, answer in the same language
@@ -863,6 +868,15 @@ def ocr_extract_text(image) -> str:
         from PIL import Image
         import PIL.ImageEnhance as enhance
         import pytesseract
+        # Set tesseract binary path for common install locations
+        for _tess_path in [
+            "/opt/homebrew/bin/tesseract",   # macOS Apple Silicon (brew)
+            "/usr/local/bin/tesseract",       # macOS Intel (brew)
+            "/usr/bin/tesseract",             # Linux
+        ]:
+            if os.path.exists(_tess_path):
+                pytesseract.pytesseract.tesseract_cmd = _tess_path
+                break
         gray      = image.convert("L")
         contrast  = enhance.Contrast(gray).enhance(2.0)
         sharpened = enhance.Sharpness(contrast).enhance(2.0)
@@ -1733,29 +1747,49 @@ def run_streamlit_app():
                 img_hash = hashlib.md5(scanned_image.getvalue()).hexdigest()
                 is_new_image = st.session_state.get("last_img_hash") != img_hash
 
-                if is_new_image:
-                    with st.spinner("🔍 Reading math problem from image..."):
-                        extracted = ocr_extract_text(image)
-                    st.session_state.last_img_hash    = img_hash
-                    st.session_state.last_ocr_text    = extracted
-                    st.session_state.ocr_auto_solved  = False
-                else:
-                    extracted = st.session_state.get("last_ocr_text", "")
+                # ── Check pytesseract AND tesseract binary ──
+                _tess_available = False
+                try:
+                    import pytesseract as _tess
+                    for _tp in ["/opt/homebrew/bin/tesseract", "/usr/local/bin/tesseract", "/usr/bin/tesseract"]:
+                        if os.path.exists(_tp):
+                            _tess.pytesseract.tesseract_cmd = _tp
+                            _tess_available = True
+                            break
+                    if not _tess_available:
+                        import subprocess
+                        if subprocess.run(["tesseract", "--version"], capture_output=True).returncode == 0:
+                            _tess_available = True
+                except Exception:
+                    _tess_available = False
 
-                if extracted == "ERROR_NO_PYTESSERACT":
-                    st.markdown(f"""
-                    <div style="background:{'rgba(239,68,68,0.12)' if dark else '#fff1f2'};
-                        border:1px solid {'rgba(239,68,68,0.45)' if dark else '#fca5a5'};
-                        border-radius:10px;padding:0.9rem 1rem;margin:0.5rem 0;">
-                        <div style="color:{'#f87171' if dark else '#dc2626'};font-weight:600;font-size:0.88rem;margin-bottom:0.35rem;">
-                            ❌ pytesseract not installed!
-                        </div>
-                        <div style="color:{'#fca5a5' if dark else '#991b1b'};font-size:0.78rem;line-height:1.7;">
-                            OCR engine is missing. Run these commands in your terminal to install it:
-                        </div>
-                    </div>""", unsafe_allow_html=True)
-                    st.code("pip install pytesseract pillow\nbrew install tesseract")
-                    st.markdown("<div style='color:var(--tx2);font-size:0.82rem;margin-top:0.6rem;'>✏️ Type your problem manually instead:</div>", unsafe_allow_html=True)
+                if not _tess_available:
+                    # Show setup notice only once — collapse it after first view
+                    _tess_warned = st.session_state.get("tess_warning_shown", False)
+                    if not _tess_warned:
+                        st.session_state.tess_warning_shown = True
+                    with st.expander("⚙️ One-time setup: enable camera scan", expanded=not _tess_warned):
+                        st.markdown(f"""
+                        <div style="background:{'rgba(245,158,11,0.1)' if dark else '#fffbeb'};
+                            border:1px solid {'rgba(245,158,11,0.4)' if dark else '#fcd34d'};
+                            border-radius:8px;padding:0.8rem 1rem;margin-bottom:0.6rem;">
+                            <div style="color:{'#fbbf24' if dark else '#b45309'};font-weight:600;font-size:0.85rem;margin-bottom:0.3rem;">
+                                📷 OCR not installed — camera scan disabled
+                            </div>
+                            <div style="color:{'#fde68a' if dark else '#92400e'};font-size:0.75rem;line-height:1.75;">
+                                To enable photo scanning, run <b>one</b> of these in your terminal and restart:
+                            </div>
+                        </div>""", unsafe_allow_html=True)
+                        _tab_mac, _tab_linux, _tab_win = st.tabs(["🍎 macOS", "🐧 Linux", "🪟 Windows"])
+                        with _tab_mac:
+                            st.code("pip install pytesseract pillow\nbrew install tesseract", language="bash")
+                        with _tab_linux:
+                            st.code("pip install pytesseract pillow\nsudo apt install tesseract-ocr", language="bash")
+                        with _tab_win:
+                            st.code("pip install pytesseract pillow", language="bash")
+                            st.markdown("<div style='font-size:0.75rem;color:var(--tx2);margin-top:0.3rem;'>Then download the Tesseract installer:<br><a href='https://github.com/UB-Mannheim/tesseract/wiki' target='_blank'>github.com/UB-Mannheim/tesseract/wiki</a></div>", unsafe_allow_html=True)
+                        st.caption("After installing, restart Streamlit and camera scan will work automatically.")
+                    st.markdown("<div style='color:var(--tx2);font-size:0.82rem;margin-top:0.4rem;'>✏️ Type your math problem manually instead:</div>", unsafe_allow_html=True)
                     manual_ocr = st.text_input(
                         "Type problem here:",
                         placeholder="e.g. Solve x² + 5x + 6 = 0",
@@ -1768,121 +1802,129 @@ def run_streamlit_app():
                         else:
                             st.error("Please type a problem first!")
 
-                elif extracted and extracted.strip():
-                    # validate OCR text is actually math before accepting
-                    txt_low = extracted.lower()
-                    MATH_OCR_SIGNALS = [
-                        # operators & symbols
-                        "=", "+", "-", "*", "/", "^", "²", "³", "√",
-                        "∫", "∑", "∂", "±", "∞", "π",
-                        # keywords
-                        "solve", "find", "equation", "integral", "derivative",
-                        "differentiate", "integrate", "matrix", "vector",
-                        "quadratic", "polynomial", "theorem", "proof",
-                        "calculate", "simplify", "factorize", "evaluate",
-                        "sin", "cos", "tan", "log", "ln",
-                        "f(x)", "g(x)", "d/dx", "dy/dx", "lim",
-                        "dx", "dy", "x²", "x^2", "ax", "bx",
-                    ]
-                    # Count signals present in extracted text
-                    ocr_math_hits = sum(1 for s in MATH_OCR_SIGNALS if s in txt_low or s in extracted)
-                    # Also check: has at least one digit near an operator
-                    has_math_pattern = bool(re.search(
-                        r'\d[\+\-\*/=^]|[\+\-\*/=^]\d|\bx\b|\by\b', extracted))
-                    is_math_image = ocr_math_hits >= 2 or has_math_pattern
+                else:
+                    # pytesseract is available — run OCR now
+                    if is_new_image:
+                        with st.spinner("🔍 Reading math problem from image..."):
+                            extracted = ocr_extract_text(image)
+                        st.session_state.last_img_hash    = img_hash
+                        st.session_state.last_ocr_text    = extracted
+                        st.session_state.ocr_auto_solved  = False
+                    else:
+                        extracted = st.session_state.get("last_ocr_text", "")
 
-                    if is_math_image:
-                        st.success("✅ Math problem detected!")
-                        st.info(f"📝 **Detected:** {extracted}")
+                    if extracted and extracted.strip():
+                        # validate OCR text is actually math before accepting
+                        txt_low = extracted.lower()
+                        MATH_OCR_SIGNALS = [
+                            # operators & symbols
+                            "=", "+", "-", "*", "/", "^", "²", "³", "√",
+                            "∫", "∑", "∂", "±", "∞", "π",
+                            # keywords
+                            "solve", "find", "equation", "integral", "derivative",
+                            "differentiate", "integrate", "matrix", "vector",
+                            "quadratic", "polynomial", "theorem", "proof",
+                            "calculate", "simplify", "factorize", "evaluate",
+                            "sin", "cos", "tan", "log", "ln",
+                            "f(x)", "g(x)", "d/dx", "dy/dx", "lim",
+                            "dx", "dy", "x²", "x^2", "ax", "bx",
+                        ]
+                        # Count signals present in extracted text
+                        ocr_math_hits = sum(1 for s in MATH_OCR_SIGNALS if s in txt_low or s in extracted)
+                        # Also check: has at least one digit near an operator
+                        has_math_pattern = bool(re.search(
+                            r'\d[\+\-\*/=^]|[\+\-\*/=^]\d|\bx\b|\by\b', extracted))
+                        is_math_image = ocr_math_hits >= 2 or has_math_pattern
 
-                        st.markdown("<small style='color:var(--tx2)'>✏️ Edit if needed:</small>",
-                                    unsafe_allow_html=True)
-                        edited = st.text_input(
-                            "Edit:", value=extracted,
-                            key=f"edit_{img_hash}",
-                            label_visibility="collapsed")
+                        if is_math_image:
+                            st.success("✅ Math problem detected!")
+                            st.info(f"📝 **Detected:** {extracted}")
+                            st.markdown("<small style='color:var(--tx2)'>✏️ Edit if needed:</small>",
+                                        unsafe_allow_html=True)
+                            edited = st.text_input(
+                                "Edit:", value=extracted,
+                                key=f"edit_{img_hash}",
+                                label_visibility="collapsed")
+                            b1, b2 = st.columns(2)
+                            with b1:
+                                if st.button("🧮 Solve", key=f"solve_{img_hash}", use_container_width=True, type="primary"):
+                                    st.session_state.pending = f"Solve this math problem step by step: {edited}"
+                                    st.session_state.ocr_auto_solved = True
+                                    st.rerun()
+                                if st.button("📋 Summarize", key=f"sum_{img_hash}", use_container_width=True):
+                                    st.session_state.pending = f"Summarize and explain this math problem: {edited}"
+                                    st.session_state.ocr_auto_solved = True
+                                    st.rerun()
+                            with b2:
+                                if st.button("💡 Hint", key=f"hint_{img_hash}", use_container_width=True):
+                                    st.session_state.pending = f"Give me a hint to solve: {edited}"
+                                    st.session_state.ocr_auto_solved = True
+                                    st.rerun()
+                                if st.button("📊 Similar", key=f"sim_{img_hash}", use_container_width=True):
+                                    st.session_state.pending = f"Show similar example problems like: {edited}"
+                                    st.session_state.ocr_auto_solved = True
+                                    st.rerun()
+                            if is_new_image and not st.session_state.get("ocr_auto_solved", False):
+                                st.session_state.ocr_auto_solved = True
+                                st.session_state.pending = f"Solve this math problem step by step: {extracted}"
+                                st.rerun()
 
-                        b1, b2 = st.columns(2)
-                        with b1:
-                            if st.button("🧮 Solve", key=f"solve_{img_hash}", use_container_width=True, type="primary"):
-                                st.session_state.pending = f"Solve this math problem step by step: {edited}"
-                                st.session_state.ocr_auto_solved = True
-                                st.rerun()
-                            if st.button("📋 Summarize", key=f"sum_{img_hash}", use_container_width=True):
-                                st.session_state.pending = f"Summarize and explain this math problem: {edited}"
-                                st.session_state.ocr_auto_solved = True
-                                st.rerun()
-                        with b2:
-                            if st.button("💡 Hint", key=f"hint_{img_hash}", use_container_width=True):
-                                st.session_state.pending = f"Give me a hint to solve: {edited}"
-                                st.session_state.ocr_auto_solved = True
-                                st.rerun()
-                            if st.button("📊 Similar", key=f"sim_{img_hash}", use_container_width=True):
-                                st.session_state.pending = f"Show similar example problems like: {edited}"
-                                st.session_state.ocr_auto_solved = True
-                                st.rerun()
-
-                        if is_new_image and not st.session_state.get("ocr_auto_solved", False):
-                            st.session_state.ocr_auto_solved = True
-                            st.session_state.pending = f"Solve this math problem step by step: {extracted}"
-                            st.rerun()
+                        else:
+                            # OCR found text but it's NOT math (photo, selfie, food, etc.)
+                            st.markdown(f"""
+                            <div style="background:{'rgba(239,68,68,0.12)' if dark else '#fff1f2'};
+                                border:1px solid {'rgba(239,68,68,0.45)' if dark else '#fca5a5'};
+                                border-radius:10px;padding:0.9rem 1rem;margin:0.5rem 0;">
+                                <div style="color:{'#f87171' if dark else '#dc2626'};font-weight:600;font-size:0.88rem;margin-bottom:0.35rem;">
+                                    ❌ This is not a Math image
+                                </div>
+                                <div style="color:{'#fca5a5' if dark else '#991b1b'};font-size:0.78rem;line-height:1.65;">
+                                    Text was found but no math content detected.<br>
+                                    <b>Math signals found:</b> {ocr_math_hits} (need at least 2)<br><br>
+                                    Please upload an image of a <b>math problem, equation, or question paper</b>.
+                                </div>
+                            </div>""", unsafe_allow_html=True)
+                            st.markdown(f"<div style='color:var(--tx2);font-size:0.82rem;margin-top:0.4rem;'>✏️ Or type your problem manually:</div>", unsafe_allow_html=True)
+                            manual = st.text_input(
+                                "Type problem here:",
+                                placeholder="e.g. Solve x² + 5x + 6 = 0",
+                                key=f"manual_{img_hash}",
+                                label_visibility="collapsed")
+                            if st.button("🧮 Solve Manually", key=f"manual_solve_{img_hash}", use_container_width=True, type="primary"):
+                                if manual.strip():
+                                    st.session_state.pending = f"Solve this math problem step by step: {manual}"
+                                    st.rerun()
+                                else:
+                                    st.error("Please type a problem first!")
 
                     else:
-                        # OCR found text but it's NOT math (photo, selfie, food, etc.)
+                        # OCR found nothing at all (blank image, photo with no text)
                         st.markdown(f"""
                         <div style="background:{'rgba(239,68,68,0.12)' if dark else '#fff1f2'};
                             border:1px solid {'rgba(239,68,68,0.45)' if dark else '#fca5a5'};
                             border-radius:10px;padding:0.9rem 1rem;margin:0.5rem 0;">
                             <div style="color:{'#f87171' if dark else '#dc2626'};font-weight:600;font-size:0.88rem;margin-bottom:0.35rem;">
-                                ❌ This is not a Math image
+                                ❌ No text found in this image
                             </div>
                             <div style="color:{'#fca5a5' if dark else '#991b1b'};font-size:0.78rem;line-height:1.65;">
-                                Text was found but no math content detected.<br>
-                                <b>Math signals found:</b> {ocr_math_hits} (need at least 2)<br><br>
-                                Please upload an image of a <b>math problem, equation, or question paper</b>.
+                                This looks like a photo or image without any readable text.<br><br>
+                                • Make sure the image contains a <b>written or printed math problem</b><br>
+                                • Ensure good lighting and focus<br>
+                                • Avoid selfies, landscapes, or non-math images
                             </div>
                         </div>""", unsafe_allow_html=True)
-                        st.markdown(f"<div style='color:var(--tx2);font-size:0.82rem;margin-top:0.4rem;'>✏️ Or type your problem manually:</div>", unsafe_allow_html=True)
-                        manual = st.text_input(
+                        st.markdown(f"<div style='color:var(--tx2);font-size:0.82rem;margin-top:0.4rem;'>✏️ Type your problem manually instead:</div>", unsafe_allow_html=True)
+                        manual2 = st.text_input(
                             "Type problem here:",
                             placeholder="e.g. Solve x² + 5x + 6 = 0",
-                            key=f"manual_{img_hash}",
+                            key=f"manual2_{img_hash}",
                             label_visibility="collapsed")
-                        if st.button("🧮 Solve Manually", key=f"manual_solve_{img_hash}", use_container_width=True, type="primary"):
-                            if manual.strip():
-                                st.session_state.pending = f"Solve this math problem step by step: {manual}"
+                        if st.button("🧮 Solve Manually", key=f"manual_solve2_{img_hash}", use_container_width=True, type="primary"):
+                            if manual2.strip():
+                                st.session_state.pending = f"Solve this math problem step by step: {manual2}"
                                 st.rerun()
                             else:
                                 st.error("Please type a problem first!")
-
-                else:
-                    # OCR found nothing at all (blank image, photo with no text)
-                    st.markdown(f"""
-                    <div style="background:{'rgba(239,68,68,0.12)' if dark else '#fff1f2'};
-                        border:1px solid {'rgba(239,68,68,0.45)' if dark else '#fca5a5'};
-                        border-radius:10px;padding:0.9rem 1rem;margin:0.5rem 0;">
-                        <div style="color:{'#f87171' if dark else '#dc2626'};font-weight:600;font-size:0.88rem;margin-bottom:0.35rem;">
-                            ❌ No text found in this image
-                        </div>
-                        <div style="color:{'#fca5a5' if dark else '#991b1b'};font-size:0.78rem;line-height:1.65;">
-                            This looks like a photo or image without any readable text.<br><br>
-                            • Make sure the image contains a <b>written or printed math problem</b><br>
-                            • Ensure good lighting and focus<br>
-                            • Avoid selfies, landscapes, or non-math images
-                        </div>
-                    </div>""", unsafe_allow_html=True)
-                    st.markdown(f"<div style='color:var(--tx2);font-size:0.82rem;margin-top:0.4rem;'>✏️ Type your problem manually instead:</div>", unsafe_allow_html=True)
-                    manual2 = st.text_input(
-                        "Type problem here:",
-                        placeholder="e.g. Solve x² + 5x + 6 = 0",
-                        key=f"manual2_{img_hash}",
-                        label_visibility="collapsed")
-                    if st.button("🧮 Solve Manually", key=f"manual_solve2_{img_hash}", use_container_width=True, type="primary"):
-                        if manual2.strip():
-                            st.session_state.pending = f"Solve this math problem step by step: {manual2}"
-                            st.rerun()
-                        else:
-                            st.error("Please type a problem first!")
 
             except ImportError:
                 st.error("❌ Pillow not installed. Run: pip install pillow")
