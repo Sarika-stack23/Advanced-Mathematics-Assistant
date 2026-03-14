@@ -19,9 +19,7 @@
 
 | Dark Mode | Light Mode |
 |---|---|
-| ![Dark](https://via.placeholder.com/400x250/0d1220/60a5fa?text=Dark+Mode) | ![Light](https://via.placeholder.com/400x250/f8fafc/2563eb?text=Light+Mode) |
-
-> Replace placeholders above with real screenshots from your live app.
+| ![Dark](screenshots/dark_mode.png) | ![Light](screenshots/light_mode.png) |
 
 ---
 
@@ -176,7 +174,11 @@ AdvMAthAI/
 ├── .env.example          # Template — safe to commit
 ├── .gitignore            # Excludes .env, venv, chroma_db etc.
 ├── requirements.txt      # Python dependencies
+├── packages.txt          # System dependencies (tesseract)
 ├── README.md             # This file
+├── screenshots/          # App screenshots for README
+│   ├── dark_mode.png
+│   └── light_mode.png
 ├── chroma_db/            # Vector DB (auto-created, gitignored)
 └── faiss_index/          # FAISS index (auto-created, gitignored)
 ```
@@ -205,13 +207,18 @@ python3.11 main.py --eval             # Evaluate RAG pipeline
 | Slow first load | Normal — embedding model downloads once, then instant |
 | Meta tensor error on startup | Pinned versions in `requirements.txt` fix this — run `pip install -r requirements.txt` |
 | OCR / camera scan not working | Run `pip install pytesseract` then `brew install tesseract` (Mac) |
-| Wrong image shows pytesseract error | Fixed in v1.2.0 — update to latest `main.py` |
+| Wrong image shows pytesseract error | Fixed in v1.2.1 — update to latest `requirements.txt` |
 | Math symbols look broken (π, ∑) | Fixed in v1.2.0 — app now uses plain Unicode, no LaTeX |
 | App crashes on startup | Make sure you run with `python3.11 -m streamlit run main.py` |
 
 ---
 
 ## 📝 Changelog
+
+### v1.2.1 — March 2026
+- ✅ Added `pytesseract>=0.3.10` to `requirements.txt` — fixes OCR install warning on Streamlit Cloud
+- ✅ Wrong image now correctly shows "❌ This is not a Math image" card instead of install instructions
+- ✅ Added real dark/light mode screenshots to README
 
 ### v1.2.0 — March 2026
 - ✅ Fixed OCR logic — wrong image no longer shows pytesseract install error
