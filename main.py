@@ -543,9 +543,11 @@ Question: [restate the question clearly]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Step 1 — [title]
+
    [working]
 
 Step 2 — [title] (only if needed)
+
    [working]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -559,7 +561,11 @@ STRICT RULES:
 - NEVER add fake or redundant steps just to reach a minimum count
 - Each step must add NEW information only
 - NEVER use LaTeX or $ symbols. Write all math in plain Unicode text only.
-- Use these Unicode symbols directly: π, ², ³, √, ∑, ∫, ∞, ±, ≤, ≥, ≠, ×, ÷, α, β, θ
+-- Use these Unicode symbols directly: π, ², ³, √, ∑, ∫, ∞, ±, ≤, ≥, ≠, ×, ÷, α, β, θ
+- NEVER write sqrt() — always use √ symbol. Example: √(b² - 4ac) NOT sqrt(b² - 4ac)
+- NEVER write ^2 or ^3 — always use ² ³. Example: x² NOT x^2
+- NEVER write pi — always use π
+- NEVER write +/- — always use ±
 - Write fractions as: (numerator)/(denominator) e.g. (π²)/6
 - Write powers as: x², x³, xⁿ or x^n
 - Write summations as: ∑(n=1 to ∞) 1/n²
