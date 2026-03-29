@@ -16,7 +16,7 @@ import os, re, sys, json, time, uuid, hashlib, logging, argparse, unittest, ast,
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
-
+from knowledge_base import MATH_KNOWLEDGE_BASE, CLASS_EXAMPLES
 from dotenv import load_dotenv
 # Load .env locally — works regardless of launch directory
 load_dotenv(dotenv_path=Path(__file__).parent / ".env", override=True)
@@ -76,129 +76,6 @@ except ImportError:
 # ╔══════════════════════════════════════════════════════════════════════╗
 # ║  STEP 1 — DATA SOURCES                                              ║
 # ╚══════════════════════════════════════════════════════════════════════╝
-
-MATH_KNOWLEDGE_BASE = [
-    Document(page_content="""Calculus Fundamentals:
-The derivative of f(x) measures the rate of change. Key rules:
-- Power Rule: d/dx[x^n] = n*x^(n-1)
-- Product Rule: d/dx[f*g] = f'g + fg'
-- Chain Rule: d/dx[f(g(x))] = f'(g(x)) * g'(x)
-- Quotient Rule: d/dx[f/g] = (f'g - fg') / g^2
-Common derivatives:
-- d/dx[sin(x)] = cos(x)
-- d/dx[cos(x)] = -sin(x)
-- d/dx[e^x] = e^x
-- d/dx[ln(x)] = 1/x
-Integration (antiderivative):
-- integral(x^n dx) = x^(n+1)/(n+1) + C
-- integral(e^x dx) = e^x + C
-- integral(sin(x) dx) = -cos(x) + C
-- integral(cos(x) dx) = sin(x) + C
-Fundamental Theorem of Calculus:
-integral[a to b] f(x) dx = F(b) - F(a)  where F'(x) = f(x)""",
-    metadata={"source": "knowledge_base", "topic": "calculus"}),
-
-    Document(page_content="""Linear Algebra Essentials:
-Matrix Operations:
-- Matrix multiplication (A*B): row-by-column dot products
-- Transpose (A^T): flip rows and columns
-- Determinant of 2x2: det([[a,b],[c,d]]) = ad - bc
-- Inverse: A^(-1) exists iff det(A) != 0
-Eigenvalues and Eigenvectors:
-- Av = lambda*v  where lambda = eigenvalue, v = eigenvector
-- Find eigenvalues: det(A - lambda*I) = 0 (characteristic equation)
-- Eigenvectors: solve (A - lambda*I)v = 0
-Vector Spaces:
-- Span, basis, dimension
-- Linear independence: no vector is a combination of others
-- Rank-Nullity Theorem: rank(A) + nullity(A) = n (columns)
-Dot Product & Norms:
-- u dot v = |u||v|cos(theta)
-- ||v|| = sqrt(v1^2 + v2^2 + ... + vn^2)
-- Orthogonal: u dot v = 0""",
-    metadata={"source": "knowledge_base", "topic": "linear_algebra"}),
-
-    Document(page_content="""Statistics & Probability:
-Descriptive Statistics:
-- Mean: mu = sum(x) / n
-- Variance: sigma^2 = sum((x - mu)^2) / n
-- Standard Deviation: sigma = sqrt(variance)
-- Median: middle value when sorted
-- Mode: most frequent value
-Probability Rules:
-- P(A union B) = P(A) + P(B) - P(A intersection B)
-- P(A | B) = P(A intersection B) / P(B)
-- Bayes Theorem: P(A|B) = P(B|A)*P(A) / P(B)
-- Independent events: P(A intersection B) = P(A) * P(B)
-Distributions:
-- Normal: bell curve, described by mu and sigma
-- Binomial: P(X=k) = C(n,k) * p^k * (1-p)^(n-k)
-- Poisson: P(X=k) = (lambda^k * e^(-lambda)) / k!
-Central Limit Theorem:
-Sample means approach normal distribution as n approaches infinity""",
-    metadata={"source": "knowledge_base", "topic": "statistics"}),
-
-    Document(page_content="""Algebra & Number Theory:
-Quadratic Formula:
-x = (-b +/- sqrt(b^2 - 4ac)) / 2a  for ax^2 + bx + c = 0
-Discriminant: D = b^2 - 4ac
-- D > 0: two real roots
-- D = 0: one real root (repeated)
-- D < 0: two complex roots
-Logarithm Rules:
-- log(ab) = log(a) + log(b)
-- log(a/b) = log(a) - log(b)
-- log(a^n) = n*log(a)
-- log_b(x) = ln(x) / ln(b)
-Polynomial Factoring Patterns:
-- a^2 - b^2 = (a+b)(a-b)
-- a^3 + b^3 = (a+b)(a^2 - ab + b^2)
-- a^3 - b^3 = (a-b)(a^2 + ab + b^2)
-Sequences & Series:
-- Arithmetic: a_n = a_1 + (n-1)d,  Sum = n(a_1 + a_n)/2
-- Geometric: a_n = a_1 * r^(n-1),  Sum = a_1(1-r^n)/(1-r)
-- Infinite geometric (|r|<1): Sum = a_1 / (1-r)""",
-    metadata={"source": "knowledge_base", "topic": "algebra"}),
-
-    Document(page_content="""Trigonometry:
-Unit Circle & Basic Identities:
-- sin^2(x) + cos^2(x) = 1
-- tan(x) = sin(x)/cos(x)
-- sec(x) = 1/cos(x),  csc(x) = 1/sin(x),  cot(x) = 1/tan(x)
-Angle Sum Formulas:
-- sin(A+B) = sin(A)cos(B) + cos(A)sin(B)
-- cos(A+B) = cos(A)cos(B) - sin(A)sin(B)
-Double Angle:
-- sin(2x) = 2sin(x)cos(x)
-- cos(2x) = cos^2(x) - sin^2(x)
-Key Values:
-- sin(0)=0, sin(pi/6)=1/2, sin(pi/4)=sqrt(2)/2, sin(pi/3)=sqrt(3)/2, sin(pi/2)=1
-- cos(0)=1, cos(pi/6)=sqrt(3)/2, cos(pi/4)=sqrt(2)/2, cos(pi/3)=1/2, cos(pi/2)=0
-Law of Sines: a/sin(A) = b/sin(B) = c/sin(C)
-Law of Cosines: c^2 = a^2 + b^2 - 2ab*cos(C)""",
-    metadata={"source": "knowledge_base", "topic": "trigonometry"}),
-
-    Document(page_content="""Discrete Mathematics:
-Combinatorics:
-- Permutations (ordered): P(n,r) = n! / (n-r)!
-- Combinations (unordered): C(n,r) = n! / (r!(n-r)!)
-- Pigeonhole Principle: n+1 objects in n boxes means at least one box has 2+ objects
-Graph Theory:
-- Euler path: visits every edge once (exists if 0 or 2 odd-degree vertices)
-- Hamiltonian path: visits every vertex once
-- Tree: connected graph with n-1 edges for n vertices
-- Degree sum = 2 * number of edges
-Number Theory:
-- GCD(a,b) via Euclidean algorithm: GCD(a,b) = GCD(b, a mod b)
-- LCM(a,b) = a*b / GCD(a,b)
-- Modular arithmetic: a congruent to b (mod n) means n divides (a-b)
-- Fermat's Little Theorem: a^(p-1) congruent to 1 (mod p) for prime p
-Logic:
-- De Morgan's: NOT(A AND B) = NOT(A) OR NOT(B)
-- De Morgan's: NOT(A OR B) = NOT(A) AND NOT(B)""",
-    metadata={"source": "knowledge_base", "topic": "discrete_math"}),
-]
-
 
 class MathDataLoader:
     def __init__(self):
@@ -1521,21 +1398,24 @@ def run_streamlit_app():
         else:
             st.markdown('<div class="status-pill status-err"><span class="dot"></span> No API Key — check .env</div>', unsafe_allow_html=True)
 
-        st.markdown('<div class="sidebar-section">Quick Examples</div>', unsafe_allow_html=True)
-        examples = {
-            "🔢 Quadratic":   "Solve 2x² + 5x - 3 = 0 step by step",
-            "📐 Derivatives": "Find the derivative of f(x) = x³sin(x)",
-            "🔗 Integration": "Evaluate the integral of x²e^x dx",
-            "🎯 Eigenvalues": "Find eigenvalues of the matrix [[2,1],[1,2]]",
-            "📊 Statistics":  "Explain the Central Limit Theorem with an example",
-            "📈 Series":      "Does the series sum(1/n²) converge? Find its sum",
-            "🔺 Vectors":     "Find the angle between vectors (1,2,3) and (4,5,6)",
-            "🧮 Probability": "Explain Bayes theorem with a medical test example",
-        }
-        for label, question in examples.items():
-            if st.button(label, key=f"ex_{label}", use_container_width=True):
-                st.session_state.pending = question
-                st.rerun()
+        st.markdown('<div class="sidebar-section">Browse by Class</div>', unsafe_allow_html=True)
+        selected_class = st.selectbox(
+            "Select class:",
+            options=list(CLASS_EXAMPLES.keys()),
+            index=3,
+            label_visibility="collapsed",
+            key="class_selector"
+        )
+        if selected_class and selected_class in CLASS_EXAMPLES:
+            chapters = CLASS_EXAMPLES[selected_class]
+            for chapter_name, question in chapters.items():
+                if st.button(
+                    chapter_name,
+                    key=f"ch_{chapter_name}",
+                    use_container_width=True
+                ):
+                    st.session_state.pending = question
+                    st.rerun()
 
         st.markdown('<div class="sidebar-section">Graph Plotter</div>', unsafe_allow_html=True)
         gexpr  = st.text_input("Function(s):", placeholder="x**2, sin(x)")
