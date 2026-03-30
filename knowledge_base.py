@@ -538,5 +538,485 @@ Fermat's Little: a^(p-1)≡1(mod p) for prime p.
 De Morgan: NOT(A AND B)=NOT(A) OR NOT(B).""",
     metadata={"source": "knowledge_base", "topic": "discrete_math", "class_level": "class_11", "difficulty": "advanced"}),
 
-]
+    # ── CLASS 8 — All 16 Chapters ───────────────────────────────────
 
+    Document(page_content="""Class 8 | Ch1: Rational Numbers
+Rational number: p/q where p,q integers and q≠0. Includes integers, fractions, terminating and repeating decimals.
+PROPERTIES OF RATIONAL NUMBERS:
+Closure: rationals closed under +,-,×. Division closed except by zero.
+Commutativity: a+b=b+a, a×b=b×a. NOT for subtraction or division.
+Associativity: (a+b)+c=a+(b+c), (a×b)×c=a×(b×c). NOT for subtraction or division.
+Distributivity: a×(b+c)=a×b+a×c.
+Additive identity: 0. Multiplicative identity: 1.
+Additive inverse of p/q is -p/q. Multiplicative inverse (reciprocal) of p/q is q/p.
+REPRESENTATION ON NUMBER LINE:
+Between any two rational numbers there are infinite rational numbers (dense property).
+Standard form: denominator positive and HCF of numerator and denominator=1.
+FINDING RATIONAL NUMBERS BETWEEN TWO NUMBERS:
+Method 1: find mean (average) of the two numbers repeatedly.
+Method 2: convert to same denominator with larger LCM.
+Between -1/2 and 1/3: mean=(-1/2+1/3)/2=(-1/6)/2=-1/12. Continue for more.
+SOLVED EXAMPLES:
+Example 1: Find 5 rational numbers between -1/2 and 1/3.
+Convert: -1/2=-9/18 and 1/3=6/18. Between -9/18 and 6/18: -8/18,-7/18,-6/18,-5/18,-4/18.
+Simplified: -4/9, -7/18, -1/3, -5/18, -2/9.
+Example 2: Verify -2/3 + 4/5 = 4/5 + (-2/3) (commutativity)
+LHS: (-10+12)/15=2/15. RHS: (12-10)/15=2/15. Equal, commutativity verified.
+COMMON MISTAKES:
+Between any two rationals there are INFINITE rationals, not finite.
+Reciprocal of 0 does NOT exist. Reciprocal of 1 is 1. Reciprocal of -1 is -1.""",
+    metadata={"source": "ncert", "topic": "numbers", "class_level": "class_8", "chapter": "ch1", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 8 | Ch2: Linear Equations in One Variable
+Linear equation: variable has power 1 only. ax+b=c form.
+Can involve fractions and variables on both sides.
+SOLVING EQUATIONS WITH VARIABLES ON BOTH SIDES:
+Collect variable terms on one side, constants on other.
+3x+2=5x-4 → 2+4=5x-3x → 6=2x → x=3.
+SOLVING EQUATIONS WITH FRACTIONS:
+Multiply both sides by LCM of all denominators to clear fractions.
+(2x+3)/5-(x-4)/3=2. LCM=15. Multiply: 3(2x+3)-5(x-4)=30.
+6x+9-5x+20=30 → x+29=30 → x=1.
+WORD PROBLEMS - STANDARD TYPES:
+Age problems: Let present age=x. Set up equation from given conditions.
+Number problems: Let number=x. Translate words to equation.
+Geometry problems: Use perimeter/area formulas.
+Money/mixture problems: Set up equation for totals.
+SOLVED EXAMPLES:
+Example 1: (2x+3)/5-(x-4)/3=2
+Multiply by 15: 3(2x+3)-5(x-4)=30 → 6x+9-5x+20=30 → x=1.
+Verify: (2+3)/5-(1-4)/3=1+1=2. Correct.
+Example 2: A number is 4 more than twice another. Sum=40.
+Let numbers be x and 2x+4. x+(2x+4)=40 → 3x=36 → x=12.
+Numbers: 12 and 28. Verify: 12+28=40 and 28=2(12)+4. Correct.
+Example 3: Present age ratio of A and B is 3:4. After 5 years ratio becomes 4:5. Find ages.
+Let ages: 3x and 4x. (3x+5)/(4x+5)=4/5 → 15x+25=16x+20 → x=5.
+Ages: 15 and 20.
+COMMON MISTAKES:
+When multiplying by LCM, multiply EVERY term including constants.
+Verify answer by substituting back in ORIGINAL equation.""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_8", "chapter": "ch2", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 8 | Ch3: Understanding Quadrilaterals
+ANGLE SUM PROPERTY:
+Sum of interior angles of polygon with n sides = (n-2)×180°.
+Triangle(n=3): (3-2)×180=180°.
+Quadrilateral(n=4): (4-2)×180=360°.
+Pentagon(n=5): 540°. Hexagon(n=6): 720°.
+Sum of exterior angles of ANY convex polygon = 360°.
+TYPES OF QUADRILATERALS AND PROPERTIES:
+Trapezium: one pair of parallel sides. Area=(1/2)×(sum of parallel sides)×height.
+Kite: two pairs of adjacent sides equal. One diagonal bisects the other at right angles.
+Parallelogram: opposite sides parallel and equal, opposite angles equal, diagonals bisect each other.
+Rectangle: parallelogram with all right angles, diagonals equal.
+Rhombus: parallelogram with all sides equal, diagonals bisect at right angles.
+Square: all sides equal, all angles 90°, diagonals equal and bisect at right angles.
+HIERARCHY: Square → Rectangle → Parallelogram → Quadrilateral.
+Square is special rhombus AND special rectangle.
+SOLVED EXAMPLES:
+Example 1: In parallelogram ABCD, angle A=75°.
+Angle C=75° (opposite angles equal). Angle B=180-75=105° (co-interior=180°). Angle D=105°.
+Example 2: Exterior angle of regular polygon=40°. How many sides?
+Number of sides=360°/40°=9 sides.
+Example 3: In kite ABCD, AB=AD=5cm, BC=DC=8cm. diagonal AC=6cm. Find BD.
+Diagonals of kite are perpendicular. One diagonal bisects the other.
+COMMON MISTAKES:
+All rectangles are parallelograms but NOT all parallelograms are rectangles.
+Rhombus diagonals bisect at 90° but are NOT equal. Rectangle diagonals are equal but NOT at 90°.
+Sum of angles of quadrilateral=360° (not 180°).""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_8", "chapter": "ch3", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 8 | Ch4: Practical Geometry (Quadrilaterals)
+A quadrilateral has 4 sides, 4 angles, 2 diagonals = 10 measurements total.
+Minimum 5 measurements needed to uniquely construct a quadrilateral.
+CONSTRUCTION CASES:
+Case 1 — Four sides and one diagonal (SSS triangles method):
+Draw diagonal first, construct both triangles on either side.
+Case 2 — Two diagonals and three sides:
+Draw one diagonal, use given measurements to find vertices.
+Case 3 — Two adjacent sides and three angles:
+Use angles to set directions, mark lengths.
+Case 4 — Three sides and two included angles:
+Draw one side, use angles at both ends.
+Case 5 — Special quadrilaterals (rhombus, rectangle, square):
+Use their special properties to simplify construction.
+CONSTRUCTING QUADRILATERAL ABCD (4 sides + 1 diagonal):
+Given: AB=4cm, BC=3.5cm, CD=4.5cm, DA=3cm, AC=5cm.
+Step 1: Draw AC=5cm (diagonal).
+Step 2: From A, draw arc radius 4cm. From C, draw arc radius 3.5cm. Intersection=B.
+Step 3: From A, draw arc radius 3cm. From C, draw arc radius 4.5cm. Intersection=D.
+Step 4: Join all vertices. ABCD is the required quadrilateral.
+RHOMBUS CONSTRUCTION: Both diagonals given (they bisect at right angles at midpoint).
+RECTANGLE CONSTRUCTION: One side and one diagonal (use Pythagoras to find other side).
+COMMON MISTAKES:
+Check if given measurements form a valid quadrilateral before constructing.
+In rhombus construction, diagonals bisect each other at 90°, not just bisect.""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_8", "chapter": "ch4", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 8 | Ch5: Data Handling
+GROUPED DATA AND FREQUENCY:
+Class interval: range of values grouped together. e.g., 0-10, 10-20, 20-30.
+Class width = upper limit - lower limit.
+Frequency: number of observations in each class.
+Cumulative frequency: sum of all frequencies up to that class.
+HISTOGRAM: bar graph for continuous data (no gaps between bars).
+CIRCLE GRAPH (PIE CHART):
+Central angle for each component = (component value/total) × 360°.
+Example: Wheat 40% → angle = 0.40×360 = 144°.
+PROBABILITY:
+Experiment: activity with outcomes (throwing die, tossing coin).
+Event: collection of one or more outcomes.
+P(event) = number of favourable outcomes / total number of outcomes.
+P(sure event)=1. P(impossible event)=0. 0≤P(E)≤1.
+P(E)+P(not E)=1. So P(not E)=1-P(E).
+SOLVED EXAMPLES:
+Example 1: Die thrown. Find P(number>4).
+Favourable: 5,6 → 2 outcomes. Total=6. P=2/6=1/3.
+Example 2: Pie chart for budget. Food=40%, Rent=25%, Education=20%, Others=15%.
+Angles: Food=144°, Rent=90°, Education=72°, Others=54°. Total=360°.
+Example 3: P(drawing red card from deck)=26/52=1/2.
+P(face card)=12/52=3/13. P(ace)=4/52=1/13.
+COMMON MISTAKES:
+In histogram, class intervals must be continuous (no gaps).
+P(E)+P(not E)=1 always. P(E) cannot be greater than 1 or negative.""",
+    metadata={"source": "ncert", "topic": "statistics", "class_level": "class_8", "chapter": "ch5", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 8 | Ch6: Squares and Square Roots
+PERFECT SQUARES: 1,4,9,16,25,36,49,64,81,100,121,144,169,196,225...
+Properties:
+A number ending in 2,3,7,8 is NEVER a perfect square.
+A perfect square ending in 1 → number ends in 1 or 9.
+A perfect square ending in 4 → number ends in 2 or 8.
+A perfect square ending in 9 → number ends in 3 or 7.
+A perfect square ending in 6 → number ends in 4 or 6.
+Number of zeros at end of perfect square is always EVEN.
+SQUARE ROOT METHODS:
+Method 1 - Prime factorisation: pair up prime factors, take one from each pair.
+sqrt(1764): 1764=2^2×3^2×7^2 → sqrt=2×3×7=42.
+Method 2 - Long division: group digits in pairs from right, find largest square≤group.
+PYTHAGOREAN TRIPLETS PATTERN:
+For any m>1: (2m, m²-1, m²+1) form a Pythagorean triplet.
+m=2: (4,3,5). m=3: (6,8,10). m=4: (8,15,17).
+ESTIMATING SQUARE ROOT: find between which two consecutive perfect squares the number lies.
+sqrt(200): between sqrt(196)=14 and sqrt(225)=15. Closer to 14.
+SOLVED EXAMPLES:
+Example 1: Is 1352 a perfect square?
+1352=2^3×13^2. Power of 2 is odd (3), so NOT a perfect square.
+To make perfect square: multiply by 2 → 2704=2^4×13^2=(2^2×13)^2=52^2.
+Example 2: Find least number to multiply 675 to make perfect square.
+675=3^3×5^2. Need one more 3: multiply by 3 → 2025=45^2.
+COMMON MISTAKES:
+sqrt(a^2+b^2) ≠ a+b. sqrt(25+144)=sqrt(169)=13, NOT 5+12=17.
+A number ending in 0 is perfect square only if it ends in EVEN number of zeros.""",
+    metadata={"source": "ncert", "topic": "numbers", "class_level": "class_8", "chapter": "ch6", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 8 | Ch7: Cubes and Cube Roots
+PERFECT CUBES: 1,8,27,64,125,216,343,512,729,1000...
+1^3=1, 2^3=8, 3^3=27, 4^3=64, 5^3=125, 6^3=216, 7^3=343, 8^3=512, 9^3=729, 10^3=1000.
+PROPERTIES OF CUBES:
+Cube of even number is even. Cube of odd number is odd.
+Cube of negative number is negative: (-2)^3=-8.
+A perfect cube can end in any digit 0-9 (unlike squares).
+CUBE ROOT BY PRIME FACTORISATION:
+Group prime factors in sets of 3. Take one from each group.
+cbrt(13824): 13824=2^9×3^3=(2^3)^3×3^3=(8×3)^3=24^3. So cbrt(13824)=24.
+FINDING SMALLEST MULTIPLIER/DIVISOR:
+To make a perfect cube: each prime factor must appear in multiples of 3.
+675=3^3×5^2. Need one more 5^1 to make 5^3. Multiply by 5. 675×5=3375=15^3.
+SOLVED EXAMPLES:
+Example 1: cbrt(13824). 13824=2×6912=2×2×3456=...=2^9×3^3. cbrt=2^3×3=24.
+Example 2: Is 1728 a perfect cube? 1728=2^6×3^3=(2^2×3)^3=12^3. YES, cbrt=12.
+Example 3: Find smallest number to divide 81 to make perfect cube.
+81=3^4. Need to remove one 3 (keep 3^3). Divide by 3. 81÷3=27=3^3. Answer: 3.
+Example 4: What is cube of -5? (-5)^3=-125.
+COMMON MISTAKES:
+cbrt(-8)=-2 (negative cube root exists, unlike square roots).
+cbrt(a^3+b^3) ≠ a+b. Must factorise properly.
+Perfect cube can end in any digit, not restricted like perfect squares.""",
+    metadata={"source": "ncert", "topic": "numbers", "class_level": "class_8", "chapter": "ch7", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 8 | Ch8: Comparing Quantities (Compound Interest)
+RECAP - PROFIT/LOSS AND SIMPLE INTEREST:
+Profit%=(Profit/CP)×100. Loss%=(Loss/CP)×100.
+SI=(P×R×T)/100. Amount=P+SI=P(1+RT/100).
+COMPOUND INTEREST:
+Interest calculated on principal AND accumulated interest.
+Formula: A=P(1+R/100)^n where P=principal, R=rate%, n=time in years.
+CI=A-P=P[(1+R/100)^n - 1].
+Compounded half-yearly: A=P(1+R/200)^(2n) (rate halved, time doubled).
+Compounded quarterly: A=P(1+R/400)^(4n).
+CI>SI for same P,R,T (except for 1 year when CI=SI).
+DIFFERENCE FORMULA (for 2 years):
+CI-SI = P×(R/100)^2.
+APPLICATIONS:
+Population growth: P_n=P_0(1+R/100)^n.
+Depreciation: V_n=V_0(1-R/100)^n.
+SOLVED EXAMPLES:
+Example 1: CI on 12000 at 10% for 2 years compounded annually.
+A=12000(1+10/100)^2=12000×(1.1)^2=12000×1.21=14520.
+CI=14520-12000=2520.
+SI=12000×10×2/100=2400.
+CI-SI=2520-2400=120=12000×(10/100)^2=12000×0.01=120. Verified.
+Example 2: CI on 8000 at 10% for 1.5 years compounded half-yearly.
+Rate per half year=5%, number of periods=3.
+A=8000(1+5/100)^3=8000×(1.05)^3=8000×1.157625=9261.
+Example 3: Population 20000, grows 5% per year. After 2 years?
+P=20000(1.05)^2=20000×1.1025=22050.
+COMMON MISTAKES:
+For half-yearly compounding: halve the rate AND double the time period.
+CI and SI are EQUAL only for first year. After that CI>SI.""",
+    metadata={"source": "ncert", "topic": "arithmetic", "class_level": "class_8", "chapter": "ch8", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 8 | Ch9: Algebraic Expressions and Identities
+MULTIPLICATION OF ALGEBRAIC EXPRESSIONS:
+Monomial × Monomial: multiply coefficients, add powers. 3x^2 × 4x^3=12x^5.
+Monomial × Polynomial: distribute. 2x(3x^2-5x+1)=6x^3-10x^2+2x.
+Polynomial × Polynomial: each term of first × each term of second.
+STANDARD ALGEBRAIC IDENTITIES:
+Identity 1: (a+b)^2 = a^2+2ab+b^2
+Identity 2: (a-b)^2 = a^2-2ab+b^2
+Identity 3: (a+b)(a-b) = a^2-b^2
+Identity 4: (x+a)(x+b) = x^2+(a+b)x+ab
+USING IDENTITIES FOR CALCULATIONS:
+105^2=(100+5)^2=10000+1000+25=11025.
+98×102=(100-2)(100+2)=10000-4=9996.
+FACTORISATION USING IDENTITIES:
+x^2+8x+16=(x+4)^2. Check: 2×4=8, 4^2=16. Correct.
+9a^2-12ab+4b^2=(3a-2b)^2. Check: 2×3a×2b=12ab. Correct.
+x^2-25=(x+5)(x-5). (a^2-b^2 type)
+SOLVED EXAMPLES:
+Example 1: Expand (3x+2y)^2=9x^2+12xy+4y^2.
+Example 2: Expand (4a-3b)^2=16a^2-24ab+9b^2.
+Example 3: (2x+3)(2x+5)=4x^2+(3+5)2x+15=4x^2+16x+15. Using identity 4: (x+a)(x+b) with 2x,3,5.
+Example 4: Evaluate 97^2=(100-3)^2=10000-600+9=9409.
+COMMON MISTAKES:
+(a+b)^2=a^2+2ab+b^2 NOT a^2+b^2 (missing middle term 2ab).
+(a-b)^2=a^2-2ab+b^2 NOT a^2-2ab-b^2 (last term is always positive).
+Factorisation: must check using expansion.""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_8", "chapter": "ch9", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 8 | Ch10: Visualising Solid Shapes
+VIEWS OF 3D OBJECTS:
+Front view, Side view (left or right), Top view (plan view).
+Different views give 2D shapes from different angles.
+Cube: all views are squares.
+Cuboid: views are rectangles (different dimensions for different views).
+Cylinder: front/side=rectangle, top=circle.
+Cone: front/side=triangle, top=circle with centre point.
+Sphere: all views are circles.
+MAPPING AND SCALE:
+Map is a scale drawing of a region.
+Scale: 1cm represents actual distance. Scale 1:50000 means 1cm=50000cm=500m.
+Distance on map × scale = actual distance.
+POLYHEDRA:
+Polyhedron: solid with flat faces, all faces are polygons.
+Regular polyhedra (Platonic solids): all faces identical regular polygons.
+Tetrahedron: 4 equilateral triangular faces.
+Cube: 6 square faces.
+Octahedron: 8 equilateral triangular faces.
+Dodecahedron: 12 regular pentagonal faces.
+Icosahedron: 20 equilateral triangular faces.
+Euler's formula: F+V-E=2 for all polyhedra.
+NON-POLYHEDRA: cone, cylinder, sphere (have curved surfaces).
+SOLVED EXAMPLES:
+Example 1: Top view of a cone is a circle with a point (apex) at centre.
+Example 2: Map scale 1:50000. Distance on map=3cm. Actual distance=3×50000cm=1.5km.
+Example 3: Verify Euler: Octahedron F=8,V=6,E=12. F+V-E=8+6-12=2. Correct.
+COMMON MISTAKES:
+Cylinder and cone are NOT polyhedra (have curved surfaces).
+Top view of cone shows circle with a dot in centre, not just a circle.""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_8", "chapter": "ch10", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 8 | Ch11: Mensuration
+AREA FORMULAS:
+Trapezium: A=(1/2)×(a+b)×h where a,b=parallel sides, h=height.
+Rhombus: A=(1/2)×d1×d2 where d1,d2=diagonals.
+General quadrilateral: A=(1/2)×diagonal×(sum of perpendiculars from opposite vertices).
+Polygon: divide into triangles, sum their areas.
+SURFACE AREA:
+Cube: Total SA=6a^2. Lateral SA=4a^2.
+Cuboid: Total SA=2(lb+bh+lh). Lateral SA=2(l+b)×h.
+Cylinder: Total SA=2πr(r+h). Curved SA=2πrh. Base area=πr^2.
+VOLUME:
+Cube: V=a^3.
+Cuboid: V=l×b×h.
+Cylinder: V=πr^2h.
+UNIT CONVERSIONS:
+1m=100cm → 1m^2=10^4cm^2 → 1m^3=10^6cm^3.
+1km=1000m → 1km^2=10^6m^2.
+1 litre=1000cm^3=1000ml.
+SOLVED EXAMPLES:
+Example 1: Trapezium parallel sides 8cm and 5cm, height 4cm.
+A=(1/2)(8+5)(4)=(1/2)(13)(4)=26cm^2.
+Example 2: Cuboid 5×4×3cm.
+Total SA=2(5×4+4×3+5×3)=2(20+12+15)=2×47=94cm^2.
+Volume=5×4×3=60cm^3.
+Example 3: Cylinder r=7cm, h=10cm.
+Curved SA=2×(22/7)×7×10=440cm^2.
+Total SA=440+2×(22/7)×49=440+308=748cm^2.
+Volume=(22/7)×49×10=1540cm^3.
+COMMON MISTAKES:
+Trapezium area uses PERPENDICULAR height, not slant side.
+Cylinder Total SA includes BOTH circular ends (2πr^2) plus curved surface.
+Volume of cylinder=πr^2×h (cross-section area × height).""",
+    metadata={"source": "ncert", "topic": "mensuration", "class_level": "class_8", "chapter": "ch11", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 8 | Ch12: Exponents and Powers
+NEGATIVE EXPONENTS:
+a^(-n)=1/a^n for any non-zero a. 2^(-3)=1/8. 10^(-4)=0.0001.
+a^(-1)=1/a (reciprocal).
+LAWS (extend from Class 7 to include negative exponents):
+a^m × a^n=a^(m+n). a^m ÷ a^n=a^(m-n). (a^m)^n=a^(mn).
+a^m × b^m=(ab)^m. a^m ÷ b^m=(a/b)^m. a^0=1.
+These ALL work for negative exponents too.
+STANDARD FORM (SCIENTIFIC NOTATION):
+Number between 1 and 10 multiplied by integer power of 10.
+Large: 6,020,000,000=6.02×10^9.
+Small: 0.000000000016=1.6×10^(-11).
+To compare: larger power of 10=larger number.
+EXPRESSING IN STANDARD FORM:
+Move decimal point until you get a number between 1 and 10.
+Number of places moved = power of 10 (positive if moved left, negative if moved right).
+485 → move 2 left → 4.85×10^2.
+0.00605 → move 3 right → 6.05×10^(-3).
+SOLVED EXAMPLES:
+Example 1: (2^(-3)×3^(-2))÷(6^(-1)).
+=1/8×1/9÷1/6=1/72×6=6/72=1/12.
+Example 2: (5/3)^(-2)×(3/5)^3=(3/5)^2×(3/5)^3=(3/5)^5=243/3125.
+Example 3: Express 0.00000605 in standard form.
+Move decimal 6 places right → 6.05×10^(-6).
+COMMON MISTAKES:
+2^(-3) = 1/8 NOT -8. Negative exponent means reciprocal, not negative number.
+(a/b)^(-n)=(b/a)^n. So (2/3)^(-2)=(3/2)^2=9/4.
+In scientific notation, first number MUST be between 1 and 10.""",
+    metadata={"source": "ncert", "topic": "numbers", "class_level": "class_8", "chapter": "ch12", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 8 | Ch13: Direct and Inverse Proportion
+DIRECT PROPORTION:
+x and y are in direct proportion if x/y=k (constant) or x1/y1=x2/y2.
+As x increases, y increases proportionally. Symbol: x∝y.
+Graph: straight line through origin.
+Examples: cost∝quantity, distance∝time(constant speed), simple interest∝time.
+INVERSE PROPORTION:
+x and y are in inverse proportion if xy=k (constant) or x1×y1=x2×y2.
+As x increases, y decreases proportionally. Symbol: x∝1/y.
+Graph: hyperbola (not straight line).
+Examples: speed∝1/time, workers∝1/days, pipes∝1/fill time.
+SOLVED EXAMPLES:
+Example 1 (Direct): If 15 bags of rice cost ₹450, find cost of 24 bags.
+15/450=24/x → x=24×450/15=₹720. OR cost per bag=30, 24×30=720.
+Example 2 (Inverse): 8 workers finish in 12 days. How many days for 6 workers?
+8×12=6×d → d=96/6=16 days. (fewer workers → more days → inverse)
+Example 3 (Inverse): 3 pipes fill tank in 8 hours. How long for 4 pipes?
+3×8=4×t → t=24/4=6 hours.
+Example 4: Car travels 150km in 3 hours. How long for 250km at same speed?
+3/150=t/250 → t=500/100=5 hours. (direct proportion)
+IDENTIFYING TYPE:
+More→More: Direct proportion.
+More→Less: Inverse proportion.
+Workers and days: MORE workers, LESS days → INVERSE.
+Speed and time: MORE speed, LESS time → INVERSE.
+COMMON MISTAKES:
+Workers and days is INVERSE not direct.
+In inverse proportion: x1×y1=x2×y2 (NOT x1/y1=x2/y2).""",
+    metadata={"source": "ncert", "topic": "arithmetic", "class_level": "class_8", "chapter": "ch13", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 8 | Ch14: Factorisation
+METHODS OF FACTORISATION:
+Method 1 - Common Factor: take out HCF of all terms.
+12x^2y-9xy^2+6xyz = 3xy(4x-3y+2z).
+Method 2 - Grouping: group terms to find common factor.
+ax+ay+bx+by = a(x+y)+b(x+y) = (a+b)(x+y).
+a^2-b^2+a-b = (a-b)(a+b)+(a-b) = (a-b)(a+b+1).
+Method 3 - Using Identities:
+x^2+8x+16 = x^2+2(4)x+4^2 = (x+4)^2.
+4x^2-9 = (2x)^2-3^2 = (2x+3)(2x-3).
+Method 4 - Splitting Middle Term (for quadratics ax^2+bx+c):
+Find two numbers p,q such that p+q=b and p×q=a×c.
+x^2+7x+12: p+q=7, p×q=12 → p=3,q=4. So x^2+3x+4x+12=x(x+3)+4(x+3)=(x+3)(x+4).
+2x^2+7x+3: p+q=7, p×q=2×3=6 → p=6,q=1. So 2x^2+6x+x+3=2x(x+3)+1(x+3)=(2x+1)(x+3).
+DIVISION OF ALGEBRAIC EXPRESSIONS:
+Polynomial ÷ Monomial: divide each term separately.
+(6x^3-4x^2+2x) ÷ 2x = 3x^2-2x+1.
+Polynomial ÷ Polynomial: factorise numerator and denominator, cancel common factors.
+SOLVED EXAMPLES:
+Example 1: Factorise 12x^2y-9xy^2+6xyz = 3xy(4x-3y+2z).
+Example 2: x^2+7x+12 = (x+3)(x+4). Verify: (x+3)(x+4)=x^2+7x+12. Correct.
+Example 3: 2x^2+7x+3. Product=6, sum=7. Factors: 6 and 1. = (2x+1)(x+3).
+COMMON MISTAKES:
+Always take out the COMPLETE HCF in method 1 (common factor).
+When splitting middle term: product must equal a×c (coefficient of x^2 × constant).
+Verify factorisation by expanding back.""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_8", "chapter": "ch14", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 8 | Ch15: Introduction to Graphs
+TYPES OF GRAPHS:
+Bar graph: compares discrete data using bars.
+Line graph: shows change over time (continuous data).
+Pie chart: shows proportions (parts of a whole).
+Histogram: bar graph for continuous grouped data (no gaps).
+LINEAR GRAPHS:
+Equation of straight line: y=mx+c where m=slope, c=y-intercept.
+x-intercept: point where line crosses x-axis (y=0).
+y-intercept: point where line crosses y-axis (x=0).
+Slope m: if line passes through (x1,y1) and (x2,y2): m=(y2-y1)/(x2-x1).
+PLOTTING POINTS AND GRAPHS:
+For any linear equation, find at least 2 points (3 to verify).
+For x+y=5: when x=0,y=5. When x=5,y=0. When x=2,y=3.
+Plot these points and join with straight line.
+READING GRAPHS:
+Distance-time graph: slope=speed. Horizontal line=stationary. Steep line=fast.
+Temperature-time graph: shows heating/cooling patterns.
+APPLICATIONS:
+Finding values from graph (interpolation and extrapolation).
+Conversion graphs: between units (km to miles, °C to °F).
+SOLVED EXAMPLES:
+Example 1: Draw graph of y=2x+1. Plot (-1,-1), (0,1), (1,3). Join them.
+Example 2: For graph x+2y=6, find x and y intercepts.
+x-intercept (y=0): x=6. y-intercept (x=0): y=3.
+Example 3: Plot points A(2,3), B(-1,4), C(0,-2).
+A: right 2, up 3. B: left 1, up 4. C: at origin, down 2.
+Example 4: Distance-time graph, car goes 60km in 1 hour. Speed=60/1=60kmph.
+COMMON MISTAKES:
+x-intercept: set y=0 (NOT x=0). y-intercept: set x=0.
+Plotting: x-coordinate first (horizontal), then y-coordinate (vertical).
+In distance-time graph, slope=speed. Greater slope=greater speed.""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_8", "chapter": "ch15", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 8 | Ch16: Playing With Numbers
+NUMBERS IN GENERAL FORM:
+2-digit number ab = 10a+b (a=tens digit, b=units digit).
+3-digit number abc = 100a+10b+c.
+Example: 57 = 10×5+7. 347 = 100×3+10×4+7.
+REVERSING DIGITS:
+2-digit number ab=10a+b. Reversed ba=10b+a.
+Sum: (10a+b)+(10b+a)=11(a+b). Always divisible by 11.
+Difference: (10a+b)-(10b+a)=9(a-b). Always divisible by 9.
+3-digit number abc=100a+10b+c. Reversed cba=100c+10b+a.
+Difference: (100a+10b+c)-(100c+10b+a)=99(a-c). Always divisible by 99.
+CYCLIC NUMBERS (3 digits abc, bca, cab):
+abc+bca+cab=111(a+b+c). Always divisible by 111 and 3.
+LETTERS FOR DIGITS (cryptarithmetic):
+Each letter represents a unique digit. Use logic to find values.
+AB+BA=121 → (10a+b)+(10b+a)=11(a+b)=121 → a+b=11.
+DIVISIBILITY TESTS REVISITED:
+Div by 3: sum of digits divisible by 3.
+Div by 9: sum of digits divisible by 9.
+Div by 11: (sum of odd position digits)-(sum of even position digits)=0 or multiple of 11.
+SOLVED EXAMPLES:
+Example 1: A 2-digit number is 4 times sum of its digits. If 18 added, digits reverse.
+Let number=10a+b. 10a+b=4(a+b) → 10a+b=4a+4b → 6a=3b → b=2a.
+After adding 18: 10a+b+18=10b+a → 9a-9b=-18 → b-a=2.
+From b=2a and b-a=2: 2a-a=2 → a=2, b=4. Number=24.
+Verify: 24=4×(2+4)=4×6=24. 24+18=42 (digits reversed). Correct.
+Example 2: If 1A×A=9A where A is same digit, find A.
+Try A=5: 15×5=75=9×5? No. Try A=6: 16×6=96=9×6? 9×6=54. No. 
+Think: 1A×A means (10+A)×A=10A+A^2. This should equal 90+A.
+10A+A^2=90+A → A^2+9A-90=0 → (A+15)(A-6)=0 → A=6.
+Check: 16×6=96. Yes! 1A×A=16×6=96=9A where A=6.
+COMMON MISTAKES:
+General form of 2-digit number ab is 10a+b NOT a×b or a+b.
+When digits are reversed: the tens digit becomes units and vice versa.""",
+    metadata={"source": "ncert", "topic": "numbers", "class_level": "class_8", "chapter": "ch16", "difficulty": "intermediate"}),
+
+]
