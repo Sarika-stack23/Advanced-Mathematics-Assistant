@@ -1506,4 +1506,1062 @@ For two dice: total outcomes=36 (not 12). Each die independent.
 P(not E)=1-P(E), NOT P(E)-1.""",
     metadata={"source": "ncert", "topic": "probability", "class_level": "class_9", "chapter": "ch15", "difficulty": "intermediate"}),
 
+
+    # ── CLASS 10 — All 15 Chapters ──────────────────────────────────
+
+    Document(page_content="""Class 10 | Ch1: Real Numbers
+EUCLID'S DIVISION LEMMA:
+For any two positive integers a and b, there exist unique integers q and r such that:
+a = bq + r where 0 <= r < b.
+a=dividend, b=divisor, q=quotient, r=remainder.
+EUCLID'S DIVISION ALGORITHM (for HCF):
+Step 1: Apply lemma: a=bq+r.
+Step 2: If r=0, HCF=b. If r≠0, apply lemma to b and r.
+Step 3: Repeat until remainder=0. Last non-zero remainder=HCF.
+Example: HCF(96,404). 404=96×4+20. 96=20×4+16. 20=16×1+4. 16=4×4+0. HCF=4.
+FUNDAMENTAL THEOREM OF ARITHMETIC:
+Every composite number can be expressed as product of primes in UNIQUE way (ignoring order).
+Used to find HCF and LCM of large numbers.
+HCF = product of SMALLEST powers of common prime factors.
+LCM = product of GREATEST powers of all prime factors.
+HCF × LCM = product of two numbers (for exactly TWO numbers).
+PROVING IRRATIONALITY:
+Standard method: assume rational p/q (lowest terms), reach contradiction.
+Prove sqrt(3) irrational: assume sqrt(3)=p/q, HCF(p,q)=1.
+3=p^2/q^2 → p^2=3q^2 → 3 divides p^2 → 3 divides p → p=3m.
+9m^2=3q^2 → q^2=3m^2 → 3 divides q. Both divisible by 3 contradicts HCF=1.
+Also: sqrt(2)+sqrt(3), 2-sqrt(5), 1/sqrt(2) are all irrational.
+RATIONAL NUMBER DECIMAL EXPANSIONS:
+Terminating: denominator (in simplest form) has only 2s and 5s as prime factors.
+Non-terminating repeating: denominator has prime factors other than 2 and 5.
+17/8=17/2^3: terminating (only 2s). 7/6=7/(2×3): non-terminating repeating (has 3).
+SOLVED EXAMPLES:
+Example 1: HCF(96,404) by Euclid's algorithm.
+404=96×4+20. 96=20×4+16. 20=16×1+4. 16=4×4+0. HCF=4.
+LCM=96×404/4=9696.
+Example 2: Is 64/455 terminating?
+455=5×7×13. Has factors 7 and 13 (not just 2,5). Non-terminating repeating.
+COMMON MISTAKES:
+HCF×LCM=product of numbers works for EXACTLY TWO numbers only.
+For terminating decimal: simplify fraction FIRST then check denominator.""",
+    metadata={"source": "ncert", "topic": "numbers", "class_level": "class_10", "chapter": "ch1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch2: Polynomials
+ZEROES OF POLYNOMIAL:
+Zero of polynomial p(x): value of x where p(x)=0.
+Geometrically: x-coordinates where graph of y=p(x) crosses x-axis.
+Linear polynomial (degree 1): has exactly 1 zero.
+Quadratic polynomial (degree 2): has at most 2 zeroes.
+Cubic polynomial (degree 3): has at most 3 zeroes.
+RELATIONSHIP BETWEEN ZEROES AND COEFFICIENTS:
+For quadratic p(x)=ax^2+bx+c with zeroes alpha and beta:
+Sum of zeroes: alpha+beta = -b/a.
+Product of zeroes: alpha×beta = c/a.
+For cubic p(x)=ax^3+bx^2+cx+d with zeroes alpha, beta, gamma:
+alpha+beta+gamma = -b/a.
+alpha*beta+beta*gamma+gamma*alpha = c/a.
+alpha*beta*gamma = -d/a.
+FORMING POLYNOMIAL FROM ZEROES:
+Quadratic with zeroes alpha, beta: p(x)=k[x^2-(alpha+beta)x+alpha*beta].
+DIVISION ALGORITHM FOR POLYNOMIALS:
+p(x) = g(x)×q(x) + r(x).
+Degree of remainder < degree of divisor.
+SOLVED EXAMPLES:
+Example 1: Find zeroes of p(x)=6x^2-3-7x=6x^2-7x-3.
+6x^2-7x-3=0. Split: 6x^2-9x+2x-3=3x(2x-3)+1(2x-3)=(3x+1)(2x-3).
+Zeroes: x=-1/3 and x=3/2.
+Verify: sum=-1/3+3/2=(-2+9)/6=7/6=-(-7)/6=b/a. Wait: -b/a=-(-7)/6=7/6. Correct.
+Product=(-1/3)(3/2)=-1/2=c/a=-3/6=-1/2. Correct.
+Example 2: Form quadratic with zeroes 2 and -3.
+Sum=2+(-3)=-1. Product=2×(-3)=-6. p(x)=x^2-(-1)x+(-6)=x^2+x-6.
+Example 3: Cubic zeroes 2,-1,-3.
+Sum=2-1-3=-2=-b/a → b/a=2. Sum of products=2(-1)+(-1)(-3)+(-3)(2)=-2+3-6=-5=c/a.
+Product=2×(-1)×(-3)=6=-d/a → d/a=-6. p(x)=x^3+2x^2-5x-6 (taking a=1).
+COMMON MISTAKES:
+Sum of zeroes=-b/a (NEGATIVE b over a, not b over a).
+Product of zeroes=c/a (positive, not negative).
+Zeroes of polynomial: solve p(x)=0 (set equal to zero, NOT to y).""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_10", "chapter": "ch2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch3: Pair of Linear Equations in Two Variables
+STANDARD FORM: a1x+b1y+c1=0 and a2x+b2y+c2=0.
+CONSISTENCY CONDITIONS:
+Unique solution (consistent): a1/a2 ≠ b1/b2. Lines intersect.
+Infinitely many solutions (consistent, dependent): a1/a2=b1/b2=c1/c2. Lines coincide.
+No solution (inconsistent): a1/a2=b1/b2 ≠ c1/c2. Lines parallel.
+METHODS OF SOLVING:
+Graphical: plot both lines, find intersection point.
+Substitution: express one variable in terms of other, substitute.
+Elimination: multiply equations to make coefficients equal, add/subtract.
+Cross-multiplication: x/((b1c2-b2c1))=y/((c1a2-c2a1))=1/((a1b2-a2b1)).
+CROSS MULTIPLICATION FORMULA:
+For a1x+b1y+c1=0 and a2x+b2y+c2=0:
+x=(b1c2-b2c1)/(a1b2-a2b1), y=(c1a2-c2a1)/(a1b2-a2b1).
+SOLVED EXAMPLES:
+Example 1: Solve 2x+3y=11 and 2x-4y=-24 by elimination.
+Subtract: 7y=35 → y=5. Substitute: 2x+15=11 → x=-2.
+Solution: x=-2, y=5.
+Example 2: Solve by cross-multiplication: 2x+3y-11=0 and 2x-4y+24=0.
+x/(3×24-(-4)×(-11))=y/((-11)×2-24×2)=1/(2×(-4)-2×3).
+x/(72-44)=y/(-22-48)=1/(-8-6).
+x/28=y/(-70)=1/(-14).
+x=28/(-14)=-2. y=-70/(-14)=5. Solution: (-2,5).
+Example 3: Check 3x+2y=5 and 6x+4y=10.
+a1/a2=3/6=1/2. b1/b2=2/4=1/2. c1/c2=5/10=1/2.
+All ratios equal → infinitely many solutions (dependent).
+COMMON MISTAKES:
+Cross-multiplication: use the formula carefully with correct signs.
+Check consistency BEFORE solving — if inconsistent, no solution exists.
+Graphical method: use at least 3 points per line to verify.""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_10", "chapter": "ch3", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch4: Quadratic Equations
+STANDARD FORM: ax^2+bx+c=0 where a≠0.
+METHODS OF SOLVING:
+Method 1 - Factorisation:
+Split middle term: find p,q such that p+q=b and p×q=a×c.
+2x^2-7x+3=0. a×c=6. p+q=-7, p×q=6. p=-6,q=-1.
+2x^2-6x-x+3=0 → 2x(x-3)-1(x-3)=0 → (2x-1)(x-3)=0.
+x=1/2 or x=3.
+Method 2 - Completing the Square:
+ax^2+bx+c=0 → x^2+(b/a)x=-c/a → add (b/2a)^2 both sides.
+(x+b/2a)^2=(b^2-4ac)/4a^2 → x=-b/2a ± sqrt(b^2-4ac)/2a.
+Method 3 - Quadratic Formula:
+x=(-b ± sqrt(b^2-4ac))/2a. (Derived from completing the square.)
+DISCRIMINANT D=b^2-4ac:
+D>0: two distinct real roots. D=0: two equal real roots (repeated). D<0: no real roots (complex).
+NATURE OF ROOTS:
+If D is perfect square: roots are rational. If D>0 but not perfect square: roots irrational.
+RELATIONSHIP BETWEEN ROOTS:
+Sum of roots=alpha+beta=-b/a. Product of roots=alpha×beta=c/a.
+WORD PROBLEMS - STANDARD TYPES:
+Number problems, age problems, speed-distance problems, area problems.
+SOLVED EXAMPLES:
+Example 1: 2x^2-7x+3=0 by factorisation.
+a×c=6. Factors of 6 summing to -7: -6 and -1.
+2x^2-6x-x+3=2x(x-3)-1(x-3)=(2x-1)(x-3)=0.
+x=1/2 or x=3.
+Example 2: Find nature of roots of 2x^2-6x+3=0.
+D=36-24=12>0. Two distinct real roots (D not perfect square, so irrational).
+Example 3: Sum of ages of father and son is 45. Five years ago product was 124.
+Let son's age=x. Father's age=45-x.
+(x-5)(45-x-5)=124 → (x-5)(40-x)=124.
+40x-x^2-200+5x=124 → x^2-45x+324=0 → (x-9)(x-36)=0.
+x=9 (son) or x=36 (check: son can't be 36 if sum is 45). Son=9, Father=36.
+COMMON MISTAKES:
+Discriminant: D=b^2-4ac NOT b^2+4ac.
+If D=0: ONE repeated root (two equal roots, not no roots).
+Quadratic formula: entire (-b±sqrt(D)) is over 2a.""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_10", "chapter": "ch4", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch5: Arithmetic Progressions
+ARITHMETIC PROGRESSION (AP): sequence where difference between consecutive terms is constant.
+Common difference d=a2-a1=a3-a2=... (can be positive, negative, or zero).
+General form: a, a+d, a+2d, a+3d, ...
+nth TERM FORMULA: a_n = a + (n-1)d where a=first term, d=common difference.
+SUM OF FIRST n TERMS:
+S_n = n/2 × [2a + (n-1)d] = n/2 × [a + l] where l=last term=a_n.
+FINDING NUMBER OF TERMS: use a_n=a+(n-1)d, solve for n.
+PROPERTIES:
+If a,b,c are in AP: b-a=c-b → 2b=a+c → b=(a+c)/2 (b is arithmetic mean).
+Sum of AP from both ends: a1+a_n=a2+a_(n-1)=... (equidistant terms have equal sum).
+THREE NUMBERS IN AP: take as a-d, a, a+d (sum=3a, simplifies problems).
+FOUR NUMBERS IN AP: take as a-3d, a-d, a+d, a+3d.
+SOLVED EXAMPLES:
+Example 1: Sum of first 40 positive integers divisible by 6.
+AP: 6,12,18,...,240. a=6, d=6, n=40.
+S_40=40/2×[2(6)+(40-1)(6)]=20×[12+234]=20×246=4920.
+Example 2: 7th term=34, 13th term=64. Find AP and S_20.
+a+6d=34 ...(i). a+12d=64 ...(ii).
+(ii)-(i): 6d=30 → d=5. From (i): a=34-30=4.
+AP: 4,9,14,19,...
+S_20=20/2×[2(4)+19(5)]=10×[8+95]=10×103=1030.
+Example 3: How many terms of AP 3,5,7,... give sum 120?
+S_n=n/2×[2(3)+(n-1)(2)]=n/2×[4n+2]=n(2n+1)... Wait: n/2[6+2n-2]=n/2[2n+4]=n(n+2)=120.
+n^2+2n-120=0. (n+12)(n-10)=0. n=10.
+COMMON MISTAKES:
+nth term formula: a_n=a+(n-1)d NOT a+(n)d.
+In sum formula S_n=n/2[2a+(n-1)d], the n inside brackets is (n-1) not n.
+d can be negative (decreasing AP) or zero (constant sequence).""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_10", "chapter": "ch5", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch6: Triangles (Similarity)
+SIMILAR TRIANGLES: same shape, different size. Corresponding angles equal, corresponding sides proportional.
+Symbol: triangle ABC ~ triangle DEF.
+BASIC PROPORTIONALITY THEOREM (BPT / Thales Theorem):
+If a line is drawn parallel to one side of triangle, it divides the other two sides proportionally.
+If DE || BC in triangle ABC: AD/DB = AE/EC.
+CONVERSE: If a line divides two sides of triangle proportionally, it is parallel to third side.
+CRITERIA FOR SIMILARITY:
+AAA (AA): Two angles equal → triangles similar.
+SSS: All three sides proportional → triangles similar.
+SAS: Two sides proportional and included angle equal → triangles similar.
+AREAS OF SIMILAR TRIANGLES:
+Ratio of areas = Square of ratio of corresponding sides.
+If triangle ABC ~ triangle DEF: Area(ABC)/Area(DEF) = (AB/DE)^2 = (BC/EF)^2 = (CA/FD)^2.
+PYTHAGORAS THEOREM:
+In right triangle, square of hypotenuse = sum of squares of other two sides.
+c^2=a^2+b^2. Proof using similar triangles (altitude on hypotenuse).
+CONVERSE: If c^2=a^2+b^2, angle opposite c is 90°.
+SOLVED EXAMPLES:
+Example 1: In triangle ABC, DE||BC. AD=2cm, DB=3cm, AE=4cm. Find EC.
+By BPT: AD/DB=AE/EC → 2/3=4/EC → EC=6cm.
+Example 2: Triangle ABC ~ triangle DEF. AB=4,BC=5,CA=6. DE=8. Find EF and FD.
+Ratio AB/DE=4/8=1/2. So all sides doubled.
+EF=2×BC=10. FD=2×CA=12.
+Example 3: Areas of two similar triangles are 25cm^2 and 100cm^2. If base of smaller=3cm, find base of larger.
+Area ratio=25/100=1/4=(side ratio)^2. Side ratio=1/2. Larger base=2×3=6cm.
+COMMON MISTAKES:
+BPT: line must be PARALLEL to one side (not just any line).
+Area ratio=(side ratio)^2 NOT side ratio directly.
+AA criterion: only need 2 angles equal (third is automatic since sum=180°).""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_10", "chapter": "ch6", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch7: Coordinate Geometry
+DISTANCE FORMULA:
+Distance between P(x1,y1) and Q(x2,y2) = sqrt((x2-x1)^2+(y2-y1)^2).
+Distance from origin: OP=sqrt(x^2+y^2).
+SECTION FORMULA:
+Point P dividing AB (A(x1,y1), B(x2,y2)) in ratio m:n INTERNALLY:
+P = ((mx2+nx1)/(m+n), (my2+ny1)/(m+n)).
+MIDPOINT FORMULA (m=n=1):
+M = ((x1+x2)/2, (y1+y2)/2).
+EXTERNAL DIVISION:
+P = ((mx2-nx1)/(m-n), (my2-ny1)/(m-n)).
+AREA OF TRIANGLE:
+Given A(x1,y1), B(x2,y2), C(x3,y3):
+Area = (1/2)|x1(y2-y3)+x2(y3-y1)+x3(y1-y2)|.
+If area=0, points are COLLINEAR.
+CENTROID OF TRIANGLE:
+G = ((x1+x2+x3)/3, (y1+y2+y3)/3). Divides each median in 2:1.
+SOLVED EXAMPLES:
+Example 1: Distance between A(2,3) and B(-1,0).
+AB=sqrt((-1-2)^2+(0-3)^2)=sqrt(9+9)=sqrt(18)=3sqrt(2).
+Example 2: Find point dividing (1,3) and (4,6) in ratio 2:1 internally.
+P=((2×4+1×1)/(2+1),(2×6+1×3)/(2+1))=(9/3,15/3)=(3,5).
+Example 3: Area of triangle A(2,3), B(-1,0), C(2,-4).
+Area=(1/2)|2(0-(-4))+(-1)((-4)-3)+2(3-0)|=(1/2)|8+7+6|=(1/2)(21)=10.5 sq units.
+Example 4: Show A(1,2), B(3,4), C(5,6) are collinear.
+Area=(1/2)|1(4-6)+3(6-2)+5(2-4)|=(1/2)|(-2)+12+(-10)|=(1/2)(0)=0. Collinear.
+COMMON MISTAKES:
+Section formula: m corresponds to the second point B, n to first point A.
+Area formula: use ABSOLUTE VALUE (modulus bars) — area cannot be negative.
+Midpoint: average of BOTH x-coordinates and BOTH y-coordinates separately.""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_10", "chapter": "ch7", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch8: Introduction to Trigonometry
+TRIGONOMETRIC RATIOS (right triangle, angle theta):
+sin(theta)=opposite/hypotenuse=P/H.
+cos(theta)=adjacent/hypotenuse=B/H.
+tan(theta)=opposite/adjacent=P/B=sin/cos.
+cosec(theta)=1/sin=H/P. sec(theta)=1/cos=H/B. cot(theta)=1/tan=B/P.
+STANDARD VALUES TABLE:
+Angle:      0°    30°      45°       60°       90°
+sin:        0     1/2      1/sqrt2   sqrt3/2   1
+cos:        1     sqrt3/2  1/sqrt2   1/2       0
+tan:        0     1/sqrt3  1         sqrt3     undefined
+cosec:      undef 2        sqrt2     2/sqrt3   1
+sec:        1     2/sqrt3  sqrt2     2         undef
+cot:        undef sqrt3    1         1/sqrt3   0
+TRIGONOMETRIC IDENTITIES:
+sin^2(theta)+cos^2(theta)=1.
+1+tan^2(theta)=sec^2(theta).
+1+cot^2(theta)=cosec^2(theta).
+COMPLEMENTARY ANGLES:
+sin(90-A)=cos(A). cos(90-A)=sin(A). tan(90-A)=cot(A).
+cosec(90-A)=sec(A). sec(90-A)=cosec(A). cot(90-A)=tan(A).
+SOLVED EXAMPLES:
+Example 1: If sin(theta)=3/5, find all trig ratios.
+P=3, H=5, B=sqrt(25-9)=4.
+cos=4/5, tan=3/4, cosec=5/3, sec=5/4, cot=4/3.
+Example 2: Prove (sin^2(theta)/cos(theta)) + cos(theta) = sec(theta).
+LHS=sin^2/cos+cos=(sin^2+cos^2)/cos=1/cos=sec. Proved.
+Example 3: Evaluate 2tan^2(45°)+cos^2(30°)-sin^2(60°).
+=2(1)^2+(sqrt3/2)^2-(sqrt3/2)^2=2+3/4-3/4=2.
+Example 4: sin(theta)=cos(theta). Find theta.
+tan(theta)=1. theta=45°.
+COMMON MISTAKES:
+sin^2+cos^2=1 (NOT sin+cos=1).
+Values at 90°: sin=1, cos=0, tan=undefined (NOT 0).
+Memorise table using: "Some People Have Curly Brown Hair Through Proper Brushing".""",
+    metadata={"source": "ncert", "topic": "trigonometry", "class_level": "class_10", "chapter": "ch8", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch9: Applications of Trigonometry (Heights and Distances)
+KEY TERMS:
+Angle of elevation: angle formed above horizontal when looking UP at an object.
+Angle of depression: angle formed below horizontal when looking DOWN at an object.
+Observer, object, horizontal line form a right triangle.
+Line of sight: line from eye to object.
+Note: Angle of elevation from A to B = Angle of depression from B to A (alternate interior angles).
+STANDARD SETUP:
+Draw a clear diagram. Identify right triangles. Assign variables.
+Use appropriate trig ratio: tan for height/distance, sin/cos if hypotenuse involved.
+STANDARD PROBLEM TYPES:
+Type 1: Height of tower/building given angle of elevation and distance.
+Type 2: Distance of boat/object given angle of depression from top.
+Type 3: Two angles from same point (form two equations).
+Type 4: Two observers at different points (system of equations).
+USEFUL: tan(30°)=1/sqrt3, tan(45°)=1, tan(60°)=sqrt3.
+SOLVED EXAMPLES:
+Example 1: Tower 75m high. From base, angles of depression of two boats=30° and 45°.
+Let boat A (30°) distance=x, boat B (45°) distance=y.
+tan(30°)=75/x → x=75sqrt(3). tan(45°)=75/y → y=75.
+Distance between boats=x-y=75sqrt(3)-75=75(sqrt3-1)=75(1.732-1)=54.9m.
+Example 2: Boy 1.2m tall stands 30m from tower. Elevation angle=60°. Find tower height.
+tan(60°)=(h-1.2)/30 → sqrt3=h-1.2)/30 → h=30sqrt3+1.2=51.96+1.2=53.16m.
+Example 3: Kite string 150m, angle=60°. Find height of kite.
+sin(60°)=h/150 → h=150×sqrt3/2=75sqrt3 metres.
+COMMON MISTAKES:
+Angle of depression = angle of elevation (they are alternate interior angles, not supplementary).
+Height of observer must be considered in many problems.
+Always draw diagram first — most errors come from not visualising correctly.""",
+    metadata={"source": "ncert", "topic": "trigonometry", "class_level": "class_10", "chapter": "ch9", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch10: Circles
+KEY DEFINITIONS:
+Tangent: line touching circle at exactly ONE point (point of tangency/contact).
+Secant: line intersecting circle at TWO points.
+A tangent is perpendicular to radius at point of contact.
+THEOREMS:
+Theorem 1: Tangent at any point of circle is perpendicular to radius through that point.
+Proof: Any point on tangent other than contact point is outside circle (farther from centre).
+So perpendicular from centre to tangent = shortest distance = radius. Hence radius ⊥ tangent.
+Theorem 2: Lengths of tangents drawn from external point are EQUAL.
+If PA and PB are tangents from P to circle with centre O:
+In triangles OAP and OBP: OA=OB (radii), OP=OP (common), angle OAP=angle OBP=90°.
+By RHS: triangles congruent → PA=PB (CPCT).
+Also: OP bisects angle APB and angle AOB.
+LENGTH OF TANGENT FROM EXTERNAL POINT:
+If d=distance from external point to centre, r=radius:
+Length of tangent=sqrt(d^2-r^2).
+ANGLE IN ALTERNATE SEGMENT (Tangent-Chord angle):
+Angle between tangent and chord = inscribed angle in alternate segment.
+SOLVED EXAMPLES:
+Example 1: Point P is 17cm from centre. Radius=8cm. Find tangent length.
+Tangent=sqrt(17^2-8^2)=sqrt(289-64)=sqrt(225)=15cm.
+Example 2: Two tangents PA=PB from external point P. PA=12cm, OA=5cm. Find OP.
+OP^2=OA^2+PA^2=25+144=169. OP=13cm.
+Example 3: Tangents from P touch circle at A and B. Angle APB=60°. Find angle AOB.
+Since PA=PB, triangle PAB is isosceles. Angle OAP=90°.
+In quadrilateral OAPB: angle AOB+angle OBP+angle APB+angle OAP=360°.
+angle AOB+90°+60°+90°=360° → angle AOB=120°.
+COMMON MISTAKES:
+Tangent from EXTERNAL point has equal length — this fails for internal points.
+Tangent ⊥ radius at POINT OF CONTACT (not at every point of tangent).
+Length of tangent uses Pythagoras: sqrt(d^2-r^2), not d-r.""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_10", "chapter": "ch10", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch11: Constructions
+CONSTRUCTION 1: DIVIDE LINE SEGMENT IN GIVEN RATIO (m:n)
+To divide AB in ratio 3:2:
+Step 1: Draw ray AX at acute angle to AB.
+Step 2: Mark 3+2=5 equal arcs on AX: A1,A2,A3,A4,A5.
+Step 3: Join A5 to B.
+Step 4: Draw line through A3 parallel to A5B (using corresponding angles).
+Step 5: This line meets AB at P. AP:PB=3:2.
+CONSTRUCTION 2: CONSTRUCT SIMILAR TRIANGLE (scale factor m/n)
+To construct triangle similar to ABC with scale factor 3/4:
+Case 1 (scale factor < 1, smaller triangle):
+Step 1: Draw ray BX at acute angle to BC.
+Step 2: Mark 4 equal points on BX: B1,B2,B3,B4.
+Step 3: Join B4 to C. Draw B3C' parallel to B4C.
+Step 4: Draw C'A' parallel to CA. Triangle A'BC' is required (3/4 times original).
+Case 2 (scale factor > 1, larger triangle):
+Mark more points (m points), join nth point to vertex.
+CONSTRUCTION 3: TANGENTS FROM EXTERNAL POINT
+To draw tangents from point P to circle with centre O:
+Step 1: Find midpoint M of OP.
+Step 2: Draw circle with centre M and radius MP(=MO).
+Step 3: This circle intersects original circle at A and B.
+Step 4: PA and PB are the required tangents.
+Why: Angle OAP=90° (angle in semicircle on diameter OP).
+CONSTRUCTION 4: TANGENT AT POINT ON CIRCLE
+Draw radius to point. Tangent is perpendicular to radius at that point.
+SOLVED EXAMPLES:
+Example 1: Divide 7cm segment in ratio 3:2.
+Draw 5 equal arcs. Join 5th to B. Through 3rd draw parallel. Done.
+Example 2: Tangents from point 10cm from centre, radius 4cm.
+Tangent length=sqrt(100-16)=sqrt(84)=2sqrt(21)≈9.17cm.
+COMMON MISTAKES:
+Scale factor 3/4: mark 4 points (denominator), use 3rd (numerator) for the construction.
+Tangent construction: the second circle must have DIAMETER = OP (radius = OP/2).""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_10", "chapter": "ch11", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch12: Areas Related to Circles
+BASIC FORMULAS (r=radius):
+Circumference=2*pi*r. Area of circle=pi*r^2.
+ARC LENGTH AND SECTOR:
+Arc length = (theta/360)×2*pi*r.
+Area of sector = (theta/360)×pi*r^2.
+Perimeter of sector = 2r + arc length = 2r + (theta/360)×2*pi*r.
+SEGMENT:
+Area of minor segment = Area of sector - Area of triangle.
+Area of triangle in sector = (1/2)×r^2×sin(theta).
+Area of minor segment = (theta/360)×pi*r^2 - (1/2)×r^2×sin(theta).
+Area of major segment = Area of circle - Area of minor segment.
+COMBINATIONS OF FIGURES:
+Shaded regions often require adding or subtracting areas of different shapes.
+SOLVED EXAMPLES:
+Example 1: Sector r=14cm, theta=60°.
+Arc length=(60/360)×2×(22/7)×14=(1/6)×88=14.67cm.
+Area=(60/360)×(22/7)×196=(1/6)×616=102.67cm^2.
+Example 2: Area of minor segment, r=12cm, theta=60°.
+Sector area=(60/360)×pi×144=24pi cm^2.
+Triangle area=(1/2)×12^2×sin60°=72×(sqrt3/2)=36sqrt3 cm^2.
+Segment area=24pi-36sqrt3=(24×3.14)-(36×1.732)=75.36-62.35=13.01cm^2.
+Example 3: Square inscribed in circle r=10cm. Area of shaded region outside square.
+Diagonal of square=2r=20cm. Side=20/sqrt2=10sqrt2.
+Area of square=200cm^2. Area of circle=pi×100=314cm^2.
+Shaded area=314-200=114cm^2.
+COMMON MISTAKES:
+theta in formula must be in DEGREES not radians.
+Area of sector=(theta/360)×pi*r^2 NOT (theta/360)×2*pi*r (that is arc length).
+For segment: SUBTRACT triangle from sector (segment < sector always).""",
+    metadata={"source": "ncert", "topic": "mensuration", "class_level": "class_10", "chapter": "ch12", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch13: Surface Areas and Volumes
+SURFACE AREA AND VOLUME FORMULAS (same as Class 9 plus combinations):
+Cone: CSA=pi*r*l, TSA=pi*r(r+l), V=(1/3)*pi*r^2*h, l=sqrt(r^2+h^2).
+Cylinder: CSA=2*pi*r*h, TSA=2*pi*r(r+h), V=pi*r^2*h.
+Sphere: SA=4*pi*r^2, V=(4/3)*pi*r^3.
+Hemisphere: CSA=2*pi*r^2, TSA=3*pi*r^2, V=(2/3)*pi*r^3.
+COMBINATION OF SOLIDS:
+Total surface area of combination: add all EXPOSED surfaces only (not hidden surfaces).
+Volume of combination: simply add volumes.
+CONVERSION OF SOLIDS:
+When one solid melted and recast into another: VOLUME remains same.
+Number of smaller solids = Volume of larger solid / Volume of one smaller solid.
+FRUSTUM OF CONE (cone with top cut off):
+Slant height: l=sqrt(h^2+(r1-r2)^2) where r1=bottom radius, r2=top radius, h=height.
+CSA=pi×l×(r1+r2). TSA=pi×[l(r1+r2)+r1^2+r2^2]. V=(1/3)×pi×h×(r1^2+r2^2+r1×r2).
+SOLVED EXAMPLES:
+Example 1: Cone on hemisphere, both r=3.5cm, cone h=4cm. Find TSA and V.
+Cone: l=sqrt(16+12.25)=sqrt(28.25)=5.31cm. CSA=pi×3.5×5.31=58.4cm^2.
+Hemisphere CSA=2×pi×3.5^2=77cm^2. Total SA=58.4+77=135.4cm^2 (base circle is hidden).
+Cone V=(1/3)×pi×12.25×4=51.3cm^3. Hemisphere V=(2/3)×pi×42.875=89.8cm^3.
+Total V=141.1cm^3.
+Example 2: Sphere r=9cm melted into cylinders r=3cm, h=9cm. How many?
+V_sphere=(4/3)×pi×729=972pi. V_cylinder=pi×9×9=81pi.
+Number=972pi/81pi=12 cylinders.
+Example 3: Bucket (frustum): top r=20cm, bottom r=8cm, h=16cm.
+l=sqrt(256+144)=sqrt(400)=20cm.
+V=(pi/3)×16×(400+64+160)=(pi/3)×16×624=10449cm^3 approx.
+COMMON MISTAKES:
+TSA of combination: DO NOT add hidden surfaces.
+Conversion: volume is conserved (not SA).
+Frustum l uses (r1-r2) not (r1+r2).""",
+    metadata={"source": "ncert", "topic": "mensuration", "class_level": "class_10", "chapter": "ch13", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch14: Statistics
+MEAN FOR GROUPED DATA:
+Direct method: x_bar = sum(f*x)/sum(f). x=class mark=(upper+lower)/2.
+Assumed mean method: x_bar = a + sum(f*d)/sum(f). d=x-a.
+Step deviation method: x_bar = a + (sum(f*u)/sum(f))×h. u=(x-a)/h. Best when h is constant.
+MEDIAN FOR GROUPED DATA:
+Formula: M = L + ((n/2 - cf)/f) × h.
+L=lower boundary of median class.
+n=total frequency. cf=cumulative frequency of class BEFORE median class.
+f=frequency of median class. h=class width.
+Median class: class where cumulative frequency first exceeds n/2.
+MODE FOR GROUPED DATA:
+Modal class=class with highest frequency.
+Mode = L + ((f1-f0)/(2f1-f0-f2)) × h.
+L=lower boundary of modal class. f1=frequency of modal class.
+f0=frequency of class BEFORE modal class. f2=frequency of class AFTER modal class.
+EMPIRICAL RELATIONSHIP: Mode = 3×Median - 2×Mean (approximately true).
+OGIVE (CUMULATIVE FREQUENCY CURVE):
+Less than ogive: plot (upper class boundary, cumulative frequency).
+More than ogive: plot (lower class boundary, more than cumulative frequency).
+Median from ogive: find n/2 on y-axis, draw horizontal to curve, then vertical to x-axis.
+SOLVED EXAMPLES:
+Example 1: Mean by step deviation. Classes 10-20,20-30,...50-60. Frequencies 4,6,8,5,3. a=30, h=10.
+Class marks: 15,25,35,45,55. u=(-2,-1,0,1,2). f×u=-8,-6,0,5,6.
+sum(f)=26. sum(f×u)=-3. Mean=30+(-3/26)×10=30-1.15=28.85.
+Example 2: Find median. n=26, n/2=13. cf values: 4,10,18,23,26. 13 falls in class 30-40 (cf=10, f=8).
+Median=30+((13-10)/8)×10=30+3.75=33.75.
+COMMON MISTAKES:
+For median formula: cf is cumulative frequency of class BEFORE (not including) median class.
+Class mark is MIDPOINT: for class 10-20, mark=15 (not 10 or 20).
+Modal class: highest frequency (not highest class mark).""",
+    metadata={"source": "ncert", "topic": "statistics", "class_level": "class_10", "chapter": "ch14", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch15: Probability
+CLASSICAL DEFINITION:
+P(E) = Number of favourable outcomes / Total number of equally likely outcomes.
+Range: 0 <= P(E) <= 1. P(E)+P(not E)=1.
+P(certain event)=1. P(impossible event)=0.
+SAMPLE SPACES:
+One coin: S={H,T}, n(S)=2.
+Two coins: S={HH,HT,TH,TT}, n(S)=4.
+One die: S={1,2,3,4,5,6}, n(S)=6.
+Two dice: n(S)=36 (all ordered pairs).
+Deck of cards: n(S)=52. (4 suits × 13 cards each. Face cards=12. Aces=4.)
+CARD PROBLEMS:
+Red cards=26 (hearts+diamonds). Black=26 (clubs+spades).
+Face cards=12 (J,Q,K of each suit). Aces=4.
+King of red=2. Face card AND red=6.
+TWO DICE PROBLEMS:
+Sum=2: (1,1)=1 way. Sum=3: 2 ways. Sum=7: 6 ways (most common).
+Sum=12: (6,6)=1 way.
+P(sum=7)=6/36=1/6. P(sum=2 or 12)=2/36=1/18.
+SOLVED EXAMPLES:
+Example 1: Two dice. P(sum=8).
+Pairs: (2,6),(3,5),(4,4),(5,3),(6,2)=5. P=5/36.
+Example 2: Cards. P(king or red).
+P(king)=4/52. P(red)=26/52. P(king AND red)=2/52.
+P(king or red)=4/52+26/52-2/52=28/52=7/13.
+Example 3: Bag: 5 red, 3 blue, 2 green. P(not red)?
+P(not red)=(3+2)/10=5/10=1/2.
+Example 4: Two dice. P(same number on both).
+Pairs: (1,1),(2,2),(3,3),(4,4),(5,5),(6,6)=6. P=6/36=1/6.
+COMMON MISTAKES:
+Two coins: 3 outcomes (0H,1H,2H) are NOT equally likely. Use 4 outcomes (HH,HT,TH,TT).
+P(A or B) = P(A)+P(B)-P(A and B). Don't forget the intersection.
+For two dice: total outcomes=36 not 12 (order matters: (1,2)≠(2,1)).""",
+    metadata={"source": "ncert", "topic": "probability", "class_level": "class_10", "chapter": "ch15", "difficulty": "intermediate"}),
+
+
+    # ── CLASS 11 — All 16 Chapters ──────────────────────────────────
+
+    Document(page_content="""Class 11 | Ch1: Sets
+SET: well-defined collection of distinct objects.
+Representation: Roster (list) {1,2,3} or Set-builder {x: condition}.
+TYPES OF SETS:
+Empty/Null set: no elements. phi or {}.
+Singleton: exactly one element.
+Finite set: countable elements. Infinite set: uncountable.
+Universal set U: contains all elements under consideration.
+Subset: A is subset of B if every element of A is in B. A⊆B.
+Proper subset: A⊂B means A⊆B and A≠B.
+Power set P(A): set of ALL subsets of A. If n(A)=k, then n(P(A))=2^k.
+SET OPERATIONS:
+Union A∪B: elements in A OR B (or both).
+Intersection A∩B: elements in BOTH A and B.
+Difference A-B: elements in A but NOT in B.
+Complement A': elements in U but NOT in A. A'=U-A.
+Symmetric difference A△B = (A-B)∪(B-A).
+LAWS (De Morgan's):
+(A∪B)'=A'∩B'. (A∩B)'=A'∪B'.
+VENN DIAGRAMS: circles inside rectangle (universal set).
+CARDINAL NUMBER FORMULA:
+n(A∪B)=n(A)+n(B)-n(A∩B).
+n(A∪B∪C)=n(A)+n(B)+n(C)-n(A∩B)-n(B∩C)-n(A∩C)+n(A∩B∩C).
+SOLVED EXAMPLES:
+Example 1: A={1,2,3,4,5}, B={2,4,6,8}.
+A∪B={1,2,3,4,5,6,8}. A∩B={2,4}. A-B={1,3,5}. B-A={6,8}.
+n(A∪B)=5+4-2=7. Verified: 7 elements in A∪B.
+Example 2: n(A)=20, n(B)=25, n(A∪B)=40. Find n(A∩B).
+n(A∩B)=20+25-40=5.
+Example 3: P({a,b})={{},{a},{b},{a,b}}. n=4=2^2.
+COMMON MISTAKES:
+{0} and {} are DIFFERENT. {0} has one element (zero). {} is empty.
+Empty set {} is subset of EVERY set.
+A⊆A always (every set is subset of itself).""",
+    metadata={"source": "ncert", "topic": "sets", "class_level": "class_11", "chapter": "ch1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch2: Relations and Functions
+CARTESIAN PRODUCT: A×B = {(a,b): a∈A, b∈B}.
+n(A×B)=n(A)×n(B). A×B≠B×A (unless A=B).
+RELATION: any subset of A×B. Domain=set of first elements. Range=set of second elements.
+FUNCTION: relation where every element of domain has EXACTLY ONE image.
+One-one (injective): different inputs → different outputs. f(a)=f(b) → a=b.
+Onto (surjective): every element of codomain has a pre-image.
+Bijective: both one-one AND onto. Inverse exists iff bijective.
+DOMAIN AND RANGE:
+For f(x)=sqrt(9-x^2): need 9-x^2>=0 → x^2<=9 → -3<=x<=3. Domain=[-3,3]. Range=[0,3].
+For f(x)=1/(x-2): need x≠2. Domain=R-{2}.
+For f(x)=sqrt(x-1)+sqrt(5-x): need x>=1 AND x<=5. Domain=[1,5].
+COMPOSITION OF FUNCTIONS:
+(fog)(x)=f(g(x)). Apply g first, then f.
+(gof)(x)=g(f(x)). Apply f first, then g.
+fog≠gof in general.
+INVERSE FUNCTION:
+f^(-1) exists iff f is bijective.
+If f(x)=y then f^(-1)(y)=x.
+To find: replace f(x) with y, solve for x, then replace x with f^(-1)(y).
+SOLVED EXAMPLES:
+Example 1: f(x)=2x+1, g(x)=x^2-1.
+fog(x)=f(g(x))=f(x^2-1)=2(x^2-1)+1=2x^2-1.
+gof(x)=g(f(x))=g(2x+1)=(2x+1)^2-1=4x^2+4x.
+Example 2: Domain of f(x)=sqrt(9-x^2).
+9-x^2>=0 → (3-x)(3+x)>=0 → -3<=x<=3. Domain=[-3,3].
+Example 3: Is f(x)=2x+3 bijective? Find inverse.
+One-one: f(a)=f(b) → 2a+3=2b+3 → a=b. Yes.
+Onto: for any y, x=(y-3)/2 exists. Yes. Bijective.
+Inverse: y=2x+3 → x=(y-3)/2. So f^(-1)(x)=(x-3)/2.
+COMMON MISTAKES:
+Domain: find values where function is DEFINED (not where it equals zero).
+fog means f applied AFTER g (right to left). fog(x)=f(g(x)).
+Every function is a relation but NOT every relation is a function.""",
+    metadata={"source": "ncert", "topic": "functions", "class_level": "class_11", "chapter": "ch2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch3: Trigonometric Functions
+RADIAN MEASURE: pi radians=180°. 1 radian=180°/pi≈57.3°.
+Arc length l=r×theta (theta in radians). Area of sector=(1/2)r^2×theta.
+SIGN OF TRIG FUNCTIONS BY QUADRANT (ASTC rule: All Students Take Calculus):
+Q1: all positive. Q2: sin,cosec positive. Q3: tan,cot positive. Q4: cos,sec positive.
+TRIG VALUES FOR STANDARD ANGLES: (same as Class 10 table).
+TRIG FUNCTIONS OF ALLIED ANGLES:
+sin(pi-x)=sin(x). cos(pi-x)=-cos(x). tan(pi-x)=-tan(x).
+sin(pi+x)=-sin(x). cos(pi+x)=-cos(x). tan(pi+x)=tan(x).
+sin(2pi-x)=-sin(x). cos(2pi-x)=cos(x).
+sin(-x)=-sin(x) (odd). cos(-x)=cos(x) (even).
+SUM AND DIFFERENCE FORMULAS:
+sin(A+B)=sinA cosB+cosA sinB. sin(A-B)=sinA cosB-cosA sinB.
+cos(A+B)=cosA cosB-sinA sinB. cos(A-B)=cosA cosB+sinA sinB.
+tan(A+B)=(tanA+tanB)/(1-tanA tanB). tan(A-B)=(tanA-tanB)/(1+tanA tanB).
+DOUBLE ANGLE FORMULAS:
+sin2A=2sinA cosA. cos2A=cos^2A-sin^2A=1-2sin^2A=2cos^2A-1.
+tan2A=2tanA/(1-tan^2A).
+HALF ANGLE: sin^2(A/2)=(1-cosA)/2. cos^2(A/2)=(1+cosA)/2.
+PRODUCT TO SUM:
+sinA cosB=(1/2)[sin(A+B)+sin(A-B)].
+cosA cosB=(1/2)[cos(A+B)+cos(A-B)].
+GENERAL SOLUTION:
+sinx=sina → x=n*pi+(-1)^n*a. cosx=cosa → x=2n*pi±a. tanx=tana → x=n*pi+a.
+SOLVED EXAMPLES:
+Example 1: Prove sin(A+B)sin(A-B)=sin^2A-sin^2B.
+LHS=(sinA cosB+cosA sinB)(sinA cosB-cosA sinB)=sin^2A cos^2B-cos^2A sin^2B.
+=sin^2A(1-sin^2B)-(1-sin^2A)sin^2B=sin^2A-sin^2A sin^2B-sin^2B+sin^2A sin^2B=sin^2A-sin^2B. Proved.
+Example 2: Solve 2cos^2x-3cosx+1=0 for x in [0,2pi].
+Let c=cosx: 2c^2-3c+1=0 → (2c-1)(c-1)=0 → c=1/2 or c=1.
+cosx=1/2 → x=pi/3 or 5pi/3. cosx=1 → x=0. Solutions: {0, pi/3, 5pi/3}.
+COMMON MISTAKES:
+sinx=sin(a) general solution: x=n*pi+(-1)^n*a (alternating sign, NOT just ±a).
+sin(A+B)≠sinA+sinB. Must use the formula.""",
+    metadata={"source": "ncert", "topic": "trigonometry", "class_level": "class_11", "chapter": "ch3", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch4: Principle of Mathematical Induction
+PMI METHOD:
+Step 1 (Base case): Verify statement P(n) is true for n=1 (or starting value).
+Step 2 (Inductive step): Assume P(k) is true. Prove P(k+1) is true.
+Conclusion: By PMI, P(n) is true for all n>=1.
+KEY: The inductive step uses P(k) (called inductive hypothesis) to prove P(k+1).
+STANDARD RESULTS TO PROVE:
+Sum of natural numbers: 1+2+3+...+n=n(n+1)/2.
+Sum of squares: 1^2+2^2+...+n^2=n(n+1)(2n+1)/6.
+Sum of cubes: 1^3+2^3+...+n^3=[n(n+1)/2]^2.
+Geometric sum: a+ar+ar^2+...+ar^(n-1)=a(r^n-1)/(r-1).
+SOLVED EXAMPLES:
+Example 1: Prove 1+2+3+...+n=n(n+1)/2 by PMI.
+Base: n=1. LHS=1. RHS=1(2)/2=1. True.
+Assume true for n=k: 1+2+...+k=k(k+1)/2.
+Prove for n=k+1: 1+2+...+k+(k+1)=k(k+1)/2+(k+1)=(k+1)(k/2+1)=(k+1)(k+2)/2.
+This is (k+1)(k+2)/2 which is the formula for n=k+1. Proved.
+Example 2: Prove 2^n>n for all n>=1.
+Base: n=1. 2^1=2>1. True.
+Assume 2^k>k. Prove 2^(k+1)>k+1.
+2^(k+1)=2×2^k>2k (using hypothesis). 2k=k+k>=k+1 (since k>=1).
+So 2^(k+1)>k+1. Proved.
+Example 3: Prove 4^n-1 divisible by 3.
+Base: 4^1-1=3. Divisible by 3. True.
+Assume 4^k-1=3m for some integer m.
+4^(k+1)-1=4×4^k-1=4(3m+1)-1=12m+4-1=12m+3=3(4m+1). Divisible by 3. Proved.
+COMMON MISTAKES:
+BOTH steps are necessary. Proving only base case is not enough.
+In inductive step: assume P(k), then DERIVE P(k+1) (not assume P(k+1)).
+The technique works by domino effect: if each domino knocks next, all fall.""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_11", "chapter": "ch4", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch5: Complex Numbers and Quadratic Equations
+COMPLEX NUMBER: z=a+ib where a=real part, b=imaginary part, i=sqrt(-1).
+i^1=i, i^2=-1, i^3=-i, i^4=1. Pattern repeats every 4.
+i^n: divide n by 4, use remainder (0→1, 1→i, 2→-1, 3→-i).
+ALGEBRA OF COMPLEX NUMBERS:
+Addition: (a+ib)+(c+id)=(a+c)+i(b+d).
+Multiplication: (a+ib)(c+id)=(ac-bd)+i(ad+bc).
+Conjugate of z=a+ib is z_bar=a-ib.
+|z|=sqrt(a^2+b^2) (modulus/absolute value).
+z×z_bar=|z|^2=a^2+b^2.
+Division: z1/z2=z1×z2_bar/|z2|^2.
+ARGAND PLANE: Complex number a+ib plotted as point (a,b).
+POLAR FORM: z=r(cos(theta)+i sin(theta)) where r=|z|, theta=arg(z).
+arg(z)=tan^(-1)(b/a) (adjust for quadrant).
+DE MOIVRE'S THEOREM: (cos(theta)+i sin(theta))^n=cos(n*theta)+i sin(n*theta).
+CUBE ROOTS OF UNITY:
+x^3=1. Solutions: 1, omega, omega^2 where omega=(-1+i*sqrt3)/2.
+Properties: 1+omega+omega^2=0. omega^3=1. omega_bar=omega^2.
+QUADRATIC WITH COMPLEX ROOTS:
+ax^2+bx+c=0, D=b^2-4ac<0: roots=(-b±i*sqrt(-D))/2a. Roots are conjugates.
+SOLVED EXAMPLES:
+Example 1: Modulus and argument of z=-1+i*sqrt3.
+|z|=sqrt(1+3)=2. tan(alpha)=sqrt3/1=sqrt3 → alpha=pi/3.
+z is in Q2 (real negative, imag positive). arg(z)=pi-pi/3=2pi/3.
+Polar form: z=2(cos(2pi/3)+i sin(2pi/3)).
+Example 2: Find (1+i)^10 using De Moivre.
+1+i=sqrt2(cos(pi/4)+i sin(pi/4)).
+(1+i)^10=(sqrt2)^10(cos(10pi/4)+i sin(10pi/4))=32(cos(5pi/2)+i sin(5pi/2))=32(0+i)=32i.
+Example 3: Cube roots of unity. 1+omega+omega^2=0. omega^3=1.
+If 1,omega,omega^2 are roots: sum=0=-b/a → b=0. Product=1=c/a → c=a. Equation: x^3-1=0.
+COMMON MISTAKES:
+i^2=-1, NOT +1. i^0=1 (not i).
+Conjugate changes sign of imaginary part only: conjugate of (3-2i) is (3+2i).
+|z|^2=a^2+b^2 (always positive real number).""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_11", "chapter": "ch5", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch6: Linear Inequalities
+RULES FOR INEQUALITIES:
+Adding/subtracting same quantity: inequality sign UNCHANGED.
+Multiplying/dividing by POSITIVE number: sign UNCHANGED.
+Multiplying/dividing by NEGATIVE number: sign REVERSED.
+SOLVING LINEAR INEQUALITIES IN ONE VARIABLE:
+Solve like equation but reverse sign when multiplying/dividing by negative.
+3x-2>2x+1 → x>3. Solution: (3,infinity). On number line: open circle at 3, arrow right.
+GRAPHICAL METHOD FOR TWO VARIABLES:
+ax+by<c: boundary line ax+by=c (dashed for < or >, solid for <= or >=).
+Test point (usually origin) to determine which side.
+SYSTEM OF INEQUALITIES:
+Find region satisfying ALL inequalities simultaneously (feasible region).
+SOLVED EXAMPLES:
+Example 1: Solve 3x-2>2x+1.
+3x-2x>1+2 → x>3. Solution set: (3,∞).
+Example 2: Solve -3<(4x-1)/5<3.
+Multiply by 5: -15<4x-1<15 → -14<4x<16 → -7/2<x<4.
+Solution: (-3.5,4).
+Example 3: Solve system x+y<=10, x+3y<=15, x>=0, y>=0.
+Draw lines x+y=10 and x+3y=15. Find intersection: subtract to get 2y=5, y=2.5, x=7.5.
+Feasible region: bounded by vertices (0,0),(10,0),(7.5,2.5),(0,5).
+Example 4: IQ score: 62+4x/2<72 where x=age in months over 100.
+124+4x<144 → 4x<20 → x<5. So age < 105 months.
+COMMON MISTAKES:
+MUST reverse inequality when multiplying/dividing by NEGATIVE number.
+For absolute value: |x|<a means -a<x<a (two conditions combined).
+Dashed line for strict inequality (<,>). Solid line for (<=,>=).""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_11", "chapter": "ch6", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch7: Permutations and Combinations
+FUNDAMENTAL COUNTING PRINCIPLE:
+If task A can be done in m ways and task B in n ways, both together: m×n ways.
+FACTORIAL: n!=n×(n-1)×(n-2)×...×2×1. 0!=1. 1!=1.
+PERMUTATIONS (ordered arrangements):
+nPr = n!/(n-r)! = n×(n-1)×...×(n-r+1). (r items from n, order matters.)
+Permutations of n items = n!
+Permutations with repetition: n^r (r items from n with repetition).
+Permutations with identical items: n!/p!q!r!... (p identical of one type, q of another etc.)
+CIRCULAR PERMUTATIONS: (n-1)! for n distinct items in circle.
+COMBINATIONS (unordered selections):
+nCr = n!/(r!(n-r)!) = nPr/r!. (r items from n, order does not matter.)
+nCr = nC(n-r). nC0=nCn=1. nC1=n.
+PASCAL'S IDENTITY: nCr + nCr-1 = (n+1)Cr.
+SOLVED EXAMPLES:
+Example 1: 5 boys and 3 girls sit in row, girls always together.
+Treat 3 girls as 1 unit. Total units=6. Arrange 6 units: 6! ways. Girls arrange among themselves: 3! ways.
+Total=6!×3!=720×6=4320.
+Example 2: Find 7C3.
+7C3=7!/(3!×4!)=7×6×5/(3×2×1)=210.
+Example 3: Prove nCr+nCr-1=(n+1)Cr.
+nCr+nCr-1=n!/(r!(n-r)!)+n!/((r-1)!(n-r+1)!)
+=n!/((r-1)!(n-r)!) × [1/r+1/(n-r+1)]
+=n!/((r-1)!(n-r)!) × (n+1)/(r(n-r+1))
+=(n+1)!/(r!(n-r+1)!)=(n+1)Cr. Proved.
+Example 4: How many ways to choose 3 from 7 if 2 specific must be included?
+2 fixed. Choose 1 from remaining 5: 5C1=5 ways.
+COMMON MISTAKES:
+Permutation: ORDER matters (abc≠bac). Combination: order does NOT matter.
+Circular: fix one position, arrange remaining (n-1)!.
+nCr = nC(n-r): 10C3=10C7=120.""",
+    metadata={"source": "ncert", "topic": "combinatorics", "class_level": "class_11", "chapter": "ch7", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch8: Binomial Theorem
+BINOMIAL THEOREM: (a+b)^n = sum(r=0 to n) nCr × a^(n-r) × b^r.
+General term: T(r+1) = nCr × a^(n-r) × b^r. (r starts from 0.)
+PROPERTIES:
+Number of terms = n+1.
+Sum of binomial coefficients = 2^n (put a=b=1).
+Sum of odd-position coefficients = Sum of even-position = 2^(n-1).
+Binomial coefficients: nC0,nC1,...,nCn form Pascal's triangle.
+MIDDLE TERM:
+If n is even: middle term is T(n/2+1). One middle term.
+If n is odd: two middle terms T((n+1)/2) and T((n+3)/2).
+TERM INDEPENDENT OF x: find r such that power of x in T(r+1) = 0.
+GREATEST TERM: find r such that T(r+1)/T(r) >= 1.
+SOLVED EXAMPLES:
+Example 1: Expand (2x-3y)^4.
+T(r+1)=4Cr×(2x)^(4-r)×(-3y)^r.
+r=0: 4C0×16x^4=16x^4. r=1: 4C1×8x^3×(-3y)=-96x^3y.
+r=2: 4C2×4x^2×9y^2=216x^2y^2. r=3: 4C3×2x×(-27y^3)=-216xy^3.
+r=4: 4C4×81y^4=81y^4.
+Expansion: 16x^4-96x^3y+216x^2y^2-216xy^3+81y^4.
+Example 2: Find 5th term in (x+2)^8.
+T5=T(4+1): r=4. T5=8C4×x^4×2^4=70×x^4×16=1120x^4.
+Example 3: Term independent of x in (x+1/x)^10.
+T(r+1)=10Cr×x^(10-r)×(1/x)^r=10Cr×x^(10-2r).
+For independent of x: 10-2r=0 → r=5. T6=10C5=252.
+COMMON MISTAKES:
+General term T(r+1) has r starting from 0, NOT 1.
+For "5th term": r=4 (since T(r+1)=T5 means r+1=5, r=4).
+In (a-b)^n: alternate signs. T(r+1)=nCr×a^(n-r)×(-b)^r.""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_11", "chapter": "ch8", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch9: Sequences and Series
+ARITHMETIC PROGRESSION: a, a+d, a+2d,...
+a_n=a+(n-1)d. S_n=n/2[2a+(n-1)d]=n/2[a+l].
+Arithmetic Mean AM=(a+b)/2. AM between a and b.
+GEOMETRIC PROGRESSION: a, ar, ar^2,...
+a_n=ar^(n-1). S_n=a(r^n-1)/(r-1) for r≠1. S_n=na for r=1.
+Sum of infinite GP: S_inf=a/(1-r) for |r|<1.
+Geometric Mean GM=sqrt(ab). GM between a and b.
+RELATIONSHIP: AM>=GM (equality when a=b).
+HARMONIC PROGRESSION: reciprocals form AP. HM=2ab/(a+b).
+AM>=GM>=HM (with equality when a=b).
+SPECIAL SERIES:
+Sum of n natural numbers: n(n+1)/2.
+Sum of squares: n(n+1)(2n+1)/6.
+Sum of cubes: [n(n+1)/2]^2.
+SOLVED EXAMPLES:
+Example 1: GP 1+3+9+...+2187.
+a=1, r=3. 2187=3^7, so n=8. S8=1×(3^8-1)/(3-1)=(6561-1)/2=3280.
+Example 2: AM=10, GM=8. Find numbers.
+(a+b)/2=10 → a+b=20. sqrt(ab)=8 → ab=64.
+a and b are roots of x^2-20x+64=0 → (x-16)(x-4)=0. Numbers: 4 and 16.
+Example 3: Sum(2k+1) for k=1 to 20.
+=sum(2k)+sum(1)=2×sum(k)+20=2×(20×21/2)+20=420+20=440.
+Example 4: Sum 1/2+1/4+1/8+... (infinite GP).
+a=1/2, r=1/2. S=a/(1-r)=(1/2)/(1/2)=1.
+COMMON MISTAKES:
+Infinite GP sum only valid when |r|<1.
+AM>=GM: equality holds only when both numbers are equal.
+Sum of cubes=[sum of natural numbers]^2.""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_11", "chapter": "ch9", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch10: Straight Lines
+SLOPE: m=tan(theta)=(y2-y1)/(x2-x1). Horizontal line: m=0. Vertical line: undefined.
+Parallel lines: m1=m2. Perpendicular lines: m1×m2=-1.
+EQUATIONS OF LINES:
+Slope-intercept: y=mx+c (m=slope, c=y-intercept).
+Point-slope: y-y1=m(x-x1).
+Two-point form: (y-y1)/(y2-y1)=(x-x1)/(x2-x1).
+Intercept form: x/a+y/b=1 (a=x-intercept, b=y-intercept).
+Normal form: x cos(alpha)+y sin(alpha)=p (p=perpendicular distance from origin, alpha=angle).
+General form: ax+by+c=0.
+DISTANCE FORMULAS:
+Distance from point (x1,y1) to line ax+by+c=0: d=|ax1+by1+c|/sqrt(a^2+b^2).
+Distance between parallel lines ax+by+c1=0 and ax+by+c2=0: |c1-c2|/sqrt(a^2+b^2).
+ANGLE BETWEEN LINES:
+tan(theta)=|(m1-m2)/(1+m1m2)|.
+SOLVED EXAMPLES:
+Example 1: Line through (2,-3) perpendicular to 3x-4y+5=0.
+Slope of given line=3/4. Perpendicular slope=-4/3.
+Line: y-(-3)=(-4/3)(x-2) → 3y+9=-4x+8 → 4x+3y+1=0.
+Example 2: Distance between 3x+4y-5=0 and 3x+4y+15=0.
+d=|(-5)-(15)|/sqrt(9+16)=20/5=4 units.
+Example 3: Find foot of perpendicular from (1,2) to line 2x-3y+4=0.
+Use formula: (x-x1)/a=(y-y1)/b=-(ax1+by1+c)/(a^2+b^2).
+=(x-1)/2=(y-2)/(-3)=-(2-6+4)/(4+9)=0/13=0.
+So x=1, y=2. Point itself lies on line. (Check: 2-6+4=0. Yes.)
+COMMON MISTAKES:
+Perpendicular lines: m1×m2=-1 (product is -1, not sum).
+Distance formula: divide by sqrt(a^2+b^2) NOT (a^2+b^2).
+Parallel lines have SAME slope. Perpendicular lines: slopes are NEGATIVE RECIPROCALS.""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_11", "chapter": "ch10", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch11: Conic Sections
+CIRCLE: (x-h)^2+(y-k)^2=r^2. Centre (h,k), radius r.
+General: x^2+y^2+2gx+2fy+c=0. Centre (-g,-f), radius=sqrt(g^2+f^2-c).
+PARABOLA (standard forms):
+y^2=4ax: opens right. Focus (a,0). Directrix x=-a. Vertex (0,0). Axis=x-axis.
+y^2=-4ax: opens left. Focus (-a,0). Directrix x=a.
+x^2=4ay: opens up. Focus (0,a). Directrix y=-a. Axis=y-axis.
+x^2=-4ay: opens down. Focus (0,-a). Directrix y=a.
+Latus rectum: chord through focus perpendicular to axis. Length=4a.
+ELLIPSE: x^2/a^2+y^2/b^2=1 (a>b>0).
+Centre (0,0). Vertices (±a,0). Co-vertices (0,±b).
+Foci (±c,0) where c^2=a^2-b^2. Eccentricity e=c/a<1.
+Length of major axis=2a. Minor axis=2b. Latus rectum=2b^2/a.
+HYPERBOLA: x^2/a^2-y^2/b^2=1.
+Foci (±c,0) where c^2=a^2+b^2. Eccentricity e=c/a>1.
+Asymptotes: y=±(b/a)x. Latus rectum=2b^2/a.
+SOLVED EXAMPLES:
+Example 1: Parabola y^2=12x. Find focus, directrix, latus rectum.
+4a=12 → a=3. Focus (3,0). Directrix x=-3. Latus rectum=12.
+Example 2: Ellipse, foci (±3,0), semi-major axis a=5.
+c=3, a=5. b^2=a^2-c^2=25-9=16. b=4.
+Equation: x^2/25+y^2/16=1.
+Example 3: Find equation of circle with centre (2,-3) and radius 5.
+(x-2)^2+(y+3)^2=25. Expanded: x^2+y^2-4x+6y-12=0.
+COMMON MISTAKES:
+Ellipse: c^2=a^2-b^2 (c<a). Hyperbola: c^2=a^2+b^2 (c>a).
+For parabola y^2=4ax: COMPARE with standard form to find a (4a=coefficient).
+Eccentricity: circle e=0, ellipse 0<e<1, parabola e=1, hyperbola e>1.""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_11", "chapter": "ch11", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch12: Introduction to Three Dimensional Geometry
+COORDINATES IN 3D: Point P=(x,y,z). Three mutually perpendicular axes: x,y,z.
+OCTANTS: 3D space divided into 8 octants by coordinate planes.
+DISTANCE FORMULA:
+Distance between P(x1,y1,z1) and Q(x2,y2,z2):
+PQ=sqrt((x2-x1)^2+(y2-y1)^2+(z2-z1)^2).
+Distance from origin: OP=sqrt(x^2+y^2+z^2).
+SECTION FORMULA (Internal Division):
+Point dividing PQ in ratio m:n internally:
+R=((mx2+nx1)/(m+n), (my2+ny1)/(m+n), (mz2+nz1)/(m+n)).
+MIDPOINT: M=((x1+x2)/2, (y1+y2)/2, (z1+z2)/2).
+CENTROID OF TRIANGLE:
+G=((x1+x2+x3)/3, (y1+y2+y3)/3, (z1+z2+z3)/3).
+COORDINATE PLANES:
+xy-plane: z=0. yz-plane: x=0. xz-plane: y=0.
+Distance from xy-plane: |z|. From yz-plane: |x|. From xz-plane: |y|.
+SOLVED EXAMPLES:
+Example 1: Distance between A(1,2,3) and B(4,-2,6).
+AB=sqrt((4-1)^2+(-2-2)^2+(6-3)^2)=sqrt(9+16+9)=sqrt(34).
+Example 2: Find point dividing A(2,1,3) and B(5,4,6) in ratio 2:1.
+P=((2×5+1×2)/3,(2×4+1×1)/3,(2×6+1×3)/3)=(12/3,9/3,15/3)=(4,3,5).
+Example 3: Show A(0,7,-10), B(1,6,-6), C(4,9,-6) form a right triangle.
+AB=sqrt(1+1+16)=sqrt(18). BC=sqrt(9+9+0)=sqrt(18). AC=sqrt(16+4+16)=sqrt(36)=6.
+AB^2+BC^2=18+18=36=AC^2. Right angle at B.
+COMMON MISTAKES:
+3D distance has THREE terms under square root (not two).
+Section formula extends naturally from 2D — same structure but three coordinates.
+Midpoint: average each coordinate SEPARATELY.""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_11", "chapter": "ch12", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch13: Limits and Derivatives
+LIMIT: lim(x→a) f(x) = L means f(x) approaches L as x approaches a.
+Left limit: lim(x→a-) f(x). Right limit: lim(x→a+) f(x).
+Limit exists iff left limit = right limit.
+STANDARD LIMITS:
+lim(x→0) sin(x)/x = 1. lim(x→0) (1-cos(x))/x = 0.
+lim(x→0) tan(x)/x = 1. lim(x→0) (e^x-1)/x = 1.
+lim(x→0) (a^x-1)/x = ln(a). lim(x→a) (x^n-a^n)/(x-a) = na^(n-1).
+ALGEBRA OF LIMITS:
+lim(f±g)=lim f ± lim g. lim(fg)=lim f × lim g. lim(f/g)=lim f/lim g (if lim g≠0).
+lim(cf)=c×lim f. lim(f^n)=(lim f)^n.
+DERIVATIVES (FIRST PRINCIPLES):
+f'(x)=lim(h→0) [f(x+h)-f(x)]/h.
+STANDARD DERIVATIVES:
+d/dx[x^n]=nx^(n-1). d/dx[sin x]=cos x. d/dx[cos x]=-sin x.
+d/dx[tan x]=sec^2 x. d/dx[e^x]=e^x. d/dx[ln x]=1/x.
+d/dx[constant]=0. d/dx[cf(x)]=cf'(x). d/dx[f±g]=f'±g'.
+PRODUCT RULE: d/dx[fg]=f'g+fg'.
+QUOTIENT RULE: d/dx[f/g]=(f'g-fg')/g^2.
+SOLVED EXAMPLES:
+Example 1: lim(x→0) sin(3x)/x=3×lim(x→0) sin(3x)/(3x)=3×1=3.
+Example 2: Derivative of x^3 sin x.
+d/dx[x^3 sin x]=3x^2 sin x+x^3 cos x (product rule).
+Example 3: Derivative of (x^2+1)/(x^2-1).
+Using quotient rule: [(2x)(x^2-1)-(x^2+1)(2x)]/(x^2-1)^2.
+=[2x^3-2x-2x^3-2x]/(x^2-1)^2=(-4x)/(x^2-1)^2.
+Example 4: lim(x→2) (x^3-8)/(x-2)=lim(x→2) (x^2+2x+4)=4+4+4=12.
+Using formula: na^(n-1)=3×2^2=12. Confirmed.
+COMMON MISTAKES:
+lim(x→0) sin(x)/x=1 only when angle is in RADIANS.
+Product rule: d/dx[fg]=f'g+fg' NOT f'g'.
+Quotient rule: numerator is f'g-fg' (not fg'-f'g).""",
+    metadata={"source": "ncert", "topic": "calculus", "class_level": "class_11", "chapter": "ch13", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch14: Mathematical Reasoning
+STATEMENTS: declarative sentence that is either TRUE or FALSE (not both).
+Not a statement: questions, exclamations, commands, ambiguous sentences.
+CONNECTIVES:
+AND (conjunction ∧): p∧q true only when BOTH p and q are true.
+OR (disjunction ∨): p∨q true when AT LEAST ONE is true.
+NOT (negation ¬): ¬p is opposite truth value.
+IMPLICATION: p→q (if p then q). False only when p true and q false.
+BICONDITIONAL: p↔q (p if and only if q). True when both same truth value.
+TRUTH TABLES: systematic listing of all truth value combinations.
+CONDITIONAL STATEMENTS:
+Converse of p→q: q→p.
+Inverse of p→q: ¬p→¬q.
+Contrapositive of p→q: ¬q→¬p. (Contrapositive is LOGICALLY EQUIVALENT to original.)
+QUANTIFIERS:
+Universal: "For all" (∀). Existential: "There exists" (∃).
+Negation of "For all x, P(x)": "There exists x such that NOT P(x)".
+Negation of "There exists x, P(x)": "For all x, NOT P(x)".
+METHODS OF PROOF:
+Direct proof: assume hypothesis, derive conclusion.
+Contrapositive: prove ¬q→¬p (equivalent to p→q).
+Contradiction: assume statement false, derive contradiction.
+By example (existence): give one example.
+By counter-example (disproof): give one counter-example.
+SOLVED EXAMPLES:
+Example 1: Negation of "All primes are odd."
+"There exists a prime that is NOT odd." (2 is a prime that is even — counter-example.)
+Example 2: Converse, inverse, contrapositive of "If x>5 then x^2>25."
+Converse: If x^2>25 then x>5. (FALSE: x=-6 gives x^2=36>25 but x<5.)
+Inverse: If x≤5 then x^2≤25. (FALSE: x=-6.)
+Contrapositive: If x^2≤25 then x≤5. (TRUE, equivalent to original.)
+Example 3: Check "If n is odd then n^2 is odd" by contrapositive.
+Contrapositive: If n^2 is even then n is even.
+If n^2=2k then n=2m (provable). Contrapositive true → original true.
+COMMON MISTAKES:
+Converse is NOT always equivalent to original statement.
+Contrapositive IS always equivalent to original.
+To DISPROVE: one counter-example suffices. To PROVE universal: cannot use examples.""",
+    metadata={"source": "ncert", "topic": "logic", "class_level": "class_11", "chapter": "ch14", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch15: Statistics
+MEASURES OF DISPERSION (how spread out data is):
+Range = Maximum - Minimum.
+MEAN DEVIATION:
+Mean deviation about mean: MD(x_bar)=sum(|xi-x_bar|)/n.
+Mean deviation about median: MD(M)=sum(|xi-M|)/n.
+For grouped data: MD=sum(f|xi-x_bar|)/sum(f).
+VARIANCE AND STANDARD DEVIATION:
+Variance: sigma^2=sum((xi-x_bar)^2)/n (ungrouped).
+For grouped: sigma^2=sum(f(xi-x_bar)^2)/sum(f).
+Shortcut: sigma^2=(sum(xi^2)/n)-(x_bar)^2 = (sum(fi*xi^2)/sum(fi))-(x_bar)^2.
+Standard Deviation sigma=sqrt(Variance).
+COEFFICIENT OF VARIATION: CV=(sigma/x_bar)×100.
+Used to compare variability of two distributions with different means.
+Higher CV = more variable/inconsistent.
+For comparing: data with higher CV is more variable.
+ANALYSIS OF FREQUENCY DISTRIBUTIONS:
+Two distributions compared by CV when means are different.
+Two distributions compared directly by sigma when means are same.
+SOLVED EXAMPLES:
+Example 1: Find variance and SD of 6,8,10,12,14.
+Mean=50/5=10.
+Deviations from mean: -4,-2,0,2,4. Squared: 16,4,0,4,16.
+Variance=40/5=8. SD=sqrt(8)=2sqrt(2)≈2.83.
+Example 2: Two distributions: A has mean=25, SD=5. B has mean=10, SD=4.
+CV(A)=(5/25)×100=20%. CV(B)=(4/10)×100=40%.
+B is more variable (higher CV).
+Example 3: Find MD about mean for 2,4,6,8,10.
+Mean=6. |deviations|=4,2,0,2,4. MD=12/5=2.4.
+COMMON MISTAKES:
+Variance is always non-negative (it's sum of SQUARES divided by n).
+SD=sqrt(Variance), NOT Variance=SD^2 (both are true, don't confuse direction).
+CV is in PERCENTAGE: multiply by 100.""",
+    metadata={"source": "ncert", "topic": "statistics", "class_level": "class_11", "chapter": "ch15", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 11 | Ch16: Probability
+RANDOM EXPERIMENT: outcome cannot be predicted with certainty.
+SAMPLE SPACE S: set of all possible outcomes.
+EVENT: subset of sample space. Simple event: one outcome. Compound: multiple outcomes.
+ALGEBRA OF EVENTS:
+Complement of A: A'=S-A. A∪A'=S. A∩A'=phi.
+Mutually exclusive: A∩B=phi (cannot occur together).
+Exhaustive: A∪B=S (together cover all outcomes).
+AXIOMATIC APPROACH TO PROBABILITY:
+P(S)=1. 0<=P(A)<=1. P(A∪B)=P(A)+P(B) if A,B mutually exclusive.
+ADDITION THEOREM:
+P(A∪B)=P(A)+P(B)-P(A∩B).
+P(A∪B∪C)=P(A)+P(B)+P(C)-P(A∩B)-P(B∩C)-P(A∩C)+P(A∩B∩C).
+CONDITIONAL PROBABILITY:
+P(A|B)=P(A∩B)/P(B). (Probability of A given B has occurred.)
+INDEPENDENT EVENTS:
+A and B independent if P(A∩B)=P(A)×P(B).
+Equivalent: P(A|B)=P(A). (Occurrence of B doesn't affect A.)
+MULTIPLICATION THEOREM:
+P(A∩B)=P(A)×P(B|A)=P(B)×P(A|B).
+SOLVED EXAMPLES:
+Example 1: P(A)=0.4, P(B)=0.5, P(A∩B)=0.2.
+P(A∪B)=0.4+0.5-0.2=0.7.
+P(A|B)=P(A∩B)/P(B)=0.2/0.5=0.4.
+(Note: P(A|B)=P(A)=0.4, so A and B are INDEPENDENT.)
+Example 2: Card drawn. P(red or king).
+P(red)=26/52. P(king)=4/52. P(red king)=2/52.
+P(red or king)=26/52+4/52-2/52=28/52=7/13.
+Example 3: Two dice. Find P(sum>9).
+Favourable: (4,6),(5,5),(5,6),(6,4),(6,5),(6,6)=6 outcomes.
+P=6/36=1/6.
+Example 4: P(A)=1/4, P(B)=1/3. A,B independent. Find P(A or B).
+P(A∩B)=1/4×1/3=1/12.
+P(A∪B)=1/4+1/3-1/12=3/12+4/12-1/12=6/12=1/2.
+COMMON MISTAKES:
+Mutually exclusive: P(A∩B)=0. Independent: P(A∩B)=P(A)×P(B). DIFFERENT concepts.
+Mutually exclusive events with nonzero probabilities are NOT independent.
+P(A|B) is NOT the same as P(B|A).""",
+    metadata={"source": "ncert", "topic": "probability", "class_level": "class_11", "chapter": "ch16", "difficulty": "intermediate"}),
+
 ]
