@@ -1019,4 +1019,491 @@ General form of 2-digit number ab is 10a+b NOT a×b or a+b.
 When digits are reversed: the tens digit becomes units and vice versa.""",
     metadata={"source": "ncert", "topic": "numbers", "class_level": "class_8", "chapter": "ch16", "difficulty": "intermediate"}),
 
+
+    # ── CLASS 9 — All 15 Chapters ───────────────────────────────────
+
+    Document(page_content="""Class 9 | Ch1: Number Systems
+RATIONAL NUMBERS: p/q form where q≠0. Terminating or repeating decimals.
+IRRATIONAL NUMBERS: cannot be written as p/q. Non-terminating non-repeating decimals.
+Examples: sqrt(2), sqrt(3), sqrt(5), pi, e.
+REAL NUMBERS = Rational + Irrational numbers.
+PROVING IRRATIONALITY (contradiction method):
+Assume sqrt(2) is rational → sqrt(2)=p/q (lowest terms, HCF=1).
+Squaring: 2=p^2/q^2 → p^2=2q^2 → p^2 is even → p is even → p=2m.
+4m^2=2q^2 → q^2=2m^2 → q is even. Both p,q even contradicts HCF=1. So sqrt(2) is irrational.
+REPRESENTATION ON NUMBER LINE:
+sqrt(n) on number line: draw right triangle with legs 1 and sqrt(n-1), hypotenuse=sqrt(n).
+sqrt(2): right triangle with both legs=1. Hypotenuse=sqrt(2). Mark on number line.
+OPERATIONS ON REAL NUMBERS:
+sqrt(a) × sqrt(b) = sqrt(ab). sqrt(a)/sqrt(b)=sqrt(a/b).
+(sqrt(a)+sqrt(b))(sqrt(a)-sqrt(b))=a-b.
+RATIONALISATION: multiply numerator and denominator by conjugate.
+3/(2+sqrt(3)): multiply by (2-sqrt(3))/(2-sqrt(3)) = 3(2-sqrt(3))/(4-3) = 3(2-sqrt(3)) = 6-3sqrt(3).
+5/(sqrt(7)-sqrt(2)): multiply by (sqrt(7)+sqrt(2)) = 5(sqrt(7)+sqrt(2))/(7-2) = sqrt(7)+sqrt(2).
+LAWS OF EXPONENTS FOR REAL NUMBERS:
+a^m × a^n = a^(m+n). (a^m)^n = a^(mn). a^m × b^m = (ab)^m.
+a^(1/n) = nth root of a. a^(m/n) = (nth root of a)^m.
+SOLVED EXAMPLES:
+Example 1: Simplify (sqrt(5)+sqrt(3))^2 = 5+2sqrt(15)+3 = 8+2sqrt(15).
+Example 2: Rationalise 1/(sqrt(5)+sqrt(2)) = (sqrt(5)-sqrt(2))/((sqrt(5))^2-(sqrt(2))^2) = (sqrt(5)-sqrt(2))/3.
+Example 3: Express 2^(1/2) × 2^(1/3) = 2^(1/2+1/3) = 2^(5/6).
+COMMON MISTAKES:
+sqrt(a+b) ≠ sqrt(a)+sqrt(b). sqrt(9+16)=sqrt(25)=5, NOT 3+4=7.
+Irrational + Rational = Irrational. Irrational × Irrational can be rational: sqrt(2)×sqrt(2)=2.""",
+    metadata={"source": "ncert", "topic": "numbers", "class_level": "class_9", "chapter": "ch1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch2: Polynomials
+POLYNOMIAL: p(x) = a_n*x^n + a_(n-1)*x^(n-1) + ... + a_1*x + a_0 where coefficients are real numbers.
+Degree: highest power of variable. Linear(degree 1), Quadratic(degree 2), Cubic(degree 3).
+Zero polynomial: p(x)=0. Degree not defined.
+Constant polynomial: p(x)=c. Degree=0.
+ZEROES OF POLYNOMIAL: value of x where p(x)=0.
+Linear polynomial ax+b has zero at x=-b/a.
+Quadratic can have 0, 1 or 2 zeroes. Cubic can have 1, 2 or 3 zeroes.
+REMAINDER THEOREM:
+When p(x) is divided by (x-a), remainder = p(a).
+No need to do long division — just substitute x=a.
+p(x)=x^3-6x^2+11x-6 divided by (x-2): remainder=p(2)=8-24+22-6=0. So (x-2) is a factor.
+FACTOR THEOREM:
+(x-a) is a factor of p(x) if and only if p(a)=0.
+To factorise: find a value 'a' where p(a)=0, then divide by (x-a).
+FACTORISING CUBIC POLYNOMIALS:
+Try factors of constant term. If p(a)=0, divide p(x) by (x-a) to get quadratic. Factorise quadratic.
+ALGEBRAIC IDENTITIES:
+(x+y+z)^2 = x^2+y^2+z^2+2xy+2yz+2zx.
+(x+y)^3 = x^3+3x^2y+3xy^2+y^3 = x^3+y^3+3xy(x+y).
+(x-y)^3 = x^3-3x^2y+3xy^2-y^3 = x^3-y^3-3xy(x-y).
+x^3+y^3+z^3-3xyz = (x+y+z)(x^2+y^2+z^2-xy-yz-zx).
+Special case: if x+y+z=0 then x^3+y^3+z^3=3xyz.
+SOLVED EXAMPLES:
+Example 1: Find remainder when x^3-6x^2+11x-6 divided by x-2.
+p(2)=8-24+22-6=0. Remainder=0. So (x-2) is a factor.
+Example 2: Factorise x^3-23x^2+142x-120.
+Try x=1: 1-23+142-120=0. So (x-1) is factor.
+Divide: x^3-23x^2+142x-120 = (x-1)(x^2-22x+120) = (x-1)(x-10)(x-12).
+COMMON MISTAKES:
+Degree of zero polynomial is undefined, not zero or -1.
+Remainder theorem uses SUBSTITUTION, not division, for finding remainder quickly.
+Factor theorem: (x-a) is factor iff p(a)=0 (note: x MINUS a, not x PLUS a).""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_9", "chapter": "ch2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch3: Coordinate Geometry
+CARTESIAN PLANE:
+Two perpendicular lines: x-axis (horizontal) and y-axis (vertical).
+Origin O = (0,0). Point P = (x,y) where x=abscissa, y=ordinate.
+QUADRANTS:
+I: (+,+) — right of y-axis, above x-axis.
+II: (-,+) — left of y-axis, above x-axis.
+III: (-,-) — left of y-axis, below x-axis.
+IV: (+,-) — right of y-axis, below x-axis.
+Points ON axes: x-axis has y=0. y-axis has x=0.
+PLOTTING POINTS:
+Start at origin. Move right/left for x (positive=right, negative=left).
+Then move up/down for y (positive=up, negative=down). Mark the point.
+DISTANCE FORMULA (introduced here, developed in Class 10):
+Distance between A(x1,y1) and B(x2,y2) = sqrt((x2-x1)^2+(y2-y1)^2).
+COLLINEAR POINTS: three points lie on same straight line.
+SECTION FORMULA (for later): divides line segment in given ratio.
+GRAPHS OF LINEAR EQUATIONS:
+y=x: line through origin at 45°. y=-x: line through origin at 135°.
+x=a: vertical line. y=b: horizontal line.
+SOLVED EXAMPLES:
+Example 1: Plot A(3,4), B(-2,3), C(-4,-1), D(2,-3).
+A: Quadrant I (both positive). B: Quadrant II. C: Quadrant III. D: Quadrant IV.
+Example 2: Find distance between A(3,4) and B(-2,3).
+AB = sqrt((-2-3)^2+(3-4)^2) = sqrt(25+1) = sqrt(26) units.
+Example 3: In which quadrant is (-3,-5)?
+Both negative → Quadrant III.
+COMMON MISTAKES:
+Point (3,4) is NOT same as (4,3). First coordinate is always x (horizontal).
+Origin (0,0) is not in any quadrant — it's at the intersection of axes.
+Points on x-axis have y-coordinate=0, not x-coordinate=0.""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_9", "chapter": "ch3", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 9 | Ch4: Linear Equations in Two Variables
+FORM: ax+by+c=0 where a,b are not both zero. x and y are variables.
+A linear equation in two variables has INFINITELY MANY solutions.
+Each solution is an ordered pair (x,y) that satisfies the equation.
+GRAPH OF LINEAR EQUATION IN TWO VARIABLES:
+Graph is always a STRAIGHT LINE.
+To draw: find at least 2 solutions (3 recommended to verify).
+For 2x+3y=12:
+x=0: 3y=12, y=4. Point (0,4).
+y=0: 2x=12, x=6. Point (6,0).
+x=3: 6+3y=12, y=2. Point (3,2). All 3 collinear confirms straight line.
+X-INTERCEPT: point where line crosses x-axis. Set y=0 and solve for x.
+Y-INTERCEPT: point where line crosses y-axis. Set x=0 and solve for y.
+EQUATIONS OF SPECIAL LINES:
+x=a: vertical line parallel to y-axis, passing through (a,0).
+y=b: horizontal line parallel to x-axis, passing through (0,b).
+y=x: line through origin, bisects I and III quadrants.
+EXPRESSING WORD PROBLEMS AS LINEAR EQUATIONS:
+"Cost of x pencils at 2 each and y pens at 5 each is 50": 2x+5y=50.
+SOLVED EXAMPLES:
+Example 1: Draw graph of 2x+3y=12. Find x and y intercepts.
+y-intercept (x=0): y=4. So (0,4).
+x-intercept (y=0): x=6. So (6,0).
+Plot (0,4), (6,0), (3,2). Join them.
+Example 2: Find 3 solutions of x+2y=8.
+(0,4), (8,0), (2,3). Verify: 0+8=8, 8+0=8, 2+6=8. All correct.
+COMMON MISTAKES:
+A linear equation in two variables has infinite solutions (not just 2 or 3).
+Every point on the graph is a solution. Every solution gives a point on the graph.
+Graph of x=3 is a VERTICAL line (not a point on x-axis).""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_9", "chapter": "ch4", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 9 | Ch5: Introduction to Euclid's Geometry
+EUCLID'S DEFINITIONS (important ones):
+A point is that which has no part.
+A line is breadthless length.
+A surface has length and breadth only.
+Ends of a line are points. Ends of a surface are lines.
+EUCLID'S POSTULATES:
+1. A straight line segment can be drawn from any point to any other point.
+2. A terminated line (line segment) can be extended indefinitely.
+3. A circle can be drawn with any centre and any radius.
+4. All right angles are equal to each other.
+5. Parallel postulate: If a line falls on two lines such that interior angles on one side sum less than two right angles, those two lines if extended will meet on that side.
+EUCLID'S AXIOMS (Common Notions):
+1. Things equal to the same thing are equal to each other.
+2. If equals are added to equals, the wholes are equal.
+3. If equals are subtracted from equals, the remainders are equal.
+4. Things which coincide with one another are equal.
+5. The whole is greater than the part.
+UNDEFINED TERMS: point, line, plane (defined informally).
+THEOREMS FROM POSTULATES:
+Theorem 1: Two distinct lines cannot have more than one point in common.
+Theorem 2: A unique line passes through two distinct points.
+EQUIVALENT VERSIONS OF 5TH POSTULATE:
+Given a line and a point not on it, exactly one parallel line passes through that point.
+This is Playfair's axiom (equivalent to Euclid's 5th postulate).
+SOLVED EXAMPLES:
+Example 1: If AB=CD and EF=GH and AB=EF, prove CD=GH.
+AB=CD (given). EF=GH (given). AB=EF (given).
+By Axiom 1: CD=EF. By Axiom 1: CD=GH.
+Example 2: How many lines through 2 distinct points? Exactly 1 (from Postulate 1).
+COMMON MISTAKES:
+Axioms are assumptions (self-evident truths). Theorems are proved from axioms and postulates.
+The 5th postulate is NOT self-evident — this led to non-Euclidean geometry.""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_9", "chapter": "ch5", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 9 | Ch6: Lines and Angles
+KEY THEOREMS (with proofs):
+Theorem 1: If two lines intersect, vertically opposite angles are equal.
+Proof: angle 1 + angle 2 = 180° (linear pair). angle 3 + angle 2 = 180° (linear pair).
+So angle 1 = angle 3. Similarly angle 2 = angle 4.
+Theorem 2: Sum of angles on a straight line = 180°.
+Theorem 3: If transversal cuts parallel lines:
+(a) Corresponding angles are equal.
+(b) Alternate interior angles are equal.
+(c) Co-interior angles are supplementary (sum=180°).
+Theorem 4 (Converse): If corresponding angles are equal → lines are parallel.
+ANGLE SUM PROPERTY OF TRIANGLE:
+Sum of angles of triangle = 180°. Proof using parallel line through vertex.
+Draw BC. Draw line PQ through A parallel to BC.
+Angle PAB = Angle ABC (alternate interior). Angle QAC = Angle ACB (alternate interior).
+Angle PAB + Angle BAC + Angle QAC = 180° (straight line PQ).
+Therefore Angle ABC + Angle BAC + Angle ACB = 180°.
+EXTERIOR ANGLE THEOREM:
+Exterior angle of triangle = sum of two non-adjacent interior angles.
+SOLVED EXAMPLES:
+Example 1: Two parallel lines cut by transversal. One angle=65°.
+All 8 angles: 65°, 115°, 65°, 115°, 65°, 115°, 65°, 115°.
+Alternate interior=65° (equal). Co-interior=115° (supplementary). Corresponding=65° (equal).
+Example 2: Prove vertically opposite angles are equal.
+Lines AB and CD intersect at O.
+Angle AOC + Angle AOD = 180° (linear pair on line CD).
+Angle BOD + Angle AOD = 180° (linear pair on line AB).
+Therefore Angle AOC = Angle BOD. (both equal 180° - Angle AOD)
+COMMON MISTAKES:
+Co-interior angles are SUPPLEMENTARY (sum=180°), not equal.
+Exterior angle = sum of REMOTE interior angles, NOT the adjacent interior angle.""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_9", "chapter": "ch6", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch7: Triangles (Congruence)
+CONGRUENCE CRITERIA:
+SAS: Two sides and included angle equal.
+ASA: Two angles and included side equal.
+AAS: Two angles and any corresponding side equal.
+SSS: All three sides equal.
+RHS: Right angle, hypotenuse and one side equal (right triangles).
+IMPORTANT THEOREMS:
+Theorem 1: Angles opposite equal sides of isosceles triangle are equal.
+If AB=AC then Angle B=Angle C.
+Proof: In triangles ABD and ACD (D=midpoint of BC):
+AB=AC (given), BD=CD (D is midpoint), AD=AD (common). By SSS: triangles congruent. Angle B=Angle C by CPCT.
+Theorem 2 (Converse): If two angles of triangle are equal, sides opposite them are equal.
+Theorem 3: In right triangle, hypotenuse is the longest side.
+Theorem 4: The sum of any two sides of triangle > third side.
+Theorem 5: Of all line segments drawn from external point to line, perpendicular is shortest.
+INEQUALITIES IN TRIANGLES:
+In triangle, greater angle has greater opposite side.
+If Angle A > Angle B then BC > AC.
+CPCT: Corresponding Parts of Congruent Triangles.
+SOLVED EXAMPLES:
+Example 1: ABC is isosceles with AB=AC. D is midpoint of BC. Prove AD perpendicular to BC.
+In triangles ABD and ACD: AB=AC, BD=CD, AD=AD. SSS congruence.
+Angle ADB=Angle ADC (CPCT). Both on straight line, so each=90°. AD perpendicular to BC.
+Example 2: Prove that triangle ABC where AB=BC=CA (equilateral) has all angles 60°.
+AB=BC → Angle A=Angle C. BC=CA → Angle A=Angle B. So A=B=C. A+B+C=180°. Each=60°.
+COMMON MISTAKES:
+RHS works ONLY for right triangles. Cannot apply to other triangles.
+CPCT used only AFTER proving congruence.
+SAS: the angle must be INCLUDED (between the two sides).""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_9", "chapter": "ch7", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch8: Quadrilaterals
+ANGLE SUM: Sum of angles of quadrilateral=360°.
+PARALLELOGRAM PROPERTIES:
+(i) Opposite sides are parallel and equal.
+(ii) Opposite angles are equal.
+(iii) Consecutive angles are supplementary (sum=180°).
+(iv) Diagonals bisect each other.
+THEOREMS:
+Theorem 1: Diagonal divides parallelogram into two congruent triangles.
+Theorem 2: Opposite sides of parallelogram are equal (and converse).
+Theorem 3: Opposite angles of parallelogram are equal (and converse).
+Theorem 4: Diagonals of parallelogram bisect each other (and converse).
+Theorem 5: Parallelograms on same base and between same parallels are equal in area.
+MID-POINT THEOREM:
+The line joining midpoints of two sides of triangle is parallel to third side and half its length.
+If D=midpoint of AB and E=midpoint of AC then DE parallel to BC and DE=BC/2.
+CONVERSE: Line through midpoint of one side parallel to another side bisects the third side.
+SOLVED EXAMPLES:
+Example 1: ABCD is parallelogram. Angle A=70°. Find all angles.
+Angle C=70° (opposite). Angle B=Angle D=180-70=110° (supplementary to A).
+Example 2: In parallelogram ABCD, diagonals AC and BD meet at O. AO=5cm. Find AC.
+AO=OC (diagonals bisect each other). AC=2×AO=10cm.
+Example 3: Mid-point theorem — D and E are midpoints of AB and AC. DE=4cm. Find BC.
+BC=2×DE=8cm.
+COMMON MISTAKES:
+Diagonals of parallelogram bisect each other but are NOT equal (unless rectangle).
+Diagonals of rectangle are equal but do NOT bisect at 90° (unless square).
+Diagonals of rhombus bisect at 90° but are NOT equal (unless square).""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_9", "chapter": "ch8", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch9: Areas of Parallelograms and Triangles
+KEY CONCEPT: Two figures with equal areas are not necessarily congruent.
+Two congruent figures always have equal areas.
+THEOREMS:
+Theorem 1: Parallelograms on same base and between same parallels are equal in area.
+Theorem 2: Triangles on same base and between same parallels are equal in area.
+Theorem 3: Median divides triangle into two equal area triangles.
+Theorem 4: Triangle area = half of parallelogram area if same base and same parallels.
+AREA FORMULAS:
+Parallelogram = base × height (perpendicular height).
+Triangle = (1/2) × base × height.
+If parallelogram ABCD and triangle ABE are on same base AB between same parallels:
+Area(ABE) = (1/2) × Area(ABCD).
+SOLVED EXAMPLES:
+Example 1: ABCD is parallelogram. E is point on DC. Show area(ABE)=area(ABD).
+Both triangles ABD and ABE have same base AB.
+Both between same parallels AB and DC.
+Area(ABD)=Area(ABE)=(1/2)Area(ABCD).
+Example 2: Parallelogram ABCD and rectangle ABEF on same base AB between same parallels.
+Area(ABCD)=Area(ABEF)=AB×h.
+Example 3: In triangle PQR, S is midpoint of QR. Area(PQS)=Area(PRS).
+PS is median. Median divides triangle into two equal areas.
+Example 4: Parallelogram base=8cm, height=5cm. Area=8×5=40cm^2.
+Triangle between same base and parallels: area=20cm^2.
+COMMON MISTAKES:
+Height must be PERPENDICULAR to base.
+Two parallelograms on same base with same height have equal area even if they look different.
+Median divides area in HALF (not sides in half — it divides opposite side in half).""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_9", "chapter": "ch9", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch10: Circles
+KEY DEFINITIONS:
+Circle: set of all points at equal distance (radius) from centre.
+Chord: line segment joining any two points on circle.
+Diameter: longest chord passing through centre = 2r.
+Arc: part of circle. Minor arc < semicircle. Major arc > semicircle.
+Sector: region between two radii and arc.
+Segment: region between chord and arc.
+THEOREMS:
+Theorem 1: Equal chords are equidistant from centre (and converse).
+Theorem 2: Equal chords subtend equal angles at centre (and converse).
+Proof: In triangles OAB and OCD (O=centre, AB=CD):
+OA=OC=OB=OD=radius. AB=CD (given). By SSS: triangles congruent. Angle AOB=Angle COD.
+Theorem 3: Perpendicular from centre bisects chord (and converse).
+Theorem 4: Angle in semicircle is 90°.
+Theorem 5: Angles in same segment are equal.
+Theorem 6: Angle at centre = double angle at circumference (same arc).
+Theorem 7: Opposite angles of cyclic quadrilateral sum to 180°.
+SOLVED EXAMPLES:
+Example 1: Chord AB=10cm. Distance from centre=12cm. Find radius.
+Perpendicular from centre bisects chord. Half chord=5cm.
+r^2=12^2+5^2=144+25=169. r=13cm.
+Example 2: Angle at centre=120°. Find angle at circumference (same arc).
+Angle at circumference=120/2=60°.
+Example 3: In cyclic quadrilateral, one angle=75°. Find opposite angle.
+Opposite angles sum=180°. Other angle=105°.
+COMMON MISTAKES:
+Angle at centre = TWICE angle at circumference (not half).
+Angle in semicircle=90° (angle subtended by diameter).
+Equal chords have equal angles at centre: equal angle does NOT mean equal chord unless same circle.""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_9", "chapter": "ch10", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch11: Constructions
+BASIC CONSTRUCTIONS (Class 6 review):
+Perpendicular bisector, angle bisector, 60°, 90°, 45°, 30° using compass.
+CLASS 9 CONSTRUCTIONS:
+Construction 1: Angle of 60° (without protractor).
+Draw ray OA. Arc from O cuts OA at P. Same radius arc from P cuts first arc at Q. Angle QOP=60°.
+Construction 2: Bisect any given angle.
+Construction 3: Draw perpendicular to given line from given point.
+Construction 4: Construct triangle given base, base angle, and sum of other two sides.
+Steps: Draw BC (base). Draw angle at B. Mark D on ray such that BD=AB+AC. Join DC. Bisect DC to get perpendicular bisector meeting BD at A. Join AC. Triangle ABC is constructed.
+Construction 5: Construct triangle given base, base angle, and DIFFERENCE of other two sides.
+Two cases: given side longer or shorter.
+Construction 6: Construct triangle given perimeter and two base angles.
+Steps: Draw line XY=perimeter. Draw angles at X and Y. Bisect both angles. Bisectors meet at A. Draw perpendicular bisectors of XA and YA to get B and C. Triangle ABC is the required triangle.
+Construction 7: Construct right triangle given hypotenuse and one side.
+JUSTIFICATION OF CONSTRUCTIONS:
+Each construction must be justified by proving why the constructed figure satisfies given conditions.
+SOLVED EXAMPLES:
+Example 1: Construct triangle with perimeter 11cm and base angles 60° and 45°.
+Step 1: Draw XY=11cm.
+Step 2: Draw 60° at X, 45° at Y.
+Step 3: Bisect these angles. Bisectors meet at A.
+Step 4: Perpendicular bisectors of XA and YA meet XY at B and C respectively.
+Triangle ABC has perimeter 11cm and base angles 60° and 45°.
+COMMON MISTAKES:
+Always bisect the BASE angles at X and Y (not the constructed angles).
+In construction 4: bisect DC (the line joining end of ray to far end), not the base BC.""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_9", "chapter": "ch11", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch12: Heron's Formula
+HERON'S FORMULA: Area of triangle when all 3 sides are known.
+Area = sqrt(s(s-a)(s-b)(s-c))
+where a, b, c are the three sides and s = semi-perimeter = (a+b+c)/2.
+STEPS:
+1. Find s = (a+b+c)/2.
+2. Find (s-a), (s-b), (s-c).
+3. Multiply: s × (s-a) × (s-b) × (s-c).
+4. Take square root.
+APPLICATION TO QUADRILATERALS:
+Divide quadrilateral into two triangles using diagonal.
+Apply Heron's formula to each triangle.
+Total area = sum of both triangle areas.
+EQUILATERAL TRIANGLE (special case):
+All sides = a. s = 3a/2.
+Area = sqrt((3a/2)(a/2)(a/2)(a/2)) = (sqrt(3)/4)×a^2.
+ISOSCELES TRIANGLE:
+If a=b, formula simplifies but Heron's formula still works.
+SOLVED EXAMPLES:
+Example 1: Sides 13cm, 14cm, 15cm.
+s=(13+14+15)/2=42/2=21.
+s-a=21-13=8, s-b=21-14=7, s-c=21-15=6.
+Area=sqrt(21×8×7×6)=sqrt(7056)=84cm^2.
+Example 2: Equilateral triangle side=6cm.
+s=9. Area=sqrt(9×3×3×3)=sqrt(243)=9sqrt(3)cm^2.
+OR using formula: (sqrt(3)/4)×36=9sqrt(3)cm^2. Same answer.
+Example 3: Quadrilateral ABCD. Diagonal AC=10cm. Triangle ABC sides 6,8,10. Triangle ACD sides 10,7,9.
+For ABC: s=12. Area=sqrt(12×6×4×2)=sqrt(576)=24cm^2.
+For ACD: s=13. Area=sqrt(13×3×6×4)=sqrt(936)=6sqrt(26)cm^2.
+Total area=24+6sqrt(26)cm^2.
+COMMON MISTAKES:
+s is the SEMI-perimeter (half of perimeter), not the full perimeter.
+Must check triangle inequality: sum of any two sides > third side.
+All three (s-a), (s-b), (s-c) must be positive for valid triangle.""",
+    metadata={"source": "ncert", "topic": "mensuration", "class_level": "class_9", "chapter": "ch12", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch13: Surface Areas and Volumes
+SURFACE AREA AND VOLUME FORMULAS:
+CUBOID: l=length, b=breadth, h=height.
+Total SA=2(lb+bh+lh). Lateral SA=2(l+b)h. Volume=lbh. Diagonal=sqrt(l^2+b^2+h^2).
+CUBE: side=a.
+Total SA=6a^2. Lateral SA=4a^2. Volume=a^3. Diagonal=a*sqrt(3).
+CYLINDER: r=radius, h=height.
+Curved SA=2*pi*r*h. Total SA=2*pi*r(r+h). Volume=pi*r^2*h.
+CONE: r=base radius, h=vertical height, l=slant height.
+l=sqrt(r^2+h^2). Curved SA=pi*r*l. Total SA=pi*r(r+l). Volume=(1/3)*pi*r^2*h.
+SPHERE: r=radius.
+SA=4*pi*r^2. Volume=(4/3)*pi*r^3.
+HEMISPHERE: r=radius.
+Curved SA=2*pi*r^2. Total SA=3*pi*r^2. Volume=(2/3)*pi*r^3.
+SOLVED EXAMPLES:
+Example 1: Cone r=5cm, l=13cm.
+h=sqrt(13^2-5^2)=sqrt(144)=12cm.
+Curved SA=pi×5×13=65pi=204.1cm^2.
+Total SA=pi×5×(5+13)=90pi=282.6cm^2.
+Volume=(1/3)×pi×25×12=100pi=314.2cm^3.
+Example 2: Sphere r=7cm.
+SA=4×(22/7)×49=616cm^2.
+Volume=(4/3)×(22/7)×343=1437.3cm^3.
+Example 3: Cylinder r=4cm, h=10cm.
+Curved SA=2×pi×4×10=80pi=251.2cm^2.
+Volume=pi×16×10=160pi=502.4cm^3.
+COMMON MISTAKES:
+Cone: slant height l=sqrt(r^2+h^2). Given l, find h=sqrt(l^2-r^2).
+Hemisphere Total SA=3pi*r^2 (curved 2pi*r^2 + base circle pi*r^2).
+Volume of cone=(1/3)×volume of cylinder with same base and height.""",
+    metadata={"source": "ncert", "topic": "mensuration", "class_level": "class_9", "chapter": "ch13", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch14: Statistics
+TYPES OF DATA:
+Primary data: collected by investigator. Secondary data: from other sources.
+Raw data: unorganised. Grouped data: organised in class intervals.
+FREQUENCY DISTRIBUTION TABLE:
+Class interval: group of values (0-10, 10-20 etc). Class width=upper-lower limit.
+Frequency: number of observations in each class.
+Class mark (midpoint)=(upper limit+lower limit)/2.
+Cumulative frequency: running total of frequencies.
+MEAN FOR GROUPED DATA:
+Direct method: Mean = sum(f×x)/sum(f) where x=class mark, f=frequency.
+Assumed mean method: Mean = a + sum(f×d)/sum(f) where d=x-a, a=assumed mean.
+Step deviation method: Mean = a + (sum(f×u)/sum(f))×h where u=(x-a)/h, h=class width.
+MEDIAN FOR GROUPED DATA:
+Median = L + ((n/2-cf)/f)×h
+where L=lower limit of median class, n=total frequency, cf=cumulative frequency before median class, f=frequency of median class, h=class width.
+MODE FOR GROUPED DATA:
+Mode = L + ((f1-f0)/(2f1-f0-f2))×h
+where L=lower limit of modal class, f1=frequency of modal class, f0=previous class frequency, f2=next class frequency, h=class width.
+EMPIRICAL RELATIONSHIP: Mode = 3×Median - 2×Mean (approximately).
+SOLVED EXAMPLES:
+Example 1: Mean by assumed mean. Class marks: 10,20,30,40,50. Frequencies: 4,6,8,5,3. Assumed mean=30.
+d values: -20,-10,0,10,20. sum(f×d)=4(-20)+6(-10)+8(0)+5(10)+3(20)=-80-60+0+50+60=-30.
+Mean=30+(-30/26)=30-1.15=28.85.
+Example 2: Find median class for n=26. n/2=13. Cumulative frequencies: 4,10,18,...
+13 falls in third class (cf=10, f=8). Median class is the third class interval.
+COMMON MISTAKES:
+Class mark is MIDPOINT of class interval, not lower or upper limit.
+For median: find n/2 first, then locate which cumulative frequency it falls in.
+Modal class has HIGHEST frequency, not highest value.""",
+    metadata={"source": "ncert", "topic": "statistics", "class_level": "class_9", "chapter": "ch14", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch15: Probability
+BASIC CONCEPTS:
+Experiment: activity with defined set of outcomes. e.g., throwing die, tossing coin.
+Sample space: set of ALL possible outcomes. S={H,T} for coin. S={1,2,3,4,5,6} for die.
+Event: subset of sample space. Any collection of outcomes.
+PROBABILITY FORMULA:
+P(E) = Number of favourable outcomes / Total number of outcomes.
+Range: 0 <= P(E) <= 1.
+P(certain event) = 1. P(impossible event) = 0.
+COMPLEMENTARY EVENT:
+P(E) + P(not E) = 1. So P(not E) = 1 - P(E).
+TYPES OF EVENTS:
+Simple event: single outcome. Compound event: more than one outcome.
+Mutually exclusive: cannot occur simultaneously. P(A or B)=P(A)+P(B).
+EQUALLY LIKELY OUTCOMES: each outcome has same probability of occurring.
+STANDARD PROBLEMS:
+Die: P(even)=3/6=1/2. P(prime)=3/6=1/2 (2,3,5). P(>4)=2/6=1/3 (5,6).
+Coin: P(H)=1/2. Two coins: P(both H)=1/4. P(at least one H)=3/4.
+Cards (52): P(ace)=4/52=1/13. P(face card)=12/52=3/13. P(red)=26/52=1/2.
+Two dice: Total outcomes=36. P(sum=7): (1,6),(2,5),(3,4),(4,3),(5,2),(6,1)=6/36=1/6.
+SOLVED EXAMPLES:
+Example 1: Bag has 5 red, 7 blue, 3 green balls. Total=15.
+P(red)=5/15=1/3. P(not blue)=(15-7)/15=8/15. P(green or red)=8/15.
+Example 2: Two dice thrown. P(sum=8)?
+Pairs: (2,6),(3,5),(4,4),(5,3),(6,2)=5 pairs. P=5/36.
+Example 3: Cards. P(king or queen)?
+Kings=4, Queens=4. Total face cards include these. P(king or queen)=8/52=2/13.
+COMMON MISTAKES:
+P(E) must be between 0 and 1 inclusive.
+For two dice: total outcomes=36 (not 12). Each die independent.
+P(not E)=1-P(E), NOT P(E)-1.""",
+    metadata={"source": "ncert", "topic": "probability", "class_level": "class_9", "chapter": "ch15", "difficulty": "intermediate"}),
+
 ]
