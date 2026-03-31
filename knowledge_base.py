@@ -2564,4 +2564,491 @@ Mutually exclusive events with nonzero probabilities are NOT independent.
 P(A|B) is NOT the same as P(B|A).""",
     metadata={"source": "ncert", "topic": "probability", "class_level": "class_11", "chapter": "ch16", "difficulty": "intermediate"}),
 
+
+    # ── CLASS 12 — All 13 Chapters ──────────────────────────────────
+
+    Document(page_content="""Class 12 | Ch1: Relations and Functions
+TYPES OF RELATIONS:
+Empty relation: no element of A related to any element. R=phi.
+Universal relation: every element related to every element. R=A×A.
+Reflexive: (a,a) in R for all a in A.
+Symmetric: if (a,b) in R then (b,a) in R.
+Transitive: if (a,b) and (b,c) in R then (a,c) in R.
+Equivalence relation: reflexive + symmetric + transitive.
+EQUIVALENCE CLASSES: set of all elements related to a given element.
+TYPES OF FUNCTIONS:
+One-one (injective): f(a)=f(b) implies a=b. No two inputs give same output.
+Onto (surjective): range=codomain. Every element of codomain has pre-image.
+Bijective: one-one AND onto. Inverse function exists.
+COMPOSITION: (fog)(x)=f(g(x)). gof≠fog generally.
+If f and g are one-one then fog is one-one. If f and g are onto then fog is onto.
+INVERTIBLE FUNCTIONS:
+f is invertible iff f is bijective.
+(f^(-1) o f)(x)=x and (f o f^(-1))(x)=x.
+BINARY OPERATIONS: * on set A: A×A→A.
+Commutative: a*b=b*a. Associative: (a*b)*c=a*(b*c).
+Identity element e: a*e=e*a=a. Inverse of a: a*a^(-1)=e.
+SOLVED EXAMPLES:
+Example 1: R={(a,b): |a-b| divisible by 5} on integers. Is it equivalence?
+Reflexive: |a-a|=0 divisible by 5. Yes.
+Symmetric: |a-b| div by 5 → |b-a|=|a-b| div by 5. Yes.
+Transitive: |a-b|=5k, |b-c|=5m → |a-c|<=|a-b|+|b-c|=5(k+m). Yes.
+Equivalence relation confirmed.
+Example 2: f:R→R, f(x)=2x+3. Show bijective and find inverse.
+One-one: f(a)=f(b) → 2a+3=2b+3 → a=b. Yes.
+Onto: for any y, x=(y-3)/2 in R. Yes. Bijective.
+f^(-1)(x)=(x-3)/2.
+COMMON MISTAKES:
+Equivalence class [a]={b in A: (a,b) in R}. Different elements may have same class.
+A function must be bijective for inverse to exist (not just one-one or just onto).
+fog means g applied FIRST then f.""",
+    metadata={"source": "ncert", "topic": "functions", "class_level": "class_12", "chapter": "ch1", "difficulty": "advanced"}),
+
+    Document(page_content="""Class 12 | Ch2: Inverse Trigonometric Functions
+DOMAINS AND RANGES (Principal Value Branch):
+sin^(-1): domain [-1,1], range [-pi/2, pi/2].
+cos^(-1): domain [-1,1], range [0, pi].
+tan^(-1): domain R, range (-pi/2, pi/2).
+cosec^(-1): domain R-(-1,1), range [-pi/2,pi/2]-{0}.
+sec^(-1): domain R-(-1,1), range [0,pi]-{pi/2}.
+cot^(-1): domain R, range (0,pi).
+KEY PROPERTIES:
+sin^(-1)(x)+cos^(-1)(x)=pi/2 for x in [-1,1].
+tan^(-1)(x)+cot^(-1)(x)=pi/2 for all x.
+sec^(-1)(x)+cosec^(-1)(x)=pi/2 for |x|>=1.
+sin^(-1)(-x)=-sin^(-1)(x). cos^(-1)(-x)=pi-cos^(-1)(x).
+tan^(-1)(-x)=-tan^(-1)(x).
+sin^(-1)(1/x)=cosec^(-1)(x) for |x|>=1.
+cos^(-1)(1/x)=sec^(-1)(x) for |x|>=1.
+tan^(-1)(1/x)=cot^(-1)(x) for x>0.
+ADDITION FORMULAS:
+tan^(-1)(x)+tan^(-1)(y)=tan^(-1)((x+y)/(1-xy)) if xy<1.
+tan^(-1)(x)+tan^(-1)(y)=pi+tan^(-1)((x+y)/(1-xy)) if xy>1 and x>0.
+2 tan^(-1)(x)=sin^(-1)(2x/(1+x^2))=cos^(-1)((1-x^2)/(1+x^2))=tan^(-1)(2x/(1-x^2)).
+SOLVED EXAMPLES:
+Example 1: Find principal value of sin^(-1)(-1/2).
+sin^(-1)(1/2)=pi/6. sin^(-1)(-1/2)=-pi/6. (In range [-pi/2,pi/2]).
+Example 2: Find principal value of cos^(-1)(-sqrt3/2).
+cos^(-1)(sqrt3/2)=pi/6. cos^(-1)(-sqrt3/2)=pi-pi/6=5pi/6. (In range [0,pi]).
+Example 3: Simplify tan^(-1)(cosx-sinx)/(cosx+sinx).
+Divide by cosx: tan^(-1)((1-tanx)/(1+tanx))=tan^(-1)(tan(pi/4-x))=pi/4-x.
+(Valid when pi/4-x is in range (-pi/2,pi/2).)
+Example 4: Prove sin^(-1)x+cos^(-1)x=pi/2.
+Let sin^(-1)x=theta. Then x=sin(theta). cos^(-1)x=cos^(-1)(sin theta)=cos^(-1)(cos(pi/2-theta))=pi/2-theta.
+Sum=theta+pi/2-theta=pi/2. Proved.
+COMMON MISTAKES:
+sin^(-1)(x) is NOT 1/sin(x). It is the inverse FUNCTION.
+Principal value of cos^(-1): range is [0,pi], NOT [-pi/2,pi/2].
+cos^(-1)(-x)=pi-cos^(-1)(x) (NOT -cos^(-1)(x) like sine).""",
+    metadata={"source": "ncert", "topic": "trigonometry", "class_level": "class_12", "chapter": "ch2", "difficulty": "advanced"}),
+
+    Document(page_content="""Class 12 | Ch3: Matrices
+MATRIX: rectangular array of numbers in rows and columns. Order: m×n (m rows, n cols).
+TYPES: Row(1×n), Column(m×1), Square(n×n), Zero/Null, Identity(diagonal=1, rest=0), Diagonal, Scalar.
+OPERATIONS:
+Addition: (A+B)_ij=a_ij+b_ij. Same order required.
+Scalar multiplication: (kA)_ij=k×a_ij.
+Multiplication: (AB)_ij=sum over k of a_ik×b_kj. Order: (m×n)(n×p)=(m×p).
+AB is defined iff columns of A=rows of B. AB≠BA generally.
+TRANSPOSE: A^T: rows become columns. (A^T)_ij=A_ji.
+(A+B)^T=A^T+B^T. (AB)^T=B^T A^T. (A^T)^T=A.
+SYMMETRIC: A^T=A (a_ij=a_ji). SKEW-SYMMETRIC: A^T=-A (a_ij=-a_ji, diagonal=0).
+ANY SQUARE MATRIX = Symmetric part + Skew-symmetric part.
+A=(A+A^T)/2 + (A-A^T)/2. First part symmetric, second skew-symmetric.
+ELEMENTARY OPERATIONS (Row/Column):
+Ri↔Rj (interchange). Ri→kRi (multiply by scalar). Ri→Ri+kRj (add multiple of another row).
+Used in finding inverse by row reduction.
+SOLVED EXAMPLES:
+Example 1: A=[[1,2],[3,4]]. Find A+A^T and show symmetric.
+A^T=[[1,3],[2,4]]. A+A^T=[[2,5],[5,8]]. (A+A^T)^T=[[2,5],[5,8]]=A+A^T. Symmetric.
+Example 2: Express A=[[1,2],[3,4]] as sum of symmetric and skew-symmetric.
+Symmetric=(A+A^T)/2=[[1,2.5],[2.5,4]].
+Skew-symmetric=(A-A^T)/2=[[0,-0.5],[0.5,0]].
+Example 3: If A=[[1,2],[3,4]] and B=[[5,6],[7,8]], find AB.
+AB=[[1×5+2×7, 1×6+2×8],[3×5+4×7, 3×6+4×8]]=[[19,22],[43,50]].
+COMMON MISTAKES:
+AB≠BA in general (matrix multiplication is NOT commutative).
+(AB)^T=B^T A^T (ORDER REVERSES, not A^T B^T).
+Dimensions: (m×n)(n×p)→(m×p). Inner dimensions must match.""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_12", "chapter": "ch3", "difficulty": "advanced"}),
+
+    Document(page_content="""Class 12 | Ch4: Determinants
+DETERMINANT: scalar value computed from square matrix.
+det(2×2): |a b; c d|=ad-bc.
+det(3×3) by expansion along row 1:
+|a1 b1 c1; a2 b2 c2; a3 b3 c3|=a1(b2c3-b3c2)-b1(a2c3-a3c2)+c1(a2b3-a3b2).
+PROPERTIES OF DETERMINANTS:
+1. Rows and columns can be interchanged: det(A)=det(A^T).
+2. Interchange two rows: determinant changes sign.
+3. Two identical rows: det=0.
+4. Multiply row by k: det multiplied by k.
+5. Add multiple of one row to another: det unchanged.
+6. det(AB)=det(A)×det(B). det(kA)=k^n×det(A) for n×n matrix.
+MINORS AND COFACTORS:
+Minor M_ij: determinant of matrix obtained by deleting row i and column j.
+Cofactor C_ij=(-1)^(i+j) × M_ij.
+ADJOINT: adj(A)=transpose of cofactor matrix.
+INVERSE: A^(-1)=adj(A)/det(A). Exists iff det(A)≠0.
+AREA OF TRIANGLE: (1/2)|x1(y2-y3)+x2(y3-y1)+x3(y1-y2)|.
+Using determinant: (1/2)|det([[x1,y1,1],[x2,y2,1],[x3,y3,1]])|.
+CRAMER'S RULE for ax+by=e, cx+dy=f:
+D=|a b; c d|=ad-bc. D_x=|e b; f d|. D_y=|a e; c f|.
+x=D_x/D, y=D_y/D (only if D≠0).
+SOLVED EXAMPLES:
+Example 1: Find det([[2,3],[-1,4]])=2×4-3×(-1)=8+3=11.
+Example 2: Solve x+y+z=6, 2x-y+z=3, x+2y-z=2 by Cramer's rule.
+D=det([[1,1,1],[2,-1,1],[1,2,-1]])=1(1-2)-1(-2-1)+1(4+1)=-1+3+5=7.
+D_x=det([[6,1,1],[3,-1,1],[2,2,-1]])=6(1-2)-1(-3-2)+1(6+2)=-6+5+8=7.
+x=D_x/D=7/7=1. Similarly y=2, z=3.
+Example 3: A=[[1,2],[3,4]]. Find A^(-1).
+det(A)=4-6=-2. Cofactor matrix=[[4,-3],[-2,1]]. adj(A)=[[4,-2],[-3,1]].
+A^(-1)=(1/-2)[[4,-2],[-3,1]]=[[-2,1],[3/2,-1/2]].
+COMMON MISTAKES:
+Cofactor includes the sign (-1)^(i+j). Minor does NOT include the sign.
+det(kA)=k^n×det(A) for n×n matrix (NOT just k×det(A)).
+A^(-1) exists only when det(A)≠0 (non-singular matrix).""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_12", "chapter": "ch4", "difficulty": "advanced"}),
+
+    Document(page_content="""Class 12 | Ch5: Continuity and Differentiability
+CONTINUITY at x=a: lim(x→a) f(x) = f(a).
+Three conditions: f(a) defined, limit exists, limit equals f(a).
+Continuous function: continuous at every point in domain.
+Sum, difference, product of continuous functions is continuous.
+Composite of continuous functions is continuous.
+DIFFERENTIABILITY: f'(a)=lim(h→0) [f(a+h)-f(a)]/h exists.
+Differentiable → Continuous. Continuous does NOT imply differentiable.
+|x| is continuous everywhere but NOT differentiable at x=0.
+CHAIN RULE: d/dx[f(g(x))]=f'(g(x))×g'(x). dy/dx=(dy/du)×(du/dx).
+IMPLICIT DIFFERENTIATION: differentiate both sides w.r.t. x, treat y as function of x.
+d/dx[f(y)]=f'(y)×dy/dx.
+PARAMETRIC DIFFERENTIATION: x=f(t), y=g(t). dy/dx=(dy/dt)/(dx/dt)=g'(t)/f'(t).
+LOGARITHMIC DIFFERENTIATION: for y=x^x or y=f(x)^g(x). Take log both sides, differentiate.
+SECOND ORDER DERIVATIVE: d^2y/dx^2=d/dx[dy/dx].
+STANDARD DERIVATIVES:
+d/dx[x^n]=nx^(n-1). d/dx[e^x]=e^x. d/dx[a^x]=a^x ln(a).
+d/dx[ln x]=1/x. d/dx[log_a x]=1/(x ln a).
+d/dx[sin x]=cos x. d/dx[cos x]=-sin x. d/dx[tan x]=sec^2 x.
+d/dx[sin^(-1)x]=1/sqrt(1-x^2). d/dx[cos^(-1)x]=-1/sqrt(1-x^2).
+d/dx[tan^(-1)x]=1/(1+x^2).
+ROLLE'S THEOREM: if f continuous on [a,b], differentiable on (a,b), f(a)=f(b), then there exists c in (a,b) where f'(c)=0.
+MEAN VALUE THEOREM (MVT/Lagrange): if f continuous on [a,b], differentiable on (a,b), then there exists c where f'(c)=[f(b)-f(a)]/(b-a).
+SOLVED EXAMPLES:
+Example 1: Differentiate x^x.
+y=x^x → ln y=x ln x → (1/y)(dy/dx)=ln x+1 → dy/dx=x^x(1+ln x).
+Example 2: If x=at^2, y=2at, find dy/dx.
+dx/dt=2at, dy/dt=2a. dy/dx=2a/2at=1/t.
+Example 3: Check continuity of |x-3| at x=3.
+LHL=lim(x→3-)|x-3|=lim(x→3-)(3-x)=0. RHL=lim(x→3+)(x-3)=0. f(3)=0. Continuous.
+But not differentiable at x=3 (left derivative=-1, right=+1, unequal).
+COMMON MISTAKES:
+Continuous does NOT mean differentiable. |x| is the standard counter-example.
+Chain rule: derivative of OUTER function × derivative of INNER function.
+In parametric: dy/dx=(dy/dt)/(dx/dt), NOT (dx/dt)/(dy/dt).""",
+    metadata={"source": "ncert", "topic": "calculus", "class_level": "class_12", "chapter": "ch5", "difficulty": "advanced"}),
+
+    Document(page_content="""Class 12 | Ch6: Applications of Derivatives
+RATE OF CHANGE: dy/dx represents rate of change of y w.r.t. x.
+If x and y both functions of t: use chain rule. dy/dt=(dy/dx)×(dx/dt).
+TANGENT AND NORMAL:
+Slope of tangent at (x1,y1): m=dy/dx|(x1,y1).
+Equation of tangent: y-y1=m(x-x1).
+Slope of normal=-1/m. Equation of normal: y-y1=(-1/m)(x-x1).
+INCREASING AND DECREASING FUNCTIONS:
+f increasing on (a,b) if f'(x)>0 for all x in (a,b).
+f decreasing on (a,b) if f'(x)<0 for all x in (a,b).
+MAXIMA AND MINIMA:
+Critical points: where f'(x)=0 or f'(x) undefined.
+First Derivative Test:
+f'changes + to -: local maximum. f' changes - to +: local minimum. No change: neither.
+Second Derivative Test:
+f''(c)<0: local maximum. f''(c)>0: local minimum. f''(c)=0: test fails.
+ABSOLUTE MAXIMA/MINIMA on [a,b]:
+Evaluate f at all critical points AND endpoints. Largest=absolute max, smallest=absolute min.
+APPROXIMATIONS: f(x+deltax)≈f(x)+f'(x)×deltax.
+SOLVED EXAMPLES:
+Example 1: Find intervals where f(x)=2x^3-9x^2+12x-5 is increasing/decreasing.
+f'(x)=6x^2-18x+12=6(x^2-3x+2)=6(x-1)(x-2).
+f'(x)>0 when x<1 or x>2: increasing on (-inf,1) and (2,inf).
+f'(x)<0 when 1<x<2: decreasing on (1,2).
+Example 2: Local maxima/minima of f above.
+f'(1)=0 and f' changes + to -: local max at x=1. f(1)=2-9+12-5=0.
+f'(2)=0 and f' changes - to +: local min at x=2. f(2)=16-36+24-5=-1.
+Example 3: Two numbers with sum 24 and maximum product.
+Let numbers be x and 24-x. P=x(24-x)=24x-x^2.
+P'=24-2x=0 → x=12. P''=-2<0: maximum. Numbers: 12 and 12.
+Example 4: Rate: balloon volume V=(4/3)pi*r^3. Find dV/dt when r=5, dr/dt=2.
+dV/dt=4pi*r^2*(dr/dt)=4pi×25×2=200pi cm^3/s.
+COMMON MISTAKES:
+Critical points where f'=0 need NOT be maxima or minima (inflection points possible).
+Second derivative test FAILS when f''=0 (use first derivative test instead).
+For max product/area problems: always verify using second derivative test.""",
+    metadata={"source": "ncert", "topic": "calculus", "class_level": "class_12", "chapter": "ch6", "difficulty": "advanced"}),
+
+    Document(page_content="""Class 12 | Ch7: Integrals
+INDEFINITE INTEGRALS:
+integral(x^n dx)=x^(n+1)/(n+1)+C (n≠-1). integral(1/x dx)=ln|x|+C.
+integral(e^x dx)=e^x+C. integral(a^x dx)=a^x/ln(a)+C.
+integral(sin x dx)=-cos x+C. integral(cos x dx)=sin x+C.
+integral(tan x dx)=ln|sec x|+C. integral(cot x dx)=ln|sin x|+C.
+integral(sec x dx)=ln|sec x+tan x|+C. integral(cosec x dx)=-ln|cosec x+cot x|+C.
+integral(sec^2 x dx)=tan x+C. integral(cosec^2 x dx)=-cot x+C.
+integral(1/(x^2+a^2) dx)=(1/a)tan^(-1)(x/a)+C.
+integral(1/sqrt(a^2-x^2) dx)=sin^(-1)(x/a)+C.
+integral(1/sqrt(x^2+a^2) dx)=ln|x+sqrt(x^2+a^2)|+C.
+METHODS OF INTEGRATION:
+METHOD 1 - Substitution: let u=g(x), du=g'(x)dx.
+integral(2x/(x^2+1) dx): let u=x^2+1, du=2x dx → integral(1/u du)=ln|u|+C=ln|x^2+1|+C.
+METHOD 2 - Integration by Parts (ILATE rule):
+integral(u dv)=uv-integral(v du).
+ILATE order for u: Inverse trig, Logarithm, Algebraic, Trigonometric, Exponential.
+integral(x e^x dx): u=x, dv=e^x dx. =xe^x-integral(e^x dx)=xe^x-e^x+C=e^x(x-1)+C.
+integral(x^2 e^x dx): apply by parts TWICE.
+METHOD 3 - Partial Fractions (for rational functions):
+(2x+3)/((x-1)(x+2))=A/(x-1)+B/(x+2). Solve for A and B.
+For repeated factor (x-1)^2: A/(x-1)+B/(x-1)^2+C/(x+2).
+METHOD 4 - Special Integrals:
+integral(sin^n x dx) and integral(cos^n x dx): use reduction formulas.
+integral(sin^2 x dx)=x/2-sin(2x)/4+C. integral(cos^2 x dx)=x/2+sin(2x)/4+C.
+DEFINITE INTEGRALS:
+integral[a to b] f(x) dx=F(b)-F(a) (Fundamental Theorem).
+PROPERTIES:
+integral[a to b]=- integral[b to a].
+integral[a to b] f(x) dx=integral[a to c] f(x) dx+integral[c to b] f(x) dx.
+integral[0 to a] f(x) dx=integral[0 to a] f(a-x) dx (King's rule).
+SOLVED EXAMPLES:
+Example 1: integral(x^2 e^x dx).
+u=x^2, dv=e^x dx: x^2 e^x-integral(2x e^x dx).
+Apply by parts again on integral(2x e^x dx): 2[xe^x-e^x].
+Answer: x^2 e^x-2xe^x+2e^x+C=e^x(x^2-2x+2)+C.
+Example 2: integral(dx/(x^2-4))=integral(dx/((x-2)(x+2))).
+Partial fractions: 1/((x-2)(x+2))=(1/4)(1/(x-2)-1/(x+2)).
+Answer=(1/4)ln|(x-2)/(x+2)|+C.
+Example 3: integral(sin^3 x dx)=integral(sin x(1-cos^2 x) dx).
+Let u=cos x: -integral((1-u^2) du)=-u+u^3/3+C=-cos x+cos^3 x/3+C.
+COMMON MISTAKES:
+ILATE: u should be chosen by ILATE order (leftmost=u).
+Integration by parts may need to be applied multiple times.
+King's rule: replace x with (a-x) inside integral, keep limits same.""",
+    metadata={"source": "ncert", "topic": "calculus", "class_level": "class_12", "chapter": "ch7", "difficulty": "advanced"}),
+
+    Document(page_content="""Class 12 | Ch8: Application of Integrals
+AREA BETWEEN CURVE AND X-AXIS:
+Area = integral[a to b] |f(x)| dx.
+If f(x)>=0 on [a,b]: Area=integral[a to b] f(x) dx.
+If f(x)<=0 on [a,b]: Area=|integral[a to b] f(x) dx|=-integral[a to b] f(x) dx.
+If f changes sign: split at zeros, add absolute values of each part.
+AREA BETWEEN TWO CURVES:
+If f(x)>=g(x) on [a,b]: Area=integral[a to b] [f(x)-g(x)] dx.
+Always integrate UPPER curve minus LOWER curve.
+AREA USING Y-AXIS:
+Area=integral[c to d] |g(y)| dy where x=g(y) is curve expressed in terms of y.
+STANDARD AREAS:
+Circle x^2+y^2=r^2: total area=pi*r^2. Using integration: 4×integral[0 to r] sqrt(r^2-x^2) dx.
+Ellipse x^2/a^2+y^2/b^2=1: area=pi*a*b.
+Parabola y^2=4ax and line x=h: area=(4/3)h*sqrt(ah) [to vertex from x=0 to x=h side].
+SOLVED EXAMPLES:
+Example 1: Area bounded by y=x^2 and y=x+2.
+Intersection: x^2=x+2 → x^2-x-2=0 → (x-2)(x+1)=0 → x=-1,2.
+Area=integral[-1 to 2] (x+2-x^2) dx=[x^2/2+2x-x^3/3] from -1 to 2.
+=(2+4-8/3)-(-1/2-2+1/3... wait:
+At x=2: 4/2+4-8/3=2+4-8/3=6-8/3=10/3.
+At x=-1: 1/2-2+1/3=-7/6.
+Area=10/3-(-7/6)=10/3+7/6=20/6+7/6=27/6=9/2 sq units.
+Example 2: Area of circle x^2+y^2=16.
+Area=4×integral[0 to 4] sqrt(16-x^2) dx=4×[x/2*sqrt(16-x^2)+8*sin^(-1)(x/4)] from 0 to 4.
+=4×[0+8*pi/2-0]=4×4pi=16pi sq units. (Confirms pi*r^2=pi*16.)
+Example 3: Area between y=x^2 and y=sqrt(x).
+Intersection: x^2=sqrt(x) → x^4=x → x(x^3-1)=0 → x=0,1.
+sqrt(x)>=x^2 on [0,1]. Area=integral[0 to 1](sqrt(x)-x^2)dx=[2x^(3/2)/3-x^3/3] from 0 to 1=2/3-1/3=1/3.
+COMMON MISTAKES:
+Always integrate UPPER minus LOWER (not absolute value of each separately).
+Find intersection points by setting curves equal.
+Area is always POSITIVE (use absolute values if needed).""",
+    metadata={"source": "ncert", "topic": "calculus", "class_level": "class_12", "chapter": "ch8", "difficulty": "advanced"}),
+
+    Document(page_content="""Class 12 | Ch9: Differential Equations
+ORDER: order of highest derivative. DEGREE: power of highest derivative (after clearing fractions/roots).
+FORMATION: differentiate given equation to eliminate arbitrary constants (number of constants=order).
+METHODS OF SOLVING:
+METHOD 1 - Variable Separable: f(x)dx=g(y)dy. Integrate both sides separately.
+dy/dx=e^(x+y)=e^x*e^y → e^(-y)dy=e^x dx → -e^(-y)=e^x+C.
+METHOD 2 - Homogeneous Equations: dy/dx=f(y/x). Substitute v=y/x, y=vx.
+dy/dx=v+x*dv/dx. Equation becomes separable.
+Identify homogeneous: if f(kx,ky)=k^n*f(x,y) (all terms same degree).
+METHOD 3 - Linear DE: dy/dx+P(x)*y=Q(x).
+Integrating factor IF=e^(integral P dx).
+Solution: y*IF=integral(Q*IF dx)+C.
+For dx/dy+P(y)*x=Q(y): IF=e^(integral P dy). x*IF=integral(Q*IF dy)+C.
+STANDARD FORMS:
+Variable separable: dy/dx=f(x)*g(y) → dy/g(y)=f(x)dx.
+SOLVED EXAMPLES:
+Example 1: Solve dy/dx=e^(x+y).
+e^(-y)dy=e^x dx → -e^(-y)=e^x+C → e^x+e^(-y)=C1.
+Example 2: Solve (x^2+y^2)dx=2xy dy (homogeneous).
+dy/dx=(x^2+y^2)/(2xy). Put y=vx: v+x*dv/dx=(1+v^2)/(2v).
+x*dv/dx=(1+v^2)/(2v)-v=(1-v^2)/(2v). 2v/(1-v^2)dv=dx/x.
+-ln|1-v^2|=ln|x|+C1 → ln|x(1-v^2)|=-C1 → x(1-y^2/x^2)=C → x^2-y^2=Cx.
+Example 3: Solve dy/dx+2y/x=x^2 (linear).
+P=2/x, Q=x^2. IF=e^(integral 2/x dx)=e^(2ln x)=x^2.
+y*x^2=integral(x^2*x^2 dx)=integral(x^4 dx)=x^5/5+C.
+y=x^3/5+C/x^2.
+COMMON MISTAKES:
+Degree: power of HIGHEST ORDER derivative (after removing radicals).
+Homogeneous: all terms must have SAME total degree.
+Linear DE: coefficient of dy/dx must be 1 (divide through if needed).""",
+    metadata={"source": "ncert", "topic": "calculus", "class_level": "class_12", "chapter": "ch9", "difficulty": "advanced"}),
+
+    Document(page_content="""Class 12 | Ch10: Vector Algebra
+VECTOR: quantity with magnitude and direction. Notation: a (bold) or a with arrow.
+Unit vector: magnitude=1. a_hat=a/|a|.
+TYPES: Zero vector, Unit vector, Coinitial, Collinear/Parallel, Equal vectors.
+POSITION VECTOR: of point P(x,y,z): OP=xi+yj+zk. |OP|=sqrt(x^2+y^2+z^2).
+OPERATIONS:
+Addition: (a1i+a2j+a3k)+(b1i+b2j+b3k)=(a1+b1)i+(a2+b2)j+(a3+b3)k.
+Scalar multiplication: k(ai+bj+ck)=kai+kbj+ckk.
+DOT PRODUCT (Scalar product):
+a.b=|a||b|cos(theta). a.b=a1b1+a2b2+a3b3.
+a.b=0 iff perpendicular (or one is zero vector).
+a.a=|a|^2. i.i=j.j=k.k=1. i.j=j.k=k.i=0.
+CROSS PRODUCT (Vector product):
+|a×b|=|a||b|sin(theta). Direction: right-hand rule.
+a×b=det([[i,j,k],[a1,a2,a3],[b1,b2,b3]]).
+=(a2b3-a3b2)i-(a1b3-a3b1)j+(a1b2-a2b1)k.
+a×b=0 iff parallel. a×a=0. i×j=k, j×k=i, k×i=j. j×i=-k.
+|a×b|=area of parallelogram with sides a and b.
+(1/2)|a×b|=area of triangle.
+SCALAR TRIPLE PRODUCT: [a b c]=a.(b×c). Volume of parallelepiped.
+[a b c]=0 iff coplanar.
+SOLVED EXAMPLES:
+Example 1: a=2i+3j-k, b=i-2j+3k.
+a.b=2(1)+3(-2)+(-1)(3)=2-6-3=-7.
+|a|=sqrt(4+9+1)=sqrt(14). |b|=sqrt(1+4+9)=sqrt(14).
+cos(theta)=-7/14=-1/2. theta=120°.
+Example 2: a×b=det([[i,j,k],[2,3,-1],[1,-2,3]]).
+=i(9-2)-j(6+1)+k(-4-3)=7i-7j-7k=7(i-j-k).
+|a×b|=7sqrt(3). Area of parallelogram=7sqrt(3).
+Example 3: Unit vector along 2i+3j+6k.
+|v|=sqrt(4+9+36)=sqrt(49)=7. Unit vector=(2i+3j+6k)/7.
+COMMON MISTAKES:
+a.b is SCALAR. a×b is VECTOR.
+i×j=k but j×i=-k (cross product NOT commutative).
+a×b=0 means PARALLEL (not perpendicular). a.b=0 means PERPENDICULAR.""",
+    metadata={"source": "ncert", "topic": "vectors", "class_level": "class_12", "chapter": "ch10", "difficulty": "advanced"}),
+
+    Document(page_content="""Class 12 | Ch11: Three Dimensional Geometry
+DIRECTION COSINES: cos(alpha), cos(beta), cos(gamma) where alpha,beta,gamma are angles line makes with x,y,z axes.
+l=cos(alpha), m=cos(beta), n=cos(gamma). l^2+m^2+n^2=1.
+DIRECTION RATIOS: proportional to direction cosines. a,b,c are DRs if l/a=m/b=n/c.
+l=a/sqrt(a^2+b^2+c^2), m=b/sqrt(a^2+b^2+c^2), n=c/sqrt(a^2+b^2+c^2).
+EQUATION OF LINE:
+Vector form: r=a+lambda*b (a=point on line, b=direction vector).
+Cartesian: (x-x1)/a=(y-y1)/b=(z-z1)/c (symmetric form).
+Through two points: (x-x1)/(x2-x1)=(y-y1)/(y2-y1)=(z-z1)/(z2-z1).
+ANGLE BETWEEN LINES:
+cos(theta)=|l1l2+m1m2+n1n2|=|a1a2+b1b2+c1c2|/sqrt(a1^2+b1^2+c1^2)*sqrt(a2^2+b2^2+c2^2).
+Parallel: a1/a2=b1/b2=c1/c2. Perpendicular: a1a2+b1b2+c1c2=0.
+EQUATION OF PLANE:
+General: ax+by+cz+d=0. Normal vector=(a,b,c).
+Intercept form: x/a+y/b+z/c=1.
+Vector form: r.n_hat=d (n_hat=unit normal).
+Through three points: use determinant form.
+DISTANCE FROM POINT TO PLANE:
+Distance of (x1,y1,z1) from ax+by+cz+d=0: |ax1+by1+cz1+d|/sqrt(a^2+b^2+c^2).
+ANGLE BETWEEN LINE AND PLANE:
+sin(phi)=|al+bm+cn|/sqrt(a^2+b^2+c^2)*sqrt(l^2+m^2+n^2).
+SKEW LINES: lines that are not parallel and do not intersect.
+Shortest distance=|(a2-a1).(b1×b2)|/|b1×b2|.
+SOLVED EXAMPLES:
+Example 1: Angle between lines (x-1)/2=(y+1)/3=(z-2)/6 and (x+2)/1=(y-3)/4=(z+1)/2.
+DRs: (2,3,6) and (1,4,2). cos(theta)=(2+12+12)/(7×sqrt(21))=26/(7sqrt(21)).
+Example 2: Distance from (1,2,3) to plane 2x-3y+z=5.
+d=|2(1)-3(2)+1(3)-5|/sqrt(4+9+1)=|2-6+3-5|/sqrt(14)=|-6|/sqrt(14)=6/sqrt(14)=3sqrt(14)/7.
+Example 3: Shortest distance between skew lines.
+r1=i+j+t(2i-j+k) and r2=2i+j-k+s(3i-5j+2k).
+a1=i+j, a2=2i+j-k. b1=2i-j+k, b2=3i-5j+2k.
+b1×b2=det([[i,j,k],[2,-1,1],[3,-5,2]])=i(-2+5)-j(4-3)+k(-10+3)=3i-j-7k.
+|b1×b2|=sqrt(9+1+49)=sqrt(59).
+(a2-a1)=i-k. (a2-a1).(b1×b2)=3+0+7=10.
+Distance=|10|/sqrt(59)=10/sqrt(59).
+COMMON MISTAKES:
+Direction ratios are proportional to direction cosines (not equal unless normalised).
+Skew lines: neither parallel nor intersecting (common in 3D, impossible in 2D).
+Distance formula: use |...|/sqrt(a^2+b^2+c^2), not just |...|.""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "class_12", "chapter": "ch11", "difficulty": "advanced"}),
+
+    Document(page_content="""Class 12 | Ch12: Linear Programming
+LINEAR PROGRAMMING PROBLEM (LPP):
+Objective function: Z=ax+by (to maximise or minimise).
+Constraints: inequalities (ax+by<=c, x>=0, y>=0 etc).
+Feasible region: set of all points satisfying ALL constraints simultaneously.
+Feasible solution: any point in feasible region.
+Optimal solution: feasible solution that gives maximum/minimum value of Z.
+CORNER POINT METHOD (THEOREM):
+If optimal solution exists, it occurs at a CORNER POINT (vertex) of feasible region.
+Steps:
+1. Graph all constraints. Find feasible region.
+2. Find all corner points (vertices) of feasible region.
+3. Evaluate Z at each corner point.
+4. Maximum/minimum value of Z is the optimal solution.
+TYPES OF LPP:
+Bounded feasible region: has maximum AND minimum.
+Unbounded feasible region: may not have maximum (for maximise) or minimum (for minimise).
+Infeasible: no feasible region (constraints contradictory). No solution.
+FORMULATING LPP FROM WORD PROBLEMS:
+Identify: variables (what to find), objective (what to optimise), constraints (conditions).
+SOLVED EXAMPLES:
+Example 1: Maximise Z=3x+4y subject to x+y<=450, 2x+y<=600, x>=0, y>=0.
+Corner points: O(0,0), A(300,0), B(150,300), C(0,450).
+Z at O=0. Z at A=900. Z at B=450+1200=1650. Z at C=1800.
+Maximum Z=1800 at C(0,450).
+Example 2: Minimise Z=5x+7y subject to 2x+y>=8, x+2y>=10, x>=0, y>=0.
+Corner points: A(0,8), B(2,4), C(10,0).
+Z at A=56. Z at B=10+28=38. Z at C=50.
+Minimum Z=38 at B(2,4).
+FINDING CORNER POINTS: solve pairs of boundary equations simultaneously.
+Intersection of 2x+y=600 and x+y=450: subtract → x=150, y=300.
+COMMON MISTAKES:
+Evaluate Z at ALL corner points (not just one or two).
+Feasible region must satisfy ALL constraints (including x>=0, y>=0).
+For minimum in unbounded region: check if solution is truly minimum.""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "class_12", "chapter": "ch12", "difficulty": "advanced"}),
+
+    Document(page_content="""Class 12 | Ch13: Probability
+CONDITIONAL PROBABILITY:
+P(A|B)=P(A∩B)/P(B) where P(B)≠0.
+P(A∩B)=P(A|B)*P(B)=P(B|A)*P(A).
+MULTIPLICATION THEOREM:
+P(A∩B)=P(A)*P(B|A). P(A∩B∩C)=P(A)*P(B|A)*P(C|AB).
+INDEPENDENT EVENTS:
+A and B independent: P(A∩B)=P(A)*P(B). P(A|B)=P(A).
+A,B,C independent: P(A∩B)=P(A)P(B), P(B∩C)=P(B)P(C), P(A∩C)=P(A)P(C), AND P(A∩B∩C)=P(A)P(B)P(C). (All four conditions needed.)
+TOTAL PROBABILITY THEOREM:
+If B1,B2,...,Bn are mutually exclusive and exhaustive events:
+P(A)=P(A|B1)*P(B1)+P(A|B2)*P(B2)+...+P(A|Bn)*P(Bn).
+BAYES' THEOREM:
+P(Bi|A)=P(A|Bi)*P(Bi) / [P(A|B1)*P(B1)+...+P(A|Bn)*P(Bn)].
+Prior probability: P(Bi). Posterior probability: P(Bi|A).
+RANDOM VARIABLE AND PROBABILITY DISTRIBUTION:
+Random variable X: function from sample space to real numbers.
+Mean (Expected value): E(X)=mu=sum(xi*P(xi)).
+Variance: Var(X)=E(X^2)-[E(X)]^2=sum(xi^2*P(xi))-mu^2.
+SD=sqrt(Var(X)).
+BERNOULLI TRIALS AND BINOMIAL DISTRIBUTION:
+n independent trials, each with probability p of success.
+P(X=r)=nCr*p^r*(1-p)^(n-r)=nCr*p^r*q^(n-r) where q=1-p.
+Mean=np. Variance=npq. SD=sqrt(npq).
+SOLVED EXAMPLES:
+Example 1: Bag A: 3R,5B. Bag B: 4R,6B. One bag chosen randomly, red ball drawn. Find P(bag A).
+P(A)=P(B)=1/2. P(R|A)=3/8. P(R|B)=4/10=2/5.
+P(R)=P(R|A)P(A)+P(R|B)P(B)=(3/8)(1/2)+(2/5)(1/2)=3/16+1/5=31/80.
+P(A|R)=P(R|A)P(A)/P(R)=(3/16)/(31/80)=(3/16)*(80/31)=15/31.
+Example 2: Binomial X~B(10,0.4). Find P(X=3).
+P(X=3)=10C3*(0.4)^3*(0.6)^7=120*0.064*0.0279936≈0.2150.
+Mean=10*0.4=4. Variance=10*0.4*0.6=2.4.
+COMMON MISTAKES:
+Bayes theorem: denominator is TOTAL probability P(A) using all branches.
+Binomial: trials must be INDEPENDENT with CONSTANT probability p.
+E(X^2) ≠ [E(X)]^2. Variance=E(X^2)-[E(X)]^2.""",
+    metadata={"source": "ncert", "topic": "probability", "class_level": "class_12", "chapter": "ch13", "difficulty": "advanced"}),
+
 ]
