@@ -3051,4 +3051,335 @@ Binomial: trials must be INDEPENDENT with CONSTANT probability p.
 E(X^2) ≠ [E(X)]^2. Variance=E(X^2)-[E(X)]^2.""",
     metadata={"source": "ncert", "topic": "probability", "class_level": "class_12", "chapter": "ch13", "difficulty": "advanced"}),
 
+
+    # ── JEE ADVANCED — 8 Topic Groups ───────────────────────────────
+
+    Document(page_content="""JEE Advanced | Topic 1: Advanced Calculus
+LIMITS - SPECIAL TECHNIQUES:
+L'Hopital's Rule: if lim f(x)/g(x) gives 0/0 or inf/inf, then lim f(x)/g(x)=lim f'(x)/g'(x).
+Apply repeatedly if still indeterminate. Works for 0/0, inf/inf forms.
+Other indeterminate: 0×inf, inf-inf, 0^0, 1^inf, inf^0. Convert to 0/0 or inf/inf first.
+1^inf form: lim[f(x)]^g(x) where f→1, g→inf. Take log: g(x)*ln(f(x))→inf×0. Use L'Hopital.
+TAYLOR AND MACLAURIN SERIES:
+e^x=1+x+x^2/2!+x^3/3!+... (all x).
+sin x=x-x^3/3!+x^5/5!-... (all x).
+cos x=1-x^2/2!+x^4/4!-... (all x).
+ln(1+x)=x-x^2/2+x^3/3-... (|x|<=1, x≠-1).
+(1+x)^n=1+nx+n(n-1)x^2/2!+... (|x|<1 for non-integer n).
+LEIBNIZ THEOREM (nth derivative of product):
+(fg)^(n)=sum(r=0 to n) nCr * f^(r) * g^(n-r).
+DEFINITE INTEGRAL PROPERTIES:
+King's rule: integral[a to b] f(x)dx=integral[a to b] f(a+b-x)dx.
+integral[0 to 2a] f(x)dx=2*integral[0 to a] f(x)dx if f(2a-x)=f(x), else 0 if f(2a-x)=-f(x).
+integral[-a to a] f(x)dx=2*integral[0 to a] f(x)dx if f even, else 0 if f odd.
+Walli's formula: integral[0 to pi/2] sin^n(x)dx=integral[0 to pi/2] cos^n(x)dx.
+For even n: (n-1)(n-3)...1 / n(n-2)...2 * pi/2.
+For odd n: (n-1)(n-3)...2 / n(n-2)...1.
+REDUCTION FORMULAS:
+integral sin^n x dx = -sin^(n-1)x cosx/n + (n-1)/n * integral sin^(n-2)x dx.
+SOLVED EXAMPLES:
+Example 1: lim(x→0) (e^x-1-x)/x^2.
+0/0 form. L'Hopital: lim (e^x-1)/(2x). Still 0/0.
+L'Hopital again: lim e^x/2=1/2.
+Example 2: Evaluate integral[0 to pi] x*sinx/(1+cos^2 x)dx.
+By King's rule: I=integral[0 to pi] (pi-x)*sin(pi-x)/(1+cos^2(pi-x))dx.
+sin(pi-x)=sinx. cos(pi-x)=-cosx. So I=integral[0 to pi] (pi-x)*sinx/(1+cos^2 x)dx.
+2I=pi*integral[0 to pi] sinx/(1+cos^2 x)dx.
+Let u=cosx: 2I=pi*integral[-1 to 1] du/(1+u^2)=pi[tan^(-1)u] from -1 to 1=pi[pi/4+pi/4]=pi^2/2.
+I=pi^2/4.
+Example 3: Using Maclaurin: find lim(x→0) (sinx-x)/x^3.
+sinx=x-x^3/6+... So sinx-x=-x^3/6+... Divide by x^3: limit=-1/6.
+COMMON MISTAKES:
+L'Hopital: must be 0/0 or inf/inf EXACTLY. Cannot apply to 0/inf or inf+inf.
+King's rule: limits stay SAME (a to b), replace x with a+b-x inside.
+Taylor series: valid only within radius of convergence.""",
+    metadata={"source": "ncert", "topic": "calculus", "class_level": "jee_advanced", "chapter": "advanced_calculus", "difficulty": "advanced"}),
+
+    Document(page_content="""JEE Advanced | Topic 2: Advanced Algebra
+THEORY OF EQUATIONS:
+For polynomial p(x)=a_n*x^n+...+a_0 with roots r1,r2,...,rn:
+Sum of roots=r1+r2+...+rn=-a_(n-1)/a_n.
+Sum of products of pairs=a_(n-2)/a_n.
+Sum of products of triplets=-a_(n-3)/a_n.
+Product of all roots=(-1)^n * a_0/a_n.
+Newton's identities relate power sums to elementary symmetric polynomials.
+LOCATION OF ROOTS:
+Both roots of ax^2+bx+c=0 positive: D>=0, -b/a>0, c/a>0.
+Both roots negative: D>=0, -b/a<0, c/a>0.
+Roots of opposite sign: c/a<0 (D automatically >0).
+Both roots in (p,q): D>=0, f(p)>0 (same sign as a), f(q)>0, p<-b/2a<q.
+COMMON ROOTS:
+If ax^2+bx+c=0 and dx^2+ex+f=0 have common root alpha:
+(bf-ce)^2=(ae-bd)(cd-af) (condition for one common root).
+For both roots common: a/d=b/e=c/f.
+SUM OF SERIES:
+Telescoping: express term as f(n)-f(n-1), sum collapses.
+1/(n(n+1))=1/n-1/(n+1). Sum from 1 to n = 1-1/(n+1).
+Method of differences: if T_n can be expressed as f(n)-f(n-2), sum accordingly.
+COMPLEX NUMBERS ADVANCED:
+nth roots of unity: 1, omega, omega^2,...,omega^(n-1) where omega=e^(2pi*i/n).
+Sum of all nth roots of unity=0. Product=(-1)^(n+1).
+Roots evenly spaced on unit circle at angles 2pi*k/n.
+SOLVED EXAMPLES:
+Example 1: Roots of x^3-6x^2+11x-6=0 in AP. Find them.
+Let roots be a-d, a, a+d. Sum=3a=6 → a=2. Product=a(a^2-d^2)=6 → 2(4-d^2)=6 → d^2=1 → d=1.
+Roots: 1, 2, 3. Verify: sum of pairs=1*2+2*3+1*3=11. Product=6. Correct.
+Example 2: Find sum of series 1/(1*2)+1/(2*3)+...+1/(n(n+1)).
+T_k=1/(k(k+1))=1/k-1/(k+1). Telescoping sum=1-1/(n+1)=n/(n+1).
+Example 3: Show sum of cube roots of unity=0.
+1+omega+omega^2=0. (Sum of all nth roots of unity=0 for n>1.)
+Geometric series: (1-omega^3)/(1-omega)=0/(1-omega)=0 since omega^3=1.
+COMMON MISTAKES:
+For roots in AP: take a-d, a, a+d (NOT a, a+d, a+2d — product is messier).
+Telescoping: must identify the correct f(n) that gives the telescoping pattern.
+Common roots: substitute the common root into BOTH equations, eliminate.""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "jee_advanced", "chapter": "advanced_algebra", "difficulty": "advanced"}),
+
+    Document(page_content="""JEE Advanced | Topic 3: Advanced Coordinate Geometry
+PAIR OF STRAIGHT LINES:
+ax^2+2hxy+by^2=0 represents pair of lines through origin.
+Slopes m1,m2: m1+m2=-2h/b, m1*m2=a/b.
+Angle between lines: tan(theta)=2sqrt(h^2-ab)/(a+b).
+Lines coincident: h^2=ab. Lines perpendicular: a+b=0.
+Combined equation of lines through origin with slopes m1,m2: b(y-m1*x)(y-m2*x)=0.
+General second degree: ax^2+2hxy+by^2+2gx+2fy+c=0.
+Represents pair of lines if det([[a,h,g],[h,b,f],[g,f,c]])=0.
+CIRCLES:
+Radical axis of two circles: locus of points with equal power w.r.t. both circles.
+Power of point P w.r.t. circle: PT^2=S1 where S1=x1^2+y1^2+2gx1+2fy1+c.
+Radical axis: S1-S2=0 (subtract equations).
+Coaxial circles: family of circles with common radical axis.
+CONICS - ADVANCED:
+Chord of contact from point (x1,y1) to circle x^2+y^2=a^2: xx1+yy1=a^2.
+Chord of contact to ellipse x^2/a^2+y^2/b^2=1: xx1/a^2+yy1/b^2=1.
+Parametric forms: Ellipse (a*cos t, b*sin t). Parabola (at^2, 2at). Hyperbola (a*sec t, b*tan t).
+Normal at parametric point t on parabola y^2=4ax: y=-tx+2at+at^3.
+Condition for line y=mx+c to be tangent to y^2=4ax: c=a/m.
+LOCUS PROBLEMS:
+Set up coordinates, use given conditions, eliminate parameter, simplify to standard form.
+SOLVED EXAMPLES:
+Example 1: 3x^2+10xy+8y^2=0. Find angle between lines.
+a=3, 2h=10 so h=5, b=8. tan(theta)=2*sqrt(25-24)/(3+8)=2/11. theta=tan^(-1)(2/11).
+Example 2: Chord of contact from (1,2) to circle x^2+y^2=25.
+x(1)+y(2)=25 → x+2y=25.
+Example 3: If z=x+iy and |z-2|=2|z-1|, find locus.
+|(x-2)+iy|=2|(x-1)+iy|. (x-2)^2+y^2=4[(x-1)^2+y^2].
+x^2-4x+4+y^2=4x^2-8x+4+4y^2. 3x^2+3y^2-4x=0. x^2+y^2-4x/3=0. Circle.
+COMMON MISTAKES:
+Pair of lines: 2hxy (coefficient of xy is 2h, not h).
+Radical axis: subtract S1 and S2 equations directly (coefficients of x^2,y^2 must be 1 first).
+Tangent condition: c=a/m for parabola y^2=4ax (from OUTSIDE).""",
+    metadata={"source": "ncert", "topic": "geometry", "class_level": "jee_advanced", "chapter": "advanced_coord_geometry", "difficulty": "advanced"}),
+
+    Document(page_content="""JEE Advanced | Topic 4: Advanced Trigonometry
+PRODUCT FORMULAS:
+sin A + sin B = 2 sin((A+B)/2) cos((A-B)/2).
+sin A - sin B = 2 cos((A+B)/2) sin((A-B)/2).
+cos A + cos B = 2 cos((A+B)/2) cos((A-B)/2).
+cos A - cos B = -2 sin((A+B)/2) sin((A-B)/2).
+sin A * sin B = (1/2)[cos(A-B)-cos(A+B)].
+cos A * cos B = (1/2)[cos(A-B)+cos(A+B)].
+sin A * cos B = (1/2)[sin(A+B)+sin(A-B)].
+TRIGONOMETRIC EQUATIONS:
+General solutions: sin(theta)=sin(alpha) → theta=n*pi+(-1)^n*alpha.
+cos(theta)=cos(alpha) → theta=2n*pi±alpha.
+tan(theta)=tan(alpha) → theta=n*pi+alpha.
+For sin^2(theta)=sin^2(alpha): theta=n*pi±alpha.
+CONDITIONAL IDENTITIES (when A+B+C=pi, i.e., angles of triangle):
+sin2A+sin2B+sin2C=4sinA sinB sinC.
+sinA+sinB+sinC=4cos(A/2)cos(B/2)cos(C/2).
+cos A+cosB+cosC=1+4sin(A/2)sin(B/2)sin(C/2).
+tan A+tanB+tanC=tanA tanB tanC (since A+B+C=pi).
+INVERSE TRIG ADVANCED:
+sin^(-1)x+sin^(-1)y=sin^(-1)(x*sqrt(1-y^2)+y*sqrt(1-x^2)) if x^2+y^2<=1.
+tan^(-1)x+tan^(-1)y=pi+tan^(-1)((x+y)/(1-xy)) if x>0, y>0, xy>1.
+TRIGONOMETRIC INEQUALITIES:
+sin x > sin a for x in (a, pi-a) when a in (0, pi/2).
+Solve by graphical method: draw y=sinx and horizontal line y=sin(a).
+SOLVED EXAMPLES:
+Example 1: Prove cos(pi/7)*cos(2pi/7)*cos(3pi/7)=1/8.
+Use sin(2^n*A)=2^n*sinA*cosA*cos(2A)*...
+sin(8pi/7)=sin(pi+pi/7)=-sin(pi/7).
+2^3*sin(pi/7)*cos(pi/7)*cos(2pi/7)*cos(4pi/7)=sin(8pi/7)=-sin(pi/7).
+8*sin(pi/7)*cos(pi/7)*cos(2pi/7)*cos(4pi/7)=-sin(pi/7).
+cos(pi/7)*cos(2pi/7)*cos(4pi/7)=-1/8. Note cos(4pi/7)=cos(pi-3pi/7)=-cos(3pi/7).
+So cos(pi/7)*cos(2pi/7)*(-(-cos(3pi/7)))... gives final answer 1/8.
+Example 2: Solve sin2x-sinx=cosx-cos2x for x in [0,2pi].
+sin2x+cos2x=sinx+cosx. 2sinx cosx+2cos^2x-1=sinx+cosx.
+Let s=sinx, c=cosx. 2sc+2c^2-s-c-1=0. Factor: (2c-1)(c+s)... 
+Try: (sinx+cosx)(2cosx-1)-(sinx+cosx)=0... 
+(sinx+cosx-1)(2cosx-1)=0.
+Case 1: sinx+cosx=1 → sqrt(2)sin(x+pi/4)=1 → x+pi/4=pi/4 or 3pi/4 → x=0 or pi/2.
+Case 2: cosx=1/2 → x=pi/3 or 5pi/3.
+Solutions: {0, pi/3, pi/2, 5pi/3}.
+COMMON MISTAKES:
+Sum-to-product and product-to-sum: memorise both directions.
+Conditional identities: only valid when A+B+C=pi (triangle angles).
+General solution: write COMPLETE general solution then find specific values in given interval.""",
+    metadata={"source": "ncert", "topic": "trigonometry", "class_level": "jee_advanced", "chapter": "advanced_trigonometry", "difficulty": "advanced"}),
+
+    Document(page_content="""JEE Advanced | Topic 5: Advanced Vectors and 3D Geometry
+VECTOR ADVANCED RESULTS:
+Scalar triple product [a b c]=a.(b×c)=b.(c×a)=c.(a×b).
+[a b c]=det([[a1,a2,a3],[b1,b2,b3],[c1,c2,c3]]).
+[a b c]=0 iff vectors coplanar.
+[a+b, b+c, c+a]=2[a b c].
+Vector triple product: a×(b×c)=(a.c)b-(a.b)c.
+LINES IN 3D:
+Symmetric form: (x-x1)/l=(y-y1)/m=(z-z1)/n.
+Vector form: r=a+lambda*b.
+Foot of perpendicular from point P to line: find lambda from (P-foot).b=0.
+Image of point P in line: foot F is midpoint of P and image P'.
+PLANES:
+Equation through three points: use determinant form.
+Foot of perpendicular from (x1,y1,z1) to ax+by+cz=d:
+(x-x1)/a=(y-y1)/b=(z-z1)/c=-(ax1+by1+cz1-d)/(a^2+b^2+c^2).
+Image of point in plane: foot is midpoint of point and image.
+Angle bisector planes: locus of points equidistant from two planes.
+SKEW LINES - SHORTEST DISTANCE:
+SD=|(a2-a1).(b1×b2)|/|b1×b2|.
+If SD=0: lines intersect (or are parallel).
+SPHERE:
+Equation: (x-a)^2+(y-b)^2+(z-c)^2=r^2. Centre (a,b,c), radius r.
+General: x^2+y^2+z^2+2ux+2vy+2wz+d=0. Centre (-u,-v,-w), r=sqrt(u^2+v^2+w^2-d).
+SOLVED EXAMPLES:
+Example 1: Find foot of perpendicular from P(1,2,3) to line r=2i+j+t(i+2j+3k).
+Point on line: Q=(2+t, 1+2t, 3t). PQ=(1+t, -1+2t, 3t-3).
+PQ perpendicular to direction (1,2,3): (1+t)+2(-1+2t)+3(3t-3)=0.
+1+t-2+4t+9t-9=0 → 14t=10 → t=5/7.
+Foot: (2+5/7, 1+10/7, 15/7)=(19/7, 17/7, 15/7).
+Example 2: Shortest distance between lines r=(i+j)+t(2i-j+k) and r=(2i+j-k)+s(3i-5j+2k).
+b1×b2=|i j k; 2 -1 1; 3 -5 2|=i(-2+5)-j(4-3)+k(-10+3)=3i-j-7k. |b1×b2|=sqrt(59).
+(a2-a1)=(i-k). (a2-a1).(b1×b2)=3+0+7=10. SD=10/sqrt(59)=10sqrt(59)/59.
+Example 3: Prove [a+b, b+c, c+a]=2[a b c].
+[a+b, b+c, c+a]=(a+b).((b+c)×(c+a)).
+(b+c)×(c+a)=b×c+b×a+c×c+c×a=b×c-a×b+0+c×a.
+(a+b).(b×c-a×b+c×a)=a.(b×c)+b.(b×c)-a.(a×b)-b.(a×b)+a.(c×a)+b.(c×a).
+=[abc]+0-0-0+0+[bca]=[abc]+[abc]=2[abc]. Proved.
+COMMON MISTAKES:
+Vector triple product a×(b×c)≠(a×b)×c (NOT associative).
+Shortest distance formula: (a2-a1) is difference of POSITION VECTORS of points on each line.
+Coplanar vectors: [a b c]=0, NOT just any two being parallel.""",
+    metadata={"source": "ncert", "topic": "vectors", "class_level": "jee_advanced", "chapter": "advanced_vectors_3d", "difficulty": "advanced"}),
+
+    Document(page_content="""JEE Advanced | Topic 6: Advanced Probability
+GEOMETRIC PROBABILITY:
+When outcomes are continuous (length, area, volume based).
+P(event)=favourable measure/total measure.
+Example: Point chosen randomly in [0,1]. P(x^2<x)=P(0<x<1)=1 (since x^2<x for x in (0,1)).
+DISTRIBUTIONS:
+Binomial X~B(n,p): P(X=r)=nCr*p^r*q^(n-r). Mean=np. Var=npq.
+Poisson X~P(lambda): P(X=r)=e^(-lambda)*lambda^r/r!. Mean=Var=lambda.
+Used when n large, p small, np=lambda moderate.
+Normal X~N(mu,sigma^2): P(a<X<b)=integral from a to b of (1/(sigma*sqrt(2pi)))*e^(-(x-mu)^2/(2sigma^2)).
+Standardise: Z=(X-mu)/sigma. P(X<x)=P(Z<(x-mu)/sigma).
+CONDITIONAL PROBABILITY ADVANCED:
+Bayes with multiple stages.
+P(A_k|B)=P(B|A_k)*P(A_k)/sum_i P(B|A_i)*P(A_i).
+EXPECTED VALUE AND VARIANCE:
+E(aX+b)=aE(X)+b. Var(aX+b)=a^2*Var(X).
+E(X+Y)=E(X)+E(Y) (always). E(XY)=E(X)*E(Y) only if X,Y independent.
+Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y). If independent: Cov=0 so Var(X+Y)=Var(X)+Var(Y).
+MARKOV INEQUALITY: P(X>=a)<=E(X)/a for non-negative X.
+CHEBYSHEV INEQUALITY: P(|X-mu|>=k*sigma)<=1/k^2.
+SOLVED EXAMPLES:
+Example 1: 4 cards from deck without replacement. P(all 4 suits).
+Total ways=52C4=270725. Favourable: choose 1 from each suit=13^4=28561.
+P=28561/270725=2197/20825.
+Example 2: X~B(10,1/3). Find P(X=3) and mean.
+P(X=3)=10C3*(1/3)^3*(2/3)^7=120*(1/27)*(128/2187)=120*128/(27*2187)=15360/59049≈0.260.
+Mean=np=10/3≈3.33. Variance=npq=10*(1/3)*(2/3)=20/9.
+Example 3: Three machines A,B,C produce 50%,30%,20% of items. Defect rates 2%,3%,4%.
+Item defective. P(from machine A)?
+P(D)=0.5*0.02+0.3*0.03+0.2*0.04=0.01+0.009+0.008=0.027.
+P(A|D)=0.5*0.02/0.027=0.01/0.027=10/27.
+COMMON MISTAKES:
+Geometric probability: verify sample space is correctly defined.
+Binomial: trials must be independent with constant p.
+Bayes: identify all mutually exclusive exhaustive events (the partition).""",
+    metadata={"source": "ncert", "topic": "probability", "class_level": "jee_advanced", "chapter": "advanced_probability", "difficulty": "advanced"}),
+
+    Document(page_content="""JEE Advanced | Topic 7: Number Theory
+DIVISIBILITY AND PRIMES:
+Prime factorisation theorem: unique factorisation into primes.
+Number of divisors of n=p1^a1*p2^a2*...*pk^ak is (a1+1)(a2+1)...(ak+1).
+Sum of divisors=(p1^(a1+1)-1)/(p1-1) * (p2^(a2+1)-1)/(p2-1) * ...
+EULER'S TOTIENT FUNCTION phi(n):
+phi(n)=number of integers from 1 to n that are coprime to n.
+phi(p)=p-1 for prime p. phi(p^k)=p^k-p^(k-1)=p^(k-1)(p-1).
+phi(mn)=phi(m)*phi(n) if gcd(m,n)=1 (multiplicative).
+phi(n)=n*(1-1/p1)*(1-1/p2)*...*(1-1/pk) where p1,...pk are distinct prime factors.
+FERMAT'S LITTLE THEOREM:
+If p is prime and gcd(a,p)=1: a^(p-1)≡1(mod p).
+Equivalently: a^p≡a(mod p) for all a.
+Used for: computing large powers mod prime, finding inverses mod prime.
+EULER'S THEOREM (generalisation):
+If gcd(a,n)=1: a^phi(n)≡1(mod n).
+WILSON'S THEOREM:
+(p-1)!≡-1(mod p) iff p is prime.
+Converse: if (n-1)!≡-1(mod n) then n is prime.
+CHINESE REMAINDER THEOREM (CRT):
+System x≡a1(mod n1), x≡a2(mod n2) has unique solution mod n1*n2 if gcd(n1,n2)=1.
+Solution: x=a1*M1*y1+a2*M2*y2 where M=n1*n2, Mi=M/ni, yi=Mi^(-1)(mod ni).
+MODULAR ARITHMETIC:
+(a+b)mod n=((a mod n)+(b mod n))mod n.
+(a*b)mod n=((a mod n)*(b mod n))mod n.
+Modular inverse of a mod n: find x such that ax≡1(mod n). Exists iff gcd(a,n)=1.
+SOLVED EXAMPLES:
+Example 1: Find last two digits of 7^100 (i.e., 7^100 mod 100).
+phi(100)=phi(4)*phi(25)=2*20=40. gcd(7,100)=1.
+7^40≡1(mod 100). 7^100=7^(40*2+20)=(7^40)^2*7^20≡7^20(mod 100).
+7^2=49. 7^4=2401≡1(mod 100). 7^20=(7^4)^5≡1(mod 100).
+Last two digits of 7^100 are 01.
+Example 2: Prove 2^(p-1)≡1(mod p) for prime p=7.
+2^6=64=63+1=9*7+1≡1(mod 7). Fermat's little theorem confirmed.
+Example 3: phi(36)=phi(4)*phi(9)=2*6=12.
+Integers from 1-36 coprime to 36: 12 such integers.
+COMMON MISTAKES:
+Fermat's little theorem: requires gcd(a,p)=1 (a not divisible by p).
+phi is MULTIPLICATIVE only for coprime factors.
+CRT requires moduli to be pairwise coprime.""",
+    metadata={"source": "ncert", "topic": "number_theory", "class_level": "jee_advanced", "chapter": "number_theory", "difficulty": "advanced"}),
+
+    Document(page_content="""JEE Advanced | Topic 8: Inequalities and Functional Equations
+CLASSICAL INEQUALITIES:
+AM-GM: (a1+a2+...+an)/n >= (a1*a2*...*an)^(1/n). Equality iff all equal.
+For two numbers: (a+b)/2 >= sqrt(ab). So a+b >= 2*sqrt(ab).
+AM-GM-HM chain: AM >= GM >= HM. HM=n/(1/a1+...+1/an). For two: 2ab/(a+b).
+Cauchy-Schwarz: (a1^2+a2^2+...+an^2)(b1^2+...+bn^2) >= (a1b1+...+anbn)^2.
+Equality iff a1/b1=a2/b2=...=an/bn (proportional).
+Alternate form: (sum ai*bi)^2 <= (sum ai^2)(sum bi^2).
+Power Mean inequality: if p>q then M_p >= M_q where M_p=((a1^p+...+an^p)/n)^(1/p).
+Triangle inequality: |a+b| <= |a|+|b|. ||a|-|b|| <= |a-b|.
+APPLICATIONS OF AM-GM:
+Minimum of f(x)=x+1/x for x>0: by AM-GM, x+1/x >= 2*sqrt(x*1/x)=2. Min=2 at x=1.
+Minimum of ax+b/x: 2*sqrt(ab). Attained at x=sqrt(b/a).
+For PRODUCT fixed, SUM is minimised when equal.
+For SUM fixed, PRODUCT is maximised when equal.
+FUNCTIONAL EQUATIONS:
+Find all functions satisfying given condition.
+Common types:
+f(x+y)=f(x)+f(y): Cauchy equation. Solution: f(x)=cx for continuous functions.
+f(x+y)=f(x)*f(y): Solution f(x)=a^x.
+f(xy)=f(x)+f(y): Solution f(x)=c*log(x).
+APPROACH: substitute special values (x=0, x=y, y=0) to find constraints, then prove.
+SOLVED EXAMPLES:
+Example 1: Prove AM >= GM for 3 numbers a,b,c.
+By AM-GM for 2 numbers: a+b >= 2*sqrt(ab). So a+b+c >= 2*sqrt(ab)+c.
+Need 2*sqrt(ab)+c >= 3*(abc)^(1/3). Let p=sqrt(ab), q=c/2 (not quite right approach).
+Direct: WLOG a+b+c=3 (normalise). Need abc<=1.
+By AM-GM on a,b: (a+b)/2>=sqrt(ab). On (a+b)/2 and c: ((a+b)/2+c)/2>=sqrt((a+b)c/2).
+Better: use substitution x=a^(1/3), y=b^(1/3), z=c^(1/3). x^3+y^3+z^3>=3xyz (standard identity).
+Since x^3+y^3+z^3-3xyz=(x+y+z)(x^2+y^2+z^2-xy-yz-zx)>=0 (since x+y+z>0 and second factor>=0).
+Example 2: Find min of (x+1/x)^2+(y+1/y)^2 given x,y>0, xy=1.
+Since xy=1: y=1/x. Minimize f(x)=(x+1/x)^2+(1/x+x)^2=2(x+1/x)^2.
+By AM-GM: x+1/x>=2. So f(x)>=2*4=8. Min=8 at x=y=1.
+Example 3: Cauchy-Schwarz: (a^2+b^2)(c^2+d^2)>=(ac+bd)^2.
+Proof: expand LHS-RHS=(ad-bc)^2>=0. QED.
+COMMON MISTAKES:
+AM-GM equality: ALL quantities must be EQUAL for equality to hold.
+Cauchy-Schwarz: direction of inequality. LHS (product of sums of squares) >= RHS (square of sum of products).
+For functional equations: proving f satisfies equation is NOT enough; must show it is the ONLY solution.""",
+    metadata={"source": "ncert", "topic": "algebra", "class_level": "jee_advanced", "chapter": "inequalities", "difficulty": "advanced"}),
+
 ]
