@@ -3383,3 +3383,4 @@ For functional equations: proving f satisfies equation is NOT enough; must show 
     metadata={"source": "ncert", "topic": "algebra", "class_level": "jee_advanced", "chapter": "inequalities", "difficulty": "advanced"}),
 
 ]
+
