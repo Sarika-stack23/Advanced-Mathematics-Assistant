@@ -401,156 +401,121 @@ def build_pipeline(pdf_paths=None, urls=None, text_paths=None, force_rebuild=Fal
 # ║  STEP 5 — QUERY PROCESSING & AI ENGINE                              ║
 # ╚══════════════════════════════════════════════════════════════════════╝
 
-SYSTEM_TEMPLATE = """You are an Indian mathematics teacher explaining on a whiteboard or notebook paper.
+SYSTEM_TEMPLATE = """You are an Indian mathematics teacher writing on a whiteboard.
 
-You do NOT sound like an AI. You do NOT sound like a textbook.
-You sound like a REAL teacher sitting next to the student — thinking out loud, writing on paper, explaining step by step in a warm human voice.
-
-⚠️ NON-MATH QUESTIONS — STRICT RULE:
-If the question is NOT about mathematics (e.g. today's date, general knowledge, medicine, biology, history, news, food, sports, greetings, or anything unrelated to math), respond with ONLY this one line and nothing else:
-"❌ I only teach math! Ask me any math problem and I will explain it like a real teacher."
-Do NOT use the step format. Do NOT try to answer. Stop immediately after this one line.
+⚠️ NON-MATH QUESTIONS:
+If NOT about mathematics → reply ONLY: "❌ I only teach math! Ask me any math problem."
+Stop immediately. Nothing else.
 
 ════════════════════════════════════════
-HOW A REAL TEACHER EXPLAINS ON PAPER:
+THE GOLDEN RULE — READ THIS FIRST:
 ════════════════════════════════════════
 
-✅ Think out loud first — one natural opening line
-   "Okay, so what are we looking at here?"
-   "Alright, let me read this carefully..."
-   "Hmm, this is a quadratic — let's see what we have."
-   "Right, so we need to find..."
+NEVER write paragraphs. NEVER write long sentences explaining theory.
+Write SHORT lines. Like a teacher writing on a board.
+Every line = one idea. One calculation. One small result.
+If a student can't follow in 5 seconds → you wrote too much.
 
-✅ Point out what matters before jumping in
-   "Notice this — the sign is NEGATIVE here, be careful."
-   "See this number? This is where most students make a mistake."
-   "This looks complicated but watch what happens step by step."
+WRONG (too much theory, paragraph style):
+"The Commutative Property of Addition states that when we add numbers,
+the order does not matter. This means that 3+4 gives the same result
+as 4+3, which we can verify by counting on a number line..."
 
-✅ Show working one small piece at a time
-   Write every line. Don't skip steps.
-   Like a teacher writing slowly on the board so students can follow.
-
-✅ Talk to the student while solving
-   "Remember what we said about factors? We use that here."
-   "Does this look familiar? Same identity as before."
-   "Still with me? Good. Now the next part is easier."
-   "Let's fill this in one piece at a time."
-
-✅ React when something nice happens
-   "Oh nice — this simplifies perfectly!"
-   "See that? The middle terms cancelled. Beautiful."
-   "√49 = 7. Clean number. Good sign!"
-   "That worked out nicely."
-
-✅ Warn before tricky parts
-   "Careful here — minus times minus becomes plus."
-   "Don't rush this step. Many students lose marks here."
-   "Watch the sign when we move this to the other side."
-   "This is the part where everyone makes a mistake — go slowly."
-
-✅ End with clear answer + one closing thought
-   Circle the answer clearly.
-   One line like a teacher checking understanding:
-   "So the key thing to remember here is..."
-   "Make sense? The trick was noticing that..."
-   "That's it! Not so bad once you see the pattern."
+RIGHT (whiteboard style):
+Step 1 — Check: does order matter in addition?
+   3 + 4 = 7
+   4 + 3 = 7  ← same answer!
+   ✓ Yes — order doesn't matter. This is called Commutative Property.
 
 ════════════════════════════════════════
-DETECT LEVEL AND ADJUST STYLE:
+FORMAT — FOLLOW EXACTLY EVERY TIME:
 ════════════════════════════════════════
 
-Class 1–5 (very basic):
-→ Extremely simple language. Short sentences.
-→ Real life examples ("think of 12 chocolates shared between 4 friends...")
-→ Lots of encouragement ("you've got this!", "great thinking!")
-→ No scary words. Very friendly and patient.
+[One short opening — max 1 line. Like reading the problem aloud.]
+"Okay, quadratic equation. Let's use the formula."
+"Right — we need HCF of two numbers."
+"Alright, let's integrate this step by step."
 
-Class 6–8 (foundation):
-→ Simple and friendly. Like an older sibling helping.
-→ Real examples where possible.
-→ Explain WHY each step works, not just WHAT to do.
-→ "Remember — when we multiply two negatives we get a positive!"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Question: [restate question clearly]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Class 9–10 (board exams):
-→ NCERT board exam style WITH teacher voice added.
-→ Show complete working — every single line.
-→ Point out "this is important for board exams."
-→ Show the most common mistake students make in this type.
+Step 1 — [title: what and why, max 1 line]
+   [calculation line 1]
+   [calculation line 2]
+   [short teacher note if needed — max 1 line]
 
-Class 11–12 (pre-JEE):
-→ Deeper explanation. Mention theorem or formula name.
-→ Show the reasoning WHY before showing HOW.
-→ "The key idea here is..." before the main step.
-→ More detailed, but still warm and human.
+Step 2 — [title]
+   [calculation]
+   [result]
 
-JEE Advanced (competition level):
-→ Solve completely with full working first.
+[only as many steps as needed — no fake steps]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Answer: [final answer]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[One closing line max — "Key thing: watch the sign here!" or "Make sense?"]
+
+════════════════════════════════════════
+INSIDE EACH STEP — RULES:
+════════════════════════════════════════
+
+✅ DO write like this:
+   a = 2, b = 5, c = -3
+   b² - 4ac = 25 - 4(2)(-3) = 25 + 24 = 49   ← careful: minus×minus = plus!
+   √49 = 7   ← clean number, good sign!
+   x = (-5 ± 7) / 4
+
+✅ DO add ONE short teacher reaction inline:
+   "← careful here"   "← minus × minus = plus!"   "← nice, simplifies!"
+   "← most students miss this"   "← remember this!"
+
+❌ NEVER write:
+   - Paragraphs or long sentences
+   - Theory blocks explaining what a property IS
+   - Repeated explanations of the same idea
+   - More than 1 line of teacher commentary per step
+   - Sentences like "In this case, we can see that..." or "This demonstrates..."
+   - Definitions ("The quadratic formula is used when...")
+   - History or background ("This property was discovered...")
+
+════════════════════════════════════════
+DETECT LEVEL — CHANGE DEPTH NOT STYLE:
+════════════════════════════════════════
+
+Class 1–5:
+→ Ultra simple. Real objects. ("3 apples + 4 apples = 7 apples")
+→ No jargon. Max 3 steps.
+→ Lots of ✓ and encouragement inline.
+
+Class 6–8:
+→ Short friendly lines. Explain WHY in 3-4 words inline.
+→ "← because negative × negative = positive"
+
+Class 9–10:
+→ Full working, every line shown.
+→ One inline note on common exam mistake.
+→ "← board exams always ask this"
+
+Class 11–12:
+→ State theorem/formula name once, then just use it.
+→ Show every substitution clearly.
+
+JEE Advanced:
+→ Full clean solution first.
 → Then add:
-   💡 Key Insight: [the trick or observation that makes this easier]
-→ Then add:
-   ⏱️ Exam Tip: [what to write quickly in exam to save time]
-→ If a shortcut method exists, show it after the main method.
+   💡 Key Insight: [one line — the clever observation]
+   ⏱️ Exam Tip: [one line — what to write quickly]
 
 ════════════════════════════════════════
-EXACT FORMAT TO FOLLOW EVERY TIME:
+SYMBOLS — STRICT:
 ════════════════════════════════════════
 
-[One natural opening line — like a teacher reading the problem]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Question: [write the question clearly]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-[One line setting context if needed]
-
-Step 1 — [what we are doing and WHY in simple words]
-
-   [working written line by line]
-   [teacher comment inline if something important]
-
-Step 2 — [next action]
-
-   [working]
-   [reaction if something nice — "perfect, this simplifies!"]
-
-[Continue only as many steps as genuinely needed]
-[NEVER add fake steps to make it look longer]
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ Answer: [final answer written clearly]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-[One warm closing line — like a teacher checking understanding]
-
-════════════════════════════════════════
-STRICT RULES — NEVER BREAK THESE:
-════════════════════════════════════════
-
-LANGUAGE AND SYMBOLS:
-→ NEVER use LaTeX or $ symbols. Plain text and Unicode only.
-→ Use these Unicode symbols: π, ², ³, √, ∑, ∫, ∞, ±, ≤, ≥, ≠, ×, ÷, α, β, θ
-→ NEVER write sqrt() — always use √. Example: √(b²-4ac) NOT sqrt(b²-4ac)
-→ NEVER write ^2 or ^3 — always use ² ³. Example: x² NOT x^2
-→ NEVER write pi — always use π
-→ NEVER write +/- — always use ±
-→ Write fractions as: (numerator)/(denominator) e.g. (π²)/6
-→ Write summations as: ∑(n=1 to ∞) 1/n²
-→ If student asks in Hindi or Hinglish — answer in the same language
-
-STEPS AND CONTENT:
-→ Always complete the full solution — never stop mid-answer
-→ Each step must be DIFFERENT — never repeat the same idea
-→ Use only as many steps as the problem genuinely needs
-→ 1 step for trivial, 2-3 for simple, 4-6 for medium, up to 8 for complex
-→ NEVER add fake or empty steps just to fill space
-→ Each step must add NEW information only
-→ STOP after the closing line — no extra commentary
-
-STYLE:
-→ Sound human. Sound warm. Sound like a teacher who genuinely cares.
-→ Never sound robotic, cold, or like a textbook definition
-→ Never use bullet point lists inside the working steps
-→ Show the working like handwriting on paper — line by line, slowly
+→ NEVER LaTeX or $. Unicode only.
+→ √ not sqrt(). x² not x^2. π not pi. ± not +/-
+→ Fractions: (a+b)/(c+d)
+→ Hindi/Hinglish question → answer in same language
 
 Context from knowledge base:
 {context}
@@ -882,53 +847,76 @@ def render_graph(expression: str, x_range: tuple = (-10, 10), title: str = ""):
     import streamlit as st
     try:
         import numpy as np
-        import matplotlib.pyplot as plt
-        _dark     = st.session_state.get("theme", "dark") == "dark"
-        _fig_bg   = "#1e2235" if _dark else "#ffffff"
-        _ax_bg    = "#0f1117" if _dark else "#f8fafc"
-        _axis_col = "#4a5568" if _dark else "#cbd5e1"
-        _tick_col = "#8892b0" if _dark else "#475569"
-        _title_col= "#e8eaf6" if _dark else "#0f172a"
-        _leg_face = "#1e2235" if _dark else "#ffffff"
-        _leg_edge = "#2d3561" if _dark else "#e2e8f0"
-        _leg_lbl  = "#e8eaf6" if _dark else "#0f172a"
-        plt.style.use("dark_background" if _dark else "default")
-        fig, ax = plt.subplots(figsize=(8, 5))
-        fig.patch.set_facecolor(_fig_bg)
-        ax.set_facecolor(_ax_bg)
+        import plotly.graph_objects as go
+
+        _dark   = st.session_state.get("theme", "dark") == "dark"
+        _bg     = "#0d1220" if _dark else "#ffffff"
+        _paper  = "#080c14" if _dark else "#f8fafc"
+        _grid   = "#1e293b" if _dark else "#e2e8f0"
+        _text   = "#94a3b8" if _dark else "#475569"
+        _colors = ["#4f8ef7", "#4ecca3", "#f5c842", "#ff6b6b", "#c792ea"]
+
         x = np.linspace(x_range[0], x_range[1], 1000)
-        ns = {"__builtins__": {}, "x": x, "np": np,
-              "sin": np.sin, "cos": np.cos, "tan": np.tan, "exp": np.exp,
-              "log": np.log, "sqrt": np.sqrt, "abs": np.abs,
-              "pi": np.pi, "e": np.e,
-              "arcsin": np.arcsin, "arccos": np.arccos, "arctan": np.arctan}
-        colors = ["#4f8ef7", "#4ecca3", "#f5c842", "#ff6b6b", "#c792ea"]
-        for i, expr in enumerate(expression.split(",")[:5]):
+        ns = {
+            "__builtins__": {},
+            "x": x, "np": np,
+            "sin": np.sin, "cos": np.cos, "tan": np.tan,
+            "exp": np.exp, "log": np.log, "sqrt": np.sqrt,
+            "abs": np.abs, "pi": np.pi, "e": np.e,
+            "arcsin": np.arcsin, "arccos": np.arccos, "arctan": np.arctan,
+            "sinh": np.sinh, "cosh": np.cosh, "tanh": np.tanh,
+        }
+
+        fig = go.Figure()
+        plotted = 0
+
+        for idx, expr in enumerate(expression.split(",")[:5]):
+            expr = expr.strip()
             try:
-                y = eval(re.sub(r'\^', '**', expr.strip()), ns)
+                y = eval(re.sub(r'\^', '**', expr), ns)
                 y = np.where(np.abs(y) > 1e10, np.nan, y)
-                ax.plot(x, y, color=colors[i % len(colors)], linewidth=2.2,
-                        label=f"y = {expr.strip()}", alpha=0.9)
+                fig.add_trace(go.Scatter(
+                    x=x, y=y,
+                    mode="lines",
+                    name=f"y = {expr}",
+                    line=dict(color=_colors[idx % len(_colors)], width=2.5),
+                    hovertemplate=f"y = {expr}<br>x = %{{x:.3f}}<br>y = %{{y:.3f}}<extra></extra>",
+                ))
+                plotted += 1
             except Exception:
-                st.warning(f"Could not plot: {expr.strip()}")
-        ax.axhline(0, color=_axis_col, linewidth=0.8, alpha=0.7)
-        ax.axvline(0, color=_axis_col, linewidth=0.8, alpha=0.7)
-        ax.grid(True, alpha=0.15, color=_axis_col, linestyle="--")
-        for spine in ax.spines.values():
-            spine.set_color(_leg_edge)
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-        ax.tick_params(colors=_tick_col)
-        ax.set_xlabel("x", color=_tick_col, fontsize=11)
-        ax.set_ylabel("y", color=_tick_col, fontsize=11)
-        if title:
-            ax.set_title(title, color=_title_col, fontsize=13, pad=15)
-        if "," in expression:
-            ax.legend(facecolor=_leg_face, edgecolor=_leg_edge,
-                      labelcolor=_leg_lbl, fontsize=9)
-        plt.tight_layout()
-        st.pyplot(fig)
-        plt.close(fig)
+                st.warning(f"Could not plot: {expr}")
+
+        if plotted == 0:
+            return
+
+        fig.update_layout(
+            title=dict(text=title, font=dict(color=_text, size=14)) if title else None,
+            paper_bgcolor=_paper,
+            plot_bgcolor=_bg,
+            font=dict(color=_text, family="DM Sans"),
+            xaxis=dict(
+                showgrid=True, gridcolor=_grid, gridwidth=0.5,
+                zeroline=True, zerolinecolor=_text, zerolinewidth=1,
+                tickfont=dict(color=_text), title="x",
+                showspikes=True, spikecolor=_text, spikethickness=1,
+            ),
+            yaxis=dict(
+                showgrid=True, gridcolor=_grid, gridwidth=0.5,
+                zeroline=True, zerolinecolor=_text, zerolinewidth=1,
+                tickfont=dict(color=_text), title="y",
+                showspikes=True, spikecolor=_text, spikethickness=1,
+            ),
+            legend=dict(
+                bgcolor=_bg, bordercolor=_grid, borderwidth=1,
+                font=dict(color=_text),
+            ),
+            hovermode="x unified",
+            margin=dict(l=50, r=20, t=40 if title else 20, b=50),
+            height=420,
+        )
+
+        st.plotly_chart(fig, use_container_width=True)
+
     except Exception as e:
         st.error(f"Graph error: {e}")
 
@@ -1376,6 +1364,19 @@ def run_streamlit_app():
     ::-webkit-scrollbar-track {{ background: var(--bg); }}
     ::-webkit-scrollbar-thumb {{ background: var(--border2); border-radius: 10px; }}
 
+    /* ── Mobile tweaks ── */
+    @media (max-width: 768px) {{
+        .hero-title {{ font-size: 1.8rem !important; }}
+        .hero-sub {{ font-size: 0.82rem !important; }}
+        .feature-grid {{ grid-template-columns: 1fr !important; }}
+        .main .block-container {{ padding: 0.5rem !important; }}
+        .stButton > button {{ min-height: 44px !important; font-size: 0.9rem !important; }}
+        .stTextArea textarea {{ font-size: 0.95rem !important; min-height: 60px !important; }}
+        .msg-user {{ font-size: 0.88rem !important; padding: 0.75rem !important; }}
+        .hero-stats {{ gap: 1rem !important; }}
+        .stat-num {{ font-size: 1rem !important; }}
+    }}
+
     /* ── Radio ── */
     .stRadio > div {{ gap: 0.4rem !important; }}
     .stRadio > div label {{ padding: 4px 8px; border-radius: 8px; cursor: pointer; }}
@@ -1514,6 +1515,26 @@ def run_streamlit_app():
             st.markdown('<div class="status-pill status-err"><span class="dot"></span> No API Key — check .env</div>', unsafe_allow_html=True)
 
         st.markdown('<div class="sidebar-section">Browse by Class</div>', unsafe_allow_html=True)
+
+        # ── Topic filter ─────────────────────────────────────────────
+        TOPIC_FILTER_MAP = {
+            "All Topics": None,
+            "🔢 Algebra": ["algebra", "equations", "quadratic", "polynomials", "linear"],
+            "📐 Geometry": ["geometry", "triangles", "circles", "coordinate", "constructions"],
+            "📊 Trigonometry": ["trigonometry", "trig", "sin", "cos", "tan", "heights"],
+            "∫ Calculus": ["calculus", "derivatives", "integrals", "limits", "differential"],
+            "🎲 Probability": ["probability", "statistics", "data", "mean", "median"],
+            "🔣 Numbers": ["numbers", "real", "rational", "hcf", "lcm", "integers"],
+            "📈 Vectors": ["vectors", "3d", "matrices", "determinants"],
+        }
+        selected_topic = st.selectbox(
+            "Filter by topic:",
+            options=list(TOPIC_FILTER_MAP.keys()),
+            index=0,
+            label_visibility="collapsed",
+            key="topic_filter"
+        )
+
         selected_class = st.selectbox(
             "Select class:",
             options=list(CLASS_EXAMPLES.keys()),
@@ -1523,7 +1544,13 @@ def run_streamlit_app():
         )
         if selected_class and selected_class in CLASS_EXAMPLES:
             chapters = CLASS_EXAMPLES[selected_class]
+            topic_keywords = TOPIC_FILTER_MAP.get(selected_topic)
             for chapter_name, question in chapters.items():
+                # Apply topic filter if selected
+                if topic_keywords:
+                    chapter_lower = chapter_name.lower() + " " + question.lower()
+                    if not any(kw in chapter_lower for kw in topic_keywords):
+                        continue
                 if st.button(
                     chapter_name,
                     key=f"ch_{chapter_name}",
@@ -2160,13 +2187,15 @@ def run_streamlit_app():
 
     with st.expander("💡 Tips", expanded=False):
         st.markdown("""
-        - **Type question** → click Ask ∫ for step-by-step solution
+        - **Type question** → click Solve → get whiteboard-style step-by-step solution
+        - **Filter topics** → use the topic dropdown in sidebar to find chapters faster
         - **📷 Camera** → snap photo of handwritten problem → auto solves!
         - **🖼️ Upload Image** → upload screenshot or photo of any problem
         - **📄 PDF Upload** → upload textbook or notes → 3 action buttons appear!
-        - **Graph**: Type `x**2, sin(x)` in sidebar Graph Plotter
-        - **Symbolic**: Use ⚡ Compute for instant derivatives/integrals
-        - **Copy**: Click 📋 Copy plain text below any answer
+        - **📊 Graph** → type `sin(x), cos(x)` in sidebar → interactive Plotly graph with zoom + hover
+        - **⚡ Symbolic** → use Compute for instant derivatives, integrals, equation solving
+        - **📤 Share** → click Share answer below any solution to copy and send to friends
+        - **🔥 Streak** → solve problems daily to build your streak!
         """)
 
 

@@ -10,7 +10,7 @@
 [![JEE](https://img.shields.io/badge/JEE-Advanced%20Level-FF9800?style=for-the-badge)](https://jeeadv.ac.in)
 
 **The most complete free AI math tutor for Indian students.**
-**Class 6 → Class 12 → JEE Advanced. Zero missing chapters.**
+**Class 6 → Class 12 → JEE Advanced. Explains like a real teacher at a whiteboard.**
 
 [**🚀 Try Live Demo**](https://advanced-mathematics-assistant-zvlizldwugwffind.streamlit.app/) · [Report Bug](https://github.com/sarika-stack23/AdvMAthAI/issues) · [Request Feature](https://github.com/sarika-stack23/AdvMAthAI/issues)
 
@@ -23,6 +23,45 @@
 | Dark Mode | Light Mode |
 |---|---|
 | ![Dark](screenshots/dark_mode.png) | ![Light](screenshots/light_mode.png) |
+
+---
+
+## ✨ What's New in Phase 3
+
+### ✍️ Whiteboard-Style Answers (Biggest Change)
+
+Every answer now looks like a teacher writing on a board — not an AI typing an essay.
+
+**Before (Phase 2):**
+```
+The Commutative Property of Addition states that when we add numbers,
+the order does not matter. This means that 3+4 gives the same result
+as 4+3, which we can verify by counting on a number line...
+```
+
+**After (Phase 3):**
+```
+Step 1 — Does order matter in addition?
+   3 + 4 = 7
+   4 + 3 = 7  ← same answer!
+   ✓ Commutative Property.
+
+✅ Answer: 3+4 = 4+3 = 7
+Key thing: this works for any two numbers!
+```
+
+One rule drives every answer: **"If a student can't follow in 5 seconds — you wrote too much."**
+
+### 🆕 Phase 3 Features
+
+| Feature | What it does |
+|---|---|
+| ✍️ Whiteboard AI style | Short lines, one calculation per line, inline teacher reactions |
+| 📤 Share answer | One-click button to expand and copy full solution |
+| 🔢 Topic filter | Filter 104 NCERT chapters by Algebra, Calculus, Trig, Geometry and more |
+| 📈 Plotly graphs | Interactive — zoom, pan, hover for exact coordinates, download PNG |
+| 🔥 Streak counter | Tracks problems solved today + daily streak (🔥 after 3+ days) |
+| 📱 Mobile tweaks | Bigger touch targets, responsive layout on all phone screens |
 
 ---
 
@@ -41,12 +80,6 @@
 | Class 12 | 13 | Matrices, Integrals, Differential Equations, Vectors |
 | JEE Advanced | 8 | L'Hopital, Theory of Equations, Cauchy-Schwarz, CRT |
 
-### 📱 Class-wise Sidebar Browser
-- Dropdown selector for all 8 class groups
-- 112 chapter buttons — one click sends a sample question
-- Works perfectly on mobile, tablet, iPad, desktop
-- No more flat list of 8 hardcoded examples
-
 ### 📊 Knowledge Base Stats
 - **118 RAG documents** (was 6 in V1)
 - **3,500+ ChromaDB vector chunks** (was ~610)
@@ -57,18 +90,21 @@
 
 ## ✨ All Features
 
-- 🧮 **Step-by-step solutions** — NCERT/CBSE style, auto-detects difficulty (Class 6 to JEE Advanced)
+- 🧮 **Whiteboard-style solutions** — short lines, one idea per line, inline teacher reactions
 - 📚 **Complete NCERT coverage** — every chapter from Class 6 to Class 12, nothing missing
 - 🏆 **JEE Advanced level** — L'Hopital, Taylor series, Cauchy-Schwarz, Theory of Equations
-- 📱 **Class-wise sidebar** — browse 112 chapters by class, one click to solve
+- 📱 **Class-wise sidebar** — browse 104 chapters by class, filter by topic
+- 🔢 **Topic filter** — Algebra, Calculus, Trigonometry, Geometry, Probability and more
+- 📤 **Share answer** — one-click copy of full solution to send to friends
+- 🔥 **Streak counter** — tracks daily problems solved and study streak
+- 📈 **Interactive graphs** — Plotly with zoom, pan, hover coordinates, PNG download
 - ⚡ **Symbolic computation** — exact derivatives, integrals, equation solving via SymPy
-- 📈 **Graph plotter** — visualize any mathematical function instantly
 - 📄 **PDF upload** — upload textbooks or question papers and ask anything
 - 📷 **Camera / image scan** — snap a photo of a handwritten problem, auto-solves
 - 💬 **Chat memory** — remembers conversation context (MongoDB or in-memory)
 - 🌗 **Dark / light theme** — toggle in sidebar
 - 🔄 **Auto model fallback** — if Groq daily limit hit, silently switches to backup model
-- 🔒 **Secure** — no `eval()` on user input, all API keys via environment variables
+- 🔒 **Secure** — all API keys via environment variables
 
 ---
 
@@ -81,6 +117,7 @@
 | Embeddings | HuggingFace sentence-transformers/all-MiniLM-L6-v2 |
 | Vector DB | ChromaDB (default) or FAISS |
 | Knowledge Base | 118 NCERT documents (knowledge_base.py) |
+| Graphs | Plotly (interactive) |
 | Symbolic Math | SymPy |
 | OCR | Tesseract + pytesseract |
 | Memory | MongoDB Atlas (optional) or in-memory |
@@ -93,7 +130,7 @@
 ```
 AdvMAthAI/
 ├── main.py               # UI + AI engine (7-step pipeline)
-├── knowledge_base.py     # All 118 NCERT + JEE documents + sidebar data ← NEW in V2
+├── knowledge_base.py     # All 118 NCERT + JEE documents + sidebar data
 ├── .env                  # Your API keys (never commit this)
 ├── .env.example          # Template — safe to commit
 ├── .gitignore
@@ -245,6 +282,7 @@ python3.11 main.py --eval             # Evaluate RAG pipeline
 | ChromaDB error | Delete `chroma_db/` folder and run `--rebuild` |
 | Slow first load | Normal — embedding model downloads once, then instant |
 | knowledge_base import error | Make sure `knowledge_base.py` is in same folder as `main.py` |
+| Plotly graph not showing | Run `pip install plotly` and add `plotly>=5.0.0` to `requirements.txt` |
 | Meta tensor error on startup | Pinned versions in `requirements.txt` fix this |
 | OCR / camera scan not working | Run `pip install pytesseract` then `brew install tesseract` (Mac) |
 | Wrong image shows pytesseract error | Fixed in v1.2.1 — update to latest `requirements.txt` |
@@ -254,6 +292,15 @@ python3.11 main.py --eval             # Evaluate RAG pipeline
 ---
 
 ## 📝 Changelog
+
+### Phase 3 — April 2026
+- ✅ **Whiteboard-style answers** — short lines, one idea per line, no paragraphs ever
+- ✅ **5-second rule** — if student can't follow in 5 seconds, AI writes shorter
+- ✅ **Share answer button** — one-click to expand and copy full solution
+- ✅ **Topic filter** — filter 104 chapters by Algebra, Calculus, Trigonometry, Geometry, Probability
+- ✅ **Plotly interactive graphs** — replaces matplotlib, adds zoom/pan/hover/download
+- ✅ **Streak counter** — daily problems solved + 🔥 streak after 3+ days
+- ✅ **Mobile tweaks** — bigger touch targets, responsive layout, cleaner phone UI
 
 ### v2.0.0 — April 2026
 - ✅ **Complete NCERT coverage** — 104 chapters from Class 6 to Class 12, zero missing
@@ -268,7 +315,6 @@ python3.11 main.py --eval             # Evaluate RAG pipeline
 ### v1.2.1 — March 2026
 - ✅ Added `pytesseract>=0.3.10` to `requirements.txt`
 - ✅ Wrong image now correctly shows "❌ This is not a Math image" card
-- ✅ Added real dark/light mode screenshots to README
 
 ### v1.2.0 — March 2026
 - ✅ Fixed OCR logic — wrong image no longer shows pytesseract install error
@@ -276,14 +322,12 @@ python3.11 main.py --eval             # Evaluate RAG pipeline
 - ✅ OS-tabbed install instructions (macOS / Linux / Windows) in sidebar
 - ✅ Replaced broken LaTeX with clean Unicode
 - ✅ Pinned `sentence-transformers==2.7.0` + `transformers==4.40.2`
-- ✅ Added `numpy<2.0.0` pin
 
 ### v1.1.0 — March 2026
 - ✅ Auto model fallback (70B → 8B → Mixtral) on daily token limit
 - ✅ Streamlit Cloud secrets support
 - ✅ Fixed widget key bug
 - ✅ Fixed LangChain template crash on math content with `{ }` braces
-- ✅ Module-level caching for embeddings, LLM, pipeline
 
 ### v1.0.0 — Initial Release
 - 🎉 Full RAG pipeline with ChromaDB / FAISS
