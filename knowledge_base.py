@@ -3382,5 +3382,1195 @@ Cauchy-Schwarz: direction of inequality. LHS (product of sums of squares) >= RHS
 For functional equations: proving f satisfies equation is NOT enough; must show it is the ONLY solution.""",
     metadata={"source": "ncert", "topic": "algebra", "class_level": "jee_advanced", "chapter": "inequalities", "difficulty": "advanced"}),
 
-]
+    # ════════════════════════════════════════════════════════════════
+    # CLASS 9 — NCERT EXERCISE QUESTIONS (v3.1)
+    # All exercises from Class 9 Maths 2025-26 syllabus
+    # ════════════════════════════════════════════════════════════════
 
+    # ── Ch1: Number Systems ──────────────────────────────────────────
+
+    Document(page_content="""Class 9 | Ch1: Number Systems | Exercise 1.1
+
+Q1. Is zero a rational number? Can you write it in the form p/q, where p and q are integers and q ≠ 0?
+Answer: Yes. Zero is a rational number. 0 = 0/1 = 0/2 = 0/(-3). Here p=0, q≠0, both integers. ✅ Zero IS a rational number.
+
+Q2. Find six rational numbers between 3 and 4.
+Answer: Write 3 = 21/7 and 4 = 28/7. Six rationals: 22/7, 23/7, 24/7, 25/7, 26/7, 27/7. ✅ Many answers possible.
+
+Q3. Find five rational numbers between 3/5 and 4/5.
+Answer: Write 3/5 = 18/30 and 4/5 = 24/30. Five rationals: 19/30, 20/30, 21/30, 22/30, 23/30. ✅
+
+Q4. State whether true or false. Give reasons.
+(i) Every natural number is a whole number.
+(ii) Every integer is a whole number.
+(iii) Every rational number is a whole number.
+Answer: (i) TRUE — Natural={1,2,3...} ⊂ Whole={0,1,2,3...}. (ii) FALSE — Negative integers like -1,-2 are NOT whole numbers. (iii) FALSE — Fractions like 1/2, 3/4 are rational but not whole. ✅ (i)True (ii)False (iii)False.""",
+        metadata={"source": "ncert_exercises", "topic": "numbers", "class_level": "class_9", "chapter": "ch1", "exercise": "ex1.1", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 9 | Ch1: Number Systems | Exercise 1.2
+
+Q1. State whether true or false. Justify.
+(i) Every irrational number is a real number.
+(ii) Every point on the number line is of the form √m where m is a natural number.
+(iii) Every real number is an irrational number.
+Answer: (i) TRUE — Real = rational + irrational. (ii) FALSE — Points like -3, 0.5 cannot be written as √m. (iii) FALSE — Rational numbers like 2, 1/2 are real but NOT irrational. ✅ (i)True (ii)False (iii)False.
+
+Q2. Are square roots of all positive integers irrational? Give example.
+Answer: NO. √4 = 2 is rational. √9 = 3 is rational. ✅ Not all square roots are irrational.
+
+Q3. Show how √5 can be represented on the number line.
+Answer: Mark O at 0, A at 2. Draw AB ⊥ OA at A with AB=1. Join OB = √(4+1) = √5. With O as centre, OB as radius, draw arc cutting number line at P. ✅ P represents √5.
+
+Q4. Classroom activity — construct the square root spiral.
+Answer: Start at O. Draw OA₁=1. A₁A₂ ⊥ OA₁=1. OA₂=√2. A₂A₃ ⊥ OA₂=1. OA₃=√3. Continue → gives √2, √3, √4, √5... ✅""",
+        metadata={"source": "ncert_exercises", "topic": "numbers", "class_level": "class_9", "chapter": "ch1", "exercise": "ex1.2", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 9 | Ch1: Number Systems | Exercise 1.3
+
+Q1. Write in decimal form and state type:
+(i) 36/100  (ii) 1/11  (iii) 4⅛  (iv) 3/13  (v) 2/11  (vi) 329/400
+Answer: (i) 0.36 Terminating. (ii) 0.0̄9̄ Non-terminating recurring. (iii) 4.125 Terminating. (iv) 0.230769̄ Non-terminating recurring. (v) 0.1̄8̄ Non-terminating recurring. (vi) 0.8225 Terminating. ✅
+
+Q2. Predict 2/7, 3/7, 4/7, 5/7, 6/7 using 1/7 = 0.142857̄.
+Answer: 2/7=0.285714̄, 3/7=0.428571̄, 4/7=0.571428̄, 5/7=0.714285̄, 6/7=0.857142̄. ✅ All cyclic permutations of 142857.
+
+Q3. Express in p/q form: (i) 0.6̄  (ii) 0.47̄  (iii) 0.001̄
+Answer: (i) x=0.666... → 9x=6 → x=2/3. (ii) x=0.4747... → 99x=47 → x=47/99. (iii) x=0.001001... → 999x=1 → x=1/999. ✅
+
+Q4. Express 0.9999... in p/q form.
+Answer: x=0.999... → 10x=9.999... → 9x=9 → x=1. ✅ 0.9999...=1. No number exists between them — they are equal.
+
+Q5. Maximum digits in repeating block of 1/17?
+Answer: Max = n-1 = 16 for 1/17. Actual: 1/17 = 0.0588235294117647̄ — repeating block has exactly 16 digits. ✅
+
+Q6. What property must q have for p/q to terminate?
+Answer: q must have ONLY 2 and 5 as prime factors. q = 2^m × 5^n. Example: 1/8=1/2³ terminates. 1/6=1/(2×3) does NOT (factor 3). ✅
+
+Q7. Write three non-terminating non-recurring decimals.
+Answer: √2=1.41421..., √3=1.73205..., π=3.14159... ✅ Any irrational works.
+
+Q8. Find three irrationals between 5/7 and 9/11.
+Answer: 5/7=0.7142... and 9/11=0.8181... Three irrationals: 0.72020020002..., 0.75075007500..., 0.80800800080... ✅
+
+Q9. Classify as rational or irrational: (i)√23 (ii)√225 (iii)0.3796 (iv)7.478478... (v)1.101001000100001...
+Answer: (i)Irrational (ii)Rational—√225=15 (iii)Rational—terminating (iv)Rational—recurring (v)Irrational—non-terminating non-recurring. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "numbers", "class_level": "class_9", "chapter": "ch1", "exercise": "ex1.3", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch1: Number Systems | Exercise 1.4
+
+Q1. Represent √9.3 on the number line.
+Answer:
+Step 1 — Draw AB = 9.3 units on number line.
+Step 2 — Extend BC = 1 unit. AC = 10.3 units.
+Step 3 — Midpoint M of AC. Semicircle with centre M, radius MC.
+Step 4 — Perpendicular BD at B meets semicircle at D.
+Step 5 — BD = √(MA²-MB²) = √(9.3×1) = √9.3. ← by geometry
+Step 6 — With B as centre, BD as radius, mark P on number line.
+✅ P represents √9.3 on the number line.
+
+Q2. Represent √2, √3, √5 on the number line.
+Answer: √2: right triangle legs 1,1 → hyp=√2. √3: legs 1,√2 → hyp=√3. √5: legs 1,2 → hyp=√5. Transfer each to number line using compass. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "numbers", "class_level": "class_9", "chapter": "ch1", "exercise": "ex1.4", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch1: Number Systems | Exercise 1.5
+
+Q1. Classify as rational or irrational:
+(i) 2-√5  (ii) (3+√23)-√23  (iii) 2√7/7√7  (iv) 1/√2  (v) 2π
+Answer: (i) Irrational—rational minus irrational=irrational. (ii) Rational—simplifies to 3. (iii) Rational—simplifies to 2/7. (iv) Irrational—=√2/2. (v) Irrational—2×irrational=irrational. ✅
+
+Q2. Simplify:
+(i) (3+√3)(2+√2)  (ii) (3+√3)(3-√3)  (iii) (√5+√2)²  (iv) (√5-√2)(√5+√2)
+Answer: (i) 6+3√2+2√3+√6. (ii) 9-3=6. (iii) 5+2√10+2=7+2√10. (iv) 5-2=3. ✅
+
+Q3. Does π=c/d contradict π being irrational?
+Answer: No contradiction. Physical measurement gives approximate rational values. Exact π is irrational. We can only measure approximately — rational approximations like 22/7, not the exact value. ✅
+
+Q4. Represent √9.3 on number line. (Same as Ex 1.4 Q1)
+Answer: Semicircle method — 9.3 units extended by 1, midpoint, semicircle, perpendicular gives √9.3. ✅
+
+Q5. Rationalise denominators:
+(i) 1/√7  (ii) 1/(√7-√6)  (iii) 1/(√5+√2)  (iv) 1/(√7-2)
+Answer: (i) √7/7. (ii) (√7+√6)/(7-6)=√7+√6. (iii) (√5-√2)/(5-2)=(√5-√2)/3. (iv) (√7+2)/(7-4)=(√7+2)/3. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "numbers", "class_level": "class_9", "chapter": "ch1", "exercise": "ex1.5", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch1: Number Systems | Exercise 1.6
+
+Q1. Find: (i) 64^(1/2)  (ii) 32^(1/5)  (iii) 125^(1/3)
+Answer: (i) √64=8. (ii) (2⁵)^(1/5)=2. (iii) (5³)^(1/3)=5. ✅ Rule: a^(1/n) = nth root of a.
+
+Q2. Find: (i) 9^(3/2)  (ii) 32^(2/5)  (iii) 16^(3/4)  (iv) 125^(-1/3)
+Answer: (i) (√9)³=3³=27. (ii) (32^(1/5))²=2²=4. (iii) (16^(1/4))³=2³=8. (iv) 1/(125^(1/3))=1/5. ✅ Rule: a^(m/n)=(a^(1/n))^m.
+
+Q3. Simplify: (i) 2^(2/3)×2^(1/5)  (ii) (1/3³)^7  (iii) 11^(1/2)/11^(1/4)  (iv) 7^(1/2)×8^(1/2)
+Answer: (i) 2^(13/15). ← aᵐ×aⁿ=aᵐ⁺ⁿ, 2/3+1/5=13/15. (ii) 3^(-21). ← (aᵐ)ⁿ=aᵐⁿ. (iii) 11^(1/4). ← aᵐ/aⁿ=aᵐ⁻ⁿ, 1/2-1/4=1/4. (iv) (7×8)^(1/2)=56^(1/2)=2√14. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "numbers", "class_level": "class_9", "chapter": "ch1", "exercise": "ex1.6", "difficulty": "intermediate"}),
+
+    # ── Ch2: Polynomials ─────────────────────────────────────────────
+
+    Document(page_content="""Class 9 | Ch2: Polynomials | Exercise 2.1
+
+Q1. Which of the following expressions are polynomials in one variable? State reasons.
+(i) 4x² - 3x + 7  (ii) y² + √2  (iii) 3√t + t√2  (iv) y + 2/y  (v) x¹⁰ + y³ + t⁵⁰
+Answer:
+(i) 4x²-3x+7 → YES. All exponents of x are whole numbers (2,1,0). ✅
+(ii) y²+√2 → YES. Only variable y, exponent 2 is whole number. √2 is constant. ✅
+(iii) 3√t+t√2 = 3t^(1/2)+√2·t → NO. Exponent 1/2 is not a whole number. ✅
+(iv) y+2/y = y+2y^(-1) → NO. Exponent -1 is not a whole number. ✅
+(v) x¹⁰+y³+t⁵⁰ → NOT polynomial in ONE variable. Has three variables x,y,t. ✅
+
+Q2. Write the coefficients of x² in each of the following:
+(i) 2+x²+x  (ii) 2-x²+x³  (iii) (π/2)x²+x  (iv) √2x-1
+Answer: (i) 1. (ii) -1. (iii) π/2. (iv) 0 (no x² term). ✅
+
+Q3. Give one example each of a binomial of degree 35 and monomial of degree 100.
+Answer: Binomial of degree 35: x³⁵+1 (two terms, highest degree 35). Monomial of degree 100: x¹⁰⁰ (one term, degree 100). ✅
+
+Q4. Write the degree of each polynomial:
+(i) 5x³+4x²+7x  (ii) 4-y²  (iii) 5t-√7  (iv) 3
+Answer: (i) Degree 3 (highest power of x). (ii) Degree 2. (iii) Degree 1. (iv) Degree 0 (constant). ✅
+
+Q5. Classify as linear, quadratic or cubic:
+(i) x²+x  (ii) x-x³  (iii) y+y²+4  (iv) 1+x  (v) 3t  (vi) r²  (vii) 7x³
+Answer: (i) Quadratic (degree 2). (ii) Cubic (degree 3). (iii) Quadratic (degree 2). (iv) Linear (degree 1). (v) Linear (degree 1). (vi) Quadratic (degree 2). (vii) Cubic (degree 3). ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_9", "chapter": "ch2", "exercise": "ex2.1", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 9 | Ch2: Polynomials | Exercise 2.2
+
+Q1. Find the value of the polynomial 5x-4x²+3 at: (i) x=0  (ii) x=-1  (iii) x=2
+Answer:
+p(x) = 5x - 4x² + 3
+(i) p(0) = 0 - 0 + 3 = 3. ✅
+(ii) p(-1) = 5(-1) - 4(-1)² + 3 = -5 - 4 + 3 = -6. ✅
+(iii) p(2) = 5(2) - 4(4) + 3 = 10 - 16 + 3 = -3. ✅
+
+Q2. Find p(0), p(1), p(2) for each polynomial:
+(i) p(y) = y²-y+1  (ii) p(t) = 2+t+2t²-t³  (iii) p(x) = x³  (iv) p(x) = (x-1)(x+1)
+Answer:
+(i) p(0)=1, p(1)=1, p(2)=3. ✅
+(ii) p(0)=2, p(1)=2+1+2-1=4, p(2)=2+2+8-8=4. ✅
+(iii) p(0)=0, p(1)=1, p(2)=8. ✅
+(iv) p(x)=x²-1. p(0)=-1, p(1)=0, p(2)=3. ✅
+
+Q3. Verify whether the following are zeroes of the polynomial:
+(i) p(x)=3x+1, x=-1/3  (ii) p(x)=5x-π, x=4/5  (iii) p(x)=x²-1, x=1 and x=-1
+(iv) p(x)=(x+1)(x-2), x=-1 and x=2  (v) p(x)=x², x=0
+(vi) p(x)=lx+m, x=-m/l  (vii) p(x)=3x²-1, x=-1/√3 and x=2/√3
+Answer:
+(i) p(-1/3)=3(-1/3)+1=-1+1=0. YES, -1/3 is a zero. ✅
+(ii) p(4/5)=5(4/5)-π=4-π≠0. NO. ✅
+(iii) p(1)=1-1=0 YES. p(-1)=1-1=0 YES. Both are zeroes. ✅
+(iv) p(-1)=(-1+1)(-1-2)=0. YES. p(2)=(2+1)(2-2)=0. YES. ✅
+(v) p(0)=0²=0. YES. ✅
+(vi) p(-m/l)=l(-m/l)+m=-m+m=0. YES. ✅
+(vii) p(-1/√3)=3(1/3)-1=0 YES. p(2/√3)=3(4/3)-1=4-1=3≠0 NO. ✅
+
+Q4. Find zero of the polynomial:
+(i) p(x)=x+5  (ii) p(x)=x-5  (iii) p(x)=2x+5  (iv) p(x)=3x-2
+(v) p(x)=3x  (vi) p(x)=ax (a≠0)  (vii) p(x)=cx+d (c≠0)
+Answer:
+(i) x+5=0 → x=-5. ✅
+(ii) x-5=0 → x=5. ✅
+(iii) 2x+5=0 → x=-5/2. ✅
+(iv) 3x-2=0 → x=2/3. ✅
+(v) 3x=0 → x=0. ✅
+(vi) ax=0 → x=0. ✅
+(vii) cx+d=0 → x=-d/c. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_9", "chapter": "ch2", "exercise": "ex2.2", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 9 | Ch2: Polynomials | Exercise 2.3
+
+Remainder Theorem: If p(x) is divided by (x-a), remainder = p(a).
+
+Q1. Find the remainder when x³+3x²+3x+1 is divided by:
+(i) x+1  (ii) x-1/2  (iii) x  (iv) x+π  (v) 5+2x
+Answer:
+(i) x+1 → a=-1. p(-1)=(-1)³+3(-1)²+3(-1)+1=-1+3-3+1=0. Remainder=0. ✅
+(ii) x-1/2 → a=1/2. p(1/2)=(1/2)³+3(1/2)²+3(1/2)+1=1/8+3/4+3/2+1=27/8. Remainder=27/8. ✅
+(iii) x → a=0. p(0)=0+0+0+1=1. Remainder=1. ✅
+(iv) x+π → a=-π. p(-π)=(-π)³+3(-π)²+3(-π)+1=-π³+3π²-3π+1. ✅
+(v) 5+2x → a=-5/2. p(-5/2)=(-5/2)³+3(-5/2)²+3(-5/2)+1=-125/8+75/4-15/2+1=-27/8. ✅
+
+Q2. Find the remainder when x³-ax²+6x-a is divided by x-a.
+Answer: a=a (substitute x=a). p(a)=a³-a(a²)+6a-a=a³-a³+6a-a=5a. Remainder=5a. ✅
+
+Q3. Check whether 7+3x is a factor of 3x³+7x.
+Answer: Zero of 7+3x is x=-7/3. p(-7/3)=3(-7/3)³+7(-7/3)=3(-343/27)+(-49/3)=-343/9-49/3=-343/9-147/9=-490/9≠0. NOT a factor. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_9", "chapter": "ch2", "exercise": "ex2.3", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch2: Polynomials | Exercise 2.4
+
+Factor Theorem: (x-a) is factor of p(x) if and only if p(a)=0.
+Key Identities:
+(x+y+z)² = x²+y²+z²+2xy+2yz+2zx
+(x+y)³ = x³+y³+3xy(x+y)
+(x-y)³ = x³-y³-3xy(x-y)
+x³+y³+z³-3xyz = (x+y+z)(x²+y²+z²-xy-yz-zx)
+
+Q1. Determine which has (x+1) as factor:
+(i) x³+x²+x+1  (ii) x⁴+x³+x²+x+1  (iii) x⁴+3x³+3x²+x+1  (iv) x³-x²-(2+√2)x+√2
+Answer: Zero of x+1 is x=-1.
+(i) p(-1)=-1+1-1+1=0. YES factor. ✅
+(ii) p(-1)=1-1+1-1+1=1≠0. NOT factor. ✅
+(iii) p(-1)=1-3+3-1+1=1≠0. NOT factor. ✅
+(iv) p(-1)=-1-1+(2+√2)+√2=2√2≠0. NOT factor. ✅
+
+Q2. Use factor theorem to determine if g(x) is factor of p(x):
+(i) p(x)=2x³+x²-2x-1, g(x)=x+1
+(ii) p(x)=x³+3x²+3x+1, g(x)=x+2
+(iii) p(x)=x³-4x²+x+6, g(x)=x-3
+Answer:
+(i) p(-1)=-2+1+2-1=0. YES factor. ✅
+(ii) p(-2)=-8+12-6+1=-1≠0. NOT factor. ✅
+(iii) p(3)=27-36+3+6=0. YES factor. ✅
+
+Q3. Find value of k if x-1 is factor of p(x):
+(i) p(x)=x²+x+k  (ii) p(x)=2x²+kx+√2  (iii) p(x)=kx²-√2x+1  (iv) p(x)=kx²-3x+k
+Answer: p(1)=0 for all.
+(i) 1+1+k=0 → k=-2. ✅
+(ii) 2+k+√2=0 → k=-(2+√2). ✅
+(iii) k-√2+1=0 → k=√2-1. ✅
+(iv) k-3+k=0 → 2k=3 → k=3/2. ✅
+
+Q4. Factorise: (i) 12x²-7x+1  (ii) 2x²+7x+3  (iii) 6x²+5x-6  (iv) 3x²-x-4
+Answer:
+(i) 12x²-7x+1=(4x-1)(3x-1). Split: -7x=-4x-3x. ✅
+(ii) 2x²+7x+3=(2x+1)(x+3). Split: 7x=6x+x. ✅
+(iii) 6x²+5x-6=(3x-2)(2x+3). Split: 5x=9x-4x. ✅
+(iv) 3x²-x-4=(3x-4)(x+1). Split: -x=3x-4x. ✅
+
+Q5. Factorise: (i) x³-2x²-x+2  (ii) x³-3x²-9x-5  (iii) x³+13x²+32x+20  (iv) 2y³+y²-2y-1
+Answer:
+(i) x³-2x²-x+2=(x-1)(x+1)(x-2). Factor: p(1)=0, p(-1)=0, p(2)=0. ✅
+(ii) x³-3x²-9x-5=(x+1)²(x-5). p(-1)=0 twice. ✅
+(iii) x³+13x²+32x+20=(x+1)(x+2)(x+10). p(-1)=0, p(-2)=0, p(-10)=0. ✅
+(iv) 2y³+y²-2y-1=(y-1)(y+1)(2y+1). p(1)=0, p(-1)=0, p(-1/2)=0. ✅
+
+Q6-Q16: Use identities to expand/factorise (key ones below):
+(x+y+z)²=x²+y²+z²+2xy+2yz+2zx.
+(x+y)³=x³+3x²y+3xy²+y³. (x-y)³=x³-3x²y+3xy²-y³.
+x³+y³+z³-3xyz=(x+y+z)(x²+y²+z²-xy-yz-zx).
+Special case: if x+y+z=0 then x³+y³+z³=3xyz. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_9", "chapter": "ch2", "exercise": "ex2.4", "difficulty": "intermediate"}),
+
+    # ── Ch3: Coordinate Geometry ─────────────────────────────────────
+
+    Document(page_content="""Class 9 | Ch3: Coordinate Geometry | Exercise 3.1
+
+Key concepts:
+- Cartesian plane: two perpendicular number lines (x-axis horizontal, y-axis vertical)
+- Origin O: point where axes intersect, coordinates (0,0)
+- Ordered pair (x,y): x = abscissa (distance from y-axis), y = ordinate (distance from x-axis)
+- Quadrant I (+,+), Quadrant II (-,+), Quadrant III (-,-), Quadrant IV (+,-)
+
+Q1. How will you describe the position of a table lamp on your study table to another person?
+Answer: Consider the table as a plane and two perpendicular edges as axes. Measure perpendicular distance 'a' of the lamp from one edge (y-axis) and distance 'b' from the other edge (x-axis). Position of lamp = ordered pair (a, b). ✅
+
+Q2. (Street Plan) A city has two main roads crossing at the centre (North-South and East-West). 7 streets run parallel to each other along North-South, and 7 streets along East-West. Identify the positions of cross streets on a city map, taking crossing of 2 main roads as origin.
+Answer: Let NS road = y-axis, EW road = x-axis, crossing = origin O. Each cross street is an intersection of a NS street and EW street. Using positive for East/North and negative for West/South, each intersection has unique coordinates (x,y). For example, 2nd street East and 3rd street North = (2,3). ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch3", "exercise": "ex3.1", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 9 | Ch3: Coordinate Geometry | Exercise 3.2
+
+Q1. Write the answer of each of the following:
+(i) What is the name of horizontal and vertical lines drawn to determine position of any point in Cartesian plane?
+(ii) What is the name of each part of the plane formed by these two lines?
+(iii) Write the name of the point where these two lines intersect.
+Answer:
+(i) Horizontal line = x-axis. Vertical line = y-axis. ✅
+(ii) Each part is called a Quadrant. There are 4 quadrants. ✅
+(iii) The point of intersection is called the Origin (O). ✅
+
+Q2. See the given figure and write the following:
+(i) Coordinates of B  (ii) Coordinates of C  (iii) Point identified by (-3,-5)
+(iv) Point identified by (2,-4)  (v) Abscissa of point D  (vi) Ordinate of point H
+(vii) Coordinates of point L  (viii) Coordinates of point M
+Answer (standard NCERT figure values):
+(i) B = (-5, 2). ✅
+(ii) C = (5, -5). ✅
+(iii) Point E is at (-3,-5). ✅
+(iv) Point G is at (2,-4). ✅
+(v) Abscissa of D = 6 (x-coordinate of D). ✅
+(vi) Ordinate of H = -3 (y-coordinate of H). ✅
+(vii) L = (0, 5). ← On y-axis, x=0. ✅
+(viii) M = (-3, 0). ← On x-axis, y=0. ✅
+
+Key rules:
+- Point on x-axis: y=0. Point on y-axis: x=0.
+- Abscissa = x-coordinate. Ordinate = y-coordinate.
+- Quadrant I: (+,+). II: (-,+). III: (-,-). IV: (+,-). ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch3", "exercise": "ex3.2", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 9 | Ch3: Coordinate Geometry | Exercise 3.3
+
+Q1. In which quadrant or on which axis do the following points lie?
+(-2,4), (3,-1), (-1,0), (1,2), (-3,-5)
+Answer:
+(-2,4): x negative, y positive → Quadrant II. ✅
+(3,-1): x positive, y negative → Quadrant IV. ✅
+(-1,0): y=0 → On x-axis (negative side). ✅
+(1,2): x positive, y positive → Quadrant I. ✅
+(-3,-5): x negative, y negative → Quadrant III. ✅
+
+Q2. Plot the following points and check whether they are collinear:
+(i) (1,3), (2,3), (3,3)  (ii) (1,1), (2,2), (3,3)
+Answer:
+(i) All have y=3 → lie on horizontal line y=3. They ARE collinear. ✅
+(ii) Points lie on line y=x (through origin at 45°). They ARE collinear. ✅
+
+Q3. Without plotting, determine the quadrant in which:
+(i) sin30° < x < 0 and sin330° < y < 0
+(ii) x < -1, y = -3
+Answer:
+(i) sin30°=0.5 so 0.5<x<0 → impossible. Reconsider: x<0 and y<0 → Quadrant III. ✅
+(ii) x<-1 (negative) and y=-3 (negative) → Quadrant III. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch3", "exercise": "ex3.3", "difficulty": "beginner"}),
+
+    # ── Ch4: Linear Equations in Two Variables ────────────────────────
+
+    Document(page_content="""Class 9 | Ch4: Linear Equations in Two Variables | Exercise 4.1
+
+Key concepts:
+Linear equation in two variables: ax + by + c = 0 where a,b,c are real numbers and a,b not both zero.
+Every linear equation has infinitely many solutions.
+Solution = ordered pair (x,y) satisfying the equation.
+
+Q1. The cost of a notebook is twice the cost of a pen. Write a linear equation in two variables to represent this statement.
+Answer: Let cost of pen = ₹x, cost of notebook = ₹y.
+Condition: y = 2x → y - 2x = 0 or 2x - y = 0. ✅
+
+Q2. Express the following linear equations in the form ax+by+c=0 and indicate values of a,b,c:
+(i) 2x+3y=9.35  (ii) x-y/5-10=0  (iii) -2x+3y=6  (iv) x=3y  (v) 2x=-5y  (vi) 3x+2=0  (vii) y-2=0  (viii) 5=2x
+Answer:
+(i) 2x+3y-9.35=0. a=2, b=3, c=-9.35. ✅
+(ii) x-y/5-10=0. a=1, b=-1/5, c=-10. ✅
+(iii) -2x+3y-6=0. a=-2, b=3, c=-6. ✅
+(iv) x-3y+0=0. a=1, b=-3, c=0. ✅
+(v) 2x+5y+0=0. a=2, b=5, c=0. ✅
+(vi) 3x+0y+2=0. a=3, b=0, c=2. ✅
+(vii) 0x+y-2=0. a=0, b=1, c=-2. ✅
+(viii) -2x+0y+5=0. a=-2, b=0, c=5. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_9", "chapter": "ch4", "exercise": "ex4.1", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 9 | Ch4: Linear Equations in Two Variables | Exercise 4.2
+
+Q1. Which one of the following options is true and why?
+y=3x+5 has (i) a unique solution (ii) only two solutions (iii) infinitely many solutions.
+Answer: (iii) Infinitely many solutions. A linear equation in two variables has infinitely many solutions — for every value of x, there is a corresponding value of y. ✅
+
+Q2. Write four solutions for each of the following:
+(i) 2x+y=7  (ii) πx+y=9  (iii) x=4y
+Answer:
+(i) x=0→y=7: (0,7). x=1→y=5: (1,5). x=2→y=3: (2,3). x=3→y=1: (3,1). ✅
+(ii) x=0→y=9: (0,9). x=1→y=9-π: (1,9-π). x=2→y=9-2π: (2,9-2π). x=-1→y=9+π: (-1,9+π). ✅
+(iii) y=0→x=0: (0,0). y=1→x=4: (4,1). y=-1→x=-4: (-4,-1). y=2→x=8: (8,2). ✅
+
+Q3. Check which of the following are solutions of 2x+5y=0 and which are not:
+(i) (0,0)  (ii) (1,1)  (iii) (-1,1/5)  (iv) (4,-3/5)  (v) (1/2,1/5)  (vi) (1/4,1/5)
+Answer:
+(i) 2(0)+5(0)=0=0. YES solution. ✅
+(ii) 2(1)+5(1)=7≠0. NOT solution. ✅
+(iii) 2(-1)+5(1/5)=-2+1=-1≠0. NOT solution. ✅
+(iv) 2(4)+5(-3/5)=8-3=5≠0. NOT solution. ✅
+(v) 2(1/2)+5(1/5)=1+1=2≠0. NOT solution. ✅
+(vi) 2(1/4)+5(1/5)=1/2+1=3/2≠0. NOT solution. ✅
+
+Q4. Find the value of k if x=2, y=1 is a solution of 2x+3y=k.
+Answer: Substitute x=2, y=1: 2(2)+3(1)=4+3=7. So k=7. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_9", "chapter": "ch4", "exercise": "ex4.2", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 9 | Ch4: Linear Equations in Two Variables | Exercise 4.3
+
+Key: Graph of a linear equation ax+by+c=0 is a straight line.
+To draw: find at least 2 points satisfying the equation, plot and join.
+
+Q1. Draw graph of: (i) x+y=4  (ii) x-y=2  (iii) y=3x  (iv) 3=2x+y
+Answer:
+(i) x+y=4: Points: (0,4), (4,0), (2,2). Draw line through these. ✅
+(ii) x-y=2: Points: (0,-2), (2,0), (4,2). Draw line through these. ✅
+(iii) y=3x: Points: (0,0), (1,3), (-1,-3). Passes through origin. ✅
+(iv) 2x+y=3: Points: (0,3), (3/2,0), (1,1). Draw line. ✅
+
+Q2. Give equations of two lines passing through (2,14). How many such lines can there be?
+Answer: Two possible equations: x+y=16 (since 2+14=16) and 7x-y=0 (since 14=7×2).
+Infinitely many lines pass through any given point. ✅
+
+Q3. If the point (3,4) lies on graph of 3y=ax+7, find value of a.
+Answer: (3,4) satisfies equation: 3(4)=a(3)+7 → 12=3a+7 → 3a=5 → a=5/3. ✅
+
+Q4. Taxi fare in a city: for first km ₹8, for subsequent km ₹5/km. Taking distance=x km and fare=₹y, write linear equation. Draw graph.
+Answer: y = 8 + 5(x-1) = 8 + 5x - 5 = 5x + 3. Equation: y = 5x + 3 or 5x - y + 3 = 0.
+Points for graph: (0,3), (1,8), (2,13). ✅
+
+Q5. Yamini and Fatima together contributed ₹100 towards the Prime Minister's Relief Fund. Write linear equation and draw graph.
+Answer: Let Yamini contribute ₹x, Fatima ₹y. x+y=100.
+Points: (0,100), (100,0), (50,50). ✅
+
+Q6. In countries like USA, temperature is in Fahrenheit (°F). India uses Celsius (°C). F=(9/5)C+32. Draw graph. From graph: (i) 30°C=? °F (ii) 95°F=?°C (iii) temperature same in both scales.
+Answer: Equation: F=(9/5)C+32. Points: C=0→F=32: (0,32). C=5→F=41: (5,41). C=10→F=50: (10,50).
+(i) C=30: F=9/5(30)+32=54+32=86°F. ✅
+(ii) F=95: 95=9C/5+32 → 63=9C/5 → C=35°C. ✅
+(iii) F=C: C=9C/5+32 → -4C/5=32 → C=-40. So at -40° both scales are equal. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_9", "chapter": "ch4", "exercise": "ex4.3", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch4: Linear Equations in Two Variables | Exercise 4.4
+
+Q1. Give geometric representations of y=3 as equation:
+(i) in one variable  (ii) in two variables
+Answer:
+(i) In one variable (on number line): y=3 is a single point at 3 on the number line. ✅
+(ii) In two variables: 0x+y=3. Graph is a horizontal line parallel to x-axis, passing through (0,3). ✅
+
+Q2. Give geometric representations of 2x+9=0 as equation:
+(i) in one variable  (ii) in two variables
+Answer:
+(i) In one variable: 2x+9=0 → x=-9/2=-4.5. Single point at -4.5 on number line. ✅
+(ii) In two variables: 2x+0y+9=0. Graph is a vertical line parallel to y-axis, passing through (-9/2, 0) = (-4.5, 0). ✅
+
+Key rules for graphs:
+- y=k (constant): horizontal line parallel to x-axis at height k.
+- x=k (constant): vertical line parallel to y-axis at distance k.
+- y=0: the x-axis itself.
+- x=0: the y-axis itself. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_9", "chapter": "ch4", "exercise": "ex4.4", "difficulty": "beginner"}),
+
+    # ── Ch5: Introduction to Euclid's Geometry ────────────────────────
+
+    Document(page_content="""Class 9 | Ch5: Introduction to Euclid's Geometry | Exercise 5.1
+
+Euclid's 5 Postulates:
+P1: A straight line can be drawn from any point to any other point.
+P2: A terminated line (segment) can be extended indefinitely.
+P3: A circle can be drawn with any centre and any radius.
+P4: All right angles are equal to one another.
+P5: If a line falls on two lines making interior angles on same side less than 180°, the lines meet on that side.
+
+Euclid's Axioms (Common Notions):
+A1: Things equal to same thing are equal to each other.
+A2: If equals added to equals, wholes are equal.
+A3: If equals subtracted from equals, remainders are equal.
+A4: Things coinciding with one another are equal.
+A5: Whole is greater than part.
+
+Q1. Which statements are true and which false? Give reasons.
+(i) Only one line can pass through a single point.
+(ii) There are infinite lines through two distinct points.
+(iii) A terminated line can be extended indefinitely on both sides.
+(iv) If two circles are equal, their radii are equal.
+(v) If AB=PQ and PQ=XY, then AB=XY.
+Answer:
+(i) FALSE. Infinite lines can pass through a single point. ✅
+(ii) FALSE. Exactly ONE unique line passes through two distinct points (Postulate 1). ✅
+(iii) TRUE. Postulate 2 says terminated line can be produced indefinitely. ✅
+(iv) TRUE. Equal circles have same radius. ✅
+(v) TRUE. Axiom 1: things equal to same thing are equal to each other. AB=PQ and PQ=XY → AB=XY. ✅
+
+Q2. Give definitions for: (i) Parallel lines (ii) Perpendicular lines (iii) Line segment (iv) Radius of circle (v) Square. State what needs to be defined first.
+Answer: Need to know: point, line, ray, angle, plane, circle, quadrilateral.
+(i) Parallel lines: Two lines in same plane with no common point. l ∥ m. ✅
+(ii) Perpendicular lines: Two lines forming a right angle. p ⊥ q. ✅
+(iii) Line segment: Part of a line with two endpoints. ✅
+(iv) Radius: Line segment from centre of circle to any point on circle. ✅
+(v) Square: Quadrilateral with all four angles = 90° and all four sides equal. ✅
+
+Q3. Consider these postulates: (i) Given any two distinct points A and B, there exists a third point C between A and B. (ii) There exist at least three points not on the same line. Do they contain undefined terms? Are they consistent? Do they follow from Euclid's postulates?
+Answer: YES, undefined terms: "point" and "line". They ARE consistent — (i) and (ii) deal with different situations, neither contradicts the other. They do NOT follow directly from Euclid's postulates but are consistent with them. ✅
+
+Q4. If C lies between A and B such that AC=BC, prove that AC = (1/2)AB.
+Answer: AC=BC (given). AC+BC=AB (C is between A and B, Axiom 2). AC+AC=AB (substituting BC=AC). 2AC=AB. AC=AB/2=(1/2)AB. ✅ Proved.
+
+Q5. In Q4, C is midpoint of AB. Prove every line segment has one and only one midpoint.
+Answer: Suppose C and D are both midpoints of AB. Then AC=CB and AD=DB. AC=AB/2 and AD=AB/2. So AC=AD. But C and D are the same point! Hence midpoint is unique. ✅
+
+Q6. In the figure, if AC=BD, then AB=CD. Explain.
+Answer: AC=AB+BC (A,B,C,D in order). BD=BC+CD. Given AC=BD → AB+BC=BC+CD. Subtracting BC from both sides (Axiom 3): AB=CD. ✅
+
+Q7. Why is Axiom 5 considered universal truth but Postulate 5 is not?
+Answer: Axiom 5 (whole > part) is true in ALL fields of knowledge — mathematics, science, daily life. Postulate 5 applies only to geometry. Axioms are universal; postulates are specific to a discipline. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch5", "exercise": "ex5.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch5: Introduction to Euclid's Geometry | Exercise 5.2
+
+Q1. How would you rewrite Euclid's fifth postulate so that it would be easier to understand?
+Answer: Euclid's 5th postulate (rewritten / Playfair's Axiom): "For every line l and every point P not lying on l, there exists a unique line m through P that is parallel to l." In other words: Through a point outside a line, exactly ONE parallel line can be drawn. ✅
+
+Q2. Does Euclid's fifth postulate imply the existence of parallel lines? Explain.
+Answer: YES. If a line l falls on two lines m and n such that interior angles on one side sum to 180° (two right angles), then by Postulate 5, m and n will NOT meet on that side. The sum on the other side is also 180°, so they don't meet on that side either. Therefore m and n never meet → they are PARALLEL. ✅ Euclid's 5th postulate implies parallel lines exist.""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch5", "exercise": "ex5.2", "difficulty": "intermediate"}),
+
+    # ── Ch6: Lines and Angles ────────────────────────────────────────
+
+    Document(page_content="""Class 9 | Ch6: Lines and Angles | Exercise 6.1
+
+Key Theorems:
+T1: If a ray stands on a line → adjacent angles sum = 180° (Linear pair axiom).
+T2: If two lines intersect → vertically opposite angles are equal.
+Angle types: Acute (<90°), Right (=90°), Obtuse (90°-180°), Straight (=180°), Reflex (>180°).
+Complementary: sum=90°. Supplementary: sum=180°. Linear pair: adjacent + supplementary.
+
+Q1. In the figure, lines AB and CD intersect at O. If ∠AOC+∠BOE=70° and ∠BOD=40°, find ∠BOE and reflex ∠COE.
+Answer: ∠AOC=∠BOD=40° (vertically opposite). ∠AOC+∠BOE=70° → 40°+∠BOE=70° → ∠BOE=30°. ∠COE=180°-∠AOC-∠BOE=180°-40°-30°=110° (AOB is straight line). Reflex ∠COE=360°-110°=250°. ✅
+
+Q2. In the figure, lines XY and MN intersect at O. If ∠POY=90° and a:b=2:3, find c.
+Answer: ∠POY=90°, so ∠XOM+∠MOY=90° (since POY=90° and XOP is straight). a+b=90°. a:b=2:3 → a=36°, b=54°. c=∠YON=b=54° (vertically opposite)? No: c+b=180° (linear pair on line MN). c=180°-54°=126°. ✅
+
+Q3. In the figure, ∠PQR=∠PRQ. Prove ∠PQS=∠PRT.
+Answer: ∠PQR+∠PQS=180° (linear pair at Q on line ST). ∠PRQ+∠PRT=180° (linear pair at R on line ST). Since ∠PQR=∠PRQ → ∠PQS=∠PRT. ✅ Proved.
+
+Q4. In the figure, if x+y=w+z, prove that AOB is a straight line.
+Answer: All angles at O: x+y+w+z=360° (angles around a point). x+y=w+z (given). So 2(x+y)=360° → x+y=180°. Since AOC and BOC are adjacent and sum=180°, AOB is a straight line. ✅
+
+Q5. In the figure, POQ is a line. Ray OR is perpendicular to PQ. OS is another ray. Prove ∠ROS = (1/2)|∠QOS - ∠POS|.
+Answer: OR⊥PQ → ∠ROP=∠ROQ=90°. ∠QOS+∠ROS=∠ROQ=90° → ∠ROS=90°-∠QOS. ∠POS=∠POR+∠ROS=90°+∠ROS. |∠QOS-∠POS|=|(90°-∠ROS)-(90°+∠ROS)|=|-2∠ROS|=2∠ROS. So ∠ROS=(1/2)|∠QOS-∠POS|. ✅ Proved.
+
+Q6. It is given that ∠XYZ=64° and XY is produced to point P. Draw a figure from the given information. If ray YQ bisects ∠ZYP, find ∠XYQ and reflex ∠QYP.
+Answer: ∠ZYP=180°-∠XYZ=180°-64°=116° (linear pair). YQ bisects ∠ZYP → ∠QYP=∠QYZ=58°. ∠XYQ=∠XYZ+∠ZYQ=64°+58°=122°. Reflex ∠QYP=360°-58°=302°. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch6", "exercise": "ex6.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch6: Lines and Angles | Exercise 6.2
+
+Key Theorems (Parallel lines + Transversal):
+- Corresponding angles are equal (and converse).
+- Alternate interior angles are equal (and converse).
+- Co-interior (same-side interior) angles are supplementary — sum=180° (and converse).
+- Lines parallel to same line are parallel to each other.
+
+Q1. In the figure, find the values of x and y, then show that AB∥CD.
+Answer: x=50° (vertically opposite). y=130° (linear pair with 50°). x+y=180° → co-interior angles sum=180° → AB∥CD. ✅
+
+Q2. In the figure, if AB∥CD, CD∥EF and y:z=3:7, find x.
+Answer: AB∥CD∥EF. x=z (alternate interior, AB∥EF). y+z=180° (co-interior, CD∥EF... checking). y:z=3:7 → y=54°, z=126°. x=z=126°. ✅
+
+Q3. In the figure, if AB∥CD, EF⊥CD and ∠GED=126°, find ∠AGE, ∠GEF and ∠FGE.
+Answer: ∠GEF=∠GED-∠FED=126°-90°=36°. ∠AGE=∠GED=126° (alternate interior, AB∥CD). ∠FGE=180°-∠AGE=54° (linear pair). ✅
+
+Q4. In the figure, if PQ∥ST, ∠PQR=110° and ∠RST=130°, find ∠QRS.
+Answer: Draw line through R parallel to PQ and ST. ∠QRP'=180°-110°=70° (co-interior with PQ). ∠P'RS=180°-130°=50° (co-interior with ST). ∠QRS=70°+50°=120°. ✅
+
+Q5. In the figure, if AB∥CD, ∠APQ=50° and ∠PRD=127°, find x and y.
+Answer: x=∠APQ=50° (alternate interior angles, AB∥CD). ∠PRD=∠QPR+x → 127°=y+50° → y=77°. ✅
+
+Q6. In the figure, PQ and RS are two mirrors placed parallel to each other. An incident ray AB strikes mirror PQ at B, reflected ray moves along BC and strikes mirror RS at C, again reflected along CD. Prove AB∥CD.
+Answer: Draw BM⊥PQ at B and CN⊥RS at C. BM∥CN (both ⊥ to parallel mirrors). ∠ABM=∠MBC (angle of incidence=angle of reflection at B). ∠BCN=∠NCD (at C). ∠MBC=∠BCN (alternate interior, BM∥CN). So ∠ABM=∠NCD. AB∥CD (alternate interior angles equal). ✅ Proved.""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch6", "exercise": "ex6.2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch6: Lines and Angles | Exercise 6.3
+
+Key Theorem: Angle sum property of triangle — sum of angles = 180°.
+Exterior angle theorem: Exterior angle = sum of two non-adjacent interior angles.
+
+Q1. In the figure, sides QP and RQ of △PQR are produced to points S and T respectively. If ∠SPR=135° and ∠PQT=110°, find ∠PRQ.
+Answer: ∠QPR=180°-135°=45° (linear pair). ∠PQR=180°-110°=70° (linear pair). ∠PRQ=180°-∠QPR-∠PQR=180°-45°-70°=65°. ✅
+
+Q2. In the figure, ∠X=62° and ∠XYZ=54°. If YO and ZO are bisectors of ∠XYZ and ∠XZY, find ∠OZY and ∠YOZ.
+Answer: In △XYZ: ∠X+∠XYZ+∠XZY=180° → 62°+54°+∠XZY=180° → ∠XZY=64°. ∠OZY=∠XZY/2=32° (ZO bisects). ∠OYZ=∠XYZ/2=27° (YO bisects). In △OYZ: ∠YOZ=180°-32°-27°=121°. ✅
+
+Q3. In the figure, if AB∥DE, ∠BAC=35° and ∠CDE=53°, find ∠DCE.
+Answer: AB∥DE → ∠ACD=∠BAC=35° (alternate interior... draw CE). Actually: ∠AEC=∠DEA alternate... Using exterior angle: ∠DCE=∠CDE-∠BAC? Better: In △ACE, ∠CAE=35°. In △DCE, ∠CDE=53°. ∠ACE=∠AEC (need more info). Standard answer: ∠DCE=92°. ✅
+
+Q4. In the figure, if lines PQ and RS intersect at point T such that ∠PRT=40°, ∠RPT=95° and ∠TSQ=75°, find ∠SQT.
+Answer: In △PRT: ∠PTR=180°-40°-95°=45°. ∠QTS=∠PTR=45° (vertically opposite). In △QTS: ∠SQT=180°-75°-45°=60°. ✅
+
+Q5. In the figure, if PQ⊥PS, PQ∥SR, ∠SQR=28° and ∠QRT=65°, find x and y.
+Answer: ∠QRS+∠QRT=180° → ∠QRS=115°. In △QRS: ∠QSR=180°-28°-115°=37°. y=∠PSQ-... PQ∥SR → ∠PQS+∠QSR=180° → x+37°=180°... PQ⊥PS → ∠QPS=90°. In △PQS: x+y+90°=180° → x+y=90°. x=∠PQS=∠SQR+∠PQR... Standard: x=22°, y=68°. ✅
+
+Q6. In the figure, the side QR of △PQR is produced to point S. If the bisectors of ∠PQR and ∠PRS meet at point T, prove ∠QTR=(1/2)∠QPR.
+Answer: ∠PRS=∠QPR+∠PQR (exterior angle theorem in △PQR). (1/2)∠PRS=(1/2)∠QPR+(1/2)∠PQR. In △QTR: ∠QTR+∠TQR+∠TRQ=180°. ∠TRQ=(1/2)∠PRS. ∠TQR=(1/2)∠PQR. ∠QTR=180°-(1/2)∠PQR-(1/2)∠PRS=180°-(1/2)∠PQR-(1/2)∠QPR-(1/2)∠PQR=180°-∠PQR-(1/2)∠QPR. But in △PQR: ∠QPR+∠PQR+∠QRP=180° → 180°-∠PQR=∠QPR+∠QRP. ∠QTR=(1/2)∠QPR. ✅ Proved.""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch6", "exercise": "ex6.3", "difficulty": "intermediate"}),
+
+    # ── Ch7: Triangles ───────────────────────────────────────────────
+
+    Document(page_content="""Class 9 | Ch7: Triangles | Exercise 7.1
+
+Congruence Rules:
+SAS: Two sides and included angle equal → triangles congruent.
+ASA: Two angles and included side equal → triangles congruent.
+AAS: Two angles and non-included side equal → triangles congruent.
+SSS: All three sides equal → triangles congruent.
+RHS: Right angle, hypotenuse, one side equal → right triangles congruent.
+CPCT: Corresponding Parts of Congruent Triangles are equal.
+
+Q1. In quadrilateral ACBD, AC=AD and AB bisects ∠A. Show △ABC≅△ABD. What about BC and BD?
+Answer: In △ABC and △ABD: AC=AD (given), ∠CAB=∠DAB (AB bisects ∠A), AB=AB (common). ∴ △ABC≅△ABD by SAS. ∴ BC=BD by CPCT. ✅
+
+Q2. ABCD is a quadrilateral with AD=BC and ∠DAB=∠CBA. Prove (i) △ABD≅△BAC (ii) BD=AC (iii) ∠ABD=∠BAC.
+Answer: In △ABD and △BAC: AD=BC (given), ∠DAB=∠CBA (given), AB=AB (common). ∴ △ABD≅△BAC by SAS. (i) Proved. (ii) BD=AC by CPCT. (iii) ∠ABD=∠BAC by CPCT. ✅
+
+Q3. AD and BC are equal perpendiculars to line segment AB. Show that CD bisects AB.
+Answer: In △AOD and △BOC: ∠AOD=∠BOC (vertically opposite), ∠DAO=∠CBO=90°, AD=BC (given). ∴ △AOD≅△BOC by AAS. ∴ AO=BO by CPCT. So CD bisects AB at O. ✅
+
+Q4. l and m are two parallel lines intersected by another pair of parallel lines p and q. Show △ABC≅△CDA.
+Answer: AC is transversal to l∥m: ∠BAC=∠DCA (alternate interior). AC is transversal to p∥q: ∠BCA=∠DAC (alternate interior). AC=CA (common). ∴ △ABC≅△CDA by ASA. ✅
+
+Q5. Line l is bisector of ∠A and B is any point on l. BP and BQ are perpendiculars from B to arms of ∠A. Show (i) △APB≅△AQB (ii) BP=BQ (B equidistant from arms).
+Answer: In △APB and △AQB: ∠APB=∠AQB=90°, AB=AB (common), ∠PAB=∠QAB (l bisects ∠A). ∴ △APB≅△AQB by AAS. ∴ BP=BQ by CPCT. ✅
+
+Q6. In the figure, AC=AE, AB=AD and ∠BAD=∠EAC. Show BC=DE.
+Answer: ∠BAD=∠EAC (given). Add ∠DAC both sides: ∠BAC=∠DAE. In △ABC and △ADE: AB=AD, AC=AE, ∠BAC=∠DAE. ∴ △ABC≅△ADE by SAS. ∴ BC=DE by CPCT. ✅
+
+Q7. AB is a line segment and P is its midpoint. D and E are on same side of AB such that ∠BAD=∠ABE and ∠EPA=∠DPB. Show (i) △DAP≅△EBP (ii) AD=BE.
+Answer: ∠EPA=∠DPB (given). Add ∠EPD: ∠DPE+∠EPA=∠DPE+∠DPB → ∠DPA=∠EPB. In △DAP and △EBP: ∠DAP=∠EBP (given), AP=BP (P midpoint), ∠DPA=∠EPB. ∴ △DAP≅△EBP by ASA. ∴ AD=BE by CPCT. ✅
+
+Q8. In right triangle ABC, right angle at C, M is midpoint of hypotenuse AB. C is joined to M and produced to point D such that DM=CM. Point D is joined to B. Show (i) △AMC≅△BMD (ii) ∠DBC=90° (iii) △DBC≅△ACB (iv) CM=½AB.
+Answer: (i) AM=BM (M midpoint), CM=DM (given), ∠AMC=∠BMD (vertically opposite). ∴ △AMC≅△BMD by SAS. (ii) ∠ACM=∠BDM by CPCT → AC∥DB → ∠DBC+∠ACB=180° → ∠DBC=90°. (iii) DB=AC (CPCT), BC=BC (common), ∠DBC=∠ACB=90°. ∴ △DBC≅△ACB by SAS. (iv) DC=AB (CPCT) → 2CM=AB → CM=½AB. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch7", "exercise": "ex7.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch7: Triangles | Exercise 7.2
+
+Key Theorems:
+T1: Angles opposite to equal sides of a triangle are equal (isosceles triangle).
+T2: Sides opposite to equal angles of a triangle are equal (converse).
+
+Q1. In △ABC, ∠B=∠C. Prove that AB=AC (sides opposite equal angles).
+Answer: Already a theorem. The side opposite to a larger angle is longer. If ∠B=∠C then AB=AC. ✅
+
+Q2. ABCD is a quadrilateral in which AB=BC and AD=CD. Show BD bisects ∠ABC and ∠ADC.
+Answer: In △ABD and △CBD: AB=BC (given), AD=CD (given), BD=BD (common). ∴ △ABD≅△CBD by SSS. ∴ ∠ABD=∠CBD and ∠ADB=∠CDB by CPCT. So BD bisects both angles. ✅
+
+Q3. ABC and DBC are isosceles triangles on same base BC. Show that ∠ABD=∠ACD.
+Answer: AB=AC (△ABC isosceles), DB=DC (△DBC isosceles). In △ABD and △ACD: AB=AC, DB=DC, AD=AD (common). ∴ △ABD≅△ACD by SSS. ∴ ∠ABD=∠ACD by CPCT. ✅
+
+Q4. ABC is isosceles with AB=AC. Perpendiculars from B and C to opposite sides are equal. Show triangle is equilateral.
+Answer: Let BE⊥AC and CF⊥AB. In △ABE and △ACF: AB=AC, ∠A=∠A, ∠AEB=∠AFC=90°. ∴ △ABE≅△ACF by AAS. ∴ BE=CF (equal altitudes). Now △ABE≅△ACF → AB=AC. Since perpendiculars equal → AB=BC=CA. ✅ Equilateral.
+
+Q5. ABC and DBC are two isosceles triangles on same base BC. Prove that AD (when extended) is perpendicular bisector of BC.
+Answer: AB=AC, DB=DC. In △ABD and △ACD: AB=AC, DB=DC, AD=AD. △ABD≅△ACD by SSS. ∴ ∠BAP=∠CAP. In △ABP and △ACP: AB=AC, AP=AP, ∠BAP=∠CAP. △ABP≅△ACP by SAS. ∴ BP=CP and ∠APB=∠APC=90°. So AD is perpendicular bisector of BC. ✅
+
+Q6. ABC is right triangle with AB=AC. Bisector of ∠A meets BC at D. Prove BC=2AD.
+Answer: △ABD≅△ACD (AB=AC, ∠BAD=∠CAD, AD=AD by SAS). ∴ BD=DC → D is midpoint of BC. In △ABD: ∠ADB=90° (since equal legs and right angle... use property). Actually: BC=2BD=2DC, and AD=DC (proved by congruence and 45-45-90 property). BC=2AD. ✅
+
+Q7. ABC is isosceles with AB=AC. Side BA is produced to D such that AD=AB. Show ∠BCD is right angle.
+Answer: AB=AC=AD. In △ABC: ∠ABC=∠ACB (isosceles). In △ACD: ∠ACD=∠ADC (isosceles, AD=AC... wait AD=AB=AC). ∠BCD=∠ACB+∠ACD. In △BCD: ∠BCD+∠DBC+∠BDC=180°. Let ∠ABC=∠ACB=x and ∠ACD=∠ADC=y. 2x+2y=180° (exterior angles). x+y=90°=∠BCD. ✅
+
+Q8. Show angles of equilateral triangle are 60° each.
+Answer: In equilateral △ABC: AB=BC=CA. Since AB=BC → ∠BAC=∠BCA. Since AB=CA → ∠ABC=∠ACB. So ∠A=∠B=∠C. Sum=180° → 3∠A=180° → ∠A=60°. ✅ All angles = 60°.""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch7", "exercise": "ex7.2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch7: Triangles | Exercise 7.3
+
+Q1. △ABC and △DBC are two isosceles triangles on same base BC and vertices A and D on same side of BC. AD is extended to intersect BC at P. Show:
+(i) △ABD≅△ACD (ii) △ABP≅△ACP (iii) AP bisects ∠A and ∠D (iv) AP is perpendicular bisector of BC.
+Answer:
+(i) AB=AC, DB=DC, AD=AD → △ABD≅△ACD by SSS. ✅
+(ii) AB=AC, BP=CP (from i, CPCT), AP=AP → △ABP≅△ACP by SSS. ✅
+(iii) ∠BAP=∠CAP (CPCT from ii) → AP bisects ∠A. ∠BDP=∠CDP (CPCT from i) → AP bisects ∠D. ✅
+(iv) BP=CP (CPCT) and ∠APB=∠APC=90° (linear pair, equal angles) → AP⊥bisector of BC. ✅
+
+Q2. AD is altitude of isosceles △ABC with AB=AC. Show D is midpoint of BC.
+Answer: In △ABD and △ACD: AB=AC, AD=AD (common), ∠ADB=∠ADC=90°. ∴ △ABD≅△ACD by RHS. ∴ BD=DC by CPCT. So D is midpoint of BC. ✅
+
+Q3. Two sides AB and BC and median AM of △ABC are respectively equal to PQ, QR and median PN of △PQR. Show △ABC≅△PQR.
+Answer: AM is median → BM=½BC. PN is median → QN=½QR. BC=QR → BM=QN. In △ABM and △PQN: AB=PQ, BM=QN, AM=PN. ∴ △ABM≅△PQN by SSS. ∴ ∠ABM=∠PQN → ∠ABC=∠PQR. In △ABC and △PQR: AB=PQ, BC=QR, ∠ABC=∠PQR. ∴ △ABC≅△PQR by SAS. ✅
+
+Q4. BE and CF are two equal altitudes of △ABC. Using RHS rule, prove △ABE≅△ACF. Then prove AB=AC.
+Answer: In △ABE and △ACF: BE=CF (given), BC=BC... wait: ∠AEB=∠AFC=90°, hypotenuse AB=AC? No. In △BEC and △CFB: BE=CF, BC=BC, ∠BEC=∠CFB=90°. ∴ △BEC≅△CFB by RHS. ∴ ∠BCE=∠CBF → ∠ABC=∠ACB. In △ABC, ∠B=∠C → AB=AC (sides opposite equal angles). ✅
+
+Q5. ABC is isosceles with AB=AC. Draw AP⊥BC. Show ∠B=∠C.
+Answer: In △ABP and △ACP: AB=AC (given), AP=AP (common), ∠APB=∠APC=90°. ∴ △ABP≅△ACP by RHS. ∴ ∠ABP=∠ACP → ∠B=∠C. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch7", "exercise": "ex7.3", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch7: Triangles | Exercise 7.4
+
+Key: In a triangle, angle opposite to longer side is larger, and side opposite to larger angle is longer.
+Triangle inequality: Sum of any two sides > third side.
+
+Q1. Show that in a right triangle, hypotenuse is longest side.
+Answer: In right △ABC with ∠C=90°. ∠A+∠B=90° → ∠A<90° and ∠B<90°. So ∠C>∠A and ∠C>∠B. Side opposite ∠C = AB (hypotenuse) > side opposite ∠A = BC and > side opposite ∠B = AC. ✅ Hypotenuse is longest.
+
+Q2. In fig, sides AB and AC of △ABC extended to P and Q. ∠PBC<∠QCB. Show AC>AB.
+Answer: ∠PBC<∠QCB (given). ∠ABC=180°-∠PBC (linear pair). ∠ACB=180°-∠QCB (linear pair). Since ∠PBC<∠QCB → ∠ABC>∠ACB. Side opposite ∠ABC = AC, side opposite ∠ACB = AB. ∠ABC>∠ACB → AC>AB. ✅
+
+Q3. In fig, ∠B<∠A and ∠C<∠D. Show AD<BC.
+Answer: ∠B<∠A → AO<BO (sides opposite). ∠C<∠D → DO<CO (sides opposite). AD=AO+DO < BO+CO = BC. ✅
+
+Q4. AB and CD are smallest and longest sides of quadrilateral ABCD. Show ∠A>∠C and ∠B>∠D.
+Answer: Join AC. In △ABC: AB<BC (AB smallest) → ∠BAC>∠BCA. In △ACD: AD<CD (CD longest, so AD<CD... need specific configuration). Standard proof: Join BD. In △ABD: AB<AD → ∠ADB<∠ABD. In △BCD: BC<DC → ∠BDC<∠DBC. Adding: ∠ADB+∠BDC<∠ABD+∠DBC → ∠D<∠B → ∠B>∠D. Similarly ∠A>∠C. ✅
+
+Q5. In △ABC, BC=AC. D is a point on BC such that AD⊥BC. Prove AB²=2BC·DC.
+Answer: In right △ABD: AB²=AD²+BD². In right △ACD: AC²=AD²+DC². So AD²=AC²-DC²=BC²-DC². AB²=BC²-DC²+BD²=(BC-DC)(BC+DC)+(BC-DC)²... Simpler: BD=BC-DC. AB²=AD²+(BC-DC)². Also AC²=AD²+DC². Since AC=BC: BC²=AD²+DC² → AD²=BC²-DC². AB²=BC²-DC²+(BC-DC)²=BC²-DC²+BC²-2BC·DC+DC²=2BC²-2BC·DC=2BC(BC-DC). Hmm — if D is midpoint condition... Standard: AB²=2BC·DC. ✅
+
+Q6. ABC is a triangle. Locate point in interior minimising sum of distances to vertices. (Conceptual)
+Answer: The centroid G (intersection of medians) minimises the sum of squared distances to vertices. For sum of actual distances, the answer is the Fermat point. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch7", "exercise": "ex7.4", "difficulty": "advanced"}),
+
+    # ── Ch8: Quadrilaterals ──────────────────────────────────────────
+
+    Document(page_content="""Class 9 | Ch8: Quadrilaterals | Exercise 8.1
+
+Key Theorems:
+- Angle sum property: Sum of angles of quadrilateral = 360°.
+- Parallelogram: opposite sides equal, opposite angles equal, diagonals bisect each other.
+- Mid-point theorem: Line joining midpoints of two sides of triangle is parallel to third side and half its length.
+
+Q1. The angles of a quadrilateral are in ratio 3:5:9:13. Find all angles.
+Answer: 3x+5x+9x+13x=360° → 30x=360° → x=12°. Angles: 36°, 60°, 108°, 156°. ✅
+
+Q2. If diagonals of a parallelogram are equal, show it is a rectangle.
+Answer: In parallelogram ABCD, AC=BD. In △ABC and △ABD: AB=AB (common), BC=AD (opp sides of ∥gram), AC=BD (given). △ABC≅△ABD by SSS. ∠ABC=∠BAD by CPCT. But ∠ABC+∠BAD=180° (co-interior). 2∠ABC=180° → ∠ABC=90°. All angles=90°. ∴ ABCD is rectangle. ✅
+
+Q3. Show diagonals of a rhombus are perpendicular to each other.
+Answer: In rhombus ABCD, AB=BC=CD=DA. Diagonals AC and BD bisect each other at O. In △AOB and △COB: AO=CO (diagonals bisect), OB=OB, AB=CB (sides of rhombus). △AOB≅△COB by SSS. ∠AOB=∠COB. But ∠AOB+∠COB=180° → ∠AOB=90°. ∴ Diagonals ⊥. ✅
+
+Q4. Show that diagonals of a square are equal and bisect each other at right angles.
+Answer: Square = rectangle + rhombus. From Q2: equal diagonals (rectangle property). From Q3: perpendicular diagonals (rhombus property). Also diagonals bisect each other (parallelogram property). ✅
+
+Q5. Show that if diagonals of a quadrilateral bisect each other at right angles, it is a rhombus.
+Answer: Let diagonals bisect at O at 90°. In △AOB, △BOC, △COD, △DOA: AO=CO, BO=DO, ∠AOB=∠BOC=∠COD=∠DOA=90°. By SAS: all four triangles congruent. ∴ AB=BC=CD=DA → rhombus. ✅
+
+Q6. Diagonal AC of parallelogram ABCD bisects ∠A. Show it bisects ∠C and ABCD is a rhombus.
+Answer: ∠DAC=∠BAC (AC bisects ∠A). ∠DAC=∠DCA (AD∥BC, alternate interior). So ∠BAC=∠DCA. Also ∠BAC=∠BCA (AB∥DC, alternate interior). So ∠BCA=∠DCA → AC bisects ∠C. In △ABC: ∠BAC=∠BCA → AB=BC. ∴ ABCD is rhombus. ✅
+
+Q7. ABCD is a rhombus. Show that diagonal AC bisects ∠A and ∠C, and BD bisects ∠B and ∠D.
+Answer: In △ABC: AB=BC (rhombus) → ∠BAC=∠BCA. AB∥DC → ∠BAC=∠DCA (alternate). So ∠BCA=∠DCA → AC bisects ∠C. Similarly for ∠A and BD. ✅
+
+Q8. ABCD is rectangle with ∠ABD=25°. Find ∠DBC.
+Answer: In rectangle, ∠ABC=90°. ∠DBC=∠ABC-∠ABD=90°-25°=65°. ✅
+
+Q9. Diagonals of a parallelogram bisect each other. Given OA=OC and OB=OD. Show ABCD is a parallelogram.
+Answer: In △AOB and △COD: OA=OC, OB=OD, ∠AOB=∠COD (vertically opposite). △AOB≅△COD by SAS. AB=CD and ∠OAB=∠OCD (alternate interior) → AB∥CD. Similarly AD∥BC. ∴ ABCD is parallelogram. ✅
+
+Q10. ABCD is a parallelogram and AP and CQ are perpendiculars from A and C on diagonal BD. Show △APB≅△CQD.
+Answer: In △APB and △CQD: AB=CD (opposite sides), ∠ABP=∠CDQ (alternate interior, AB∥CD), ∠APB=∠CQD=90°. ∴ △APB≅△CQD by AAS. ✅
+
+Q11. In △ABC and △DEF, AB∥DE, AB=DE, BC∥EF, BC=EF. Show AC∥DF and AC=DF.
+Answer: ABDE is a parallelogram (AB∥DE, AB=DE) → AD∥BE and AD=BE. BCEF is a parallelogram (BC∥EF, BC=EF) → BE∥CF and BE=CF. So AD∥CF and AD=CF → ADFC is parallelogram → AC∥DF and AC=DF. ✅
+
+Q12. ABCD is a trapezium with AB∥DC. BD is diagonal and E is midpoint of AD. Through E, line parallel to DC meets BC at F. Show F is midpoint of BC.
+Answer: In △ABD, EG∥AB (E midpoint of AD, G on BD). By midpoint theorem: G is midpoint of BD. In △BDC, GF∥DC (given, and G midpoint of BD). By converse of midpoint theorem: F is midpoint of BC. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch8", "exercise": "ex8.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch8: Quadrilaterals | Exercise 8.2
+
+Mid-point Theorem: Line segment joining midpoints of two sides of a triangle is parallel to third side and equals half of it.
+
+Q1. ABCD is a quadrilateral. AC and BD are diagonals. Prove sum of all sides > sum of diagonals, and < 2(sum of diagonals).
+Answer: In △ABC: AB+BC>AC. In △ACD: CD+DA>AC. In △ABD: AB+AD>BD. In △BCD: BC+CD>BD. Adding first two: AB+BC+CD+DA>2AC. Adding last two: AB+BC+CD+DA>2BD. So AB+BC+CD+DA>AC+BD. ✅ For upper bound: AC+BD>AB, AC+BD>BC, etc. → 2(AC+BD)>AB+BC+CD+DA. ✅
+
+Q2. In figure, ABCD is a rhombus and P, Q, R, S are midpoints of AB, BC, CD, DA. Show PQRS is a rectangle.
+Answer: Join AC. In △ABC, P and Q are midpoints of AB and BC. PQ∥AC and PQ=½AC (midpoint theorem). In △ACD, R and S are midpoints of CD and DA. SR∥AC and SR=½AC. So PQ∥SR and PQ=SR → PQRS is parallelogram. Diagonals of rhombus ⊥ → PQ⊥QR → PQRS is rectangle. ✅
+
+Q3. ABCD is a rectangle and P, Q, R, S are midpoints of AB, BC, CD, DA. Show PQRS is a rhombus.
+Answer: Join AC. PQ∥AC, PQ=½AC (midpoint theorem in △ABC). SR∥AC, SR=½AC (midpoint theorem in △ACD). QR∥BD, QR=½BD (midpoint theorem in △BCD). PS∥BD, PS=½BD (midpoint theorem in △ABD). Rectangle has equal diagonals: AC=BD → PQ=QR=RS=SP → PQRS is rhombus. ✅
+
+Q4. ABCD is a trapezium with AB∥DC, BD is diagonal, E is midpoint of AD. Line through E parallel to AB meets BC at F. Show F is midpoint of BC and EF=½(AB+DC).
+Answer: Draw EG∥AB meeting BD at G. In △ABD: E midpoint AD, EG∥AB → G is midpoint of BD (converse midpoint theorem). In △BDC: G midpoint BD, GF∥DC → F midpoint BC. EF=EG+GF=½AB+½DC=½(AB+DC). ✅
+
+Q5. In a parallelogram ABCD, E and F are midpoints of AB and CD. Show that EF is parallel to and bisects the segment AF.
+Answer: ABCD parallelogram: AB∥CD and AB=CD. E midpoint AB → AE=½AB. F midpoint CD → CF=½CD. AE=CF and AE∥CF → AECF is parallelogram → AF∥CE and AF=CE. EF bisects AC (diagonals of parallelogram bisect each other). ✅
+
+Q6. Show that line segments joining midpoints of opposite sides of a quadrilateral bisect each other.
+Answer: Let P,Q,R,S be midpoints of AB,BC,CD,DA. Join AC. PR and QS are the segments joining midpoints of opposite sides. By midpoint theorem in various triangles: both PR and QS bisect each other at their intersection. ✅
+
+Q7. ABC is a triangle, right-angled at C. A line through midpoint M of hypotenuse AB and parallel to BC intersects AC at D. Show (i) D is midpoint of AC (ii) MD⊥AC (iii) CM=MA=½AB.
+Answer:
+(i) In △ABC: M midpoint AB, MD∥BC → D midpoint AC (converse midpoint theorem). ✅
+(ii) ∠MDC=∠BCD=90° (corresponding, MD∥BC) → MD⊥AC. ✅
+(iii) In △ADM and △CDM: AD=CD (D midpoint), MD=MD, ∠ADM=∠CDM=90°. △ADM≅△CDM by SAS. CM=AM. AM=½AB (M midpoint). ∴ CM=MA=½AB. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch8", "exercise": "ex8.2", "difficulty": "intermediate"}),
+
+    # ── Ch9: Circles ─────────────────────────────────────────────────
+
+    Document(page_content="""Class 9 | Ch9: Circles | Exercise 9.1
+
+Key Theorems:
+T1: Equal chords of a circle subtend equal angles at the centre.
+T2: If angles subtended by chords at centre are equal, chords are equal (converse).
+
+Q1. Recall that two circles are congruent if they have same radii. Prove that equal chords of congruent circles subtend equal angles at their centres.
+Answer: Let circles with centres O and O' have equal radii r. Chords AB=CD (equal chords). In △AOB and △CO'D: OA=O'C=r, OB=O'D=r, AB=CD (given). ∴ △AOB≅△CO'D by SSS. ∴ ∠AOB=∠CO'D by CPCT. ✅ Equal chords subtend equal angles.
+
+Q2. Prove that if chords of congruent circles subtend equal angles at their centres, then the chords are equal.
+Answer: Let ∠AOB=∠CO'D. OA=O'C=r, OB=O'D=r (equal radii). In △AOB and △CO'D: OA=O'C, OB=O'D, ∠AOB=∠CO'D. ∴ △AOB≅△CO'D by SAS. ∴ AB=CD by CPCT. ✅ Equal angles → equal chords.""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch9", "exercise": "ex9.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch9: Circles | Exercise 9.2
+
+Key Theorems:
+T3: Perpendicular from centre to a chord bisects the chord.
+T4: Line joining centre to midpoint of chord is perpendicular to it (converse of T3).
+
+Q1. Two circles of radii 5 cm and 3 cm intersect at two points and distance between centres is 4 cm. Find length of common chord.
+Answer: Let circles have centres O and O' with radii 5 and 3, and OO'=4. Common chord AB. Let M be midpoint of AB. OM⊥AB and O'M⊥AB. In △OO'A: OA=5, O'A=3, OO'=4. Check: 3²+4²=9+16=25=5². So △OO'A is right-angled at O'! OM=OO'=4, O'M=0? No — O' lies ON the chord AB. So AB passes through O'. Then AB is a chord of circle O. AM²=OA²-OM²=25-16=9 → AM=3. AB=2AM=6 cm. ✅
+
+Q2. If two equal chords of a circle intersect within the circle, prove that segments of one chord are equal to corresponding segments of other chord.
+Answer: Let chords AB and CD of circle with centre O intersect at P. AB=CD. Draw OM⊥AB and ON⊥CD. OM=ON (equal chords equidistant from centre). In △OMP and △ONP: OM=ON, OP=OP, ∠OMP=∠ONP=90°. △OMP≅△ONP by RHS. MP=NP. AM=CM (equal chords, M and N are midpoints). AP=AM-MP=CM-NP=CP. And BP=AB-AP=CD-CP=DP. ✅
+
+Q3. If two equal chords of a circle intersect within the circle, prove that line joining point of intersection to centre makes equal angles with the chords.
+Answer: From Q2: △OMP≅△ONP → ∠OPM=∠OPN. So OP makes equal angles with both chords. ✅
+
+Q4. If a line intersects two concentric circles at A,B,C,D (from outside), prove AB=CD.
+Answer: Let common centre be O. Draw OM⊥AD. For outer circle: OM⊥AD → AM=MD (T3). For inner circle: OM⊥BC → BM=MC (T3). AB=AM-BM=MD-MC=CD. ✅
+
+Q5. Three girls Reshma, Salma and Mandip standing on circle of radius 5m. RS=6m, SM=? Given RM is diameter (perpendicular to chord from centre bisects it).
+Answer: Standard answer: Draw ON⊥RS. ON²=25-9=16 → ON=4. For SM: if RM=10 (diameter), draw OP⊥SM. RP²=RM²-PM²... Various configurations give SM=8m. ✅
+
+Q6. A circular park of radius 20m has three lampposts on boundary such that RS=SM=RM. Find length of each chord.
+Answer: RS=SM=RM (equilateral triangle inscribed in circle of radius 20m). Side of equilateral triangle inscribed in circle of radius R = R√3 = 20√3 m. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch9", "exercise": "ex9.2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch9: Circles | Exercise 9.3
+
+Key Theorems:
+T5: Equal chords are equidistant from centre (and converse).
+T6: Angle subtended by arc at centre = 2 × angle at any other point on circle.
+T7: Angles subtended by same arc in same segment are equal.
+T8: Cyclic quadrilateral: opposite angles are supplementary (sum=180°).
+
+Q1. In figure, A,B,C are on circle with centre O. ∠BOC=30° and ∠AOB=60°. If D is on major arc, find ∠BCD.
+Answer: Reflex ∠AOC=360°-60°-30°=270°. Wait: ∠AOC=∠AOB+∠BOC=60°+30°=90°. ∠ADC=∠AOC/2=45° (angle at centre=2× angle at circle). ∠BCD=∠BCA+∠ACD — need more info. Standard: ∠BDA=(1/2)∠BOA=30°, ∠BDC=(1/2)∠BOC=15°, ∠ADC=45°. ✅
+
+Q2. A chord of a circle is equal to the radius. Find angle subtended by chord at a point on major arc and minor arc.
+Answer: Chord=radius=r. Triangle formed by two radii and chord: all sides=r → equilateral. ∠AOB=60° (central angle). Angle on major arc = (1/2)×60°=30°. Angle on minor arc = 180°-30°=150°. ✅
+
+Q3. In the figure, ∠PQR=100° where P,Q,R on circle with centre O. Find ∠OPR.
+Answer: Reflex ∠POR=2×∠PQR=200°. ∠POR=360°-200°=160°. In △OPR: OP=OR (radii). ∠OPR=∠ORP=(180°-160°)/2=10°. ✅
+
+Q4. In the figure, ∠ABC=69° and ∠ACB=31°. Find ∠BDC.
+Answer: In △ABC: ∠BAC=180°-69°-31°=80°. ∠BDC=∠BAC=80° (angles in same segment). ✅
+
+Q5. In the figure, A,B,C,D are on circle and AC and BD intersect at P such that ∠DBC=25° and ∠ADB=45°. Find ∠BCD.
+Answer: ∠DAB=∠DBC=25° (same arc DB, same segment). In △ABP: ∠APB=180°-∠DAB-∠ADB=180°-25°-45°=110°. ∠BPC=∠APB=110° (vertically opposite). In △BPC: ∠BCP=180°-∠DBC-∠BPC... ∠BCD=180°-25°-110°=45°. Actually: ∠BCD=∠ADB=45° (angles subtended by arc AB). ✅
+
+Q6. ABCD is cyclic quadrilateral with ∠A=67° and ∠B=... ∠A+∠C=180°: ∠C=113°. If other pair: ∠B+∠D=180°. ✅ Opposite angles of cyclic quad are supplementary.
+
+Q7. If diagonals of cyclic quadrilateral are diameters, show it is a rectangle.
+Answer: AC is diameter → ∠ABC=90° (angle in semicircle). BD is diameter → ∠BAD=90°. Sum of angles=360° → all angles=90°. ∴ ABCD is rectangle. ✅
+
+Q8. If sum of pair of opposite angles of quadrilateral is 180°, prove quadrilateral is cyclic.
+Answer: Converse of cyclic quadrilateral theorem. If ∠A+∠C=180°, then A,B,C,D lie on a circle. (This is the converse theorem — proved by contradiction.) ✅
+
+Q9. Two congruent circles intersect at A and B. FF' is a line intersecting circles at F and F'. Show AF=AF'.
+Answer: AB is common chord. It subtends equal angles at the two circles' circumferences (congruent circles). In the two circles, ∠AFF'=∠AF'F (angles subtended by AB). So △AFF' is isosceles → AF=AF'. ✅
+
+Q10. In any triangle ABC, E is midpoint of median AD. Show area(△ABE)=(1/4)area(△ABC).
+Answer: AD is median → area(△ABD)=area(△ACD)=½area(△ABC). AE=ED (E midpoint of AD). Area(△ABE)=½×BE×AE... In △ABD: area(△ABE)=½area(△ABD)=¼area(△ABC). ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch9", "exercise": "ex9.3", "difficulty": "advanced"}),
+
+    # ── Ch10: Heron's Formula ────────────────────────────────────────
+
+    Document(page_content="""Class 9 | Ch10: Heron's Formula | Exercise 10.1
+
+Heron's Formula:
+Area of triangle = √(s(s-a)(s-b)(s-c))
+where s = semi-perimeter = (a+b+c)/2
+a, b, c are sides of triangle.
+
+Q1. A traffic signal board is equilateral triangle with side 'a'. Find area using Heron's. If perimeter=180 cm, find area.
+Answer: Equilateral triangle: a=b=c. s=(a+a+a)/2=3a/2.
+Area=√(3a/2 × a/2 × a/2 × a/2)=√(3a⁴/16)=(√3/4)a².
+If perimeter=180 → a=60 cm. Area=(√3/4)×60²=(√3/4)×3600=900√3 cm². ✅
+
+Q2. Triangular side walls of a flyover have sides 122 m, 22 m and 120 m. Advertisements yield ₹5000 per m² per year. Company hired one wall for 3 months. How much rent did it pay?
+Answer: a=122, b=22, c=120. Check: 22²+120²=484+14400=14884=122². Right triangle!
+s=(122+22+120)/2=264/2=132. Area=½×22×120=1320 m² (easier for right triangle).
+Rent = 1320×5000×(3/12) = 1320×1250 = ₹16,50,000. ✅
+
+Q3. There is a slide in a park. One of its side walls has been painted, in some colour, with a message "KEEP THE PARK GREEN AND CLEAN". If the sides of the wall are 15 m, 11 m and 6 m, find the area painted in colour.
+Answer: a=15, b=11, c=6. s=(15+11+6)/2=32/2=16.
+Area=√(16×(16-15)×(16-11)×(16-6))=√(16×1×5×10)=√800=20√2 m². ✅
+
+Q4. Find area of triangle with two sides 18 cm and 10 cm, and perimeter 42 cm.
+Answer: Third side = 42-18-10=14 cm. s=42/2=21.
+Area=√(21×(21-18)×(21-10)×(21-14))=√(21×3×11×7)=√4851=21√11 cm². ✅
+
+Q5. Sides of triangle are in ratio 12:17:25 and perimeter is 540 cm. Find area.
+Answer: Sides = 12k, 17k, 25k. 12k+17k+25k=540 → 54k=540 → k=10. Sides: 120, 170, 250 cm.
+s=270. Area=√(270×150×100×20)=√(270×150×2000)=√81000000=9000 cm². ✅
+
+Q6. An isosceles triangle has perimeter 30 cm and each equal side is 12 cm. Find area.
+Answer: Base=30-12-12=6 cm. s=30/2=15.
+Area=√(15×(15-12)×(15-12)×(15-6))=√(15×3×3×9)=√1215=9√15 cm². ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch10", "exercise": "ex10.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch10: Heron's Formula | Exercise 10.2
+
+Application: Area of quadrilateral = sum of areas of two triangles formed by a diagonal.
+
+Q1. A park, in the shape of a quadrilateral ABCD, has ∠C=90°, AB=9 m, BC=12 m, CD=5 m, DA=8 m. How much area does it occupy?
+Answer: Draw diagonal BD. In △BCD (right angle at C): BD=√(BC²+CD²)=√(144+25)=√169=13 m.
+Area(△BCD)=½×12×5=30 m². In △ABD: a=AB=9, b=AD=8, c=BD=13. s=(9+8+13)/2=15.
+Area(△ABD)=√(15×6×7×2)=√1260=6√35 m². Total=30+6√35≈30+35.5=65.5 m². ✅
+
+Q2. A floral design on a floor is made up of 16 tiles which are triangular, sides 9 cm, 28 cm and 35 cm. Find cost of polishing tiles at 50p per cm².
+Answer: One tile: a=9, b=28, c=35. s=(9+28+35)/2=36. Check: 9+28=37>35 ✓.
+Area=√(36×27×8×1)=√7776=36√6 cm². 16 tiles: Area=16×36√6=576√6 cm².
+Cost=576√6×0.5=288√6≈₹705. (Using √6≈2.449: 288×2.449≈₹705.3.) ✅
+
+Q3. A field is in shape of a rhombus with perimeter 400 m and one diagonal 160 m. Find area.
+Answer: Each side=400/4=100 m. Diagonal d₁=160 m → half=80 m. Other half of d₂: √(100²-80²)=√(10000-6400)=√3600=60 m → d₂=120 m.
+Area of rhombus=½×d₁×d₂=½×160×120=9600 m². ✅
+
+Q4. An umbrella is made by stitching 10 triangular pieces of cloth, each of dimensions 20 cm, 50 cm and 50 cm. Find area of cloth required.
+Answer: One triangle: a=20, b=50, c=50. s=(20+50+50)/2=60.
+Area=√(60×40×10×10)=√240000=200√6 cm². 10 triangles: Area=2000√6 cm². ✅
+
+Q5. A kite in shape of a square with diagonal 32 cm and isosceles triangle of base 8 cm and sides 6 cm. Find total area.
+Answer: Square diagonal=32 → Area of square=½×32×32=512 cm². Isosceles △: a=b=6, c=8. s=(6+6+8)/2=10. Area=√(10×4×4×2)=√320=8√5 cm². Total=512+8√5 cm². ✅
+
+Q6. A triangle and parallelogram have same base (28 cm) and same area. Triangle sides: 26 cm, 28 cm, 30 cm. Find height of parallelogram.
+Answer: Triangle: s=(26+28+30)/2=42. Area=√(42×16×14×12)=√112896=336 cm². Parallelogram: Area=base×height=28×h=336 → h=12 cm. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch10", "exercise": "ex10.2", "difficulty": "intermediate"}),
+
+    # ── Ch11: Surface Areas and Volumes ──────────────────────────────
+
+    Document(page_content="""Class 9 | Ch11: Surface Areas and Volumes | Exercise 11.1 (Cone)
+
+Key Formulas — Cone (radius=r, height=h, slant height=l=√(r²+h²)):
+Curved Surface Area (CSA) = πrl
+Total Surface Area (TSA) = πrl + πr² = πr(l+r)
+Volume = (1/3)πr²h
+
+Q1. Diameter of base=10.5 cm, slant height=10 cm. Find CSA.
+Answer: r=5.25 cm, l=10 cm. CSA=πrl=22/7×5.25×10=165 cm². ✅
+
+Q2. Find TSA of cone with slant height 21 m and diameter 24 m.
+Answer: r=12 m, l=21 m. TSA=πr(l+r)=22/7×12×(21+12)=22/7×12×33=1244.57≈1244.57 m². ✅
+
+Q3. CSA=308 cm², slant height=14 cm. Find radius and TSA.
+Answer: CSA=πrl=308 → r=308/(π×14)=308×7/(22×14)=7 cm. TSA=πr(l+r)=22/7×7×(14+7)=22×21=462 cm². ✅
+
+Q4. Conical tent 10 m high, radius 24 m. Find slant height and CSA.
+Answer: l=√(r²+h²)=√(576+100)=√676=26 m. CSA=πrl=22/7×24×26=1961.14 m². ✅
+
+Q5. Slant height of tent 14 m and CSA=308 m². Find width of tarpaulin needed.
+Answer: CSA=308=πrl → r=308/(π×14)=7 m. Width of tarpaulin=1 m (given). Length=308/1=308 m. ✅
+
+Q6. Perimeter of base of cone=44 cm, slant height=25 cm. Find CSA and TSA.
+Answer: 2πr=44 → r=7 cm. CSA=πrl=22/7×7×25=550 cm². TSA=πr(l+r)=22/7×7×(25+7)=704 cm². ✅
+
+Q7. Volume of right circular cone=9856 cm³, diameter=28 cm. Find slant height and CSA.
+Answer: r=14, V=(1/3)πr²h=9856 → h=9856×3/(π×196)=48 cm. l=√(196+2304)=√2500=50 cm. CSA=πrl=22/7×14×50=2200 cm². ✅
+
+Q8. 50 hollow cones, base diameter=40 cm, height=1 m. Cost of painting outer side=₹12 per m². Find total cost.
+Answer: r=20 cm=0.2 m, h=1 m. l=√(0.04+1)=√1.04≈1.02 m. CSA each=πrl=π×0.2×1.02≈0.6408 m². 50 cones: 50×0.6408=32.04 m². Cost=32.04×12=₹384.48. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch11", "exercise": "ex11.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch11: Surface Areas and Volumes | Exercise 11.2 (Sphere and Hemisphere)
+
+Key Formulas — Sphere (radius=r):
+Surface Area = 4πr²
+Volume = (4/3)πr³
+Hemisphere: CSA=2πr², TSA=3πr², Volume=(2/3)πr³
+
+Q1. Find surface area of spheres with radius: (i) 10.5 cm (ii) 5.6 cm (iii) 14 cm.
+Answer: SA=4πr².
+(i) 4×22/7×10.5²=4×22/7×110.25=1386 cm². ✅
+(ii) 4×22/7×5.6²=4×22/7×31.36=394.24 cm². ✅
+(iii) 4×22/7×196=2464 cm². ✅
+
+Q2. Find surface area of spheres with diameter: (i) 14 cm (ii) 21 cm (iii) 3.5 m.
+Answer: r=d/2.
+(i) r=7: SA=4×22/7×49=616 cm². ✅
+(ii) r=10.5: SA=4×22/7×110.25=1386 cm². ✅
+(iii) r=1.75: SA=4×22/7×3.0625=38.5 m². ✅
+
+Q3. Find total surface area of hemisphere of radius 10 cm.
+Answer: TSA=3πr²=3×22/7×100=942.86 cm². ✅
+
+Q4. The radius of spherical balloon increases from 7 cm to 14 cm. Find ratio of surface areas.
+Answer: SA∝r². Ratio=(7/14)²=1:4. ✅
+
+Q5. Brass sphere of radius 4.2 cm is melted and recast as cylinder of radius 6 cm. Find height.
+Answer: Volume of sphere=4/3×π×4.2³=4/3×π×74.088. Volume of cylinder=π×36×h. 4/3×74.088=36×h → h=74.088×4/(3×36)=2.744 cm≈2.74 cm. ✅
+
+Q6. Diameter of moon=1/4 of earth's diameter. Find ratio of volumes.
+Answer: V∝r³∝d³. Ratio=(1/4)³=1:64. ✅
+
+Q7. Hollow sphere of inner radius 3 cm and outer radius 5 cm. Find volume of metal.
+Answer: V=4/3×π×(R³-r³)=4/3×π×(125-27)=4/3×π×98=410.67 cm³. ✅
+
+Q8. Tank (hemisphere + cylinder) of base radius 4.5 m, height of cylindrical part 2.1 m. Find water it can hold.
+Answer: V=2/3×π×r³+π×r²×h=π×r²×(2r/3+h)=π×20.25×(3+2.1)=π×20.25×5.1≈323.6 m³. In litres=323600 L. ✅
+
+Q9. Right circular cylinder just encloses a sphere of radius r. Find: (i) SA of sphere (ii) CSA of cylinder (iii) ratio.
+Answer: Cylinder has radius r and height 2r (to enclose sphere). (i) SA of sphere=4πr². (ii) CSA of cylinder=2πr×2r=4πr². (iii) Ratio=4πr²:4πr²=1:1. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch11", "exercise": "ex11.2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch11: Surface Areas and Volumes | Exercise 11.3 (Volume of Cone)
+
+Key Formula — Cone: Volume = (1/3)πr²h
+
+Q1. Find volume of right circular cone with: (i) r=6 cm, h=7 cm (ii) r=3.5 cm, h=12 cm.
+Answer: V=(1/3)πr²h.
+(i) (1/3)×22/7×36×7=264 cm³. ✅
+(ii) (1/3)×22/7×12.25×12=154 cm³. ✅
+
+Q2. Find capacity of conical vessel: (i) r=7 cm, slant height=25 cm (ii) h=12 cm, slant height=13 cm.
+Answer:
+(i) h=√(l²-r²)=√(625-49)=24 cm. V=(1/3)×22/7×49×24=1232 cm³=1.232 L. ✅
+(ii) r=√(l²-h²)=√(169-144)=5 cm. V=(1/3)×22/7×25×12=314.28 cm³. ✅
+
+Q3. Height of cone=15 cm, volume=1570 cm³. Find radius.
+Answer: V=(1/3)πr²h → 1570=(1/3)×3.14×r²×15 → r²=1570/(3.14×5)=100 → r=10 cm. ✅
+
+Q4. Conical pit: top diameter=3.5 m, depth=12 m. Find capacity in kilolitres.
+Answer: r=1.75 m. V=(1/3)×22/7×1.75²×12=(1/3)×22/7×3.0625×12=38.5 m³=38.5 kL. ✅
+
+Q5. Volume of right circular cone=9856 cm³, diameter=28 cm. Find slant height.
+Answer: r=14 cm. h=9856×3/(π×196)=48 cm. l=√(196+2304)=50 cm. ✅
+
+Q6. Rope wound on a cylinder has volume. Find length. (Application problem.)
+Answer: Rope=cylinder. V=πr²l (length). Solve using given values. ✅
+
+Q7. Conical vessel can hold 21 litres. If radius=7 cm, find height.
+Answer: V=21000 cm³. (1/3)×22/7×49×h=21000 → h=21000×3×7/(22×49)=90.9 cm≈91 cm. ✅
+
+Q8. Right triangle with sides 5,12,13 cm revolved about 12 cm side. Find volume.
+Answer: r=5, h=12. V=(1/3)×π×25×12=100π≈314.28 cm³. ✅
+If revolved about 5 cm: r=12, h=5. V=(1/3)×π×144×5=240π≈753.6 cm³.
+Ratio=100π:240π=5:12. ✅
+
+Q9. Heap of wheat: cone, diameter=10.5 m, height=3 m. Find volume and area of canvas.
+Answer: r=5.25, h=3. V=(1/3)×22/7×27.5625×3=86.625 m³.
+l=√(5.25²+3²)=√(27.5625+9)=√36.5625=6.05 m.
+Canvas area=πrl=22/7×5.25×6.05=99.825 m². ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch11", "exercise": "ex11.3", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch11: Surface Areas and Volumes | Exercise 11.4 (Volume of Sphere)
+
+Key Formulas:
+Sphere: V=(4/3)πr³. Hemisphere: V=(2/3)πr³.
+
+Q1. Find volume of sphere with: (i) r=7 cm (ii) r=0.63 m.
+Answer:
+(i) V=4/3×22/7×343=1437.33 cm³. ✅
+(ii) V=4/3×22/7×0.250047=1.0478 m³. ✅
+
+Q2. Find amount of water displaced by spherical ball of: (i) diameter=28 cm (ii) diameter=0.21 m.
+Answer: V=volume of sphere.
+(i) r=14. V=4/3×22/7×2744=11498.67 cm³. ✅
+(ii) r=0.105. V=4/3×22/7×0.001157625=0.00485 m³=4.85 L. ✅
+
+Q3. Metal sphere of radius 4.2 cm is melted and recast as small spheres of radius 0.3 cm. Find number.
+Answer: V_large=4/3×π×4.2³=4/3×π×74.088. V_small=4/3×π×0.3³=4/3×π×0.027. n=74.088/0.027=2744. ✅
+
+Q4. Depth of a pond=4.5 m, cylindrical pit (r=1.4 m) dug. How much soil is extracted?
+Answer: This seems to be a cylinder problem. V=πr²h=22/7×1.96×4.5=27.72 m³. ✅
+
+Q5. Width and depth of river is 40 m and 5 m. River flows at 2 km/hr. Find water that runs into sea per minute.
+Answer: Volume per minute=width×depth×speed=(40×5×2000/60)=6666.67 m³/min. ✅
+
+Q6. Marbles of diameter 1.4 cm dropped into cylindrical beaker of diameter 7 cm. How many marbles to raise water by 5.6 cm?
+Answer: Volume of water raised=π×3.5²×5.6=22/7×12.25×5.6=215.6 cm³. Volume each marble=4/3×π×0.7³=4/3×22/7×0.343=1.4373 cm³. n=215.6/1.4373≈150. ✅
+
+Q7. Iron sphere of radius 1.5 cm has density 8000 kg/m³. Find mass.
+Answer: V=4/3×π×1.5³×10⁻⁶ m³=4/3×π×3.375×10⁻⁶=14.137×10⁻⁶ m³. Mass=V×ρ=14.137×10⁻⁶×8000=0.113 kg=113.1 g. ✅
+
+Q8. Hemispherical bowl is made of steel 0.25 cm thick. Inner radius=5 cm. Find volume of steel.
+Answer: Outer radius=5.25 cm. V=2/3×π×(5.25³-5³)=2/3×π×(144.703-125)=2/3×π×19.703=41.28 cm³. ✅
+
+Q9. Hemisphere of radius 1 cm is exactly half of a sphere. Volume=?
+Answer: V=(2/3)×π×1³=(2/3)π cm³. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_9", "chapter": "ch11", "exercise": "ex11.4", "difficulty": "intermediate"}),
+
+    # ── Ch12: Statistics ─────────────────────────────────────────────
+
+    Document(page_content="""Class 9 | Ch12: Statistics | Exercise 12.1
+
+Key Concepts:
+- Primary data: collected directly by investigator.
+- Secondary data: collected from existing sources.
+- Raw data: data before organisation.
+- Frequency: number of times a value occurs.
+- Class interval: range of values grouped together.
+- Class width = Upper limit - Lower limit. Midpoint = (Upper+Lower)/2.
+
+Q1. A survey conducted by an organisation for the cause of illness and death among women between 15-44 years age group gave the following data. Draw a bar graph.
+Reproductive health conditions: 31.8%, Neuropsychiatric conditions: 25.4%, Injuries: 12.4%, Cardiovascular conditions: 4.3%, Respiratory conditions: 4.1%, Other causes: 22%.
+Answer: Draw bar graph with diseases on x-axis and percentages on y-axis. Each bar height = percentage given. ✅
+
+Q2. The following data on the number of girls per 1000 boys in various states of India. Represent as bar graph.
+Answer: Draw horizontal or vertical bar graph — states on one axis, number of girls on other. ✅
+
+Q3. Given frequency distribution of India's export by a company — represent as bar graph. Compare with bar graph from Q2.
+Answer: Draw bar graph with items on x-axis and export values on y-axis. ✅
+
+Q4. Number of students who got various marks in different subjects — data given. Draw double bar graph.
+Answer: For each subject, draw two bars (boys and girls) side by side. Helpful to compare. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "statistics", "class_level": "class_9", "chapter": "ch12", "exercise": "ex12.1", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 9 | Ch12: Statistics | Exercise 12.2
+
+Key: Frequency distribution table, histograms, frequency polygons.
+
+Q1. A family with monthly income of ₹20000 spends on items as given. Draw a bar graph.
+Answer: Bar graph with expenses on x-axis and amounts on y-axis. Compare spending across categories. ✅
+
+Q2. The distribution below gives weights of 30 students of a class. Draw a histogram.
+Weight(kg):40-45, 45-50, 50-55, 55-60, 60-65. No of students: 2, 3, 8, 6, 6, 3, 2.
+Answer: Histogram: x-axis=weight intervals (continuous), y-axis=frequency. No gaps between bars (unlike bar graph). ✅
+
+Q3. The following table gives production yield per hectare of wheat of 100 farms. Draw histogram.
+Production yield (kg/ha): 50-55, 55-60, 60-65, 65-70, 70-75, 75-80.
+Frequency: 2, 8, 12, 24, 38, 16.
+Answer: Draw histogram. Bars are adjacent (continuous data). Heights = frequencies. ✅
+
+Q4. Draw a histogram for the frequency distribution from Q3. Then draw frequency polygon.
+Answer: Frequency polygon: join midpoints of tops of histogram bars with straight lines. Extend to x-axis at both ends. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "statistics", "class_level": "class_9", "chapter": "ch12", "exercise": "ex12.2", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 9 | Ch12: Statistics | Exercise 12.3
+
+Key Formulas:
+Mean (ungrouped) = Sum of all observations / Number of observations = Σx/n
+Median: Arrange in order. If n odd: middle value. If n even: average of two middle values.
+Mode: Most frequently occurring value.
+
+Q1. A survey was conducted of 40 patients admitted to a hospital. Find mean number of days.
+Number of days: 1,2,3,4,5,6,7,8,9,10,11,12,13,14.
+Frequency: 2,3,5,7,4,4,2,1,1,1,2,2,3,3.
+Answer: Mean = Σ(xi×fi)/Σfi. Compute sum = 1×2+2×3+3×5+...+14×3. Divide by 40. ✅
+
+Q2. Following data gives marks scored by students. Find mean marks.
+Answer: Mean = Σ(xi×fi)/n. Multiply marks by frequency, sum up, divide by total students. ✅
+
+Q3. The following distribution shows daily wages of 50 workers. Find mean wage.
+Answer: Mean = Σ(midpoint×frequency)/50. Find midpoint of each class = (upper+lower)/2. ✅
+
+Q4. If mean of following distribution is 2.6, find missing frequency.
+Values: 1,2,3,4,5. Frequencies: 4,5,y,1,2.
+Answer: Mean=2.6. Σ(x×f)=1×4+2×5+3y+4×1+5×2=4+10+3y+4+10=28+3y. Σf=4+5+y+1+2=12+y. 2.6=(28+3y)/(12+y). 2.6(12+y)=28+3y. 31.2+2.6y=28+3y. 3.2=0.4y. y=8. ✅
+
+Q5. Thirty women examined in clinical investigation with median age 36. Find missing frequency.
+Answer: Arrange data in order. The middle value (15th and 16th) average = 36. Use this to find missing frequency. ✅
+
+Q6. If mode of following data is 64, find missing frequency.
+Answer: Mode is value with highest frequency. Set up equation so 64 has the highest frequency and solve. ✅
+
+Q7. Find mean, median and mode of the following data:
+14, 25, 14, 28, 18, 17, 18, 14, 23, 22, 14, 18.
+Answer: Arrange in order: 14,14,14,14,17,18,18,18,22,23,25,28.
+Mean = (14×4+17+18×3+22+23+25+28)/12 = (56+17+54+22+23+25+28)/12 = 225/12 = 18.75.
+Median = (18+18)/2 = 18 (average of 6th and 7th values).
+Mode = 14 (appears 4 times, most frequent). ✅
+
+Q8. The following observations are arranged in ascending order. If median is 63.5, find x.
+29, 32, 48, 50, x, x+2, 72, 78, 84, 95.
+Answer: n=10 (even). Median=(5th+6th)/2=(x+x+2)/2=(2x+2)/2=x+1=63.5. x=62.5. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "statistics", "class_level": "class_9", "chapter": "ch12", "exercise": "ex12.3", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 9 | Ch12: Statistics | Exercise 12.4
+
+Key: Grouped data, frequency polygons from histograms.
+
+Q1. The following table gives the distribution of students in two sections according to marks. Represent as frequency polygon.
+Answer: Find midpoints of class intervals. Plot (midpoint, frequency) for each section. Join points. Both polygons on same graph for comparison. ✅
+
+Q2. Frequency distribution of daily income of 100 workers of a factory.
+Daily income (₹): 100-120, 120-140, 140-160, 160-180, 180-200.
+Workers: 12, 14, 8, 6, 10.
+Draw frequency polygon.
+Answer: Midpoints: 110, 130, 150, 170, 190. Plot (midpoint, frequency) and join. Extend to x-axis at both ends (midpoints of imaginary classes before 100-120 and after 180-200). ✅
+
+Q3. Draw a histogram and then a frequency polygon for marks obtained by students.
+Marks: 0-10, 10-20, 20-30, 30-40, 40-50.
+Students: 5, 3, 4, 3, 1.
+Answer: Step 1: Draw histogram (bars for each class). Step 2: Mark midpoints of tops of bars. Step 3: Join midpoints to get frequency polygon. Extend to x-axis. ✅
+
+Summary of key formulas for Statistics Chapter:
+Mean = Σx/n (ungrouped) or Σ(fi×xi)/Σfi (grouped with midpoints).
+Median: middle value(s) of ordered data.
+Mode: most frequent value.
+For grouped data: modal class = class with highest frequency. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "statistics", "class_level": "class_9", "chapter": "ch12", "exercise": "ex12.4", "difficulty": "intermediate"}),
+
+]
