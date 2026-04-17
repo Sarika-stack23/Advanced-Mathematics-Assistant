@@ -1542,20 +1542,82 @@ def run_streamlit_app():
             label_visibility="collapsed",
             key="class_selector"
         )
-        if selected_class and selected_class in CLASS_EXAMPLES:
+        # ── Quiz Mode: Browse → Attempt → Reveal ─────────────────────
+        _QUIZ_MAP = {}
+        for _doc in MATH_KNOWLEDGE_BASE:
+            _m = _doc.metadata
+            _cl = _m.get("class_level", "")
+            _ch = _m.get("chapter", "")
+            _ex = _m.get("exercise", "")
+            if not (_cl and _ch and _ex):
+                continue
+            _qs = re.findall(r'Q\d+[^\n]*(?:\n(?!Q\d+)[^\n]*)*', _doc.page_content)
+            if not _qs:
+                continue
+            if _cl not in _QUIZ_MAP:
+                _QUIZ_MAP[_cl] = {}
+            if _ch not in _QUIZ_MAP[_cl]:
+                _QUIZ_MAP[_cl][_ch] = {}
+            _QUIZ_MAP[_cl][_ch][_ex] = _qs
+
+        _class_key = "class_9" if "9" in selected_class else "class_10"
+        _available_chapters = _QUIZ_MAP.get(_class_key, {})
+        _ch_names = sorted(_available_chapters.keys())
+        _ch_labels = {f"ch{i}": f"Ch{i}" for i in range(1, 15)}
+        _ch_display = [_ch_labels.get(c, c.upper()) for c in _ch_names]
+
+        if _ch_names:
+            _sel_ch_label = st.selectbox(
+                "Chapter:", options=_ch_display,
+                key=f"quiz_chapter_{_class_key}", label_visibility="collapsed"
+            )
+            _sel_ch = _ch_names[_ch_display.index(_sel_ch_label)]
+            _exercises = sorted(_available_chapters.get(_sel_ch, {}).keys())
+            if _exercises:
+                _sel_ex = st.selectbox(
+                    "Exercise:", options=_exercises,
+                    key=f"quiz_ex_{_class_key}_{_sel_ch}", label_visibility="collapsed"
+                )
+                _questions = _available_chapters[_sel_ch].get(_sel_ex, [])
+                if _questions:
+                    st.markdown(
+                        f"<div style='font-family:DM Mono,monospace;font-size:0.6rem;"
+                        f"text-transform:uppercase;letter-spacing:0.08em;color:var(--tx2);"
+                        f"margin:0.4rem 0 0.2rem;'>{len(_questions)} questions</div>",
+                        unsafe_allow_html=True
+                    )
+                    for _qi, _qtext in enumerate(_questions):
+                        _qkey = f"quiz_{_class_key}_{_sel_ch}_{_sel_ex}_q{_qi}"
+                        _first_line = _qtext.split('\n')[0][:55].strip()
+                        _label = _first_line if _first_line else f"Q{_qi+1}"
+                        if st.button(f"❓ {_label}", key=_qkey, use_container_width=True):
+                            _q_only = _qtext.split('Answer:')[0].strip()
+                            st.session_state.pending = (
+                                f"Show me this question clearly — do NOT reveal the answer yet:\n\n{_q_only}"
+                            )
+                            st.session_state["quiz_reveal_text"] = _qtext
+                            st.rerun()
+
+                    _reveal_text = st.session_state.get("quiz_reveal_text", "")
+                    if _reveal_text:
+                        if st.button("✅ Reveal Answer", key="quiz_reveal_btn",
+                                     use_container_width=True, type="primary"):
+                            st.session_state.pending = (
+                                f"Now explain the full solution step by step:\n\n{_reveal_text}"
+                            )
+                            st.session_state["quiz_reveal_text"] = ""
+                            st.rerun()
+
+        _show_classic = st.checkbox("📚 Chapter examples", key="show_classic_chapters", value=False)
+        if _show_classic and selected_class in CLASS_EXAMPLES:
             chapters = CLASS_EXAMPLES[selected_class]
             topic_keywords = TOPIC_FILTER_MAP.get(selected_topic)
             for chapter_name, question in chapters.items():
-                # Apply topic filter if selected
                 if topic_keywords:
                     chapter_lower = chapter_name.lower() + " " + question.lower()
                     if not any(kw in chapter_lower for kw in topic_keywords):
                         continue
-                if st.button(
-                    chapter_name,
-                    key=f"ch_{chapter_name}",
-                    use_container_width=True
-                ):
+                if st.button(chapter_name, key=f"ch_{chapter_name}", use_container_width=True):
                     st.session_state.pending = question
                     st.rerun()
 
