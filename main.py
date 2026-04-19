@@ -1515,6 +1515,13 @@ def run_streamlit_app():
             st.markdown('<div class="status-pill status-err"><span class="dot"></span> No API Key — check .env</div>', unsafe_allow_html=True)
 
         st.markdown('<div class="sidebar-section">Browse by Class</div>', unsafe_allow_html=True)
+        st.markdown(
+            "<div style='font-size:0.68rem;color:var(--tx2);margin:-0.2rem 0 0.4rem;"
+            "line-height:1.6;padding:0 2px;'>"
+            "① Pick class &nbsp; ② Pick chapter &nbsp; ③ Pick exercise<br>"
+            "Then tap <b>💡 Hint</b>, <b>📖 Steps</b> or <b>✅ Answer</b></div>",
+            unsafe_allow_html=True
+        )
 
         # ── Topic filter ─────────────────────────────────────────────
         TOPIC_FILTER_MAP = {
@@ -1542,27 +1549,30 @@ def run_streamlit_app():
             label_visibility="collapsed",
             key="class_selector"
         )
-        # ── Quiz Mode: Browse → Attempt → Reveal ─────────────────────
-        # Build question map from knowledge_base
-        _QUIZ_MAP = {}
-        for _doc in MATH_KNOWLEDGE_BASE:
-            _m = _doc.metadata
-            _cl = _m.get("class_level", "")
-            _ch = _m.get("chapter", "")
-            _ex = _m.get("exercise", "")
-            if not (_cl and _ch and _ex):
-                continue
-            _qs = re.findall(r'Q\d+[^\n]*(?:\n(?!Q\d+)[^\n]*)*', _doc.page_content)
-            if not _qs:
-                continue
-            _QUIZ_MAP.setdefault(_cl, {}).setdefault(_ch, {})[_ex] = _qs
+        # ── QUIZ SECTION: Class → Chapter → Exercise → Questions ────
+        # Build quiz map once (cached in local var, fast)
+        if "quiz_map" not in st.session_state:
+            _qmap = {}
+            import re as _re
+            for _doc in MATH_KNOWLEDGE_BASE:
+                _m = _doc.metadata
+                _cl = _m.get("class_level","")
+                _ch = _m.get("chapter","")
+                _ex = _m.get("exercise","")
+                if not (_cl and _ch and _ex):
+                    continue
+                _qs = _re.findall(r'Q\d+[^\n]*(?:\n(?!Q\d+)[^\n]*)*', _doc.page_content)
+                if _qs:
+                    _qmap.setdefault(_cl, {}).setdefault(_ch, {})[_ex] = _qs
+            st.session_state["quiz_map"] = _qmap
+        _QUIZ_MAP = st.session_state["quiz_map"]
 
-        # FIX 1: Correct class key detection
+        # Class key from selected_class (has emoji like "📒 Class 9")
         _class_key = "class_10" if "10" in str(selected_class) else "class_9"
-        _available_chapters = _QUIZ_MAP.get(_class_key, {})
-        _ch_names = sorted(_available_chapters.keys(),
-                           key=lambda x: int(x.replace("ch","")) if x.replace("ch","").isdigit() else 99)
-        _ch_full_names = {
+        _avail_ch  = _QUIZ_MAP.get(_class_key, {})
+
+        # Chapter names display map
+        _CH_NAMES = {
             "class_9": {
                 "ch1":"Ch1 · Number Systems","ch2":"Ch2 · Polynomials",
                 "ch3":"Ch3 · Coordinate Geometry","ch4":"Ch4 · Linear Equations",
@@ -1581,193 +1591,207 @@ def run_streamlit_app():
                 "ch13":"Ch13 · Statistics","ch14":"Ch14 · Probability",
             },
         }
-        _ch_display = [_ch_full_names.get(_class_key, {}).get(c, c.upper()) for c in _ch_names]
+        _ch_keys = sorted(_avail_ch.keys(),
+            key=lambda x: int(x.replace("ch","")) if x.replace("ch","").isdigit() else 99)
+        _ch_opts  = [_CH_NAMES.get(_class_key,{}).get(c, c.upper()) for c in _ch_keys]
 
-        if _ch_names:
-            _sel_ch_label = st.selectbox(
-                "Chapter:", options=_ch_display,
-                key=f"quiz_chapter_{_class_key}", label_visibility="collapsed"
+        if not _ch_keys:
+            st.markdown(
+                "<div style='font-size:0.72rem;color:var(--tx2);padding:0.3rem;'>No exercises found.</div>",
+                unsafe_allow_html=True)
+        else:
+            # ── Chapter selectbox — key includes class so it resets on class change
+            _sel_ch_disp = st.selectbox(
+                "Chapter:", options=_ch_opts,
+                key=f"qz_ch_{_class_key}",
+                label_visibility="collapsed"
             )
-            _sel_ch = _ch_names[_ch_display.index(_sel_ch_label)]
-            _exercises = sorted(_available_chapters.get(_sel_ch, {}).keys())
-            if _exercises:
+            _sel_ch_key = _ch_keys[_ch_opts.index(_sel_ch_disp)]
+
+            # ── Exercise selectbox — key includes chapter so it resets on chapter change
+            _exs = sorted(_avail_ch.get(_sel_ch_key, {}).keys())
+            if not _exs:
+                st.markdown(
+                    "<div style='font-size:0.72rem;color:var(--tx2);'>No exercises found.</div>",
+                    unsafe_allow_html=True)
+            else:
                 _sel_ex = st.selectbox(
-                    "Exercise:", options=_exercises,
-                    key=f"quiz_ex_{_class_key}_{_sel_ch}", label_visibility="collapsed"
+                    "Exercise:", options=_exs,
+                    key=f"qz_ex_{_class_key}_{_sel_ch_key}",
+                    label_visibility="collapsed"
                 )
-                _questions = _available_chapters[_sel_ch].get(_sel_ex, [])
-                if _questions:
+
+                # ── Get questions for this exact exercise
+                _qs_list = _avail_ch.get(_sel_ch_key, {}).get(_sel_ex, [])
+
+                if not _qs_list:
                     st.markdown(
-                        f"<div style='font-family:DM Mono,monospace;font-size:0.6rem;"
-                        f"text-transform:uppercase;letter-spacing:0.08em;color:var(--tx2);"
-                        f"margin:0.5rem 0 0.3rem;'>{len(_questions)} questions</div>",
+                        "<div style='font-size:0.72rem;color:var(--tx2);'>No questions found.</div>",
+                        unsafe_allow_html=True)
+                else:
+                    st.markdown(
+                        f"<div style='font-family:DM Mono,monospace;font-size:0.58rem;"
+                        f"text-transform:uppercase;letter-spacing:0.07em;color:var(--tx2);"
+                        f"margin:0.5rem 0 0.4rem;'>{len(_qs_list)} questions</div>",
                         unsafe_allow_html=True
                     )
 
-                    # ── Question list with 4-mode action buttons ──────
-                    for _qi, _qtext in enumerate(_questions):
-                        _qkey  = f"quiz_{_class_key}_{_sel_ch}_{_sel_ex}_q{_qi}"
-                        _first = _qtext.split('\n')[0][:50].strip()
-                        _num   = re.match(r'(Q\d+)', _first)
-                        _qnum  = _num.group(1) if _num else f"Q{_qi+1}"
-                        _rest  = _first[len(_qnum):].strip('. ').strip()[:38]
-                        _label = f"{_qnum}. {_rest}..." if _rest else _qnum
-                        _q_only = _qtext.split('Answer:')[0].strip()
+                    # ── Render each question with 4 action buttons ────
+                    import re as _re2
+                    for _qi, _qtext in enumerate(_qs_list):
+                        _first  = _qtext.split("\n")[0][:55].strip()
+                        _nm     = _re2.match(r'(Q\d+)', _first)
+                        _qnum   = _nm.group(1) if _nm else f"Q{_qi+1}"
+                        _rest   = _first[len(_qnum):].strip('. ').strip()[:38]
+                        _label  = f"{_qnum}. {_rest}..." if _rest else _qnum
+                        _q_only = _qtext.split("Answer:")[0].strip()
 
-                        # Question label row
+                        # Question label
                         st.markdown(
-                            f"<div style='font-size:0.72rem;font-weight:600;"
-                            f"color:var(--tx);margin:0.55rem 0 0.15rem;padding-left:2px;'>"
+                            f"<div style='font-size:0.71rem;font-weight:600;color:var(--tx);"
+                            f"margin:0.55rem 0 0.12rem;padding-left:2px;line-height:1.4;'>"
                             f"{_label}</div>",
                             unsafe_allow_html=True
                         )
 
-                        # 4 action buttons in 2×2 grid
-                        _c1, _c2 = st.columns(2)
-                        with _c1:
-                            if st.button("💡 Hint", key=f"{_qkey}_hint", use_container_width=True):
-                                st.session_state["quiz_reveal_text"] = _qtext
-                                st.session_state["quiz_active_q"] = _qnum
+                        # 4 buttons in 2×2 grid
+                        _b1, _b2 = st.columns(2)
+                        _bk = f"qz_{_class_key}_{_sel_ch_key}_{_sel_ex}_{_qi}"
+
+                        with _b1:
+                            if st.button("💡 Hint", key=f"{_bk}_h", use_container_width=True):
+                                st.session_state["qz_active_text"] = _qtext
+                                st.session_state["qz_active_qnum"] = _qnum
+                                st.session_state["qz_show_stuck"]  = False
+                                st.session_state["qz_show_fu"]     = True
                                 st.session_state.pending = (
-                                    f"Give ONE small hint for this question — do NOT give the answer or steps. "
-                                    f"Just a nudge to get started:\n\n{_q_only}"
+                                    f"Give ONE small hint for this question — "
+                                    f"just a nudge, no steps or answer:\n{_q_only}"
                                 )
                                 st.rerun()
-                            if st.button("✅ Answer", key=f"{_qkey}_ans", use_container_width=True, type="primary"):
-                                st.session_state["quiz_reveal_text"] = ""
-                                st.session_state["quiz_active_q"] = ""
+                            if st.button("✅ Answer", key=f"{_bk}_a", use_container_width=True, type="primary"):
+                                st.session_state["qz_active_text"] = ""
+                                st.session_state["qz_active_qnum"] = ""
+                                st.session_state["qz_show_stuck"]  = False
+                                st.session_state["qz_show_fu"]     = False
                                 st.session_state.pending = (
-                                    f"Give the complete step-by-step solution. "
-                                    f"Show every step clearly like a teacher on a whiteboard:\n\n{_qtext}"
+                                    f"Explain step by step like a whiteboard teacher:\n{_qtext}"
                                 )
                                 st.rerun()
-                        with _c2:
-                            if st.button("📖 Steps", key=f"{_qkey}_steps", use_container_width=True):
-                                st.session_state["quiz_reveal_text"] = _qtext
-                                st.session_state["quiz_active_q"] = _qnum
+                        with _b2:
+                            if st.button("📖 Steps", key=f"{_bk}_s", use_container_width=True):
+                                st.session_state["qz_active_text"] = _qtext
+                                st.session_state["qz_active_qnum"] = _qnum
+                                st.session_state["qz_show_stuck"]  = False
+                                st.session_state["qz_show_fu"]     = True
                                 st.session_state.pending = (
-                                    f"Show ONLY the method/approach to solve this — "
-                                    f"no final answer yet, just the steps to follow:\n\n{_q_only}"
+                                    f"Show the method/approach to solve this — "
+                                    f"no final answer, just the steps to follow:\n{_q_only}"
                                 )
                                 st.rerun()
-                            if st.button("❓ Ask AI", key=f"{_qkey}_ask", use_container_width=True):
-                                st.session_state["quiz_reveal_text"] = _qtext
-                                st.session_state["quiz_active_q"] = _qnum
-                                st.session_state["quiz_show_stuck"] = True
-                                st.session_state["quiz_show_followup"] = False
+                            if st.button("❓ Ask AI", key=f"{_bk}_q", use_container_width=True):
+                                st.session_state["qz_active_text"] = _qtext
+                                st.session_state["qz_active_qnum"] = _qnum
+                                st.session_state["qz_show_stuck"]  = True
+                                st.session_state["qz_show_fu"]     = False
                                 st.rerun()
 
-                    # ═══════════════════════════════════════════════════
-                    # PART B — "Where are you stuck?" buttons
-                    # Shows after ❓ Ask AI is tapped — no typing needed
-                    # ═══════════════════════════════════════════════════
-                    _reveal_text   = st.session_state.get("quiz_reveal_text", "")
-                    _active_q      = st.session_state.get("quiz_active_q", "")
-                    _show_stuck    = st.session_state.get("quiz_show_stuck", False)
-                    _show_followup = st.session_state.get("quiz_show_followup", False)
+                    # ── Part B: Where are you stuck? (after ❓ Ask AI) ─
+                    _active_text = st.session_state.get("qz_active_text", "")
+                    _active_qnum = st.session_state.get("qz_active_qnum", "")
+                    _show_stuck  = st.session_state.get("qz_show_stuck", False)
+                    _show_fu     = st.session_state.get("qz_show_fu", False)
+                    _q_stored    = _active_text.split("Answer:")[0].strip() if _active_text else ""
 
-                    if _reveal_text and _active_q and _show_stuck:
+                    if _active_text and _show_stuck:
                         st.markdown(
                             f"<div style='background:rgba(99,102,241,0.08);border:1px solid "
-                            f"rgba(99,102,241,0.3);border-radius:10px;padding:0.6rem 0.8rem;"
-                            f"margin:0.6rem 0 0.3rem;'>"
-                            f"<div style='font-size:0.68rem;font-weight:700;color:var(--tx2);"
-                            f"text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;'>"
-                            f"📌 {_active_q} — where are you stuck?</div></div>",
+                            f"rgba(99,102,241,0.28);border-radius:9px;padding:0.55rem 0.7rem;"
+                            f"margin:0.6rem 0 0.3rem;font-size:0.68rem;font-weight:700;"
+                            f"color:var(--tx2);text-transform:uppercase;letter-spacing:0.06em;'>"
+                            f"📌 {_active_qnum} — where are you stuck?</div>",
                             unsafe_allow_html=True
                         )
-                        _q_only_stored = _reveal_text.split('Answer:')[0].strip()
-
-                        # Stuck point buttons — no typing needed
-                        _stuck_options = [
+                        _stuck_list = [
                             ("🔢 No idea where to start",
-                             f"Student has no idea where to begin. Give ONE clear starting point only. "
-                             f"Don't solve — just tell them the very first step to take:\n\n{_q_only_stored}"),
-                            ("➡️ Got stuck in the middle",
-                             f"Student started but got stuck halfway. Explain the key middle step "
-                             f"that is usually the hardest part in this type of question:\n\n{_q_only_stored}"),
+                             f"Student has no idea where to begin. Give ONE clear starting point only — "
+                             f"just the very first step, nothing more:\n{_q_stored}"),
+                            ("➡️ Stuck in the middle",
+                             f"Student got stuck halfway. Explain the key middle step that is "
+                             f"usually hardest in this type of question:\n{_q_stored}"),
                             ("❌ My answer is different",
-                             f"Student got a different answer. List the 3 most common mistakes "
-                             f"students make in this type of question, then show the correct approach:\n\n{_reveal_text}"),
+                             f"List the 3 most common mistakes students make in this type of question, "
+                             f"then show the correct approach:\n{_active_text}"),
                             ("🤔 Don't understand the concept",
-                             f"Student doesn't understand the underlying concept. Explain the concept "
-                             f"in the simplest possible way with a real-life example first, "
-                             f"then apply it to this question:\n\n{_q_only_stored}"),
+                             f"Explain the underlying concept in the simplest way with a real-life "
+                             f"example first, then apply it to this question:\n{_q_stored}"),
                             ("📐 Show a similar easier example",
-                             f"Student needs a simpler example first. Create an easier version of "
-                             f"this question, solve it step by step, then show how the same method "
-                             f"applies to the original:\n\n{_q_only_stored}"),
-                            ("✅ Show full answer now",
-                             f"Give the complete step-by-step solution. Every step clearly explained:\n\n{_reveal_text}"),
+                             f"Create a simpler version of this question, solve it step by step, "
+                             f"then show how the same method applies to the original:\n{_q_stored}"),
                         ]
-                        for _stuck_label, _stuck_prompt in _stuck_options:
-                            _is_primary = _stuck_label.startswith("✅")
-                            if st.button(_stuck_label,
-                                         key=f"stuck_{_active_q}_{_stuck_label[:8]}",
-                                         use_container_width=True,
-                                         type="primary" if _is_primary else "secondary"):
-                                st.session_state.pending = _stuck_prompt
-                                st.session_state["quiz_show_stuck"] = False
-                                st.session_state["quiz_show_followup"] = True
-                                if _is_primary:
-                                    st.session_state["quiz_reveal_text"] = ""
-                                    st.session_state["quiz_active_q"] = ""
-                                    st.session_state["quiz_show_followup"] = False
+                        for _slabel, _sprompt in _stuck_list:
+                            if st.button(_slabel, key=f"sk_{_active_qnum}_{_slabel[:6]}",
+                                         use_container_width=True):
+                                st.session_state["qz_show_stuck"] = False
+                                st.session_state["qz_show_fu"]    = True
+                                st.session_state.pending = _sprompt
                                 st.rerun()
+                        if st.button("✅ Just show full answer", key=f"sk_{_active_qnum}_full",
+                                     use_container_width=True, type="primary"):
+                            st.session_state["qz_show_stuck"] = False
+                            st.session_state["qz_show_fu"]    = False
+                            st.session_state["qz_active_text"] = ""
+                            st.session_state.pending = (
+                                f"Explain step by step like a whiteboard teacher:\n{_active_text}"
+                            )
+                            st.rerun()
 
-                    # ═══════════════════════════════════════════════════
-                    # PART A — Follow-up buttons after any answer shown
-                    # "Did that make sense?" — no typing needed
-                    # ═══════════════════════════════════════════════════
-                    if _show_followup and _reveal_text and _active_q:
-                        _q_only_stored2 = _reveal_text.split('Answer:')[0].strip()
+                    # ── Part A: Follow-up after hint/steps/stuck answer ─
+                    if _active_text and _show_fu:
                         st.markdown(
-                            f"<div style='background:rgba(16,185,129,0.08);border:1px solid "
-                            f"rgba(16,185,129,0.3);border-radius:10px;padding:0.6rem 0.8rem;"
-                            f"margin:0.6rem 0 0.3rem;'>"
-                            f"<div style='font-size:0.68rem;font-weight:700;color:var(--tx2);"
-                            f"text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.35rem;'>"
-                            f"💬 Did that make sense?</div></div>",
+                            f"<div style='background:rgba(16,185,129,0.07);border:1px solid "
+                            f"rgba(16,185,129,0.25);border-radius:9px;padding:0.55rem 0.7rem;"
+                            f"margin:0.5rem 0 0.3rem;font-size:0.68rem;font-weight:700;"
+                            f"color:var(--tx2);text-transform:uppercase;letter-spacing:0.06em;'>"
+                            f"💬 Did that help?</div>",
                             unsafe_allow_html=True
                         )
-                        _fu1, _fu2 = st.columns(2)
-                        with _fu1:
-                            if st.button("✅ Yes, got it!", key=f"fu_got_{_active_q}",
+                        _fa, _fb = st.columns(2)
+                        _fk = f"fu_{_active_qnum}"
+                        with _fa:
+                            if st.button("✅ Yes, got it!", key=f"{_fk}_y",
                                          use_container_width=True, type="primary"):
-                                st.session_state["quiz_show_followup"] = False
-                                st.session_state["quiz_reveal_text"] = ""
-                                st.session_state["quiz_active_q"] = ""
+                                st.session_state["qz_active_text"] = ""
+                                st.session_state["qz_active_qnum"] = ""
+                                st.session_state["qz_show_fu"]     = False
                                 st.session_state.pending = (
-                                    f"Student understood {_active_q}. "
-                                    f"Say 'Great job! 🎉' briefly and encourage them to try the next question."
+                                    f"Student understood. Say Great job briefly and "
+                                    f"encourage them to try the next question. Keep it to 1 line."
                                 )
                                 st.rerun()
-                            if st.button("❓ I have a doubt", key=f"fu_doubt_{_active_q}",
+                            if st.button("❓ I have a doubt", key=f"{_fk}_d",
                                          use_container_width=True):
-                                st.session_state["quiz_show_followup"] = False
+                                st.session_state["qz_show_fu"] = False
                                 st.session_state.pending = (
-                                    f"Student has a doubt about {_active_q}. "
-                                    f"Ask them: 'Tell me exactly which step is confusing you?' "
-                                    f"and wait for their reply.\n\n{_q_only_stored2}"
+                                    f"Student has a doubt about {_active_qnum}. "
+                                    f"Ask them which specific step is confusing and wait:\n{_q_stored}"
                                 )
                                 st.rerun()
-                        with _fu2:
-                            if st.button("🔁 Explain differently", key=f"fu_diff_{_active_q}",
+                        with _fb:
+                            if st.button("🔁 Explain differently", key=f"{_fk}_r",
                                          use_container_width=True):
-                                st.session_state["quiz_show_followup"] = False
+                                st.session_state["qz_show_fu"] = False
                                 st.session_state.pending = (
-                                    f"Student didn't understand the previous explanation. "
-                                    f"Explain using a COMPLETELY different approach — "
-                                    f"try real-life analogy, simpler language, or different method:\n\n{_reveal_text}"
+                                    f"Student didn't understand. Explain using a completely "
+                                    f"different approach — real-life analogy or simpler method:\n{_active_text}"
                                 )
                                 st.rerun()
-                            if st.button("✅ Full Answer", key=f"fu_full_{_active_q}",
+                            if st.button("✅ Full Answer", key=f"{_fk}_f",
                                          use_container_width=True):
-                                st.session_state["quiz_show_followup"] = False
-                                st.session_state["quiz_reveal_text"] = ""
-                                st.session_state["quiz_active_q"] = ""
+                                st.session_state["qz_show_fu"]     = False
+                                st.session_state["qz_active_text"] = ""
                                 st.session_state.pending = (
-                                    f"Give complete step-by-step solution clearly:\n\n{_reveal_text}"
+                                    f"Explain complete solution step by step:\n{_active_text}"
                                 )
                                 st.rerun()
 
@@ -2287,38 +2311,100 @@ def run_streamlit_app():
     st.divider()
 
     if not st.session_state.messages:
-        st.markdown("""
-        <div class="welcome-wrap">
-            <div class="welcome-symbols">∫ ∑ ∂ π</div>
-            <div class="welcome-title">What would you like to solve?</div>
-            <p class="welcome-sub">
-                Ask any math question and get clear, step-by-step solutions.<br>
-                From basic algebra to advanced calculus — I've got you covered.
-            </p>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🧮</div>
-                    <div class="feature-title">Step-by-Step Solutions</div>
-                    <div class="feature-desc">Clear explanations for every problem, just like a teacher</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📷</div>
-                    <div class="feature-title">Camera Scan</div>
-                    <div class="feature-desc">Snap a photo of any handwritten problem — auto-solves instantly</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📄</div>
-                    <div class="feature-title">PDF Upload</div>
-                    <div class="feature-desc">Upload textbooks or question papers and ask anything</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <div class="feature-title">Graph Plotter</div>
-                    <div class="feature-desc">Visualize any mathematical function instantly</div>
-                </div>
+        dark = st.session_state.get("theme","dark") == "dark"
+        _card = "#1e293b" if dark else "#f8fafc"
+        _border = "rgba(99,102,241,0.25)" if dark else "rgba(99,102,241,0.2)"
+        _tx = "#f1f5f9" if dark else "#1e293b"
+        _tx2 = "#94a3b8" if dark else "#64748b"
+        _accent = "#6366f1"
+
+        st.markdown(f"""
+        <div style="max-width:680px;margin:1.5rem auto 0;padding:0 0.5rem;">
+
+          <!-- Header -->
+          <div style="text-align:center;margin-bottom:1.8rem;">
+            <div style="font-size:2.2rem;margin-bottom:0.4rem;">🧮</div>
+            <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;
+                        color:{_tx};margin-bottom:0.3rem;">
+              Your 24/7 Maths Teacher
             </div>
+            <div style="font-size:0.85rem;color:{_tx2};line-height:1.6;">
+              Stuck at midnight? Teacher not available? Just ask MathAI.<br>
+              NCERT Class 9 &amp; 10 · Step-by-step · No typing needed
+            </div>
+          </div>
+
+          <!-- 3 ways to use -->
+          <div style="font-family:'DM Mono',monospace;font-size:0.6rem;text-transform:uppercase;
+                      letter-spacing:0.1em;color:{_tx2};margin-bottom:0.6rem;text-align:center;">
+            How do you want to study today?
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin-bottom:1.5rem;">
+            <div style="background:{_card};border:1px solid {_border};border-radius:12px;
+                        padding:1rem 0.7rem;text-align:center;">
+              <div style="font-size:1.5rem;margin-bottom:0.4rem;">📚</div>
+              <div style="font-size:0.78rem;font-weight:700;color:{_tx};margin-bottom:0.25rem;">
+                Practice NCERT
+              </div>
+              <div style="font-size:0.68rem;color:{_tx2};line-height:1.5;">
+                Pick class → chapter → exercise → tap Hint, Steps or Answer
+              </div>
+              <div style="margin-top:0.5rem;font-size:0.63rem;color:{_accent};font-weight:600;">
+                ← Use sidebar
+              </div>
+            </div>
+            <div style="background:{_card};border:1px solid {_border};border-radius:12px;
+                        padding:1rem 0.7rem;text-align:center;">
+              <div style="font-size:1.5rem;margin-bottom:0.4rem;">💬</div>
+              <div style="font-size:0.78rem;font-weight:700;color:{_tx};margin-bottom:0.25rem;">
+                Ask Anything
+              </div>
+              <div style="font-size:0.68rem;color:{_tx2};line-height:1.5;">
+                Type any maths question below and get instant step-by-step solution
+              </div>
+              <div style="margin-top:0.5rem;font-size:0.63rem;color:{_accent};font-weight:600;">
+                ↓ Type below
+              </div>
+            </div>
+            <div style="background:{_card};border:1px solid {_border};border-radius:12px;
+                        padding:1rem 0.7rem;text-align:center;">
+              <div style="font-size:1.5rem;margin-bottom:0.4rem;">📷</div>
+              <div style="font-size:0.78rem;font-weight:700;color:{_tx};margin-bottom:0.25rem;">
+                Scan Problem
+              </div>
+              <div style="font-size:0.68rem;color:{_tx2};line-height:1.5;">
+                Take photo of any textbook question — AI reads and solves it
+              </div>
+              <div style="margin-top:0.5rem;font-size:0.63rem;color:{_accent};font-weight:600;">
+                ← Use sidebar
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick start examples -->
+          <div style="font-family:'DM Mono',monospace;font-size:0.6rem;text-transform:uppercase;
+                      letter-spacing:0.1em;color:{_tx2};margin-bottom:0.5rem;text-align:center;">
+            Or try one of these:
+          </div>
         </div>
         """, unsafe_allow_html=True)
+
+        # Quick-start buttons — tap and go, no typing needed
+        _ex_col1, _ex_col2 = st.columns(2)
+        _examples = [
+            ("📐 Prove tanθ = sinθ/cosθ", "Prove that tanθ = sinθ/cosθ step by step"),
+            ("🔢 Find zeroes of x²-3x+2", "Find the zeroes of x²-3x+2 and verify"),
+            ("📏 Pythagoras theorem proof", "Prove the Pythagoras theorem step by step"),
+            ("📊 Find mean of 5,8,10,12,15", "Find mean, median and mode of 5, 8, 10, 12, 15"),
+            ("🔵 HCF and LCM of 12 and 18", "Find HCF and LCM of 12 and 18 using prime factorisation"),
+            ("📈 Solve 2x+3y=12, x-y=1", "Solve the pair of equations: 2x+3y=12 and x-y=1"),
+        ]
+        for _idx, (_elabel, _eprompt) in enumerate(_examples):
+            _col = _ex_col1 if _idx % 2 == 0 else _ex_col2
+            with _col:
+                if st.button(_elabel, key=f"ex_start_{_idx}", use_container_width=True):
+                    st.session_state.pending = _eprompt
+                    st.rerun()
 
     for i, msg in enumerate(st.session_state.messages):
         if msg["role"] == "user":
