@@ -1543,6 +1543,7 @@ def run_streamlit_app():
             key="class_selector"
         )
         # ── Quiz Mode: Browse → Attempt → Reveal ─────────────────────
+        # Build question map from knowledge_base
         _QUIZ_MAP = {}
         for _doc in MATH_KNOWLEDGE_BASE:
             _m = _doc.metadata
@@ -1554,17 +1555,33 @@ def run_streamlit_app():
             _qs = re.findall(r'Q\d+[^\n]*(?:\n(?!Q\d+)[^\n]*)*', _doc.page_content)
             if not _qs:
                 continue
-            if _cl not in _QUIZ_MAP:
-                _QUIZ_MAP[_cl] = {}
-            if _ch not in _QUIZ_MAP[_cl]:
-                _QUIZ_MAP[_cl][_ch] = {}
-            _QUIZ_MAP[_cl][_ch][_ex] = _qs
+            _QUIZ_MAP.setdefault(_cl, {}).setdefault(_ch, {})[_ex] = _qs
 
-        _class_key = "class_9" if "9" in selected_class else "class_10"
+        # FIX 1: Correct class key detection
+        _class_key = "class_10" if "10" in str(selected_class) else "class_9"
         _available_chapters = _QUIZ_MAP.get(_class_key, {})
-        _ch_names = sorted(_available_chapters.keys())
-        _ch_labels = {f"ch{i}": f"Ch{i}" for i in range(1, 15)}
-        _ch_display = [_ch_labels.get(c, c.upper()) for c in _ch_names]
+        _ch_names = sorted(_available_chapters.keys(),
+                           key=lambda x: int(x.replace("ch","")) if x.replace("ch","").isdigit() else 99)
+        _ch_full_names = {
+            "class_9": {
+                "ch1":"Ch1 · Number Systems","ch2":"Ch2 · Polynomials",
+                "ch3":"Ch3 · Coordinate Geometry","ch4":"Ch4 · Linear Equations",
+                "ch5":"Ch5 · Euclid's Geometry","ch6":"Ch6 · Lines & Angles",
+                "ch7":"Ch7 · Triangles","ch8":"Ch8 · Quadrilaterals",
+                "ch9":"Ch9 · Circles","ch10":"Ch10 · Heron's Formula",
+                "ch11":"Ch11 · Surface Areas","ch12":"Ch12 · Statistics",
+            },
+            "class_10": {
+                "ch1":"Ch1 · Real Numbers","ch2":"Ch2 · Polynomials",
+                "ch3":"Ch3 · Linear Equations","ch4":"Ch4 · Quadratic Equations",
+                "ch5":"Ch5 · Arithmetic Progressions","ch6":"Ch6 · Triangles",
+                "ch7":"Ch7 · Coordinate Geometry","ch8":"Ch8 · Trigonometry",
+                "ch9":"Ch9 · Applications of Trig","ch10":"Ch10 · Circles",
+                "ch11":"Ch11 · Areas & Circles","ch12":"Ch12 · Surface Areas",
+                "ch13":"Ch13 · Statistics","ch14":"Ch14 · Probability",
+            },
+        }
+        _ch_display = [_ch_full_names.get(_class_key, {}).get(c, c.upper()) for c in _ch_names]
 
         if _ch_names:
             _sel_ch_label = st.selectbox(
@@ -1583,30 +1600,176 @@ def run_streamlit_app():
                     st.markdown(
                         f"<div style='font-family:DM Mono,monospace;font-size:0.6rem;"
                         f"text-transform:uppercase;letter-spacing:0.08em;color:var(--tx2);"
-                        f"margin:0.4rem 0 0.2rem;'>{len(_questions)} questions</div>",
+                        f"margin:0.5rem 0 0.3rem;'>{len(_questions)} questions</div>",
                         unsafe_allow_html=True
                     )
-                    for _qi, _qtext in enumerate(_questions):
-                        _qkey = f"quiz_{_class_key}_{_sel_ch}_{_sel_ex}_q{_qi}"
-                        _first_line = _qtext.split('\n')[0][:55].strip()
-                        _label = _first_line if _first_line else f"Q{_qi+1}"
-                        if st.button(f"❓ {_label}", key=_qkey, use_container_width=True):
-                            _q_only = _qtext.split('Answer:')[0].strip()
-                            st.session_state.pending = (
-                                f"Show me this question clearly — do NOT reveal the answer yet:\n\n{_q_only}"
-                            )
-                            st.session_state["quiz_reveal_text"] = _qtext
-                            st.rerun()
 
-                    _reveal_text = st.session_state.get("quiz_reveal_text", "")
-                    if _reveal_text:
-                        if st.button("✅ Reveal Answer", key="quiz_reveal_btn",
-                                     use_container_width=True, type="primary"):
-                            st.session_state.pending = (
-                                f"Now explain the full solution step by step:\n\n{_reveal_text}"
-                            )
-                            st.session_state["quiz_reveal_text"] = ""
-                            st.rerun()
+                    # ── Question list with 4-mode action buttons ──────
+                    for _qi, _qtext in enumerate(_questions):
+                        _qkey  = f"quiz_{_class_key}_{_sel_ch}_{_sel_ex}_q{_qi}"
+                        _first = _qtext.split('\n')[0][:50].strip()
+                        _num   = re.match(r'(Q\d+)', _first)
+                        _qnum  = _num.group(1) if _num else f"Q{_qi+1}"
+                        _rest  = _first[len(_qnum):].strip('. ').strip()[:38]
+                        _label = f"{_qnum}. {_rest}..." if _rest else _qnum
+                        _q_only = _qtext.split('Answer:')[0].strip()
+
+                        # Question label row
+                        st.markdown(
+                            f"<div style='font-size:0.72rem;font-weight:600;"
+                            f"color:var(--tx);margin:0.55rem 0 0.15rem;padding-left:2px;'>"
+                            f"{_label}</div>",
+                            unsafe_allow_html=True
+                        )
+
+                        # 4 action buttons in 2×2 grid
+                        _c1, _c2 = st.columns(2)
+                        with _c1:
+                            if st.button("💡 Hint", key=f"{_qkey}_hint", use_container_width=True):
+                                st.session_state["quiz_reveal_text"] = _qtext
+                                st.session_state["quiz_active_q"] = _qnum
+                                st.session_state.pending = (
+                                    f"Give ONE small hint for this question — do NOT give the answer or steps. "
+                                    f"Just a nudge to get started:\n\n{_q_only}"
+                                )
+                                st.rerun()
+                            if st.button("✅ Answer", key=f"{_qkey}_ans", use_container_width=True, type="primary"):
+                                st.session_state["quiz_reveal_text"] = ""
+                                st.session_state["quiz_active_q"] = ""
+                                st.session_state.pending = (
+                                    f"Give the complete step-by-step solution. "
+                                    f"Show every step clearly like a teacher on a whiteboard:\n\n{_qtext}"
+                                )
+                                st.rerun()
+                        with _c2:
+                            if st.button("📖 Steps", key=f"{_qkey}_steps", use_container_width=True):
+                                st.session_state["quiz_reveal_text"] = _qtext
+                                st.session_state["quiz_active_q"] = _qnum
+                                st.session_state.pending = (
+                                    f"Show ONLY the method/approach to solve this — "
+                                    f"no final answer yet, just the steps to follow:\n\n{_q_only}"
+                                )
+                                st.rerun()
+                            if st.button("❓ Ask AI", key=f"{_qkey}_ask", use_container_width=True):
+                                st.session_state["quiz_reveal_text"] = _qtext
+                                st.session_state["quiz_active_q"] = _qnum
+                                st.session_state["quiz_show_stuck"] = True
+                                st.session_state["quiz_show_followup"] = False
+                                st.rerun()
+
+                    # ═══════════════════════════════════════════════════
+                    # PART B — "Where are you stuck?" buttons
+                    # Shows after ❓ Ask AI is tapped — no typing needed
+                    # ═══════════════════════════════════════════════════
+                    _reveal_text   = st.session_state.get("quiz_reveal_text", "")
+                    _active_q      = st.session_state.get("quiz_active_q", "")
+                    _show_stuck    = st.session_state.get("quiz_show_stuck", False)
+                    _show_followup = st.session_state.get("quiz_show_followup", False)
+
+                    if _reveal_text and _active_q and _show_stuck:
+                        st.markdown(
+                            f"<div style='background:rgba(99,102,241,0.08);border:1px solid "
+                            f"rgba(99,102,241,0.3);border-radius:10px;padding:0.6rem 0.8rem;"
+                            f"margin:0.6rem 0 0.3rem;'>"
+                            f"<div style='font-size:0.68rem;font-weight:700;color:var(--tx2);"
+                            f"text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;'>"
+                            f"📌 {_active_q} — where are you stuck?</div></div>",
+                            unsafe_allow_html=True
+                        )
+                        _q_only_stored = _reveal_text.split('Answer:')[0].strip()
+
+                        # Stuck point buttons — no typing needed
+                        _stuck_options = [
+                            ("🔢 No idea where to start",
+                             f"Student has no idea where to begin. Give ONE clear starting point only. "
+                             f"Don't solve — just tell them the very first step to take:\n\n{_q_only_stored}"),
+                            ("➡️ Got stuck in the middle",
+                             f"Student started but got stuck halfway. Explain the key middle step "
+                             f"that is usually the hardest part in this type of question:\n\n{_q_only_stored}"),
+                            ("❌ My answer is different",
+                             f"Student got a different answer. List the 3 most common mistakes "
+                             f"students make in this type of question, then show the correct approach:\n\n{_reveal_text}"),
+                            ("🤔 Don't understand the concept",
+                             f"Student doesn't understand the underlying concept. Explain the concept "
+                             f"in the simplest possible way with a real-life example first, "
+                             f"then apply it to this question:\n\n{_q_only_stored}"),
+                            ("📐 Show a similar easier example",
+                             f"Student needs a simpler example first. Create an easier version of "
+                             f"this question, solve it step by step, then show how the same method "
+                             f"applies to the original:\n\n{_q_only_stored}"),
+                            ("✅ Show full answer now",
+                             f"Give the complete step-by-step solution. Every step clearly explained:\n\n{_reveal_text}"),
+                        ]
+                        for _stuck_label, _stuck_prompt in _stuck_options:
+                            _is_primary = _stuck_label.startswith("✅")
+                            if st.button(_stuck_label,
+                                         key=f"stuck_{_active_q}_{_stuck_label[:8]}",
+                                         use_container_width=True,
+                                         type="primary" if _is_primary else "secondary"):
+                                st.session_state.pending = _stuck_prompt
+                                st.session_state["quiz_show_stuck"] = False
+                                st.session_state["quiz_show_followup"] = True
+                                if _is_primary:
+                                    st.session_state["quiz_reveal_text"] = ""
+                                    st.session_state["quiz_active_q"] = ""
+                                    st.session_state["quiz_show_followup"] = False
+                                st.rerun()
+
+                    # ═══════════════════════════════════════════════════
+                    # PART A — Follow-up buttons after any answer shown
+                    # "Did that make sense?" — no typing needed
+                    # ═══════════════════════════════════════════════════
+                    if _show_followup and _reveal_text and _active_q:
+                        _q_only_stored2 = _reveal_text.split('Answer:')[0].strip()
+                        st.markdown(
+                            f"<div style='background:rgba(16,185,129,0.08);border:1px solid "
+                            f"rgba(16,185,129,0.3);border-radius:10px;padding:0.6rem 0.8rem;"
+                            f"margin:0.6rem 0 0.3rem;'>"
+                            f"<div style='font-size:0.68rem;font-weight:700;color:var(--tx2);"
+                            f"text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.35rem;'>"
+                            f"💬 Did that make sense?</div></div>",
+                            unsafe_allow_html=True
+                        )
+                        _fu1, _fu2 = st.columns(2)
+                        with _fu1:
+                            if st.button("✅ Yes, got it!", key=f"fu_got_{_active_q}",
+                                         use_container_width=True, type="primary"):
+                                st.session_state["quiz_show_followup"] = False
+                                st.session_state["quiz_reveal_text"] = ""
+                                st.session_state["quiz_active_q"] = ""
+                                st.session_state.pending = (
+                                    f"Student understood {_active_q}. "
+                                    f"Say 'Great job! 🎉' briefly and encourage them to try the next question."
+                                )
+                                st.rerun()
+                            if st.button("❓ I have a doubt", key=f"fu_doubt_{_active_q}",
+                                         use_container_width=True):
+                                st.session_state["quiz_show_followup"] = False
+                                st.session_state.pending = (
+                                    f"Student has a doubt about {_active_q}. "
+                                    f"Ask them: 'Tell me exactly which step is confusing you?' "
+                                    f"and wait for their reply.\n\n{_q_only_stored2}"
+                                )
+                                st.rerun()
+                        with _fu2:
+                            if st.button("🔁 Explain differently", key=f"fu_diff_{_active_q}",
+                                         use_container_width=True):
+                                st.session_state["quiz_show_followup"] = False
+                                st.session_state.pending = (
+                                    f"Student didn't understand the previous explanation. "
+                                    f"Explain using a COMPLETELY different approach — "
+                                    f"try real-life analogy, simpler language, or different method:\n\n{_reveal_text}"
+                                )
+                                st.rerun()
+                            if st.button("✅ Full Answer", key=f"fu_full_{_active_q}",
+                                         use_container_width=True):
+                                st.session_state["quiz_show_followup"] = False
+                                st.session_state["quiz_reveal_text"] = ""
+                                st.session_state["quiz_active_q"] = ""
+                                st.session_state.pending = (
+                                    f"Give complete step-by-step solution clearly:\n\n{_reveal_text}"
+                                )
+                                st.rerun()
 
         _show_classic = st.checkbox("📚 Chapter examples", key="show_classic_chapters", value=False)
         if _show_classic and selected_class in CLASS_EXAMPLES:
