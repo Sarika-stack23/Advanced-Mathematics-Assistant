@@ -1514,41 +1514,27 @@ def run_streamlit_app():
         else:
             st.markdown('<div class="status-pill status-err"><span class="dot"></span> No API Key — check .env</div>', unsafe_allow_html=True)
 
-        st.markdown('<div class="sidebar-section">Browse by Class</div>', unsafe_allow_html=True)
+        # ── NCERT Practice Section ────────────────────────────────────
         st.markdown(
-            "<div style='font-size:0.68rem;color:var(--tx2);margin:-0.2rem 0 0.4rem;"
-            "line-height:1.6;padding:0 2px;'>"
-            "① Pick class &nbsp; ② Pick chapter &nbsp; ③ Pick exercise<br>"
-            "Then tap <b>💡 Hint</b>, <b>📖 Steps</b> or <b>✅ Answer</b></div>",
+            "<div style='font-family:DM Mono,monospace;font-size:0.6rem;"
+            "text-transform:uppercase;letter-spacing:0.1em;color:var(--tx2);"
+            "margin:0.3rem 0 0.5rem;'>📚 NCERT Practice</div>",
             unsafe_allow_html=True
         )
 
-        # ── Topic filter ─────────────────────────────────────────────
-        TOPIC_FILTER_MAP = {
-            "All Topics": None,
-            "🔢 Algebra": ["algebra", "equations", "quadratic", "polynomials", "linear"],
-            "📐 Geometry": ["geometry", "triangles", "circles", "coordinate", "constructions"],
-            "📊 Trigonometry": ["trigonometry", "trig", "sin", "cos", "tan", "heights"],
-            "∫ Calculus": ["calculus", "derivatives", "integrals", "limits", "differential"],
-            "🎲 Probability": ["probability", "statistics", "data", "mean", "median"],
-            "🔣 Numbers": ["numbers", "real", "rational", "hcf", "lcm", "integers"],
-            "📈 Vectors": ["vectors", "3d", "matrices", "determinants"],
-        }
-        selected_topic = st.selectbox(
-            "Filter by topic:",
-            options=list(TOPIC_FILTER_MAP.keys()),
-            index=0,
-            label_visibility="collapsed",
-            key="topic_filter"
+        # Class selector — only 2 labels for now
+        _cls_opts = ["Class 9", "Class 10"]
+        _cls_icons = {"Class 9": "📒", "Class 10": "📓"}
+        _cls_display = [f"{_cls_icons[c]} {c}" for c in _cls_opts]
+        _sel_cls_disp = st.selectbox(
+            "Class:", options=_cls_display,
+            key="class_selector_v2", label_visibility="collapsed"
         )
+        selected_class = "📒 Class 9" if "9" in _sel_cls_disp else "📓 Class 10"
 
-        selected_class = st.selectbox(
-            "Select class:",
-            options=list(CLASS_EXAMPLES.keys()),
-            index=3,
-            label_visibility="collapsed",
-            key="class_selector"
-        )
+        # Keep TOPIC_FILTER_MAP for classic examples (used later)
+        TOPIC_FILTER_MAP = {"All Topics": None}
+        selected_topic = "All Topics" 
         # ── QUIZ SECTION: Class → Chapter → Exercise → Questions ────
         # Build quiz map once (cached in local var, fast)
         if "quiz_map" not in st.session_state:
@@ -1636,8 +1622,28 @@ def run_streamlit_app():
                         unsafe_allow_html=True
                     )
 
-                    # ── Render each question with 4 action buttons ────
+                    # ── Active question highlight card ────────────────
+                    _active_text = st.session_state.get("qz_active_text", "")
+                    _active_qnum = st.session_state.get("qz_active_qnum", "")
+                    _show_stuck  = st.session_state.get("qz_show_stuck", False)
+                    _show_fu     = st.session_state.get("qz_show_fu", False)
+
+                    if _active_text and _active_qnum:
+                        _aq_first = _active_text.split("\n")[0][:60].strip()
+                        st.markdown(
+                            f"<div style='background:rgba(99,102,241,0.1);border:1.5px solid "
+                            f"rgba(99,102,241,0.4);border-radius:10px;padding:0.5rem 0.7rem;"
+                            f"margin:0.4rem 0 0.5rem;'>"
+                            f"<div style='font-size:0.58rem;font-family:DM Mono,monospace;"
+                            f"text-transform:uppercase;letter-spacing:0.07em;color:rgba(99,102,241,0.9);"
+                            f"margin-bottom:0.2rem;'>📌 Active Question</div>"
+                            f"<div style='font-size:0.7rem;font-weight:600;color:var(--tx);"
+                            f"line-height:1.4;'>{_aq_first}</div></div>",
+                            unsafe_allow_html=True
+                        )
+
                     import re as _re2
+                    # ── Render each question with 4 action buttons ────
                     for _qi, _qtext in enumerate(_qs_list):
                         _first  = _qtext.split("\n")[0][:55].strip()
                         _nm     = _re2.match(r'(Q\d+)', _first)
@@ -1645,12 +1651,18 @@ def run_streamlit_app():
                         _rest   = _first[len(_qnum):].strip('. ').strip()[:38]
                         _label  = f"{_qnum}. {_rest}..." if _rest else _qnum
                         _q_only = _qtext.split("Answer:")[0].strip()
+                        _is_active = (_qnum == _active_qnum)
 
-                        # Question label
+                        # Question label — highlight if active
+                        _qlabel_style = (
+                            "font-size:0.71rem;font-weight:700;color:#818cf8;"
+                            "margin:0.55rem 0 0.12rem;padding-left:2px;line-height:1.4;"
+                        ) if _is_active else (
+                            "font-size:0.71rem;font-weight:600;color:var(--tx);"
+                            "margin:0.55rem 0 0.12rem;padding-left:2px;line-height:1.4;"
+                        )
                         st.markdown(
-                            f"<div style='font-size:0.71rem;font-weight:600;color:var(--tx);"
-                            f"margin:0.55rem 0 0.12rem;padding-left:2px;line-height:1.4;'>"
-                            f"{_label}</div>",
+                            f"<div style='{_qlabel_style}'>{_label}</div>",
                             unsafe_allow_html=True
                         )
 
@@ -1664,16 +1676,18 @@ def run_streamlit_app():
                                 st.session_state["qz_active_qnum"] = _qnum
                                 st.session_state["qz_show_stuck"]  = False
                                 st.session_state["qz_show_fu"]     = True
+                                st.session_state["quiz_replace"]   = True
                                 st.session_state.pending = (
                                     f"Give ONE small hint for this question — "
                                     f"just a nudge, no steps or answer:\n{_q_only}"
                                 )
                                 st.rerun()
                             if st.button("✅ Answer", key=f"{_bk}_a", use_container_width=True, type="primary"):
-                                st.session_state["qz_active_text"] = ""
-                                st.session_state["qz_active_qnum"] = ""
+                                st.session_state["qz_active_text"] = _qtext
+                                st.session_state["qz_active_qnum"] = _qnum
                                 st.session_state["qz_show_stuck"]  = False
-                                st.session_state["qz_show_fu"]     = False
+                                st.session_state["qz_show_fu"]     = True
+                                st.session_state["quiz_replace"]   = True
                                 st.session_state.pending = (
                                     f"Explain step by step like a whiteboard teacher:\n{_qtext}"
                                 )
@@ -1684,9 +1698,10 @@ def run_streamlit_app():
                                 st.session_state["qz_active_qnum"] = _qnum
                                 st.session_state["qz_show_stuck"]  = False
                                 st.session_state["qz_show_fu"]     = True
+                                st.session_state["quiz_replace"]   = True
                                 st.session_state.pending = (
-                                    f"Show the method/approach to solve this — "
-                                    f"no final answer, just the steps to follow:\n{_q_only}"
+                                    f"Show the method to solve this — "
+                                    f"no final answer, just the approach:\n{_q_only}"
                                 )
                                 st.rerun()
                             if st.button("❓ Ask AI", key=f"{_bk}_q", use_container_width=True):
@@ -1697,11 +1712,7 @@ def run_streamlit_app():
                                 st.rerun()
 
                     # ── Part B: Where are you stuck? (after ❓ Ask AI) ─
-                    _active_text = st.session_state.get("qz_active_text", "")
-                    _active_qnum = st.session_state.get("qz_active_qnum", "")
-                    _show_stuck  = st.session_state.get("qz_show_stuck", False)
-                    _show_fu     = st.session_state.get("qz_show_fu", False)
-                    _q_stored    = _active_text.split("Answer:")[0].strip() if _active_text else ""
+                    _q_stored = _active_text.split("Answer:")[0].strip() if _active_text else ""
 
                     if _active_text and _show_stuck:
                         st.markdown(
@@ -1714,43 +1725,44 @@ def run_streamlit_app():
                         )
                         _stuck_list = [
                             ("🔢 No idea where to start",
-                             f"Student has no idea where to begin. Give ONE clear starting point only — "
+                             f"Student has no idea where to begin. Give ONE clear starting point — "
                              f"just the very first step, nothing more:\n{_q_stored}"),
                             ("➡️ Stuck in the middle",
                              f"Student got stuck halfway. Explain the key middle step that is "
                              f"usually hardest in this type of question:\n{_q_stored}"),
                             ("❌ My answer is different",
-                             f"List the 3 most common mistakes students make in this type of question, "
+                             f"List the 3 most common mistakes students make in this question, "
                              f"then show the correct approach:\n{_active_text}"),
                             ("🤔 Don't understand the concept",
-                             f"Explain the underlying concept in the simplest way with a real-life "
-                             f"example first, then apply it to this question:\n{_q_stored}"),
+                             f"Explain the concept in the simplest way with a real-life "
+                             f"example first, then apply to this question:\n{_q_stored}"),
                             ("📐 Show a similar easier example",
-                             f"Create a simpler version of this question, solve it step by step, "
-                             f"then show how the same method applies to the original:\n{_q_stored}"),
+                             f"Create a simpler version of this question, solve it, "
+                             f"then show how same method applies to original:\n{_q_stored}"),
                         ]
                         for _slabel, _sprompt in _stuck_list:
                             if st.button(_slabel, key=f"sk_{_active_qnum}_{_slabel[:6]}",
                                          use_container_width=True):
                                 st.session_state["qz_show_stuck"] = False
                                 st.session_state["qz_show_fu"]    = True
+                                st.session_state["quiz_replace"]  = True
                                 st.session_state.pending = _sprompt
                                 st.rerun()
                         if st.button("✅ Just show full answer", key=f"sk_{_active_qnum}_full",
                                      use_container_width=True, type="primary"):
-                            st.session_state["qz_show_stuck"] = False
-                            st.session_state["qz_show_fu"]    = False
-                            st.session_state["qz_active_text"] = ""
+                            st.session_state["qz_show_stuck"]  = False
+                            st.session_state["qz_show_fu"]     = True
+                            st.session_state["quiz_replace"]   = True
                             st.session_state.pending = (
                                 f"Explain step by step like a whiteboard teacher:\n{_active_text}"
                             )
                             st.rerun()
 
-                    # ── Part A: Follow-up after hint/steps/stuck answer ─
+                    # ── Part A: Follow-up after hint/steps/stuck ──────
                     if _active_text and _show_fu:
                         st.markdown(
                             f"<div style='background:rgba(16,185,129,0.07);border:1px solid "
-                            f"rgba(16,185,129,0.25);border-radius:9px;padding:0.55rem 0.7rem;"
+                            f"rgba(16,185,129,0.25);border-radius:9px;padding:0.5rem 0.7rem;"
                             f"margin:0.5rem 0 0.3rem;font-size:0.68rem;font-weight:700;"
                             f"color:var(--tx2);text-transform:uppercase;letter-spacing:0.06em;'>"
                             f"💬 Did that help?</div>",
@@ -1764,32 +1776,34 @@ def run_streamlit_app():
                                 st.session_state["qz_active_text"] = ""
                                 st.session_state["qz_active_qnum"] = ""
                                 st.session_state["qz_show_fu"]     = False
+                                st.session_state["quiz_replace"]   = True
                                 st.session_state.pending = (
-                                    f"Student understood. Say Great job briefly and "
-                                    f"encourage them to try the next question. Keep it to 1 line."
+                                    "Student understood. Give a 1-line encouraging response only."
                                 )
                                 st.rerun()
                             if st.button("❓ I have a doubt", key=f"{_fk}_d",
                                          use_container_width=True):
-                                st.session_state["qz_show_fu"] = False
+                                st.session_state["qz_show_fu"]  = False
+                                st.session_state["quiz_replace"] = True
                                 st.session_state.pending = (
                                     f"Student has a doubt about {_active_qnum}. "
-                                    f"Ask them which specific step is confusing and wait:\n{_q_stored}"
+                                    f"Ask which step is confusing, then wait:\n{_q_stored}"
                                 )
                                 st.rerun()
                         with _fb:
                             if st.button("🔁 Explain differently", key=f"{_fk}_r",
                                          use_container_width=True):
-                                st.session_state["qz_show_fu"] = False
+                                st.session_state["qz_show_fu"]  = False
+                                st.session_state["quiz_replace"] = True
                                 st.session_state.pending = (
-                                    f"Student didn't understand. Explain using a completely "
-                                    f"different approach — real-life analogy or simpler method:\n{_active_text}"
+                                    f"Explain using a completely different approach — "
+                                    f"real-life analogy or simpler method:\n{_active_text}"
                                 )
                                 st.rerun()
                             if st.button("✅ Full Answer", key=f"{_fk}_f",
                                          use_container_width=True):
                                 st.session_state["qz_show_fu"]     = False
-                                st.session_state["qz_active_text"] = ""
+                                st.session_state["quiz_replace"]   = True
                                 st.session_state.pending = (
                                     f"Explain complete solution step by step:\n{_active_text}"
                                 )
@@ -2475,7 +2489,23 @@ def run_streamlit_app():
     pending_query = st.session_state.get("pending")
     if pending_query:
         st.session_state.pending = None
-        st.session_state.messages.append({"role": "user", "content": pending_query})
+
+        # If this is a quiz button click (not a fresh user question),
+        # REPLACE the last quiz exchange instead of adding new messages
+        _quiz_replace = st.session_state.pop("quiz_replace", False)
+        if _quiz_replace and len(st.session_state.messages) >= 2:
+            # Remove last user+AI pair if they were quiz messages
+            if st.session_state.messages[-1].get("role") == "assistant" \
+               and st.session_state.messages[-2].get("role") == "user" \
+               and st.session_state.messages[-2].get("is_quiz", False):
+                st.session_state.messages.pop()  # remove AI
+                st.session_state.messages.pop()  # remove user
+
+        st.session_state.messages.append({
+            "role": "user",
+            "content": pending_query,
+            "is_quiz": _quiz_replace,
+        })
         st.session_state.query_count += 1
         st.session_state.today_count = st.session_state.get("today_count", 0) + 1
         with st.spinner("🧮 Computing solution..."):
@@ -2499,7 +2529,7 @@ def run_streamlit_app():
     with st.expander("💡 Tips", expanded=False):
         st.markdown("""
         - **Type question** → click Solve → get whiteboard-style step-by-step solution
-        - **Filter topics** → use the topic dropdown in sidebar to find chapters faster
+        - **NCERT Practice** → sidebar: pick class → chapter → exercise → tap Hint/Steps/Answer
         - **📷 Camera** → snap photo of handwritten problem → auto solves!
         - **🖼️ Upload Image** → upload screenshot or photo of any problem
         - **📄 PDF Upload** → upload textbook or notes → 3 action buttons appear!
