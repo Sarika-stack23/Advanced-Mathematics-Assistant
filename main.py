@@ -1536,22 +1536,19 @@ def run_streamlit_app():
         TOPIC_FILTER_MAP = {"All Topics": None}
         selected_topic = "All Topics" 
         # ── QUIZ SECTION: Class → Chapter → Exercise → Questions ────
-        # Build quiz map once (cached in local var, fast)
-        if "quiz_map" not in st.session_state:
-            _qmap = {}
-            import re as _re
-            for _doc in MATH_KNOWLEDGE_BASE:
-                _m = _doc.metadata
-                _cl = _m.get("class_level","")
-                _ch = _m.get("chapter","")
-                _ex = _m.get("exercise","")
-                if not (_cl and _ch and _ex):
-                    continue
-                _qs = _re.findall(r'Q\d+[^\n]*(?:\n(?!Q\d+)[^\n]*)*', _doc.page_content)
-                if _qs:
-                    _qmap.setdefault(_cl, {}).setdefault(_ch, {})[_ex] = _qs
-            st.session_state["quiz_map"] = _qmap
-        _QUIZ_MAP = st.session_state["quiz_map"]
+        # Build quiz map fresh each run (fast, ~50ms, avoids stale cache bugs)
+        import re as _re
+        _QUIZ_MAP = {}
+        for _doc in MATH_KNOWLEDGE_BASE:
+            _m = _doc.metadata
+            _cl = _m.get("class_level","")
+            _ch = _m.get("chapter","")
+            _ex = _m.get("exercise","")
+            if not (_cl and _ch and _ex):
+                continue
+            _qs = _re.findall(r'Q\d+[^\n]*(?:\n(?!Q\d+)[^\n]*)*', _doc.page_content)
+            if _qs:
+                _QUIZ_MAP.setdefault(_cl, {}).setdefault(_ch, {})[_ex] = _qs
 
         # Class key from selected_class (has emoji like "📒 Class 9")
         _class_key = "class_10" if "10" in str(selected_class) else "class_9"
