@@ -2344,10 +2344,10 @@ def run_streamlit_app():
             <div style="font-size:2.2rem;margin-bottom:0.4rem;">🧮</div>
             <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;
                         color:{_tx};margin-bottom:0.3rem;">
-              Your 24/7 Maths Teacher
+              Your Smart Maths Assistant
             </div>
             <div style="font-size:0.85rem;color:{_tx2};line-height:1.6;">
-              Stuck at midnight? Teacher not available? Just ask MathAI.<br>
+              Stuck on a question? Get clear step-by-step solutions instantly.<br>
               NCERT Class 9 &amp; 10 · Step-by-step · No typing needed
             </div>
           </div>
@@ -2399,37 +2399,26 @@ def run_streamlit_app():
             </div>
           </div>
 
-          <!-- Quick start examples -->
-          <div style="font-family:'DM Mono',monospace;font-size:0.6rem;text-transform:uppercase;
-                      letter-spacing:0.1em;color:{_tx2};margin-bottom:0.5rem;text-align:center;">
-            Or try one of these:
-          </div>
         </div>
         """, unsafe_allow_html=True)
 
-        # Quick-start buttons — tap and go, no typing needed
-        _ex_col1, _ex_col2 = st.columns(2)
-        _examples = [
-            ("📐 Prove tanθ = sinθ/cosθ", "Prove that tanθ = sinθ/cosθ step by step"),
-            ("🔢 Find zeroes of x²-3x+2", "Find the zeroes of x²-3x+2 and verify"),
-            ("📏 Pythagoras theorem proof", "Prove the Pythagoras theorem step by step"),
-            ("📊 Find mean of 5,8,10,12,15", "Find mean, median and mode of 5, 8, 10, 12, 15"),
-            ("🔵 HCF and LCM of 12 and 18", "Find HCF and LCM of 12 and 18 using prime factorisation"),
-            ("📈 Solve 2x+3y=12, x-y=1", "Solve the pair of equations: 2x+3y=12 and x-y=1"),
-        ]
-        for _idx, (_elabel, _eprompt) in enumerate(_examples):
-            _col = _ex_col1 if _idx % 2 == 0 else _ex_col2
-            with _col:
-                if st.button(_elabel, key=f"ex_start_{_idx}", use_container_width=True):
-                    st.session_state.pending = _eprompt
-                    st.rerun()
-
     for i, msg in enumerate(st.session_state.messages):
         if msg["role"] == "user":
+            # For quiz messages, show a clean label instead of raw prompt
+            _raw = msg.get("content", "")
+            if msg.get("is_quiz") and len(_raw) > 120:
+                # Extract just the question number and first line
+                import re as _re_disp
+                _qm = _re_disp.match(r'(?:.*?\n)?(Q\d+[^\n]{0,60})', _raw)
+                _display = _qm.group(1) if _qm else _raw[:80] + "..."
+            else:
+                _display = _raw
+            import html as _html_mod
+            _safe = _html_mod.escape(_display)
             st.markdown(f"""
             <div class="msg-user">
                 <div class="msg-user-name">▸ You</div>
-                {msg["content"]}
+                <div style="white-space:pre-wrap;">{_safe}</div>
             </div>""", unsafe_allow_html=True)
             edit_col, _ = st.columns([1, 9])
             with edit_col:
