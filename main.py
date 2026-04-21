@@ -1536,19 +1536,26 @@ def run_streamlit_app():
         TOPIC_FILTER_MAP = {"All Topics": None}
         selected_topic = "All Topics" 
         # ── QUIZ SECTION: Class → Chapter → Exercise → Questions ────
-        # Build quiz map fresh each run (fast, ~50ms, avoids stale cache bugs)
+        # Cache quiz map by doc count — rebuilds only if knowledge_base changes
         import re as _re
-        _QUIZ_MAP = {}
-        for _doc in MATH_KNOWLEDGE_BASE:
-            _m = _doc.metadata
-            _cl = _m.get("class_level","")
-            _ch = _m.get("chapter","")
-            _ex = _m.get("exercise","")
-            if not (_cl and _ch and _ex):
-                continue
-            _qs = _re.findall(r'Q\d+[^\n]*(?:\n(?!Q\d+)[^\n]*)*', _doc.page_content)
-            if _qs:
-                _QUIZ_MAP.setdefault(_cl, {}).setdefault(_ch, {})[_ex] = _qs
+        _doc_count = len(MATH_KNOWLEDGE_BASE)
+        if (st.session_state.get("_qmap_count") != _doc_count
+                or "class_9" not in st.session_state.get("_qmap_data", {})
+                or "class_10" not in st.session_state.get("_qmap_data", {})):
+            _qmap_build = {}
+            for _doc in MATH_KNOWLEDGE_BASE:
+                _m = _doc.metadata
+                _cl = _m.get("class_level","")
+                _ch = _m.get("chapter","")
+                _ex = _m.get("exercise","")
+                if not (_cl and _ch and _ex):
+                    continue
+                _qs = _re.findall(r'Q\d+[^\n]*(?:\n(?!Q\d+)[^\n]*)*', _doc.page_content)
+                if _qs:
+                    _qmap_build.setdefault(_cl, {}).setdefault(_ch, {})[_ex] = _qs
+            st.session_state["_qmap_data"]  = _qmap_build
+            st.session_state["_qmap_count"] = _doc_count
+        _QUIZ_MAP = st.session_state["_qmap_data"]
 
         # Class key from selected_class (has emoji like "📒 Class 9")
         _class_key = "class_10" if "10" in str(selected_class) else "class_9"

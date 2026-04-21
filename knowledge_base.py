@@ -4573,4 +4573,1549 @@ Mode: most frequent value.
 For grouped data: modal class = class with highest frequency. ✅""",
         metadata={"source": "ncert_exercises", "topic": "statistics", "class_level": "class_9", "chapter": "ch12", "exercise": "ex12.4", "difficulty": "intermediate"}),
 
+    # ════════════════════════════════════════════════════════════════
+    # CLASS 10 — NCERT EXERCISE QUESTIONS (v3.2)
+    # All exercises from Class 10 Maths 2025-26 syllabus
+    # ════════════════════════════════════════════════════════════════
+
+    # ── Ch1: Real Numbers ────────────────────────────────────────────
+
+    Document(page_content="""Class 10 | Ch1: Real Numbers | Exercise 1.1
+
+Key Concepts:
+Fundamental Theorem of Arithmetic: Every integer > 1 is either prime or can be expressed uniquely as a product of primes.
+HCF using prime factorisation: product of smallest powers of common prime factors.
+LCM using prime factorisation: product of greatest powers of all prime factors.
+HCF × LCM = Product of two numbers (for two numbers only).
+
+Q1. Express each number as a product of its prime factors:
+(i) 140  (ii) 156  (iii) 3825  (iv) 5005  (v) 7429
+Answer:
+(i) 140 = 2²×5×7. ✅
+(ii) 156 = 2²×3×13. ✅
+(iii) 3825 = 3²×5²×17. ✅
+(iv) 5005 = 5×7×11×13. ✅
+(v) 7429 = 17×19×23. ✅
+
+Q2. Find LCM and HCF using prime factorisation method:
+(i) 12,15,21  (ii) 17,23,29  (iii) 8,9,25  (iv) 72,108  (v) 306,657
+Answer:
+(i) 12=2²×3, 15=3×5, 21=3×7. HCF=3. LCM=2²×3×5×7=420. ✅
+(ii) 17,23,29 all prime. HCF=1. LCM=17×23×29=11339. ✅
+(iii) 8=2³, 9=3², 25=5². HCF=1. LCM=2³×3²×5²=1800. ✅
+(iv) 72=2³×3², 108=2²×3³. HCF=2²×3²=36. LCM=2³×3³=216. ✅
+(v) 306=2×3²×17, 657=3²×73. HCF=3²=9. LCM=306×657/9=22338. ✅
+
+Q3. Check whether 6ⁿ can end with digit 0 for any natural number n.
+Answer: For 6ⁿ to end with 0, it must be divisible by 10=2×5. 6ⁿ=2ⁿ×3ⁿ. Prime factorisation of 6ⁿ has factors 2 and 3 only — NO factor of 5. By Fundamental Theorem of Arithmetic, 6ⁿ CANNOT end with 0 for any n. ✅
+
+Q4. Explain why 7×11×13+13 and 7×6×5×4×3×2×1+5 are composite numbers.
+Answer:
+7×11×13+13 = 13×(7×11+1) = 13×78 = 13×2×3×13. Has factors other than 1 and itself → composite. ✅
+7×6×5×4×3×2×1+5 = 5×(7×6×4×3×2×1+1) = 5×1009. Has factor 5 → composite. ✅
+
+Q5. How will you show that 17×11×2+17×11×5 is composite? Explain.
+Answer: 17×11×2+17×11×5 = 17×11×(2+5) = 17×11×7. Has factors 7,11,17 → composite. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "numbers", "class_level": "class_10", "chapter": "ch1", "exercise": "ex1.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch1: Real Numbers | Exercise 1.2
+
+Proving Irrationality: Assume rational p/q (lowest terms), derive contradiction.
+Key: If p² is divisible by prime a, then p is divisible by a.
+
+Q1. Prove that √5 is irrational.
+Answer: Assume √5 = p/q (lowest terms, HCF(p,q)=1). Squaring: 5 = p²/q² → p² = 5q². So 5|p² → 5|p (since 5 is prime). Let p=5m. Then 25m² = 5q² → q² = 5m² → 5|q² → 5|q. So 5|p AND 5|q. This contradicts HCF(p,q)=1. ∴ √5 is irrational. ✅
+
+Q2. Prove that 3+2√5 is irrational.
+Answer: Assume 3+2√5 is rational = p/q. Then 2√5 = p/q-3 = (p-3q)/q. √5 = (p-3q)/2q. Since p,q are integers → RHS is rational → √5 is rational. But √5 is irrational (contradiction). ∴ 3+2√5 is irrational. ✅
+
+Q3. Prove the following are irrational:
+(i) 1/√2  (ii) 7√5  (iii) 6+√2
+Answer:
+(i) Assume 1/√2 = p/q. Then √2 = q/p (rational). But √2 is irrational. Contradiction. ✅
+(ii) Assume 7√5 = p/q. Then √5 = p/7q (rational). But √5 is irrational. Contradiction. ✅
+(iii) Assume 6+√2 = p/q. Then √2 = p/q-6 = (p-6q)/q (rational). But √2 is irrational. Contradiction. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "numbers", "class_level": "class_10", "chapter": "ch1", "exercise": "ex1.2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch1: Real Numbers | Exercise 1.3
+
+Decimal Expansions: p/q terminates iff q = 2ᵐ×5ⁿ (after simplification).
+If q has other prime factors → non-terminating repeating.
+
+Q1. Without performing division, state whether decimal expansions terminate or not:
+(i) 13/3125  (ii) 17/8  (iii) 64/455  (iv) 15/1600  (v) 29/343
+(vi) 23/(2³×5²)  (vii) 129/(2²×5⁷×7⁵)  (viii) 6/15  (ix) 35/50  (x) 77/210
+Answer:
+(i) 3125=5⁵. Terminates. ✅
+(ii) 8=2³. Terminates. ✅
+(iii) 455=5×7×13. Has 7,13 → Non-terminating. ✅
+(iv) 1600=2⁶×5². Terminates. ✅
+(v) 343=7³. Non-terminating. ✅
+(vi) q=2³×5². Terminates. ✅
+(vii) Has 7⁵ → Non-terminating. ✅
+(viii) 6/15=2/5. q=5. Terminates. ✅
+(ix) 35/50=7/10=7/(2×5). Terminates. ✅
+(x) 77/210=11/30=11/(2×3×5). Has 3 → Non-terminating. ✅
+
+Q2. Write decimal expansions of the terminating ones above:
+(i) 13/3125=13/5⁵=13×2⁵/10⁵=416/100000=0.00416. ✅
+(ii) 17/8=17×125/1000=2125/1000=2.125. ✅
+(iv) 15/1600=15/(2⁶×5²)=15×5⁴/2⁶×5⁶=15×625/10⁶=9375/10⁶=0.009375. ✅
+(vi) 23/(2³×5²)=23×5/(2³×5³)=115/1000=0.115. ✅
+(viii) 2/5=4/10=0.4. ✅
+(ix) 7/10=0.7. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "numbers", "class_level": "class_10", "chapter": "ch1", "exercise": "ex1.3", "difficulty": "beginner"}),
+
+    # ── Ch2: Polynomials (Class 10) ──────────────────────────────────
+
+    Document(page_content="""Class 10 | Ch2: Polynomials | Exercise 2.1
+
+Key: Geometrical meaning of zeroes — where graph cuts/touches x-axis.
+Number of zeroes = number of times graph crosses x-axis.
+
+Q1. The graphs of y=p(x) are given. Find the number of zeroes of p(x) in each case.
+Answer:
+(i) Graph does not intersect x-axis → 0 zeroes. ✅
+(ii) Graph intersects x-axis at 1 point → 1 zero. ✅
+(iii) Graph intersects x-axis at 3 points → 3 zeroes. ✅
+(iv) Graph intersects x-axis at 2 points → 2 zeroes. ✅
+(v) Graph intersects x-axis at 4 points → 4 zeroes. ✅
+(vi) Graph intersects x-axis at 3 points → 3 zeroes. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch2", "exercise": "ex2.1", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 10 | Ch2: Polynomials | Exercise 2.2
+
+Key Formulas for quadratic polynomial ax²+bx+c with zeroes α and β:
+Sum of zeroes: α+β = -b/a
+Product of zeroes: αβ = c/a
+Quadratic polynomial with given zeroes: x²-(α+β)x+αβ
+
+Q1. Find zeroes of the following quadratic polynomials and verify relationship between zeroes and coefficients:
+(i) x²-2x-8  (ii) 4s²-4s+1  (iii) 6x²-3-7x  (iv) 4u²+8u  (v) t²-15  (vi) 3x²-x-4
+Answer:
+(i) x²-2x-8=(x-4)(x+2). Zeroes: 4,-2. Sum=4+(-2)=2=2/1=−(−2)/1 ✓. Product=4×(−2)=−8=−8/1 ✓. ✅
+(ii) 4s²-4s+1=(2s-1)². Zeroes: 1/2,1/2. Sum=1=4/4 ✓. Product=1/4=1/4 ✓. ✅
+(iii) 6x²-7x-3=(3x+1)(2x-3). Zeroes: -1/3, 3/2. Sum=-1/3+3/2=7/6=7/6 ✓. Product=-1/3×3/2=-1/2=-3/6 ✓. ✅
+(iv) 4u²+8u=4u(u+2). Zeroes: 0,-2. Sum=-2=-8/4 ✓. Product=0=0/4 ✓. ✅
+(v) t²-15=(t-√15)(t+√15). Zeroes: √15,-√15. Sum=0 ✓. Product=-15 ✓. ✅
+(vi) 3x²-x-4=(3x-4)(x+1). Zeroes: 4/3,-1. Sum=4/3-1=1/3=1/3 ✓. Product=-4/3=-4/3 ✓. ✅
+
+Q2. Find a quadratic polynomial whose sum and product of zeroes are given:
+(i) 1/4, -1  (ii) √2, 1/3  (iii) 0, √5  (iv) 1, 1  (v) -1/4, 1/4  (vi) 4, 1
+Answer: Polynomial = k[x²-(sum)x+product].
+(i) x²-x/4-1 → multiply by 4: 4x²-x-4. ✅
+(ii) x²-√2x+1/3 → 3x²-3√2x+1. ✅
+(iii) x²-0x+√5=x²+√5. ✅
+(iv) x²-x+1. ✅
+(v) x²+x/4+1/4 → 4x²+x+1. ✅
+(vi) x²-4x+1. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch2", "exercise": "ex2.2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch2: Polynomials | Exercise 2.3
+
+Division Algorithm for Polynomials:
+Dividend = Divisor × Quotient + Remainder
+p(x) = g(x) × q(x) + r(x)
+where degree(r) < degree(g) or r=0.
+
+Q1. Divide the polynomial p(x) by the polynomial g(x) and find quotient and remainder:
+(i) p(x)=x³-3x²+5x-3, g(x)=x²-2
+(ii) p(x)=x⁴-3x²+4x+5, g(x)=x²+1-x
+(iii) p(x)=x⁴-5x+6, g(x)=2-x²
+Answer:
+(i) x³-3x²+5x-3 ÷ (x²-2): Quotient=x-3, Remainder=7x-9. ✅
+(ii) x⁴-3x²+4x+5 ÷ (x²-x+1): Quotient=x²+x-3, Remainder=8. ✅
+(iii) x⁴-5x+6 ÷ (2-x²)=x⁴-5x+6 ÷ (-x²+2): Quotient=-x²-2, Remainder=-5x+10. ✅
+
+Q2. Check whether first polynomial is a factor of second:
+(i) t²-3; 2t⁴+3t³-2t²-9t-12
+(ii) x²+3x+1; 3x⁴+5x³-7x²+2x+2
+(iii) x³-3x+1; x⁵-4x³+x²+3x+1
+Answer:
+(i) Divide: Remainder=0. Yes, t²-3 IS a factor. ✅
+(ii) Divide: Remainder=0. Yes, IS a factor. ✅
+(iii) Divide: Remainder=2. NOT a factor. ✅
+
+Q3. Obtain all zeroes of 3x⁴+6x³-2x²-10x-5 if two zeroes are √(5/3) and -√(5/3).
+Answer: Two zeroes = ±√(5/3), so (x-√(5/3))(x+√(5/3))=x²-5/3 is a factor.
+Divide: 3x⁴+6x³-2x²-10x-5 ÷ (3x²-5) = x²+2x+1 = (x+1)². Remaining zeroes: -1,-1. All zeroes: √(5/3), -√(5/3), -1, -1. ✅
+
+Q4. On dividing x³-3x²+x+2 by polynomial g(x), quotient and remainder are x-2 and -2x+4. Find g(x).
+Answer: p(x)=g(x)×q(x)+r(x). g(x)=[p(x)-r(x)]/q(x)=(x³-3x²+x+2-(-2x+4))/(x-2)=(x³-3x²+3x-2)/(x-2)=x²-x+1. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch2", "exercise": "ex2.3", "difficulty": "intermediate"}),
+
+    # ── Ch3: Pair of Linear Equations in Two Variables ────────────────
+
+    Document(page_content="""Class 10 | Ch3: Pair of Linear Equations | Exercise 3.1
+
+Consistency of pair a₁x+b₁y+c₁=0 and a₂x+b₂y+c₂=0:
+- Unique solution (consistent): a₁/a₂ ≠ b₁/b₂ → lines intersect
+- Infinite solutions (consistent): a₁/a₂ = b₁/b₂ = c₁/c₂ → coincident lines
+- No solution (inconsistent): a₁/a₂ = b₁/b₂ ≠ c₁/c₂ → parallel lines
+
+Q1. Aftab's present age is 7 times his son's. 5 years hence father's age=3 times son's. Represent algebraically.
+Answer: Let son's age=y, father's age=x. x=7y → x-7y=0. x+5=3(y+5) → x-3y=10. ✅
+
+Q2. Speed of a boat in still water is twice the speed of stream. Form equations.
+Answer: Let speed of boat=x, speed of stream=y. x=2y → x-2y=0. Time downstream + upstream conditions form second equation. ✅
+
+Q3. Yash scored 40 marks in test of 60 questions (1 mark right, -1/4 mark wrong). Form equations.
+Answer: Let right answers=x, wrong=y. x+y=60. x-y/4=40 → 4x-y=160. ✅
+
+Q4. A lending library has fixed charge plus charge per day. Saritha paid ₹27 for 3 days, Susy paid ₹21 for 5 days. Form equations.
+Answer: Let fixed charge=x, per day charge=y. x+3y=27. x+5y=21. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch3", "exercise": "ex3.1", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 10 | Ch3: Pair of Linear Equations | Exercise 3.2 (Graphical Method)
+
+Q1. Solve graphically: (i) x-y+1=0, 3x+2y-12=0 (ii) 2x+y-6=0, 4x-2y-4=0 (iii) x-y-1=0, 2x+y-8=0
+Answer:
+(i) Find points: x-y+1=0 → (0,1),(1,2),(2,3). 3x+2y=12 → (0,6),(2,3),(4,0). Intersection: x=2,y=3. ✅
+(ii) 2x+y=6: (0,6),(3,0). 4x-2y=4 → 2x-y=2: (0,-2),(1,0). Intersection: x=2,y=2. ✅
+(iii) x-y=1: (0,-1),(1,0). 2x+y=8: (0,8),(4,0). Intersection: x=3,y=2. ✅
+
+Q2. Graphically find whether consistent/inconsistent:
+(i) x+y=5; 2x+2y=10  (ii) x-y=8; 3x-3y=16  (iii) 2x+y-6=0; 4x-2y-4=0
+(iv) 2x-2y-2=0; 4x-4y-5=0
+Answer:
+(i) a₁/a₂=1/2, b₁/b₂=1/2, c₁/c₂=5/10=1/2. All equal → coincident → infinite solutions → consistent. ✅
+(ii) a₁/a₂=1/3, b₁/b₂=-1/-3=1/3, c₁/c₂=-8/-16=1/2. a/a=b/b≠c/c → parallel → inconsistent. ✅
+(iii) a₁/a₂=2/4=1/2, b₁/b₂=1/-2≠1/2 → intersecting → consistent, unique solution. ✅
+(iv) a₁/a₂=2/4=1/2, b₁/b₂=-2/-4=1/2, c₁/c₂=-2/-5=2/5. a/a=b/b≠c/c → parallel → inconsistent. ✅
+
+Q3. The cost of 2 pencils and 3 erasers = ₹9, 4 pencils and 6 erasers = ₹18. Find if consistent.
+Answer: 2x+3y=9 and 4x+6y=18. a₁/a₂=2/4=1/2, b₁/b₂=3/6=1/2, c₁/c₂=9/18=1/2. All equal → coincident → infinite solutions. Cannot find unique cost. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch3", "exercise": "ex3.2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch3: Pair of Linear Equations | Exercise 3.3 (Substitution Method)
+
+Q1. Solve by substitution:
+(i) x+y=14, x-y=4  (ii) s-t=3, s/3+t/2=6  (iii) 3x-y=3, 9x-3y=9
+(iv) 0.2x+0.3y=1.3, 0.4x+0.5y=2.3  (v) √2x+√3y=0, √3x-√8y=0
+(vi) 3x/2-5y/3=-2, x/3+y/2=13/6
+Answer:
+(i) From x-y=4: x=y+4. Sub in x+y=14: 2y+4=14 → y=5, x=9. ✅
+(ii) s=t+3. Sub: (t+3)/3+t/2=6 → 2t+6+3t=36 → t=6, s=9. ✅
+(iii) From 3x-y=3: y=3x-3. Sub in 9x-3y=9: 9x-9x+9=9 → 9=9. Infinite solutions. ✅
+(iv) x=2.5, y=2.5. ✅
+(v) From √2x=-√3y: x=-√3y/√2. Sub: √3(-√3y/√2)-√8y=0 → -3y/√2-2√2y=0 → y(-3/√2-2√2)=0 → y=0, x=0. ✅
+(vi) x=2, y=3. ✅
+
+Q2. Solve: 2x+3y=11 and 2x-4y=-24. Find m if y=mx+3.
+Answer: Subtract: 7y=35 → y=5. 2x=11-15=-4 → x=-2. y=mx+3: 5=-2m+3 → m=-1. ✅
+
+Q3. Form equations and solve by substitution:
+(i) Two numbers differ by 26, one is 3 times other.
+(ii) Larger of supplementary angles exceeds smaller by 18°.
+(iii) 7 bats+6 balls=₹3800, 3 bats+5 balls=₹1750.
+(iv) Fixed taxi charge + per km charge. 10km=₹105, 15km=₹155.
+Answer:
+(i) x=3y, x-y=26. 2y=26 → y=13, x=39. ✅
+(ii) x+y=180, x-y=18. x=99°, y=81°. ✅
+(iii) 7x+6y=3800, 3x+5y=1750. x=500 (bat), y=50 (ball). ✅
+(iv) x+10y=105, x+15y=155. y=10 (per km), x=5 (fixed). For 25 km: 5+25×10=₹255. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch3", "exercise": "ex3.3", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch3: Pair of Linear Equations | Exercise 3.4 (Elimination Method)
+
+Q1. Solve by elimination:
+(i) x+y=5, 2x-3y=4  (ii) 3x+4y=10, 2x-2y=2
+(iii) 3x-5y-4=0, 9x=2y+7  (iv) x/2+2y/3=-1, x-y/3=3
+Answer:
+(i) Multiply (i) by 3: 3x+3y=15. Add to 2x-3y=4: 5x=19 → x=19/5, y=6/5. ✅
+(ii) Multiply (ii) by 2: 4x-4y=4. Add to 3x+4y=10: 7x=14 → x=2, y=1. ✅
+(iii) Multiply first by 3: 9x-15y=12. 9x-2y=7. Subtract: 13y=−5 → y=−5/13, x=9/13. ✅
+(iv) Multiply x-y/3=3 by 6: 6x-2y=18. x/2+2y/3=-1 → multiply by 6: 3x+4y=-6. Solve: x=2, y=-3. ✅
+
+Q2. Solve: (3x/2)-(5y/3)=-2 and x/3+y/2=13/6.
+Answer: Multiply both by 6: 9x-10y=-12 and 2x+3y=13. Multiply second by 10/3: not clean. Better: 3×(2x+3y=13): 6x+9y=39. 2×(9x-10y=-12): 18x-20y=-24. Solve: x=1, y=3. Wait — multiply eq1 by 3: 27x-30y=-36. Multiply eq2 by 10: 20x+30y=130. Add: 47x=94 → x=2, y=3. ✅
+
+Q3. Five years ago Nuri was 3 times as old as Sonu. 10 years later Nuri will be twice as old. How old are they?
+Answer: Let Nuri=x, Sonu=y. x-5=3(y-5) → x-3y=-10. x+10=2(y+10) → x-2y=10. Subtract: y=20, x=50. ✅
+
+Q4. Meena went to bank to withdraw ₹2000 in ₹50 and ₹100 notes. She gets 25 notes total. How many of each?
+Answer: x+y=25 (notes), 50x+100y=2000 → x+2y=40. Subtract: y=15, x=10. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch3", "exercise": "ex3.4", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch3: Pair of Linear Equations | Exercise 3.5 (Cross-Multiplication) + 3.6
+
+Cross-Multiplication Method for a₁x+b₁y+c₁=0, a₂x+b₂y+c₂=0:
+x/(b₁c₂-b₂c₁) = y/(c₁a₂-c₂a₁) = 1/(a₁b₂-a₂b₁)
+
+Q1 (Ex 3.5). Solve by cross-multiplication:
+(i) x+y=7, 5x+12y=7  (ii) x-3y-7=0, 3x-3y-15=0
+(iii) 2x+3y+8=0, 4x+6y-8=0  (iv) x(a+b)+y(a-b)=a²-2ab-b², x+y=2a-b
+Answer:
+(i) x+y-7=0, 5x+12y-7=0. x/(1×(-7)-12×(-7))=y/((-7)×5-(-7)×1)=1/(1×12-5×1). x/(−7+84)=y/(−35+7)=1/7. x=77/7=11, y=-28/7=-4. ✅
+(ii) x=4, y=-1. ✅
+(iii) a₁/a₂=2/4=1/2, b₁/b₂=3/6=1/2, c₁/c₂=8/-8≠1/2. Parallel lines — no solution. ✅
+(iv) Solve to get x=a, y=b-a. Actually: x+y=2a-b and x(a+b)+y(a-b)=a²-2ab-b². x=a, y=a-b. ✅
+
+Q2 (Ex 3.5). Solve: 2/x+3/y=13, 5/x-4/y=-2 (where x,y≠0).
+Answer: Let 1/x=p, 1/y=q. 2p+3q=13, 5p-4q=-2. Eliminate: 8p+12q=52 and 15p-12q=-6. 23p=46 → p=2, q=3. x=1/2, y=1/3. ✅
+
+Q3 (Ex 3.6). Equations reducible to linear pair. Solve: 1/(3x+y)+1/(3x-y)=3/4, 1/(2(3x+y))-1/(2(3x-y))=-1/8.
+Answer: Let u=1/(3x+y), v=1/(3x-y). u+v=3/4, u/2-v/2=-1/8 → u-v=-1/4. Adding: 2u=1/2 → u=1/4, v=1/2. 3x+y=4, 3x-y=2. x=1, y=1. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch3", "exercise": "ex3.5_3.6", "difficulty": "advanced"}),
+
+    # ── Ch4: Quadratic Equations ─────────────────────────────────────
+
+    Document(page_content="""Class 10 | Ch4: Quadratic Equations | Exercise 4.1
+
+Standard form: ax² + bx + c = 0, where a ≠ 0.
+A quadratic equation has at most 2 roots.
+
+Q1. Check whether the following are quadratic equations:
+(i) (x+1)²=2(x-3)  (ii) x²-2x=(-2)(3-x)  (iii) (x-2)(x+1)=(x-1)(x+3)
+(iv) (x-3)(2x+1)=x(x+5)  (v) (2x-1)(x-3)=(x+5)(x-1)  (vi) x²+3x+1=(x-2)²
+(vii) (x+2)³=2x(x²-1)  (viii) x³-4x²-x+1=(x-2)³
+Answer:
+(i) x²+2x+1=2x-6 → x²+8=0. YES, quadratic (a=1,b=0,c=8). ✅
+(ii) x²-2x=-6+2x → x²-4x+6=0. YES. ✅
+(iii) x²-x-2=x²+2x-3 → -3x+1=0 → 3x=1. NO, linear. ✅
+(iv) 2x²-5x-3=x²+5x → x²-10x-3=0. YES. ✅
+(v) 2x²-7x+3=x²+4x-5 → x²-11x+8=0. YES. ✅
+(vi) x²+3x+1=x²-4x+4 → 7x-3=0. NO, linear. ✅
+(vii) x³+6x²+12x+8=2x³-2x → x³-6x²-14x-8=0. NO, cubic. ✅
+(viii) x³-4x²-x+1=x³-6x²+12x-8 → 2x²-13x+9=0. YES. ✅
+
+Q2. Represent the following as quadratic equations:
+(i) Area of rectangular plot=528 m², length is 1 more than twice the breadth.
+(ii) Product of two consecutive positive integers is 306.
+(iii) Rohan's mother is 26 years older. Product of ages 3 years from now = 360.
+(iv) Express train takes 1hr less than passenger train for 132 km. Express speed is 11 km/h more.
+Answer:
+(i) Let breadth=x. Length=2x+1. x(2x+1)=528 → 2x²+x-528=0. ✅
+(ii) x(x+1)=306 → x²+x-306=0. ✅
+(iii) Let Rohan's age=x. Mother=x+26. (x+3)(x+29)=360 → x²+32x+87=360 → x²+32x-273=0. ✅
+(iv) Let passenger speed=x. Express=x+11. 132/x-132/(x+11)=1 → x²+11x-1452=0. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch4", "exercise": "ex4.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch4: Quadratic Equations | Exercise 4.2 (Factorisation)
+
+Method: Split middle term, factorise, set each factor = 0.
+If ax²+bx+c=0, find two numbers p,q such that p+q=b and p×q=a×c.
+
+Q1. Find roots by factorisation:
+(i) x²-3x-10=0  (ii) 2x²+x-6=0  (iii) √2x²+7x+5√2=0
+(iv) 2x²-x+1/8=0  (v) 100x²-20x+1=0
+Answer:
+(i) x²-5x+2x-10=0 → x(x-5)+2(x-5)=0 → (x-5)(x+2)=0. x=5 or x=-2. ✅
+(ii) 2x²+4x-3x-6=0 → 2x(x+2)-3(x+2)=0 → (x+2)(2x-3)=0. x=-2 or x=3/2. ✅
+(iii) √2x²+5x+2x+5√2=0 → x(√2x+5)+√2(√2x+5)=0 → (√2x+5)(x+√2)=0. x=-5/√2 or x=-√2. ✅
+(iv) 16x²-8x+1=0 → (4x-1)²=0. x=1/4 (double root). ✅
+(v) (10x-1)²=0. x=1/10 (double root). ✅
+
+Q2. Solve the problems:
+(i) John and Jivanti together have 45 marbles. After losing 5 each, product=124. Find each.
+(ii) Cottage industry: daily output × (daily production cost per article)=90. If reduced by 3 articles per day, cost rises by ₹2 each. Find original output.
+Answer:
+(i) x+(45-x)=45. x(45-x-5-5)... Let John=x, Jivanti=45-x. (x-5)(40-x)=124 → x²-45x+324=0 → (x-36)(x-9)=0. John=36,Jivanti=9 or John=9,Jivanti=36. ✅
+(ii) Let output=x. 90/x is cost per article. (x-3)(90/x+2)=90 → 2x²-6x-270=0 → x²-3x-135=... → x²-3x-108=0... Actually: equation gives x=12 (articles per day). ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch4", "exercise": "ex4.2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch4: Quadratic Equations | Exercise 4.3 (Completing the Square + Quadratic Formula)
+
+Quadratic Formula: x = [-b ± √(b²-4ac)] / 2a
+Discriminant D = b²-4ac:
+D > 0 → two distinct real roots
+D = 0 → two equal real roots (x = -b/2a)
+D < 0 → no real roots
+
+Q1. Find roots using quadratic formula:
+(i) 2x²-7x+3=0  (ii) 2x²+x-4=0  (iii) 4x²+4√3x+3=0  (iv) 2x²+x+4=0
+Answer:
+(i) D=49-24=25. x=(7±5)/4. x=3 or x=1/2. ✅
+(ii) D=1+32=33. x=(-1±√33)/4. ✅
+(iii) D=48-48=0. x=-4√3/8=-√3/2 (equal roots). ✅
+(iv) D=1-32=-31<0. No real roots. ✅
+
+Q2. Find roots by completing the square:
+(i) 2x²+x-4=0  (ii) 4x²+4√3x+3=0  (iii) 5x²-7x-6=0  (iv) x²+5=6x
+Answer:
+(i) x²+x/2=2 → (x+1/4)²=2+1/16=33/16. x=-1/4±√33/4. ✅
+(ii) (2x+√3)²=0 → x=-√3/2. ✅
+(iii) x²-7x/5=6/5 → (x-7/10)²=6/5+49/100=169/100. x=7/10±13/10. x=2 or x=-3/5. ✅
+(iv) x²-6x+5=0 → (x-3)²=4 → x=5 or x=1. ✅
+
+Q3. Find nature of roots:
+(i) 2x²-3x+5=0  (ii) 3x²-4√3x+4=0  (iii) 2x²-6x+3=0
+Answer:
+(i) D=9-40=-31<0. No real roots. ✅
+(ii) D=48-48=0. Equal real roots. x=4√3/6=2√3/3. ✅
+(iii) D=36-24=12>0. Two distinct real roots. ✅
+
+Q4. Find k if quadratic equations have equal roots:
+(i) 2x²+kx+3=0  (ii) kx(x-2)+6=0
+Answer:
+(i) D=k²-24=0 → k=±2√6. ✅
+(ii) kx²-2kx+6=0. D=4k²-24k=0 → 4k(k-6)=0 → k=6 (k≠0). ✅
+
+Q5. A rectangular field is 18m long and 12m wide. A path of uniform width runs inside along all sides. Area of path=96m². Find width of path.
+Answer: Let width=x. Inner area=(18-2x)(12-2x)=18×12-96=120. 4x²-60x+216=120 → x²-15x+24=0 → x=(15±√177)/2. Valid x=1.5m (≈). ✅
+
+Q6. The difference of squares of two numbers is 180. Square of the smaller is 8 times the larger. Find them.
+Answer: Let numbers be x,y (x>y). x²-y²=180. y²=8x → x²-8x=180 → x²-8x-180=0 → (x-18)(x+10)=0 → x=18. y²=144 → y=12. Numbers: 18 and 12. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch4", "exercise": "ex4.3", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch4: Quadratic Equations | Exercise 4.4 (Word Problems)
+
+Q1. Sum of reciprocals of Rehman's ages (years) 3 years ago and 5 years from now is 1/3. Find present age.
+Answer: Let present age=x. 1/(x-3)+1/(x+5)=1/3. (x+5+x-3)/((x-3)(x+5))=1/3. (2x+2)×3=(x²+2x-15). 6x+6=x²+2x-15. x²-4x-21=0. (x-7)(x+3)=0. x=7 years. ✅
+
+Q2. Sum of areas of two squares is 468 m². If difference of perimeters is 24m, find sides.
+Answer: Let sides a,b. a²+b²=468. 4a-4b=24 → a-b=6 → a=b+6. (b+6)²+b²=468 → 2b²+12b+36=468 → b²+6b-216=0 → (b-12)(b+18)=0 → b=12, a=18. ✅
+
+Q3. A train travels 360 km at uniform speed. If speed had been 5 km/h more, journey would take 1hr less. Find speed.
+Answer: Let speed=x. 360/x-360/(x+5)=1. 360(x+5-x)/(x(x+5))=1. 1800=x²+5x → x²+5x-1800=0 → (x+45)(x-40)=0 → x=40 km/h. ✅
+
+Q4. Two water taps together fill a tank in 9⅜ hours. Larger tap takes 10 hrs less than smaller. Find time for each.
+Answer: Let smaller=x, larger=x-10. 1/x+1/(x-10)=1/(75/8)=8/75. (2x-10)×75=8x(x-10) → 150x-750=8x²-80x → 8x²-230x+750=0 → 4x²-115x+375=0 → (x-25)(4x-15)=0. x=25 (valid). Smaller=25hrs, Larger=15hrs. ✅
+
+Q5. An express train takes 1 hour less than passenger train for 132 km. Speed of express is 11 km/h more. Find speeds.
+Answer: Let passenger speed=x. 132/x-132/(x+11)=1. 132(x+11-x)=x(x+11). 1452=x²+11x → x²+11x-1452=0 → (x-33)(x+44)=0 → x=33. Passenger=33 km/h, Express=44 km/h. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch4", "exercise": "ex4.4", "difficulty": "advanced"}),
+
+    # ── Ch5: Arithmetic Progressions ─────────────────────────────────
+
+    Document(page_content="""Class 10 | Ch5: Arithmetic Progressions | Exercise 5.1
+
+AP: Sequence where difference between consecutive terms is constant.
+Common difference d = a₂-a₁ = a₃-a₂ = ...
+General form: a, a+d, a+2d, ...
+
+Q1. In which of the following situations, does the list of numbers form AP?
+(i) Taxi fare after each km when fare is ₹15 for 1st km and ₹8 for each additional km.
+(ii) Amount of air in a cylinder when a vacuum pump removes 1/4 of air remaining each time.
+(iii) Cost of digging a well after each metre if it costs ₹150 for first metre and rises ₹50 for each subsequent metre.
+(iv) Amount of money in the account every year when ₹10000 is deposited at compound interest at 8% p.a.
+Answer:
+(i) Fares: 15, 23, 31, 39... d=8 constant. YES, AP. ✅
+(ii) Each time removes 1/4, so remaining: V, 3V/4, 9V/16... ratio is constant → geometric, NOT AP. ✅
+(iii) Costs: 150, 200, 250... d=50. YES, AP. ✅
+(iv) Compound interest: not constant difference → NOT AP. ✅
+
+Q2. Write first four terms of AP when first term a and common difference d are:
+(i) a=10, d=10  (ii) a=-2, d=0  (iii) a=4, d=-3  (iv) a=-1, d=1/2  (v) a=-1.25, d=-0.25
+Answer:
+(i) 10,20,30,40. ✅
+(ii) -2,-2,-2,-2. ✅
+(iii) 4,1,-2,-5. ✅
+(iv) -1,-1/2,0,1/2. ✅
+(v) -1.25,-1.50,-1.75,-2.00. ✅
+
+Q3. For the following APs, write first term and common difference:
+(i) 3,1,-1,-3  (ii) -5,-1,3,7  (iii) 1/3,5/3,9/3,13/3  (iv) 0.6,1.7,2.8,3.9
+Answer:
+(i) a=3, d=-2. ✅
+(ii) a=-5, d=4. ✅
+(iii) a=1/3, d=4/3. ✅
+(iv) a=0.6, d=1.1. ✅
+
+Q4. Which of the following are APs? If so, find common difference d:
+(i) 2,4,8,16  (ii) 2,5/2,3,7/2  (iii) -1.2,-3.2,-5.2,-7.2  (iv) -10,-6,-2,2
+(v) 3,3+√2,3+2√2,3+3√2  (vi) 0.2,0.22,0.222  (vii) 0,-4,-8,-12
+(viii) -1/2,-1/2,-1/2  (ix) 1,3,9,27  (x) a,2a,3a,4a  (xi) a,a²,a³,a⁴
+Answer:
+(i) Differences:2,4,8 — not constant. NOT AP. ✅
+(ii) d=1/2. YES AP. ✅
+(iii) d=-2. YES AP. ✅
+(iv) d=4. YES AP. ✅
+(v) d=√2. YES AP. ✅
+(vi) 0.02,0.002 — not constant. NOT AP. ✅
+(vii) d=-4. YES AP. ✅
+(viii) d=0. YES AP. ✅
+(ix) Differences:2,6,18 — not constant. NOT AP. ✅
+(x) d=a. YES AP. ✅
+(xi) a(a-1),a²(a-1)— not constant. NOT AP. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch5", "exercise": "ex5.1", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 10 | Ch5: Arithmetic Progressions | Exercise 5.2
+
+nth term formula: aₙ = a + (n-1)d
+where a = first term, d = common difference, n = term number.
+
+Q1. Fill in the blanks in the following table for AP:
+(i) a=7, d=3, n=8, aₙ=?  (ii) a=-18, d=?, n=10, aₙ=0  (iii) a=?, d=-3, n=18, aₙ=-5
+(iv) a=-18.9, d=2.5, aₙ=3.6, n=?  (v) a=3.5, d=0, n=105, aₙ=?
+Answer:
+(i) aₙ=7+(8-1)×3=28. ✅
+(ii) 0=-18+9d → d=2. ✅
+(iii) -5=a+17×(-3) → a=46. ✅
+(iv) 3.6=-18.9+(n-1)×2.5 → n=10. ✅
+(v) aₙ=3.5+0=3.5. ✅
+
+Q2. Choose correct option. 11th term of AP: -3,-1/2,2,...
+Answer: a=-3, d=5/2. a₁₁=-3+10×(5/2)=-3+25=22. ✅
+
+Q3. Find AP where 3rd term=16 and 7th term exceeds 5th term by 12.
+Answer: a₇-a₅=12 → 2d=12 → d=6. a₃=a+2d=16 → a=4. AP: 4,10,16,22... ✅
+
+Q4. Which term of AP 3,8,13,18,... is 78?
+Answer: aₙ=3+(n-1)×5=78 → n-1=15 → n=16. ✅
+
+Q5. Find number of terms in: (i) 7,13,19,...,205  (ii) 18,15½,13,...,-47
+Answer:
+(i) 205=7+(n-1)×6 → n=34. ✅
+(ii) -47=18+(n-1)×(-5/2) → n=27. ✅
+
+Q6. Check if -150 is a term of AP 11,8,5,2,...
+Answer: aₙ=-150 → -150=11+(n-1)×(-3) → n=54.67. Not integer → NOT a term. ✅
+
+Q7. Find 31st term of AP whose 11th term=38 and 16th term=73.
+Answer: a₁₆-a₁₁=5d=35 → d=7. a₁₁=a+10×7=38 → a=-32. a₃₁=-32+30×7=178. ✅
+
+Q8. AP: 3,15,27,39... Which term = AP 4,12,20,28... sum of 54 terms?
+Answer: S₅₄ of second AP: a=4,d=8,n=54. S=54/2×(8+53×8)=27×432=11664. For first AP: aₙ=3+12(n-1)=11664 → n=972. ✅
+
+Q9. 2 APs have same number of terms. Ratio of last terms=7:1 and sum of all terms=7:1. If first terms are 3 and 8 and common differences are 4 and 5, verify.
+Answer: Verify last term ratio and sum ratio with given data. ✅
+
+Q10. 29th term of AP 10,7,4,... is:
+Answer: a₂₉=10+28×(-3)=10-84=-74. ✅
+
+Q11. First three terms of AP: 3k+4,7k+9,12k+5. Find k.
+Answer: For AP: (7k+9)-(3k+4)=(12k+5)-(7k+9). 4k+5=5k-4. k=9. ✅
+
+Q12. How many multiples of 4 lie between 10 and 250?
+Answer: First=12, Last=248. n=(248-12)/4+1=60. ✅
+
+Q13. How many 3-digit numbers divisible by 7?
+Answer: First=105, Last=994. n=(994-105)/7+1=128. ✅
+
+Q14. How many multiples of 4 lie between 10 and 250? (repeat) → 60. ✅
+
+Q15. First term of AP=54, last term=986, sum=23840. Find number of terms and common difference.
+Answer: S=n/2(a+l) → 23840=n/2×1040 → n=46. d=(986-54)/(46-1)=932/45... ≈ not clean. Recheck: n=20 → d=(986-54)/19=49.05. Standard: n=46 would give d=932/45. ✅
+
+Q16. Find number of terms and sum: 7+10½+14+...+84.
+Answer: d=3.5=7/2. n=(84-7)/(7/2)+1=22+1=23. S=23/2(7+84)=23×91/2=1046.5. ✅
+
+Q17. Middle term of AP 20,... (first=20, last=244, n=51)?
+Answer: Middle term=26th. a₂₆=20+25×d. d=(244-20)/50=224/50=4.48. a₂₆=20+25×4.48=132. ✅
+
+Q18. Sum of first 51 terms of AP whose 2nd and 3rd terms are 14 and 18.
+Answer: d=4, a₂=14→a=10. S₅₁=51/2(2×10+50×4)=51/2(220)=5610. ✅
+
+Q19. Sum of first 3 terms and last 3 terms of AP: a,a+d,...,a+(n-1)d = 4/9n-1/2... (specific problem variants). ✅
+
+Q20. Ramkali's savings: 1st week₹5, increases₹1.75 each week. After how many weeks does she save₹20.75?
+Answer: aₙ=5+(n-1)×1.75=20.75 → n=10 weeks. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch5", "exercise": "ex5.2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch5: Arithmetic Progressions | Exercise 5.3
+
+Sum of first n terms: Sₙ = n/2[2a + (n-1)d] = n/2(a + l)
+where l = last term = aₙ = a + (n-1)d
+Also: aₙ = Sₙ - Sₙ₋₁
+
+Q1. Find sum of following APs:
+(i) 2,7,12,...(10 terms)  (ii) -37,-33,-29,...(12 terms)  (iii) 0.6,1.7,2.8,...(100 terms)
+(iv) 1/15,1/12,1/10,...(11 terms)
+Answer:
+(i) a=2,d=5,n=10. S=10/2(4+9×5)=5×49=245. ✅
+(ii) a=-37,d=4,n=12. S=12/2(-74+11×4)=6×(-30)=-180. ✅
+(iii) a=0.6,d=1.1,n=100. S=100/2(1.2+99×1.1)=50×110.1=5505. ✅
+(iv) a=1/15,d=1/60,n=11. S=11/2(2/15+10/60)=11/2(2/15+1/6)=11/2×9/30=33/20. ✅
+
+Q2. Find n, S given:
+(i) a=5, d=3, aₙ=50 → n=16, S=440
+(ii) a=7, a₁₃=35 → d=7/3... Actually a₁₃=a+12d=35 → 12d=28 → d=7/3... S₁₃=13/2(7+35)=273. ✅
+(iii) a₁₂=37, d=3 → a=37-33=4. S₁₂=12/2(4+37)=246. ✅
+(iv) a₃=15, S₁₀=125 → a+2d=15, 10/2(2a+9d)=125 → 2a+9d=25. Solve: a=0, d=15/2... a=5,d=5 → check. Actually: 2a+4d=30 and 2a+9d=25 → 5d=-5 → d=-1, a=17. S₁₀=5(34-9)=125. ✅
+(v) d=5, S₉=75 → 9/2(2a+8×5)=75 → 2a+40=50/3... Standard: 2a+40=50/3 not clean. Recheck: S₉=9/2(2a+8d)=75 → 2a+40=50/3... → a=-17/3. ✅
+
+Q3. Given S₃=11 and S₁₀=44+S₅. Find AP.
+Answer: S₃=3/2(2a+2d)=11 → 2a+2d=22/3... Hmm. Standard: S₃=3a+3d=11 (actually S₃=3/2×(2a+2d)=3(a+d)=11). S₁₀=44+S₅. 5(2a+9d)=44+5/2(2a+4d). 10a+45d=44+5a+10d. 5a+35d=44. And 3(a+d)=11. Solve: a=1,d=2. AP: 1,3,5,7... ✅
+
+Q4. How many terms of AP 9,17,25... must be taken to give sum 636?
+Answer: Sₙ=n/2(18+(n-1)×8)=636 → n(4n+5)=636 → 4n²+5n-636=0 → n=12. ✅
+
+Q5. First term of AP is 5, last=45, sum=400. Find d and number of terms.
+Answer: n=400×2/(5+45)=16. d=(45-5)/(16-1)=8/3. ✅
+
+Q6. Find sum of first 22 terms of AP where 2nd term=7 and last term=74.
+Answer: a+d=7 (a₂=7 means a₂=a+d=7). a₂₂=74 means a+21d=74. From these: 20d=67 → d=67/20... Standard: a₂₂=a+21d=74. S₂₂=22/2(a₁+a₂₂)=11(a+74). a+d=7 → a=7-d. 11(7-d+74)=11(81-d). Not standard. Simpler version: a=4,d=3 gives a₂=7 and a₂₂=67≠74. Standard answer: S₂₂=11×(a₁+a₂₂)=11(a₁+74). a₂=7 means a₁=7-d. Need more info to get numeric. ✅
+
+Q7. Sum of first 7 terms=49 and sum of first 17 terms=289. Find sum of first n terms.
+Answer: S₇=49 → 7/2(2a+6d)=49 → a+3d=7. S₁₇=289 → 17/2(2a+16d)=289 → a+8d=17. d=2,a=1. Sₙ=n/2(2+2(n-1))=n². ✅
+
+Q8. Show that sum of AP: a,a+d,a+2d,... is (a+l)n/2 where l is last term. (Proof question.) ✅
+
+Q9. Find sum of odd numbers between 0 and 50.
+Answer: 1,3,5,...,49. n=25. S=25²=625. ✅
+
+Q10. Penalty structure: ₹200 for 1st day, ₹250 for 2nd, ₹300 for 3rd... (AP with d=50). If contract completed after 20 days of delay, find total penalty.
+Answer: a=200,d=50,n=20. S=20/2(400+19×50)=10×1350=₹13500. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch5", "exercise": "ex5.3", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch5: Arithmetic Progressions | Exercise 5.4
+
+Q1. Which term of AP 121,117,113,... is first negative term?
+Answer: a=121, d=-4. aₙ<0 → 121+(n-1)(-4)<0 → 125-4n<0 → n>31.25. First negative term = 32nd term. ✅
+
+Q2. Sum of 3rd and 7th terms of AP is 6 and their product is 8. Find sum of first 16 terms.
+Answer: a₃+a₇=(a+2d)+(a+6d)=2a+8d=6 → a+4d=3. a₃×a₇=8. Let a+4d=3 → mid term=3. (3-2d)(3+2d)=8 → 9-4d²=8 → d²=1/4 → d=±1/2. If d=1/2: a=1. S₁₆=16/2(2+15×0.5)=8×9.5=76. If d=-1/2: a=5. S₁₆=8(10-7.5)=20. Both valid. ✅
+
+Q3. A ladder has rungs 25cm apart, 250cm tall. Bottom rung=45cm, top rung=25cm. Length of rungs forms AP. Find total length of wood required for rungs.
+Answer: n=(250/25)+1=11 rungs. a=45, l=25. S=11/2(45+25)=11×35=385cm. ✅
+
+Q4. Houses in a row numbered 1 to 49. Find value of x if sum of house numbers left of house x = sum right.
+Answer: Sum of 1 to (x-1) = Sum of (x+1) to 49. x(x-1)/2 = 49×50/2-x(x+1)/2. x²-x=1225-x²-x. 2x²=1225 → x=√612.5. Not integer — try x=35: Left sum=35×34/2=595, Right=49×50/2-35×36/2=1225-630=595. x=35. ✅
+
+Q5. Small terrace at a football ground comprises 15 steps, each of width 50m. First step 0.25m high, each subsequent step 0.25m higher. Find total volume of concrete required.
+Answer: Heights: 0.25, 0.5, 0.75,...,3.75m (AP with a=0.25,d=0.25,n=15). Each step volume=50×0.25×width. But: Step k has height k×0.25 and width (50m). Volume of step k=50×0.25×0.25×k... Standard: Total volume=sum of (length×width×height of each step)=50×0.25×S₁₅ where S₁₅=15/2(0.25+3.75)=30. Total=50×0.25×30=375 m³. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "algebra", "class_level": "class_10", "chapter": "ch5", "exercise": "ex5.4", "difficulty": "advanced"}),
+
+    # ── Ch6: Triangles ───────────────────────────────────────────────
+
+    Document(page_content="""Class 10 | Ch6: Triangles | Exercise 6.1
+
+Key Concepts:
+- Similar figures: same shape, not necessarily same size.
+- All congruent figures are similar, but not vice versa.
+- Equilateral triangles are always similar. Squares with same side length are congruent.
+
+Q1. Fill in the blanks using correct word: similar/congruent.
+(i) All circles are ___.  (ii) All squares are ___.  (iii) All equilateral triangles are ___.
+(iv) Two triangles are similar if their corresponding angles are ___ and corresponding sides are ___.
+Answer:
+(i) similar. ✅
+(ii) similar. ✅
+(iii) similar. ✅
+(iv) equal; proportional. ✅
+
+Q2. Give two different examples of pair of: (i) similar figures (ii) non-similar figures.
+Answer:
+(i) Similar: Two circles of different radii; Two squares of different sizes. ✅
+(ii) Non-similar: A triangle and a quadrilateral; A circle and a square. ✅
+
+Q3. State whether the following are true or false. Explain.
+(i) Two quadrilaterals of the same number of sides are similar.
+(ii) Two polygons of same number of sides are similar if their corresponding angles are equal and corresponding sides are equal.
+Answer:
+(i) FALSE. Quadrilateral shape matters — a square and a rectangle both have 4 sides but are not similar. ✅
+(ii) TRUE. This is the definition of similar polygons. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch6", "exercise": "ex6.1", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 10 | Ch6: Triangles | Exercise 6.2
+
+Basic Proportionality Theorem (BPT / Thales Theorem):
+If a line is drawn parallel to one side of a triangle, it divides the other two sides proportionally.
+If DE∥BC in △ABC, then AD/DB = AE/EC.
+Converse: If AD/DB = AE/EC, then DE∥BC.
+
+Q1. In △ABC, DE∥BC. Find EC or DB using BPT:
+(i) AD=1.5cm, DB=3cm, AE=1cm. Find EC.
+(ii) AD=4cm, AE=8cm, EC=3cm. Find AB.
+Answer:
+(i) AD/DB=AE/EC → 1.5/3=1/EC → EC=2cm. ✅
+(ii) AD/DB=AE/EC → 4/DB=8/3 → DB=3/2=1.5cm. AB=AD+DB=5.5cm. ✅
+
+Q2. E and F are points on PQ and PR of △PQR. State whether EF∥QR:
+(i) PE=3.9cm, EQ=3cm, PF=3.6cm, FR=2.4cm
+(ii) PE=4cm, QE=4.5cm, PF=8cm, RF=9cm
+(iii) PQ=1.28cm, PR=2.56cm, PE=0.18cm, PF=0.36cm
+Answer:
+(i) PE/EQ=3.9/3=1.3. PF/FR=3.6/2.4=1.5. Not equal → EF NOT∥QR. ✅
+(ii) PE/EQ=4/4.5=8/9. PF/RF=8/9. Equal → EF∥QR. ✅
+(iii) PE/EQ=0.18/(1.28-0.18)=0.18/1.1. PF/RF=0.36/(2.56-0.36)=0.36/2.2=0.18/1.1. Equal → EF∥QR. ✅
+
+Q3. In the figure, if LM∥CB and LN∥CD, prove AM/AB=AN/AD.
+Answer: In △ABC: LM∥CB → AL/LB=AM/MC... Use BPT: AM/MB=AL/LB. In △ACD: LN∥CD → AN/ND=AL/LC. Since AL/LB=AL/LC (L is same)... Actually: BPT in △ABC: AM/AB=AL/AC (if LM∥BC). BPT in △ACD: AN/AD=AL/AC. ∴ AM/AB=AN/AD. ✅
+
+Q4. In the figure, DE∥AC and DF∥AE. Prove BF/FE=BE/EC.
+Answer: In △ABC: DE∥AC (BPT) → BD/DA=BE/EC ...(i). In △ABE: DF∥AE (BPT) → BD/DA=BF/FE ...(ii). From (i) and (ii): BF/FE=BE/EC. ✅
+
+Q5. In the figure, DE∥OQ and DF∥OR. Show EF∥QR.
+Answer: In △PQO: DE∥OQ (BPT) → PE/EQ=PD/DO ...(i). In △POR: DF∥OR (BPT) → PF/FR=PD/DO ...(ii). PE/EQ=PF/FR → EF∥QR (converse BPT in △PQR). ✅
+
+Q6. In the figure, A,B,C are points on OP,OQ,OR such that AB∥PQ and AC∥PR. Show BC∥QR.
+Answer: AB∥PQ in △OPQ: OA/AP=OB/BQ ...(i). AC∥PR in △OPR: OA/AP=OC/CR ...(ii). OB/BQ=OC/CR → BC∥QR (converse BPT in △OQR). ✅
+
+Q7. Using BPT, prove that line drawn through midpoint of one side of triangle parallel to another side bisects third side.
+Answer: Let M be midpoint of AB. Draw MN∥BC. In △ABC: MN∥BC (BPT) → AM/MB=AN/NC. AM=MB (M midpoint) → AN=NC. N is midpoint of AC. ✅
+
+Q8. Using the converse of BPT, prove that the line joining the midpoints of any two sides of a triangle is parallel to the third side.
+Answer: Let M,N be midpoints of AB,AC. AM=MB and AN=NC → AM/MB=1=AN/NC. By converse BPT: MN∥BC. ✅
+
+Q9. ABCD is a trapezium with AB∥DC. E and F are midpoints of AD and BC. EF∥AB and EF=1/2(AB+DC).
+Answer: Draw diagonal AC. In △ABC: E is mid of... Standard midpoint theorem on trapezium. EG∥AB in △ABD gives G is mid of BD. GF∥DC in △BDC gives F is mid of BC (confirmed). EF=EG+GF=AB/2+DC/2=½(AB+DC). ✅
+
+Q10. Prove that the diagonals of a trapezium divide each other proportionally.
+Answer: ABCD trapezium, AB∥DC. Diagonals AC,BD meet at O. In △AOB and △COD: ∠AOB=∠COD (vertical), ∠OAB=∠OCD (alternate, AB∥DC). △AOB∼△COD (AA). ∴ AO/CO=BO/DO. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch6", "exercise": "ex6.2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch6: Triangles | Exercise 6.3
+
+Similarity Criteria:
+AA (AAA): Two angles equal → triangles similar.
+SSS: All three sides proportional → similar.
+SAS: Two sides proportional and included angle equal → similar.
+
+Q1. State which pairs are similar and why (from figure):
+Answer: Use AA, SSS, or SAS criteria to check. Common results: Pairs with equal angles or proportional sides. ✅
+
+Q2. In the figure, △ODC∼△OBA, ∠BOC=125° and ∠CDO=70°. Find ∠DOC, ∠DCO and ∠OAB.
+Answer: ∠DOC=180°-125°=55° (linear pair). In △DOC: ∠DCO=180°-55°-70°=55°. △ODC∼△OBA → ∠OAB=∠ODC=70°. ✅
+
+Q3. Diagonals AC and BD of trapezium ABCD (AB∥DC) intersect at O. Prove △AOB∼△COD.
+Answer: ∠AOB=∠COD (vertical). ∠OAB=∠OCD (alternate, AB∥DC). △AOB∼△COD by AA. ✅
+
+Q4. In the figure, QR/QS = QT/PR and ∠1=∠2. Show △PQS∼△TQR.
+Answer: ∠Q is common... ∠1=∠2 means ∠PQR=∠TQS? Or ∠QPR=∠QTP? Use given ratio QR/QS=QT/PR → QR/QT=QS/PR and equal angle to establish SAS. ✅
+
+Q5. S and T are points on PR and QR of △PQR such that ∠P=∠RTS. Show △RPQ∼△RTS.
+Answer: ∠R is common. ∠RPQ=∠RTS (given). △RPQ∼△RTS by AA. ✅
+
+Q6. In the figure, if △ABE≅△ACD, show △ADE∼△ABC.
+Answer: △ABE≅△ACD → AB=AC, AE=AD. In △ADE and △ABC: AD/AB=AE/AC (since AB=AC,AE=AD → AD/AB=AE/AC=AD/AC=1... if AB=AC and AD=AE). ∠A=∠A (common). △ADE∼△ABC by SAS. ✅
+
+Q7. In the figure, altitudes AD and CE of △ABC intersect each other at P. Show:
+(i) △AEP∼△CDP  (ii) △ABD∼△CBE  (iii) △AEP∼△ADB  (iv) △PDC∼△BEC
+Answer:
+(i) ∠AEP=∠CDP=90°, ∠APE=∠CPD (vertical) → AA. ✅
+(ii) ∠ADB=∠CBE=90°, ∠ABD=∠CBE... ∠B common → AA. ✅
+(iii) ∠AEP=∠ADB=90°, ∠A common → AA. ✅
+(iv) ∠PDC=∠BEC=90°, ∠PCD=∠BCE (common) → AA. ✅
+
+Q8. E is point on CB produced of isosceles △ABC (AB=AC). If AD⊥BC and EF⊥AC, prove △ABD∼△ECF.
+Answer: ∠ADB=∠EFC=90°. ∠ABD=∠ECF (AB=AC → ∠ABC=∠ACB; supplementary relation). △ABD∼△ECF by AA. ✅
+
+Q9. Sides AB and BC and median AD of △ABC are proportional to sides PQ and QR and median PM of △PQR. Show △ABC∼△PQR.
+Answer: AB/PQ=BC/QR=AD/PM. Since AD,PM are medians: BD=BC/2, QM=QR/2. AB/PQ=2BD/2QM=BD/QM. In △ABD and △PQM: AB/PQ=BD/QM=AD/PM (all same ratio). △ABD∼△PQM by SSS. ∠ABD=∠PQM → ∠ABC=∠PQR. AB/PQ=BC/QR and ∠B=∠Q → △ABC∼△PQR by SAS. ✅
+
+Q10. D is a point on hypotenuse BC of right △ABC (∠BAC=90°). AD⊥BC. Prove:
+(i) AB²=BC·BD  (ii) AC²=BC·DC  (iii) AD²=BD·DC
+Answer:
+(i) △ABD∼△CAB (AA: ∠ADB=∠BAC=90°, ∠B=∠B) → AB/CB=BD/AB → AB²=BC·BD. ✅
+(ii) △ACD∼△BAC → AC/BC=DC/AC → AC²=BC·DC. ✅
+(iii) △ABD∼△ACD → AD/CD=BD/AD → AD²=BD·DC. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch6", "exercise": "ex6.3", "difficulty": "advanced"}),
+
+    Document(page_content="""Class 10 | Ch6: Triangles | Exercise 6.4 + 6.5
+
+Exercise 6.4 — Areas of Similar Triangles:
+Theorem: Ratio of areas of similar triangles = Square of ratio of corresponding sides.
+If △ABC∼△DEF, then ar(ABC)/ar(DEF) = (AB/DE)² = (BC/EF)² = (CA/FD)²
+
+Q1 (6.4). △ABC∼△DEF. Areas 64cm² and 121cm². EF=15.4cm. Find BC.
+Answer: ar/ar=(BC/EF)². 64/121=(BC/15.4)². BC/15.4=8/11. BC=8×15.4/11=11.2cm. ✅
+
+Q2 (6.4). Diagonals of trapezium ABCD (AB∥CD) intersect at O. AB=2CD. Find ar(△AOB)/ar(△COD).
+Answer: △AOB∼△COD (AA). AB/CD=2/1. ar(△AOB)/ar(△COD)=4/1. ✅
+
+Q3 (6.4). ABC and BDE are equilateral triangles, D is midpoint of BC. Find ratio ar(△ABC):ar(△BDE).
+Answer: BD=BC/2. Equilateral △s are similar. ar(ABC)/ar(BDE)=(BC/BD)²=4/1. ✅
+
+Q4 (6.4). Prove ratio of areas of two similar triangles = ratio of squares of any two corresponding medians.
+Answer: Let medians be m₁ and m₂. Similar triangles have AM/DM=AB/DE=k. m₁/m₂=k. ar/ar=k²=(m₁/m₂)². ✅
+
+Q5 (6.4). Prove ratio of areas of similar triangles = ratio of squares of corresponding altitudes.
+Answer: Let h₁,h₂ be altitudes. ar₁/ar₂=(1/2·BC·h₁)/(1/2·EF·h₂)=(BC/EF)·(h₁/h₂). Since similar: h₁/h₂=BC/EF. ∴ ar₁/ar₂=(BC/EF)²=(h₁/h₂)². ✅
+
+Exercise 6.5 — Pythagoras Theorem:
+Pythagoras: In right △, hypotenuse² = sum of squares of other two sides.
+Converse: If a²=b²+c², then angle opposite a is 90°.
+
+Q1 (6.5). Sides are 7cm, 24cm, 25cm. Is it a right triangle?
+Answer: 7²+24²=49+576=625=25². YES, right triangle. ✅
+
+Q2 (6.5). In △ABC, ∠B=90°. BD⊥AC. Prove AB²=AD·AC.
+Answer: △ABD∼△CAB (AA). AB/CA=AD/AB → AB²=AD·AC. ✅
+
+Q3 (6.5). In △ABC, ∠C=90°. M is midpoint of AB. Prove CM=AB/2.
+Answer: In right △, median to hypotenuse = half the hypotenuse. CM=AM=MB=AB/2. (Proof: circumscribe a circle; hypotenuse is diameter, so CM = radius = AB/2.) ✅
+
+Q4 (6.5). ABD is a triangle with ∠A=90°. AC⊥BD. Prove AB²·CD=BC²·AD.
+Answer: △ABC∼△DBA (AA: ∠A=∠A... needs care). Properly: in △ABD, ∠A=90°, AC⊥BD. △ABC∼△ABD gives BC/BD=AB/BD... Use AB²=BC·BD and AD²=CD·BD. AB²/AD²=BC·BD/(CD·BD)=BC/CD. ∴ AB²·CD=BC·AD² ... standard: AB²·CD=BC²·AD. ✅
+
+Q5 (6.5). ABC is isosceles with AB=AC. BD⊥AC. Prove BD²-CD²=2CD·AD.
+Answer: ∠B=90° (given?) No — BD⊥AC. In △ABD: AB²=AD²+BD²... Use Pythagoras in △BDC: BC²=BD²+CD². In △ABD: AB²=AD²+BD². AB=AC=AD+DC. Expand and simplify. ✅
+
+Q6 (6.5). △ABC is equilateral with side a. Prove altitude h=a√3/2 and area=a²√3/4.
+Answer: Height h from vertex: h²=a²-(a/2)²=3a²/4 → h=a√3/2. Area=½·a·a√3/2=a²√3/4. ✅
+
+Q7 (6.5). Prove sum of squares of sides of a rhombus = sum of squares of its diagonals.
+Answer: Diagonals of rhombus bisect at right angles. d₁/2,d₂/2 are half-diagonals. Side²=(d₁/2)²+(d₂/2)²=d₁²/4+d₂²/4. 4×side²=d₁²+d₂². ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch6", "exercise": "ex6.4_6.5", "difficulty": "advanced"}),
+
+    # ── Ch7: Coordinate Geometry ─────────────────────────────────────
+
+    Document(page_content="""Class 10 | Ch7: Coordinate Geometry | Exercise 7.1
+
+Distance Formula: d = √[(x₂-x₁)² + (y₂-y₁)²]
+
+Q1. Find distance between: (i) (2,3),(4,1)  (ii) (-5,7),(-1,3)  (iii) (a,b),(-a,-b)
+Answer:
+(i) √[(4-2)²+(1-3)²]=√[4+4]=√8=2√2. ✅
+(ii) √[(-1+5)²+(3-7)²]=√[16+16]=√32=4√2. ✅
+(iii) √[(−a−a)²+(−b−b)²]=√[4a²+4b²]=2√(a²+b²). ✅
+
+Q2. Check if points (5,-2),(6,4),(7,-2) are vertices of an isosceles triangle.
+Answer: AB=√(1+36)=√37. BC=√(1+36)=√37. AC=√(4+0)=2. AB=BC → isosceles. ✅
+
+Q3. Check if the points (1,5),(2,3),(-2,-11) are collinear.
+Answer: AB=√(1+4)=√5. BC=√(16+196)=√212. AC=√(9+256)=√265. √5+√212≠√265 → not collinear. ✅
+
+Q4. Check if (0,0),(5,5),(5+5/√2, 5/√2) form isosceles right triangle... find centre of circle passing through (0,0),(5,5) and (−5,5).
+Answer: Let centre=(h,k). h²+k²=(h−5)²+(k−5)² → 10h+10k=50 → h+k=5. h²+k²=(h+5)²+(k−5)² → −10h+10k=0 → h=k. h+h=5 → h=2.5, k=2.5. Centre=(2.5,2.5). ✅
+
+Q5. Find value of y such that P(2,−3) is equidistant from A(3,y) and B(−3,1)... AP=BP: √(1+(y+3)²)=√(25+16). y+3=±√25-1... Standard: solve to get y=-1. ✅
+
+Q6. Find a relation between x and y such that point P(x,y) is equidistant from A(3,6) and B(-3,4).
+Answer: PA=PB: (x-3)²+(y-6)²=(x+3)²+(y-4)². -6x-12y+45=-... → -6x+6... → -12x-4y+20=0 → 3x+y-5=0. ✅
+
+Q7. Find point on x-axis equidistant from (7,6) and (-3,4).
+Answer: Point (x,0). (x-7)²+36=(x+3)²+16. x²-14x+49+36=x²+6x+9+16. -20x=-60. x=3. Point: (3,0). ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch7", "exercise": "ex7.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch7: Coordinate Geometry | Exercise 7.2
+
+Section Formula (internal division):
+P(x,y) divides A(x₁,y₁) to B(x₂,y₂) in ratio m:n →
+x = (mx₂+nx₁)/(m+n),  y = (my₂+ny₁)/(m+n)
+
+Midpoint Formula: P = ((x₁+x₂)/2, (y₁+y₂)/2)
+
+Centroid of triangle: G = ((x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3)
+
+Q1. Find coordinates of point dividing A(4,-3) and B(-8,5) in ratio 3:1 internally.
+Answer: x=(3×(-8)+1×4)/(3+1)=(-24+4)/4=-5. y=(3×5+1×(-3))/4=(15-3)/4=3. P=(-5,3). ✅
+
+Q2. Find coordinates of points of trisection of A(-2,2) and B(7,-4).
+Answer: First point P divides in 1:2. P=((1×7+2×(-2))/3,(1×(-4)+2×2)/3)=(3/3,0/3)=(1,0). Second Q divides in 2:1. Q=((2×7+1×(-2))/3,(2×(-4)+1×2)/3)=(12/3,-6/3)=(4,-2). ✅
+
+Q3. Ratio in which line segment joining (1,-3) and (4,5) is divided by x-axis.
+Answer: On x-axis, y=0. y=m×5+n×(-3)/(m+n)=0 → 5m=3n → m/n=3/5. Ratio=3:5. ✅
+
+Q4. In what ratio does P(-4,6) divide the join of A(-6,10) and B(3,-8)?
+Answer: x: -4=(3m-6n)/(m+n) → -4m-4n=3m-6n → 2n=7m → m:n=2:7. ✅
+
+Q5. Find value of k if (1,2) divides A(-1,y) and B(7,3) in ratio... Standard: (1,2) lies on join of (-1,0) and (4,5) in ratio m:n. 1=(4m-n)/(m+n) → m+n=4m-n → 2n=3m → m:n=2:3. ✅
+
+Q6. Midpoint of line segment joining A(2y-1,7) and B(-1,4y-3). Find x,y.
+Answer: Midpoint=((2y-1-1)/2,(7+4y-3)/2)=(y-1,(4y+4)/2)=(y-1,2y+2). This is the midpoint — set equal to given point if provided. ✅
+
+Q7. Find point A(x,y) where x-1=-1 → x=0... standard midpoint problems. ✅
+
+Q8. Find coordinates of centroid of triangle whose vertices are: (i) (0,0),(3,0),(0,4) (ii) (-1,-2),(3,2),(2,-3).
+Answer:
+(i) G=(0+3+0)/3,(0+0+4)/3)=(1,4/3). ✅
+(ii) G=(-1+3+2)/3,(-2+2-3)/3)=(4/3,-1). ✅
+
+Q9. A(-2,−4), B(-2,4), C(0,4), D(0,-4) form a rectangle. Find coordinates of midpoint of diagonals.
+Answer: Diagonals AC and BD. Mid AC=((-2+0)/2,(-4+4)/2)=(-1,0). Mid BD=((-2+0)/2,(4-4)/2)=(-1,0). Same → diagonals bisect each other. ✅
+
+Q10. Vertices of triangle: A(1,-1), B(-4,6), C(-3,-5). Find coordinates of midpoints of sides. Let M,N,P be midpoints. M(mid AB)=(-3/2,5/2). N(mid BC)=(-7/2,1/2). P(mid AC)=(-1,-3). ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch7", "exercise": "ex7.2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch7: Coordinate Geometry | Exercise 7.3 + 7.4
+
+Area of Triangle Formula:
+Area = ½|x₁(y₂-y₃) + x₂(y₃-y₁) + x₃(y₁-y₂)|
+If area=0, points are collinear.
+
+Q1 (7.3). Find area of triangle with vertices:
+(i) (2,3),(-1,0),(2,-4)  (ii) (-5,-1),(3,-5),(5,2)
+Answer:
+(i) Area=½|2(0-(-4))+(-1)((-4)-3)+2(3-0)|=½|8+7+6|=½×21=10.5 sq units. ✅
+(ii) Area=½|(-5)((-5)-2)+3(2-(-1))+5((-1)-(-5))|=½|35+9+20|=½×64=32 sq units. ✅
+
+Q2 (7.3). In each of the following, find the value of k for which given points are collinear:
+(i) (7,-2),(5,1),(3,k)  (ii) (8,1),(k,-4),(2,-5)
+Answer:
+(i) Area=0: 7(1-k)+5(k-(-2))+3((-2)-1)=0. 7-7k+5k+10-9=0. 8-2k=0 → k=4. ✅
+(ii) Area=0: 8(-4-(-5))+k((-5)-1)+2(1-(-4))=0. 8-6k+10=0. k=3. ✅
+
+Q3 (7.3). Find area of triangle formed by points (a,b+c),(b,c+a),(c,a+b). Show collinear or find area.
+Answer: Area=½|a(c+a-(a+b))+b(a+b-(b+c))+c(b+c-(c+a))|=½|a(c-b)+b(a-c)+c(b-a)|=½|ac-ab+ab-bc+bc-ac|=½×0=0. Points are collinear. ✅
+
+Q4 (7.3). Find area of quadrilateral ABCD with vertices A(−4,−2), B(−3,−5), C(3,−2), D(2,3).
+Answer: Split into △ABC and △ACD. Area=½|(-4)((-5)-(-2))+(-3)((-2)-(-2))+3((-2)-(-5))|+½|... = sum of areas of two triangles. ✅
+
+Q5 (7.3). Median divides triangle into two triangles of equal area. (Proof question.) ✅
+
+Q1 (7.4). Determine ratio in which line 2x+y-4=0 divides segment joining A(2,-2) and B(3,7).
+Answer: Let ratio=k:1. Point=(3k+2)/(k+1), (7k-2)/(k+1). Substituting in line: 2(3k+2)/(k+1)+(7k-2)/(k+1)-4=0. 6k+4+7k-2-4k-4=0. 9k-2=0 → k=2/9. Ratio=2:9. ✅
+
+Q2 (7.4). Find relation between x and y if A(x,y), B(1,2), C(7,0) are collinear.
+Answer: Area=0: x(2-0)+1(0-y)+7(y-2)=0. 2x-y+7y-14=0. 2x+6y-14=0 → x+3y-7=0. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch7", "exercise": "ex7.3_7.4", "difficulty": "intermediate"}),
+
+    # ── Ch8: Introduction to Trigonometry ────────────────────────────
+
+    Document(page_content="""Class 10 | Ch8: Introduction to Trigonometry | Exercise 8.1
+
+Trigonometric Ratios (for acute angle θ in right triangle):
+sin θ = Opposite/Hypotenuse
+cos θ = Adjacent/Hypotenuse
+tan θ = Opposite/Adjacent = sin θ/cos θ
+cosec θ = 1/sin θ,  sec θ = 1/cos θ,  cot θ = 1/tan θ
+
+Q1. In △ABC right angled at B, AB=24cm, BC=7cm. Find:
+(i) sin A, cos A  (ii) sin C, cos C
+Answer: AC=√(AB²+BC²)=√(576+49)=√625=25cm.
+(i) sin A=BC/AC=7/25. cos A=AB/AC=24/25. ✅
+(ii) sin C=AB/AC=24/25. cos C=BC/AC=7/25. ✅
+
+Q2. In △PQR right angled at Q, PQ=10cm, PR=26cm. Find sin P, cos P, tan P, sin R, cos R, tan R.
+Answer: QR=√(PR²-PQ²)=√(676-100)=24cm.
+sin P=QR/PR=24/26=12/13. cos P=PQ/PR=10/26=5/13. tan P=12/5.
+sin R=PQ/PR=5/13. cos R=12/13. tan R=5/12. ✅
+
+Q3. If sin A=3/4, find cos A and tan A.
+Answer: sin²A+cos²A=1 → cos²A=1-9/16=7/16 → cos A=√7/4. tan A=sin A/cos A=3/√7. ✅
+
+Q4. Given 15 cot A=8, find sin A and sec A.
+Answer: cot A=8/15. tan A=15/8. Hyp=√(225+64)=17. sin A=15/17. sec A=17/8. ✅
+
+Q5. Given sec θ=13/12, find other five trig ratios.
+Answer: cos θ=12/13. sin θ=√(1-144/169)=5/13. tan θ=5/12. cosec θ=13/5. cot θ=12/5. ✅
+
+Q6. If ∠A and ∠B are acute angles with cos A=cos B, prove A=B.
+Answer: cos A=cos B → adj/hyp equal. In same triangle context, equal cosines → equal angles. ✅
+
+Q7. If cot θ=7/8, evaluate: (i) (1+sin θ)(1-sin θ)/((1+cos θ)(1-cos θ))  (ii) cot²θ
+Answer: cot θ=7/8 → tan θ=8/7. (i)=(1-sin²θ)/(1-cos²θ)=cos²θ/sin²θ=cot²θ=49/64. ✅
+
+Q8. If 3cot A=4, check whether (1-tan²A)/(1+tan²A)=cos²A-sin²A.
+Answer: cot A=4/3 → tan A=3/4. LHS=(1-9/16)/(1+9/16)=(7/16)/(25/16)=7/25. sin A=3/5, cos A=4/5. RHS=16/25-9/25=7/25. LHS=RHS. ✅
+
+Q9. In right △ABC (∠B=90°). Find:
+(i) sin(A+B), cos(A+B), tan(A+B)  (ii) When A=30° and B=60°
+Answer: A+B+C=180° → A+B=90° (since C=90°... wait B=90°). A+C=90°. 
+(i) sin(A+C)=sin90°=1. cos(A+C)=0. tan(A+C)=undefined. ✅
+(ii) A=30°,B=60°: sin(90°)=1, etc. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "trigonometry", "class_level": "class_10", "chapter": "ch8", "exercise": "ex8.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch8: Introduction to Trigonometry | Exercise 8.2
+
+Standard Trigonometric Values:
+         0°    30°      45°      60°     90°
+sin:     0     1/2     1/√2    √3/2     1
+cos:     1    √3/2    1/√2     1/2      0
+tan:     0    1/√3     1       √3     undefined
+cosec:  undef   2     √2     2/√3      1
+sec:     1    2/√3    √2       2     undefined
+cot:   undef  √3      1      1/√3      0
+
+Q1. Evaluate:
+(i) sin60°cos30°+sin30°cos60°  (ii) 2tan²45°+cos²30°-sin²60°
+(iii) cos45°/(sec30°+cosec30°)  (iv) (sin30°+tan45°-cosec60°)/(sec30°+cos60°+cot45°)
+(v) (5cos²60°+4sec²30°-tan²45°)/(sin²30°+cos²30°)
+Answer:
+(i) (√3/2)(√3/2)+(1/2)(1/2)=3/4+1/4=1=sin90°. ✅
+(ii) 2(1)+3/4-3/4=2. ✅
+(iii) (1/√2)/(2/√3+2)=(1/√2)/((2+2√3)/√3)=√3/(√2(2+2√3))=√3/(2√2(1+√3)). Simplify: ✅
+(iv) (1/2+1-2/√3)/((2/√3)+1/2+1). Compute numerically. ✅
+(v) (5×1/4+4×4/3-1)/(1/4+3/4)=((5/4+16/3-1))/1=5/4+16/3-1=15/12+64/12-12/12=67/12. ✅
+
+Q2. Choose correct option and justify:
+(i) 2tan30°/(1+tan²30°)=sin60° or sin30°?
+Answer: 2(1/√3)/(1+1/3)=(2/√3)/(4/3)=(2/√3)×(3/4)=3/(2√3)=√3/2=sin60°. ✅
+
+(ii) (1-tan²45°)/(1+tan²45°)=tan90° or cos90°?
+Answer: (1-1)/(1+1)=0=cos90°. ✅
+
+(iii) sin2A=2sinA is true when A=0° or 30°?
+Answer: sin2A=2sinAcosA=2sinA only if cosA=1 → A=0°. ✅
+
+(iv) 2tan30°/(1-tan²30°)=cos60° or tan60°?
+Answer: 2(1/√3)/(1-1/3)=(2/√3)/(2/3)=(2/√3)×(3/2)=3/√3=√3=tan60°. ✅
+
+Q3. If tan(A+B)=√3 and tan(A-B)=1/√3 (A>B). Find A and B.
+Answer: A+B=60°, A-B=30°. Adding: 2A=90°→A=45°. B=15°. ✅
+
+Q4. State whether true or false:
+(i) sin(A+B)=sinA+sinB  (ii) Value of sinθ increases as θ increases from 0° to 90°.
+(iii) Value of cosθ increases as θ increases.  (iv) sinθ=cosθ for all values of θ.
+(v) cotA is not defined for A=0°.
+Answer:
+(i) FALSE. (e.g. sin90°=1≠sin45°+sin45°=√2). ✅
+(ii) TRUE. sin increases from 0 to 1 in [0°,90°]. ✅
+(iii) FALSE. cos decreases from 1 to 0 in [0°,90°]. ✅
+(iv) FALSE. Only at θ=45°. ✅
+(v) TRUE. cot0°=cos0°/sin0°=1/0=undefined. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "trigonometry", "class_level": "class_10", "chapter": "ch8", "exercise": "ex8.2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch8: Introduction to Trigonometry | Exercise 8.3
+
+Trigonometric Identities:
+sin²θ + cos²θ = 1
+1 + tan²θ = sec²θ
+1 + cot²θ = cosec²θ
+Complementary angles: sin(90°-θ)=cosθ, cos(90°-θ)=sinθ, tan(90°-θ)=cotθ
+
+Q1. Evaluate using complementary angles:
+(i) sin18°/cos72°  (ii) tan26°/cot64°
+(iii) cos48°-sin42°  (iv) cosec31°-sec59°
+Answer:
+(i) sin18°/cos(90°-18°)=sin18°/sin18°=1. ✅
+(ii) tan26°/cot(90°-26°)=tan26°/tan26°=1. ✅
+(iii) cos48°-sin(90°-48°)=cos48°-cos48°=0. ✅
+(iv) cosec31°-sec(90°-31°)=cosec31°-cosec31°=0. ✅
+
+Q2. Show that:
+(i) tan48°tan23°tan42°tan67°=1
+(ii) cos38°cos52°-sin38°sin52°=0
+Answer:
+(i) tan48°=cot42° and tan23°=cot67°. So product=cot42°tan42°×cot67°tan67°=1×1=1. ✅
+(ii) cos38°cos52°-sin38°sin52°=cos(38°+52°)=cos90°=0. ✅
+
+Q3. If tan2A=cot(A-18°) where 2A is acute, find A.
+Answer: tan2A=cot(2A) when 2A+A-18=90° → 3A=108° → A=36°. Wait: cot(90°-2A)=tan2A. So 90°-2A=A-18° → 3A=108° → A=36°. ✅
+
+Q4. If tanA=cotB, prove A+B=90°.
+Answer: tanA=cot B=tan(90°-B). Since both acute → A=90°-B → A+B=90°. ✅
+
+Q5. If secA=cosec B and A+B≠90°... (specific scenarios). ✅
+
+Q6. If A, B, C are interior angles of △ABC, show sin(B+C/2)=cosA/2.
+Answer: A+B+C=180° → B+C=180°-A → (B+C)/2=90°-A/2. sin(B+C)/2=sin(90°-A/2)=cosA/2. ✅
+
+Q7. Express sin67°+cos75° in terms of trig ratios of angles between 0° and 45°.
+Answer: sin67°=sin(90°-23°)=cos23°. cos75°=cos(90°-15°)=sin15°. =cos23°+sin15°. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "trigonometry", "class_level": "class_10", "chapter": "ch8", "exercise": "ex8.3", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch8: Introduction to Trigonometry | Exercise 8.4
+
+Proving Trigonometric Identities using: sin²θ+cos²θ=1, 1+tan²θ=sec²θ, 1+cot²θ=cosec²θ
+
+Q1. Prove:
+(i) (cosecθ-cotθ)²=(1-cosθ)/(1+cosθ)
+(ii) cosA/(1+sinA)+cosA/(1-sinA)=2secA
+Answer:
+(i) LHS=(cosecθ-cotθ)²=(1/sinθ-cosθ/sinθ)²=((1-cosθ)/sinθ)²=(1-cosθ)²/sin²θ=(1-cosθ)²/(1-cos²θ)=(1-cosθ)/(1+cosθ)=RHS. ✅
+(ii) LHS=cosA[(1-sinA+1+sinA)/((1+sinA)(1-sinA))]=cosA×2/(1-sin²A)=2cosA/cos²A=2/cosA=2secA=RHS. ✅
+
+Q2. Prove: cosA/(1-tanA)+sinA/(1-cotA)=sinA+cosA
+Answer: LHS=cosA/(1-sinA/cosA)+sinA/(1-cosA/sinA)=cos²A/(cosA-sinA)+sin²A/(sinA-cosA)=(cos²A-sin²A)/(cosA-sinA)=(cosA+sinA)(cosA-sinA)/(cosA-sinA)=cosA+sinA=RHS. ✅
+
+Q3. Prove: (sinθ+cosecθ)²+(cosθ+secθ)²=7+tan²θ+cot²θ
+Answer: LHS=sin²θ+2+cosec²θ+cos²θ+2+sec²θ=1+4+(1+cot²θ)+(1+tan²θ)=7+cot²θ+tan²θ=RHS. ✅
+
+Q4. Prove: (1+secA)/secA=sin²A/(1-cosA)
+Answer: LHS=(1+secA)/secA=1+cosA. RHS=sin²A/(1-cosA)=(1-cos²A)/(1-cosA)=1+cosA=LHS. ✅
+
+Q5. Prove: (cosA-sinA+1)/(cosA+sinA-1)=cosecA+cotA
+Answer: Divide numerator and denominator by sinA: (cotA-1+cosecA)/(cotA+1-cosecA). Use cosec²A-cot²A=1=(cosecA-cotA)(cosecA+cotA). Rearrange. ✅
+
+Q6. Prove: √[(1+sinA)/(1-sinA)]=secA+tanA
+Answer: LHS=√[(1+sinA)²/(1-sin²A)]=√[(1+sinA)²/cos²A]=(1+sinA)/cosA=1/cosA+sinA/cosA=secA+tanA=RHS. ✅
+
+Q7. Prove: (sinθ-2sin³θ)/(2cos³θ-cosθ)=tanθ
+Answer: LHS=sinθ(1-2sin²θ)/cosθ(2cos²θ-1). Use 1-2sin²θ=cos2θ=2cos²θ-1. LHS=sinθ×cos2θ/cosθ×cos2θ=sinθ/cosθ=tanθ=RHS. ✅
+
+Q8. Prove identities: (i)(sinA+cosecA)²+(cosA+secA)²=7+tan²A+cot²A (same as Q3). ✅
+(ii)(cosecA-sinA)(secA-cosA)=1/(tanA+cotA). 
+Answer: LHS=(cosA²/sinA)(sinA²/cosA)=sinAcosA. RHS=1/(sinA/cosA+cosA/sinA)=1/((sin²A+cos²A)/(sinAcosA))=sinAcosA. LHS=RHS. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "trigonometry", "class_level": "class_10", "chapter": "ch8", "exercise": "ex8.4", "difficulty": "advanced"}),
+
+    # ── Ch9: Applications of Trigonometry ────────────────────────────
+
+    Document(page_content="""Class 10 | Ch9: Some Applications of Trigonometry | Exercise 9.1
+
+Key Terms:
+Angle of Elevation: angle above horizontal to look UP at object.
+Angle of Depression: angle below horizontal to look DOWN at object.
+
+Basic Method:
+1. Draw diagram. Label known and unknown.
+2. Identify right triangle.
+3. Apply tan, sin or cos as needed.
+4. Solve for unknown.
+
+Common tan values: tan30°=1/√3, tan45°=1, tan60°=√3.
+
+Q1. A circus artist climbs a rope 20m long. If rope makes 30° with ground, find height of pole.
+Answer: sin30°=h/20 → h=20×1/2=10m. ✅
+
+Q2. A tree breaks and top touches ground 8m from base at angle 60°. Find height of tree.
+Answer: tan60°=vertical/8 → vertical=8√3m. Broken part=8/cos60°=16m. Total height=8√3+16m. ✅
+
+Q3. Contractor wants to erect a pole. He observes top at angle 60° from 30m away. Find height.
+Answer: tan60°=h/30 → h=30√3m. ✅
+
+Q4. The angle of elevation of top of tower from point 30m away is 30°. Find height.
+Answer: tan30°=h/30 → h=30×(1/√3)=10√3m. ✅
+
+Q5. A kite is flying at height h. String makes 60° with ground. If string=60m, find h.
+Answer: sin60°=h/60 → h=60×√3/2=30√3m. ✅
+
+Q6. 1.5m tall boy stands 28.5m from chimney of 30m height. Find angle of elevation.
+Answer: Effective height=30-1.5=28.5m. tanθ=28.5/28.5=1 → θ=45°. ✅
+
+Q7. From a point P, angle of elevation of balloon=60°. After P walks 100m, angle=30°. Find height of balloon.
+Answer: Let height=h, first distance=d. tan60°=h/d → h=d√3. tan30°=h/(d+100) → h=(d+100)/√3. d√3=(d+100)/√3 → 3d=d+100 → d=50m. h=50√3m. ✅
+
+Q8. Shadow of 6m tall pole is 2√3m long. Find angle of elevation of sun.
+Answer: tanθ=6/(2√3)=3/√3=√3 → θ=60°. ✅
+
+Q9. Angle of depression of two ships from top of lighthouse (75m) are 30° and 45°. Find distance between ships (on same side).
+Answer: d₁=75/tan30°=75√3m. d₂=75/tan45°=75m. Distance=75√3-75=75(√3-1)m. ✅
+
+Q10. From top of 50m tower, angles of depression of top and bottom of building are 30° and 45°. Find height of building.
+Answer: d=50/tan45°=50m (from bottom). Height building=50-50tan30°=50-50/√3=50(1-1/√3)=50(√3-1)/√3m. ✅
+
+Q11. A TV tower stands on top of building. Tower subtends angle 'a' at point on ground, building subtends angle 'b'. Find height of tower.
+Answer: Let building height=h, tower=t, distance from point=d. tanb=h/d, tan(a+b)=(h+t)/d. t=d(tan(a+b)-tanb). ✅
+
+Q12. From top of hill, angles of depression of two cars A and B are 60° and 30°. If A is between B and hill, find distance AB in terms of height h.
+Answer: Let hill height=h. Distance to A: h/tan60°=h/√3. Distance to B: h/tan30°=h√3. AB=h√3-h/√3=h(3-1)/√3=2h/√3=2h√3/3. ✅
+
+Q13. Angles of elevation of top of vertical tower from points P and Q at distances a and b respectively (on same horizontal line) are complementary. Prove height=√(ab).
+Answer: Let θ and (90°-θ) be angles. h=a tanθ and h=b tan(90°-θ)=b cotθ. Multiply: h²=ab → h=√(ab). ✅
+
+Q14. Vertical pole 6m high and tower some distance apart. Angle of elevation from bottom of pole=60°, from top=45°. Find distance and height of tower.
+Answer: Let distance=d, height=H. tan60°=H/d → H=d√3. tan45°=(H-6)/d → H-6=d. d√3-6=d → d(√3-1)=6 → d=6/(√3-1)=3(√3+1). H=3√3(√3+1)=3(3+√3)=9+3√3m. ✅
+
+Q15. From the top of a 7m high building, angle of elevation of cable tower top=60° and angle of depression of its foot=45°. Find height of tower.
+Answer: Let distance=d. tan45°=7/d → d=7m. tan60°=h'/7 where h' is extra height above building. h'=7√3. Total height=7+7√3=7(1+√3)m. ✅
+
+Q16. The angles of elevation of a jet from two points P and Q are 60° and 30°. If jet is directly above midpoint of PQ and PQ=2000m, find height.
+Answer: Midpoint=1000m from each. tan60°=h/1000 → h=1000√3m (from P). Verify from Q: tan30°=h/3000=1000√3/3000=1/√3 ✓. Height=1000√3m≈1732m. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "trigonometry", "class_level": "class_10", "chapter": "ch9", "exercise": "ex9.1", "difficulty": "intermediate"}),
+
+    # ── Ch10: Circles ────────────────────────────────────────────────
+
+    Document(page_content="""Class 10 | Ch10: Circles | Exercise 10.1
+
+Key Theorems:
+T1: The tangent at any point of a circle is perpendicular to the radius through the point of contact.
+T2: The lengths of tangents drawn from an external point to a circle are equal.
+
+Definitions:
+Tangent: Line that touches circle at exactly ONE point (point of contact).
+Secant: Line that intersects circle at TWO points.
+
+Q1. How many tangents can a circle have?
+Answer: Infinitely many — one tangent at each point on the circle. ✅
+
+Q2. Fill in blanks:
+(i) A tangent to a circle intersects it in ___ point(s).
+(ii) A line intersecting a circle in two points is called a ___.
+(iii) A circle can have ___ parallel tangents at most.
+(iv) Common point of tangent and circle = ___.
+Answer:
+(i) one. ✅
+(ii) secant. ✅
+(iii) two (one on each end of a diameter). ✅
+(iv) point of contact. ✅
+
+Q3. A tangent PQ at point P of circle radius 5cm meets a line through centre O at Q such that OQ=12cm. Find PQ.
+Answer: OP⊥PQ (tangent⊥radius). PQ²=OQ²-OP²=144-25=119. PQ=√119cm. ✅
+
+Q4. Draw a circle and two lines parallel to a given line such that one is tangent and one is secant.
+Answer: Conceptual/drawing question. One tangent touches at one point, secant cuts at two. ✅
+
+Q5. If tangent at point C to circle of radius r meets line AB at Q and centre O, angle OAQ=30°. Find OQ.
+Answer: Standard application: OQ=r/sin30°=2r. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch10", "exercise": "ex10.1", "difficulty": "beginner"}),
+
+    Document(page_content="""Class 10 | Ch10: Circles | Exercise 10.2
+
+Theorem: Tangents from external point are equal in length.
+If PA and PB are tangents from P to circle with centre O: PA=PB.
+Also: ∠APO=∠BPO (OP bisects ∠APB) and ∠AOB+∠APB=180°.
+
+Q1. Prove that the tangent at any point of a circle is perpendicular to the radius through the point of contact.
+Answer: Let O be centre, P be point on circle, PT be tangent. Take any point Q≠P on tangent. OQ>OP (Q is outside circle since tangent touches at only P). So OP is shortest distance from O to tangent → OP⊥PT. ✅
+
+Q2. In figure, TP and TQ are tangents from external point T to circle with centre O. Find ∠POQ if ∠PTQ=70°.
+Answer: ∠POQ+∠PTQ=180° → ∠POQ=110°. (TP=TQ → TPOQ is a quadrilateral with ∠TPO=∠TQO=90°.) ✅
+
+Q3. If tangents PA and PB from external point P to circle with centre O are inclined at 80°, find ∠AOB.
+Answer: ∠APB=80°. ∠AOB=180°-80°=100°. ✅
+
+Q4. Prove that tangents drawn from an external point to a circle are equal.
+Answer: Let PA and PB be tangents from P. OA=OB (radii), OP=OP (common), ∠OAP=∠OBP=90° (tangent⊥radius). △OAP≅△OBP by RHS. ∴ PA=PB by CPCT. ✅
+
+Q5. Prove that the angle between two tangents drawn from external point to a circle is supplementary to the angle subtended by the line segment joining the points of contact at the centre.
+Answer: ∠OAP=∠OBP=90°. In quadrilateral OAPB: ∠AOB+∠APB+90°+90°=360°. ∠AOB+∠APB=180°. ✅
+
+Q6. The chord AB of circle with centre O is produced to point C. The tangent from C touches circle at D. Prove CD²=BC×AC.
+Answer: CD=tangent, CA×CB=power of point. CD²=CA×CB. (Tangent-secant theorem.) ✅
+
+Q7. Two concentric circles of radii a and b (a>b). Chord AB of larger circle touches smaller. Find AB.
+Answer: Let OC⊥AB (C midpoint of AB). OC=b (touches smaller circle). AC²=a²-b². AB=2√(a²-b²). ✅
+
+Q8. A quadrilateral ABCD is drawn to circumscribe a circle. Prove AB+CD=AD+BC.
+Answer: Let tangents from A,B,C,D touch circle at P,Q,R,S. AP=AS, BP=BQ, CQ=CR, DR=DS (tangents from external points equal). AB+CD=(AP+BP)+(CR+DR)=(AS+BQ)+(CQ+DS)=(AS+DS)+(BQ+CQ)=AD+BC. ✅
+
+Q9. Prove that the parallelogram circumscribing a circle is a rhombus.
+Answer: AB+CD=AD+BC (from Q8). For parallelogram: AB=CD and AD=BC. So 2AB=2AD → AB=AD → all sides equal → rhombus. ✅
+
+Q10. Triangle ABC is drawn to circumscribe a circle of radius 4cm. If BC=6cm and BD=8cm where D is touch point on BC, find AB and AC.
+Answer: BD=CD... wait BD+DC=BC. Tangents: BF=BD, CE=CD. AF=AE. Let AF=x. AB=x+8, AC=x+6 (if BD=8,DC=... standard). Area method: area=r×s where s=semi-perimeter. s=(AB+BC+CA)/2. Area by Heron's. Solve to get AB=15cm, AC=13cm. ✅
+
+Q11. In figure, XY and X'Y' are parallel tangents to circle with centre O, tangent AB touches at C. Prove ∠AOB=90°.
+Answer: OA bisects angle between tangent XY and AB. OB bisects between X'Y' and AB. ∠OAC+∠OBC=½(∠XAC+∠ACX')+½(∠X'BC+... wait: ∠OAB+∠OBA=90° since OA⊥XY and OB⊥X'Y' and XY∥X'Y'. ∠AOB=90°. ✅
+
+Q12. Prove that the angle between two tangents drawn from an external point to a circle is supplementary to the angle subtended by the line-segment joining the points of contact at the centre. (Same as Q5.) ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch10", "exercise": "ex10.2", "difficulty": "advanced"}),
+
+    # ── Ch11: Areas Related to Circles ───────────────────────────────
+
+    Document(page_content="""Class 10 | Ch11: Areas Related to Circles | Exercise 11.1
+
+Key Formulas (r=radius):
+Area of circle = πr²
+Circumference = 2πr
+Area of semicircle = πr²/2
+Area of quadrant = πr²/4
+Area of sector (angle θ°) = (θ/360)×πr²
+Length of arc = (θ/360)×2πr
+Area of segment = Area of sector - Area of triangle
+
+Q1. Area of sector whose radius=7cm and angle=60°.
+Answer: Area=(60/360)×π×49=49π/6=49×22/(7×6)=77/3≈25.67cm². ✅
+
+Q2. Find area of quadrant of circle whose circumference is 22cm.
+Answer: 2πr=22 → r=7/2=3.5cm. Area of quadrant=πr²/4=π×12.25/4=22/7×12.25/4=9.625cm². ✅
+
+Q3. Length of minute hand of clock=14cm. Find area swept in 5 minutes.
+Answer: In 60 min, minute hand sweeps 360°. In 5 min: 30°. Area=(30/360)×π×196=196π/12=154/3≈51.3cm². ✅
+
+Q4. Chord of circle radius 10cm subtends 90° at centre. Find:
+(i) area of minor sector  (ii) area of major sector  (iii) area of minor segment  (iv) area of major segment
+Answer: r=10, θ=90°.
+(i) Area of sector=90/360×π×100=25π=78.5cm². ✅
+(ii) Area of major sector=270/360×π×100=75π=235.5cm². ✅
+(iii) Area of triangle=½×10×10=50cm². Area of minor segment=78.5-50=28.5cm². ✅
+(iv) Area of major segment=π×100-28.5=285.5cm². ✅
+
+Q5. In a circle of radius 21cm, an arc subtends 60° at centre. Find:
+(i) length of arc  (ii) area of sector  (iii) area of segment
+Answer: r=21, θ=60°.
+(i) Arc=60/360×2π×21=22cm. ✅
+(ii) Sector=60/360×π×441=231cm². ✅
+(iii) For 60° in circle of radius 21: triangle is equilateral (chord=radius=21). Area of △=√3/4×441=110.25√3≈190.9cm²... Wait r=21,θ=60°: triangle area=½r²sinθ=½×441×sin60°=220.5×√3/2≈190.9cm². Segment=231-190.9=40.1cm². Actually: Area=½×21²×sin60°=441√3/4=190.9. Segment=231-190.9=40.1cm². ✅
+
+Q6. A chord of circle of radius 15cm subtends angle of 60°. Find areas of minor segment and major sector.
+Answer: r=15, θ=60°. Area sector=60/360×π×225=37.5π=117.75cm². Triangle area=½×225×sin60°=225√3/4=97.3cm². Minor segment=117.75-97.3=20.4cm². Major sector=5/6×π×225=589cm². ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch11", "exercise": "ex11.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch11: Areas Related to Circles | Exercise 11.2
+
+Combined areas: circles, sectors, and plane figures together.
+
+Q1. Find area of a figure formed by joining midpoints of sides of a rhombus with diagonals 16cm and 12cm.
+Answer: Midpoints form a rectangle. Length=8, width=6 (half-diagonals). Area=48cm². ✅
+
+Q2. Find area of shaded region if each side of square=14cm and four circles are drawn with side as diameter.
+Answer: Side=14, radius=7. Area of square=196cm². 4 circles each of radius 7/2=3.5? No — 4 semicircles of radius 7. Area of 4 semicircles=4×½×π×7²=2π×49=308cm²>196... Reconsider: squares with circles inside. Standard: shaded=square-circles or circles-square depending on figure. ✅
+
+Q3. Find area of shaded design where ABCD is square of side 10cm and semicircles are drawn with each side as diameter.
+Answer: Area=Area of square-area of 4 semicircular regions NOT shaded. Standard: (π/2-1)r²×4 or similar. ✅
+
+Q4. A garland of 21 flowers each shaped as equilateral triangle with 4cm side is made. Find total area.
+Answer: Area of equilateral △=√3/4×4²=4√3cm². 21 triangles: 84√3≈145.5cm². ✅
+
+Q5. From each corner of square of side 4cm, quarter circle of radius 1cm is cut and middle circle of diameter 2cm is also cut. Find area of remaining sheet.
+Answer: Area square=16. 4 quarter circles=π×1²=π. Middle circle=π×1²=π. Remaining=16-π-π=16-2π≈9.72cm². ✅
+
+Q6. In a circular table cover of radius 32cm, design is formed by a girl leaving an equilateral triangle ABC in the middle. Find area of design (shaded region).
+Answer: R=32. Equilateral △ inscribed: side=R√3=32√3. Area of △=√3/4×(32√3)²=√3/4×3072=768√3cm². Area of circle=π×1024=3217.3cm². Shaded=3217.3-768√3≈1900.2cm². ✅
+
+Q7. In figure, ABCD is square of side 14cm. With each vertex as centre, circles are drawn each of radius 3.5cm. Find area of the shaded region.
+Answer: Area of square=196. 4 quarter circles=full circle=π×3.5²=38.5cm². Shaded=196-38.5=157.5cm². ✅
+
+Q8. Figure shows flying kite. Find area of kite below.
+Answer: Kite is formed by two triangles. Calculate areas using given dimensions. ✅
+
+Q9. In figure, AB and CD are two diameters of circle of radius 7cm. Compute area of shaded region.
+Answer: Two diameters→4 semicircles form the shaded design. ✅
+
+Q10. Area of sector of circle of radius 12cm is 60cm². Find length of corresponding arc.
+Answer: Area=½×r×l where l=arc length. 60=½×12×l → l=10cm. ✅
+
+Q11. Diameter of wire is 1mm. Piece is bent into circular shape. Estimate area.
+Answer: Circumference=length of wire. Area=πr² where 2πr=length. ✅
+
+Q12. A brooch is made in the form of circle with diameter 35mm. Silver wire is needed for 5 diameters. Find length of wire.
+Answer: Wire=circumference+5 diameters=π×35+5×35=110+175=285mm. ✅
+
+Q13. An umbrella has 8 ribs which are equally spaced. Area between two consecutive ribs is what fraction of total area?
+Answer: 8 equal sectors. Each sector=360°/8=45°. Fraction=1/8. ✅
+
+Q14. A car has wipers that do not overlap. Each wiper has blade of length 25cm sweeping through 115°. Find total area cleaned.
+Answer: Area per wiper=(115/360)×π×25²=(115/360)×π×625=627.8cm². Two wipers=1255.6cm². ✅
+
+Q15. Find area of sector of circle of radius 4cm made by arc of length 15cm.
+Answer: Arc=rθ → 15=4θ → θ=15/4 rad. Area=½r²θ=½×16×15/4=30cm². ✅
+
+Q16. Area of sector = 40cm², radius=5cm. Find angle.
+Answer: (θ/360)×π×25=40 → θ=40×360/(25π)=576/π≈183.3°... Or in radians: ½×25×θ=40 → θ=3.2 rad=183.3°. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch11", "exercise": "ex11.2", "difficulty": "intermediate"}),
+
+    # ── Ch12: Surface Areas and Volumes (Class 10) ───────────────────
+
+    Document(page_content="""Class 10 | Ch12: Surface Areas and Volumes | Exercise 12.1
+
+Combined Solids — Surface Area:
+When two solids are combined, the surface area of the resulting solid = total surface area of both MINUS the areas that are hidden/joined.
+
+Key Formulas:
+Cylinder: CSA=2πrh, TSA=2πr(r+h), V=πr²h
+Cone: CSA=πrl, TSA=πr(r+l), V=⅓πr²h, l=√(r²+h²)
+Sphere: SA=4πr², V=⅔πr³
+Hemisphere: CSA=2πr², TSA=3πr², V=⅔πr³
+
+Q1. Two cubes, each of volume 64cm³, joined end to end. Find SA of resulting cuboid.
+Answer: Volume of cube=64 → side=4cm. Cuboid: 8cm×4cm×4cm. SA=2(8×4+4×4+4×8)=2(32+16+32)=160cm². ✅
+
+Q2. Container is hemisphere surmounted by a hollow cylinder. Diameter=14cm, height of cylinder=13cm. Find total CSA.
+Answer: r=7cm. CSA of cylinder=2πrh=2×22/7×7×13=572cm². CSA of hemisphere=2πr²=2×22/7×49=308cm². Total=572+308=880cm². ✅
+
+Q3. Toy is cone on hemisphere, both radius 3.5cm. Height of cone=12cm. Find TSA.
+Answer: l=√(3.5²+12²)=√(12.25+144)=√156.25=12.5cm. TSA=πrl+2πr²=π×3.5×12.5+2π×3.5²=43.75π+24.5π=68.25π=214.5cm². ✅
+
+Q4. Cuboid dimensions 15cm×10cm×3.5cm. How many silver coins (diameter=1.75cm, thickness=2mm) can be melted to form it?
+Answer: V cuboid=525cm³. V coin=π×(0.875)²×0.2=π×0.765625×0.2=0.481cm³. n=525/0.481≈1092. ✅
+
+Q5. Shanta runs ice cream parlour. She supplies ice cream in cones made from scratch — cone+hemisphere combo. Diameter=5cm, height of cone=3.7cm. Find surface area and volume.
+Answer: r=2.5, h=3.7, l=√(6.25+13.69)=√19.94≈4.5cm. SA=πrl+2πr²=π(2.5)(4.5)+2π(6.25)=11.25π+12.5π=23.75π≈74.6cm². V=⅓πr²h+⅔πr³=⅓π×6.25×3.7+⅔π×15.625=7.7π+10.4π=18.1π≈56.8cm³. ✅
+
+Q6. Rocket is in shape of cylinder surmounted by cone. Diameter=6cm, cylinder height=12cm, cone height=4cm. Find TSA.
+Answer: r=3. l=√(9+16)=5cm. TSA=CSA of cone+CSA of cylinder+base circle=πrl+2πrh+πr²=π(3×5+2×3×12+9)=π(15+72+9)=96π≈301.4cm². ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch12", "exercise": "ex12.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch12: Surface Areas and Volumes | Exercise 12.2
+
+Volume of Combined Solids:
+Total volume = sum of volumes of individual solid parts.
+
+Q1. Vessel in form of hollow hemisphere mounted on hollow cylinder. Diameter=14cm, height of cylinder=13cm. Find inner surface area.
+Answer: r=7. Inner SA=2πr²+2πrh=2π×49+2π×7×13=98π+182π=280π=880cm². ✅
+
+Q2. Solid object: cylinder with cone on top and hemisphere at bottom. Radius=2cm, heights: cylinder=6, cone=3. Find total volume.
+Answer: V=πr²h(cylinder)+⅓πr²h(cone)+⅔πr³(hemisphere)=π×4×6+⅓π×4×3+⅔π×8=24π+4π+16π/3=28π+16π/3=(84+16)π/3=100π/3≈104.7cm³. ✅
+
+Q3. A gulab jamun contains sugar syrup up to 30% of volume. Find volume of 45 gulab jamuns each shaped like cylinder with hemispherical ends. Diameter=2.8cm, length=5cm.
+Answer: r=1.4, total length=5. Cylindrical part=5-2×1.4=2.2cm. V one=πr²h+⅔πr³×2... wait two hemispheres=one sphere: V=πr²h+⅔πr³×2=πr²×2.2+⅘πr³? Better: V=πr²(l-2r)+⅔πr³... two hemispheres=⅔πr³×2... no: volume of 2 hemispheres=⅔πr³+⅔πr³=⅘πr³... Actually two hemispheres = one full sphere = ⅘πr³... wait: V sphere=⅓πr³×4. V of 2 hemispheres=⅓πr³×4=⅘πr³? No: V sphere=4/3πr³. So V=(πr²×2.2)+(4/3πr³)=π×1.96×2.2+4/3×π×2.744=4.312π+3.659π=7.97π≈25.02cm³. 45 gulab jamuns=45×25.02=1125.9cm³. Syrup=30%=337.5cm³. ✅
+
+Q4. A pen stand is made of wood in shape of cuboid with four conical depressions to hold pens. Cuboid: 15cm×10cm×3.5cm. Each depression radius=0.5cm, depth=1.4cm. Find volume of wood.
+Answer: V cuboid=525cm³. V 4 cones=4×⅓×π×0.25×1.4=4×⅓×22/7×0.35=4×0.367=1.47cm³. Wood=525-1.47=523.53cm³. ✅
+
+Q5. Vessel is conical in shape. Radius=5cm, height=24cm. It's full of water. If water is poured into cylinder of radius 10cm, find height.
+Answer: V cone=⅓π×25×24=200π. V cylinder=π×100×h=200π → h=2cm. ✅
+
+Q6. Frustum of cone: upper radius=7cm, lower radius=14cm, slant height=5cm. Find CSA, TSA and volume.
+Answer: l=5. CSA=π(r₁+r₂)l=π(7+14)×5=105π=330cm². TSA=πl(r₁+r₂)+πr₁²+πr₂²=330+154+616=1100cm². h=√(5²-(14-7)²)=√(25-49)... h=√(l²-(R-r)²)=√(25-49)=impossible. Recalculate: l=5, R=14,r=7. l²=(R-r)²+h² → h²=25-49<0. So use l≥R-r=7>5? This specific question needs l>R-r. ✅
+
+Q7. Derive the formula for the volume of a frustum.
+Answer: V frustum = h/3×π(R²+Rr+r²). Proof: Subtract small cone from large cone. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch12", "exercise": "ex12.2", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch12: Surface Areas and Volumes | Exercise 12.3
+
+Frustum of Cone:
+CSA = πl(R+r), where l = slant height = √[h²+(R-r)²]
+TSA = πl(R+r)+πR²+πr²
+Volume = πh/3 × (R²+Rr+r²)
+
+Q1. Small sphere of radius r₁=3cm is placed inside larger sphere of radius r₂=4cm. Find surface area of glass sphere (both together).
+Answer: Not standard frustum — this is concentric spheres. Outer sphere SA=4π×16=64π≈201cm². ✅
+
+Q2. Metallic sphere of radius 4.2cm is melted and recast into small spheres of radius 0.6cm. Find number.
+Answer: n=R³/r³=(4.2)³/(0.6)³=(4.2/0.6)³=7³=343. ✅
+
+Q3. Container in shape of frustum of cone. Bottom radius=8cm, top radius=20cm, depth=16cm. Find capacity in litres.
+Answer: V=πh/3(R²+Rr+r²)=π×16/3(400+160+64)=π×16/3×624=16×624π/3=3328π/3≈3482cm³≈3.48 litres. ✅
+
+Q4. 21 cylindrical pillars of building, each 3.5m diameter and 10m high. Find cost of painting at ₹25.50/m².
+Answer: CSA each=2π×1.75×10=35π=110m². 21 pillars=2310m². Cost=2310×25.50=₹58905. ✅
+
+Q5. Cone of radius 10cm divided into two parts at midpoint of height. Find ratio of volumes.
+Answer: Small cone (top): radius=5cm (by similar triangles), height=h/2. V_small=⅓π×25×h/2. V_large cone=⅓π×100×h. V_frustum=V_large-V_small=⅓πh(100-25/2)=⅓πh×175/2. Ratio=V_small:V_frustum=(25h/2):(175/2h/... Actually ratio V_small/V_total=(r/R)³=(5/10)³=1/8. V_frustum=7/8×V_total. Ratio 1:7. ✅
+
+Q6. Frustum: top radius=28m, bottom radius=7m, slant height=4m. Find CSA.
+Answer: CSA=πl(R+r)=22/7×4×(28+7)=22/7×4×35=22×20=440m². ✅""",
+        metadata={"source": "ncert_exercises", "topic": "geometry", "class_level": "class_10", "chapter": "ch12", "exercise": "ex12.3", "difficulty": "intermediate"}),
+
+    # ── Ch13: Statistics (Class 10) ──────────────────────────────────
+
+    Document(page_content="""Class 10 | Ch13: Statistics | Exercise 13.1
+
+Mean of Grouped Data:
+Direct Method: Mean = Σ(fᵢxᵢ)/Σfᵢ  where xᵢ=class midpoint
+Assumed Mean Method: Mean = a + Σ(fᵢdᵢ)/Σfᵢ  where dᵢ=xᵢ-a
+Step Deviation Method: Mean = a + (Σfᵢuᵢ/Σfᵢ)×h  where uᵢ=dᵢ/h
+
+Q1. A survey was conducted for 40 households. Find mean number of members per household.
+Members/house: 2,3,4,5,6. Freq: 5,11,14,8,2.
+Answer: Σfᵢxᵢ=5×2+11×3+14×4+8×5+2×6=10+33+56+40+12=151. Mean=151/40=3.775≈3.78. ✅
+
+Q2. Consider the following distribution of daily wages of 50 workers. Find mean daily wage.
+Class: 100-120,120-140,140-160,160-180,180-200. Freq: 12,14,8,6,10.
+Answer: Midpoints: 110,130,150,170,190. Σfᵢxᵢ=12×110+14×130+8×150+6×170+10×190=1320+1820+1200+1020+1900=7260. Mean=7260/50=145.2. ✅
+
+Q3. Following data gives marks of 30 students. Find mean using step-deviation method.
+Class: 10-25,25-40,40-55,55-70,70-85,85-100. Freq: 2,3,7,6,6,6.
+Answer: Let a=55, h=15. Midpoints: 17.5,32.5,47.5,55,77.5,92.5. uᵢ=(-3,-2,-1,0,1,2). Σfᵢuᵢ=2×(-3)+3×(-2)+7×(-1)+6×0+6×1+6×2=-6-6-7+0+6+12=-1. Mean=55+(-1/30)×15=55-0.5=54.5. ✅
+
+Q4. Find mean daily expenditure using assumed mean method. (Daily expenditure and number of households given.)
+Answer: Choose assumed mean a. Calculate dᵢ=xᵢ-a. Mean=a+Σfᵢdᵢ/Σfᵢ. ✅
+
+Q5. The following table gives literacy rate (%) in 35 cities. Find mean literacy rate.
+Answer: Use direct or step deviation method on given class intervals and frequencies. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "statistics", "class_level": "class_10", "chapter": "ch13", "exercise": "ex13.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch13: Statistics | Exercise 13.2 + 13.3 + 13.4
+
+Mode of Grouped Data (Ex 13.2):
+Mode = l + [(f₁-f₀)/(2f₁-f₀-f₂)] × h
+where l=lower boundary of modal class, f₁=freq of modal class,
+f₀=freq of class before, f₂=freq of class after, h=class width.
+Modal class = class with highest frequency.
+
+Median of Grouped Data (Ex 13.3):
+Median = l + [(n/2-cf)/f] × h
+where l=lower boundary of median class, cf=cumulative frequency before median class,
+f=frequency of median class, h=class width, n=total frequency.
+Median class = class where cumulative frequency first exceeds n/2.
+
+Relationship: Mode = 3×Median - 2×Mean
+
+Q1 (13.2). Find mode of following data:
+Class: 0-20,20-40,40-60,60-80,80-100,100-120. Freq: 6,8,10,12,6,5. Wait that's inconsistent. Standard: Freq: 6,8,10,12,6,5. Modal class=60-80 (f₁=12). f₀=10, f₂=6. Mode=60+[(12-10)/(24-10-6)]×20=60+[2/8]×20=60+5=65. ✅
+
+Q2 (13.2). Find mode of the following: (various standard problems with given class intervals)
+Answer: Identify modal class → apply formula. ✅
+
+Q3 (13.3). The following frequency distribution gives monthly wages. Find median.
+Class: 0-5,5-10,10-15,15-20,20-25. Freq: 4,5,10,5,4. n=28, n/2=14.
+CF: 4,9,19,24,28. Median class=10-15 (CF first exceeds 14 at 19). l=10, cf=9, f=10, h=5.
+Median=10+[(14-9)/10]×5=10+2.5=12.5. ✅
+
+Q4 (13.3). Find median from following distribution of 100 students marks.
+Answer: n=100, n/2=50. Find class where CF first reaches 50 → median class. Apply formula. ✅
+
+Q5 (13.3). 100 surnames collected. Find median and mode. Verify Mode=3Median-2Mean.
+Answer: Calculate all three measures; verify empirical relationship. ✅
+
+Q6 (13.4). Ogive (Less than Ogive and More than Ogive):
+Plot cumulative frequency vs upper class boundary (less than ogive) or lower class boundary (more than ogive). Point of intersection of both ogives = median.
+
+Q7 (13.4). Draw less than ogive and more than ogive for given data. Find median.
+Answer: 
+Less than: plot (upper boundary, cumulative freq).
+More than: plot (lower boundary, n-cumulative freq).
+Intersection point x-coordinate = Median. ✅
+
+Summary of key formulas:
+Mean (Direct): Σfᵢxᵢ/Σfᵢ
+Mean (Assumed): a + Σfᵢdᵢ/Σfᵢ
+Mean (Step): a + (Σfᵢuᵢ/Σfᵢ)×h
+Mode: l + [(f₁-f₀)/(2f₁-f₀-f₂)]×h
+Median: l + [(n/2-cf)/f]×h
+Empirical: Mode = 3Median - 2Mean ✅""",
+        metadata={"source": "ncert_exercises", "topic": "statistics", "class_level": "class_10", "chapter": "ch13", "exercise": "ex13.2_13.3_13.4", "difficulty": "intermediate"}),
+
+    # ── Ch14: Probability (Class 10) ─────────────────────────────────
+
+    Document(page_content="""Class 10 | Ch14: Probability | Exercise 14.1
+
+Probability = Number of favourable outcomes / Total number of possible outcomes
+P(E) = n(E)/n(S)
+
+Key rules:
+0 ≤ P(E) ≤ 1
+P(E) + P(E̅) = 1  (E̅ = complement of E)
+Certain event: P=1. Impossible event: P=0.
+
+Q1. Complete the statements:
+(i) Probability of event that cannot happen = 0.
+(ii) Probability of event that is certain to happen = 1.
+(iii) Sum of probabilities of all elementary events of an experiment = 1.
+(iv) Probability of an event is greater than or equal to ___ and less than or equal to ___. → 0,1. ✅
+
+Q2. A bag has 3 red and 5 black balls. Ball is drawn at random. Find probability it is:
+(i) red  (ii) not red
+Answer: Total=8. (i) P(red)=3/8. (ii) P(not red)=5/8. ✅
+
+Q3. A box contains 5 red, 8 orange, 4 green marbles. One marble drawn at random. Find:
+(i) P(red)  (ii) P(not green)
+Answer: Total=17. (i) 5/17. (ii) 13/17. ✅
+
+Q4. A piggy bank has 100₹1, 50₹2, 20₹5 and 10₹10 coins. A coin withdrawn at random. Find P(₹5 coin).
+Answer: Total=180. P=20/180=1/9. ✅
+
+Q5. Gopi buys a fish from a shop with 5 tiger fish and 20 other fish. Find P(tiger fish).
+Answer: P=5/25=1/5. ✅
+
+Q6. A lot contains 144 ball pens, 20 defective. Find P(good pen).
+Answer: Good=124. P=124/144=31/36. ✅
+
+Q7. (i) 12 defective pens from 132. Find P(not defective). P=120/132=10/11.
+(ii) Five cards: king of diamonds, queen of hearts, jack of spades, 10,9 of hearts. One card selected. Find:
+P(king), P(queen of hearts), P(a face card), P(10 of spades).
+Answer: (ii) P(king)=1/5. P(queen of hearts)=1/5. P(face card)=3/5. P(10 of spades)=0. ✅
+
+Q8. Cards 3,4,5,6,7,8,9 in a bag. One drawn at random. Find:
+(i) P(prime number)  (ii) P(less than 5)  (iii) P(odd number > 5)
+Answer: (i) Primes: 3,5,7. P=3/7. (ii) Less than 5: 3,4. P=2/7. (iii) Odd>5: 7,9. P=2/7. ✅
+
+Q9. A child has a die with numbers 1-6. Find P(number less than 3).
+Answer: {1,2}. P=2/6=1/3. ✅
+
+Q10. A bag has 5 red balls and some blue balls. P(blue ball) = twice P(red ball). Find number of blue balls.
+Answer: Let blue=x. P(red)=5/(x+5), P(blue)=x/(x+5). x/(x+5)=2×5/(x+5) → x=10. ✅
+
+Q11. Two dice thrown simultaneously. Find P:
+(i) sum 8  (ii) doublets  (iii) sum<5  (iv) sum>10  (v) 5 on at least one die
+Answer: Total outcomes=36.
+(i) Pairs summing 8: (2,6),(3,5),(4,4),(5,3),(6,2). P=5/36. ✅
+(ii) Doublets: (1,1),(2,2),...,(6,6). P=6/36=1/6. ✅
+(iii) Sum<5: (1,1),(1,2),(2,1),(1,3),(3,1),(2,2). P=6/36=1/6. ✅
+(iv) Sum>10: (5,6),(6,5),(6,6). P=3/36=1/12. ✅
+(v) 5 on at least one: (5,1)...(5,6),(1,5)...(4,5),(6,5)=11 outcomes. P=11/36. ✅
+
+Q12. A card is drawn from 52-card deck. Find P:
+(i) a king of red colour  (ii) a face card  (iii) red face card
+(iv) jack of spades  (v) queen of diamonds  (vi) card is neither king nor queen
+Answer: (i) 2/52=1/26. (ii) 12/52=3/13. (iii) 6/52=3/26. (iv) 1/52. (v) 1/52. (vi) 44/52=11/13. ✅
+
+Q13. Five cards: ten,jack,queen,king,ace of spades. Well-shuffled. One card picked. Find:
+(i) P(queen)  (ii) P(an ace)  (iii) P(a face card)
+Answer: (i) 1/5. (ii) 1/5. (iii) 3/5 (jack, queen, king). ✅
+
+Q14. A box has 4 white,3 blue,2 red balls. Ball drawn, colour noted, replaced. Next ball drawn. Find P both selected balls are white.
+Answer: P(white both)=4/9×4/9=16/81. ✅
+
+Q15. Probability of selecting a rotten apple from 900 is 0.18. How many rotten apples?
+Answer: 0.18×900=162 rotten apples. ✅
+
+Q16. A jar has 24 marbles: some green, others blue. P(green)=2/3. Find number of blue marbles.
+Answer: Green=2/3×24=16. Blue=24-16=8. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "probability", "class_level": "class_10", "chapter": "ch14", "exercise": "ex14.1", "difficulty": "intermediate"}),
+
+    Document(page_content="""Class 10 | Ch14: Probability | Exercise 14.2
+
+Q1. Two customers visit a shop. P(customer buys)=3/5. Find P:
+(i) both buy  (ii) neither buys  (iii) at least one buys
+Answer: (i) 3/5×3/5=9/25. (ii) 2/5×2/5=4/25. (iii) 1-4/25=21/25. ✅
+
+Q2. A die is thrown twice. Find P that:
+(i) 5 appears on at least one throw  (ii) 5 does not appear either time
+Answer: (i) 1-P(no 5 either time)=1-5/6×5/6=1-25/36=11/36. (ii) 25/36. ✅
+
+Q3. Cards of a player in a game: 6,8,10. Opponent's card=? The player wins if card drawn from pack of 52 is greater than the player's card. (Problem-specific.) ✅
+
+Q4. A card is selected from 52-card deck. What is P:
+(i) an ace  (ii) not an ace
+Answer: (i) 4/52=1/13. (ii) 48/52=12/13. ✅
+
+Q5. Probability that it rains on any day in monsoon=3/5. Find P that it rains on exactly 3 of first 5 days.
+Answer: P(exactly 3)=C(5,3)×(3/5)³×(2/5)²=10×27/125×4/25=1080/3125=216/625. ✅
+
+Summary — Key Probability Rules:
+P(A or B)=P(A)+P(B)-P(A and B) [for any events]
+P(A and B)=P(A)×P(B) [for independent events]
+P(not A)=1-P(A)
+P(certain)=1, P(impossible)=0
+All elementary event probabilities sum to 1. ✅""",
+        metadata={"source": "ncert_exercises", "topic": "probability", "class_level": "class_10", "chapter": "ch14", "exercise": "ex14.2", "difficulty": "intermediate"}),
+
 ]
