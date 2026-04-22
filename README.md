@@ -6,11 +6,11 @@
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![LangChain](https://img.shields.io/badge/LangChain-RAG-1C3C3C?style=for-the-badge&logo=chainlink&logoColor=white)](https://langchain.com)
 [![Groq](https://img.shields.io/badge/Groq-LLaMA%203.3-F55036?style=for-the-badge)](https://groq.com)
-[![NCERT](https://img.shields.io/badge/NCERT-Class%206--12-4CAF50?style=for-the-badge)](https://ncert.nic.in)
+[![NCERT](https://img.shields.io/badge/NCERT-Class%209--10-4CAF50?style=for-the-badge)](https://ncert.nic.in)
 [![JEE](https://img.shields.io/badge/JEE-Advanced%20Level-FF9800?style=for-the-badge)](https://jeeadv.ac.in)
 
-**The most complete free AI math tutor for Indian students.**
-**Class 6 → Class 12 → JEE Advanced. Explains like a real teacher at a whiteboard.**
+**505 NCERT exercise questions. 4 ways to get help. Zero typing required.**  
+**Class 9 & 10 · Step-by-step · 24/7 · Free**
 
 [**🚀 Try Live Demo**](https://advanced-mathematics-assistant-zvlizldwugwffind.streamlit.app/) · [Report Bug](https://github.com/sarika-stack23/AdvMAthAI/issues) · [Request Feature](https://github.com/sarika-stack23/AdvMAthAI/issues)
 
@@ -26,20 +26,103 @@
 
 ---
 
-## ✨ What's New in Phase 3
+## 🎯 What This App Does
 
-### ✍️ Whiteboard-Style Answers (Biggest Change)
+Most students studying alone get stuck on a question and have no one to ask.
 
-Every answer now looks like a teacher writing on a board — not an AI typing an essay.
+**Vedantu / Byjus / Teachoo** → show the answer. Done. No explanation.
 
-**Before (Phase 2):**
+**This app** → you choose exactly how much help you need:
+
+```
+Q5. In △ABC, DE∥BC. Find EC.
+
+[💡 Hint]    [📖 Steps]
+[✅ Answer]  [❓ Ask AI]
+```
+
+| Button | What it does |
+|---|---|
+| 💡 Hint | One nudge. Just the first step. Nothing more. |
+| 📖 Steps | The method only — no final answer. |
+| ✅ Answer | Full step-by-step solution. |
+| ❓ Ask AI | Pick exactly where you're stuck — no typing needed. |
+
+When you tap ❓ Ask AI:
+
+```
+Where are you stuck?
+
+[🔢 No idea where to start]
+[➡️ Stuck in the middle]
+[❌ My answer is different]
+[🤔 Don't understand the concept]
+[📐 Show a similar easier example]
+```
+
+No typing. One tap. AI gives exactly what you need.
+
+After every response:
+
+```
+💬 Did that help?
+
+[✅ Yes, got it!]    [🔁 Explain differently]
+[❓ I have a doubt]  [✅ Full Answer]
+```
+
+If you didn't get it — AI explains using a completely different approach.  
+Real-life analogy. Simpler method. Different example.
+
+---
+
+## ✨ What's New in v3.2
+
+### 🧩 NCERT Quiz Mode
+
+Pick any NCERT exercise question and get help your way.
+
+```
+Sidebar:
+① Pick class (Class 9 or 10)
+② Pick chapter (Ch1 · Real Numbers...)
+③ Pick exercise (ex1.1, ex1.2...)
+→ Questions appear with 4 help buttons
+```
+
+**Class 9** — All 12 chapters, 223 questions across 41 exercises  
+**Class 10** — All 14 chapters, 282 questions across 46 exercises  
+**Total** — 505 questions, all from official NCERT textbook
+
+### 🎯 Smart Help System
+
+- **No typing required** — all help options are buttons
+- **Active question tracking** — always know which question you're on
+- **Replace not stack** — clicking a new button replaces the previous answer, chat stays clean
+- **Follow-up built in** — "Did that help?" appears after every response
+
+### 🏠 New Welcome Screen
+
+New students see 3 clear cards explaining exactly how to use the app:
+- 📚 Practice NCERT → Use sidebar
+- 💬 Ask Anything → Type below
+- 📷 Scan Problem → Use sidebar
+
+---
+
+## ✨ What's New in Phase 3 (v3.0)
+
+### ✍️ Whiteboard-Style Answers
+
+Every answer looks like a teacher writing on a board — not an AI typing an essay.
+
+**Before (v2):**
 ```
 The Commutative Property of Addition states that when we add numbers,
-the order does not matter. This means that 3+4 gives the same result
-as 4+3, which we can verify by counting on a number line...
+the order does not matter. This means that 3+4 gives the same result...
 ```
 
-**After (Phase 3):**
+**After (v3):**
 ```
 Step 1 — Does order matter in addition?
    3 + 4 = 7
@@ -50,61 +133,25 @@ Step 1 — Does order matter in addition?
 Key thing: this works for any two numbers!
 ```
 
-One rule drives every answer: **"If a student can't follow in 5 seconds — you wrote too much."**
+One rule drives every answer: **if a student can't follow in 5 seconds — it's wrong.**
 
-### 🆕 Phase 3 Features
+---
 
-| Feature | What it does |
+## 🔧 Core Features
+
+| Feature | Description |
 |---|---|
-| ✍️ Whiteboard AI style | Short lines, one calculation per line, inline teacher reactions |
-| 📤 Share answer | One-click button to expand and copy full solution |
-| 🔢 Topic filter | Filter 104 NCERT chapters by Algebra, Calculus, Trig, Geometry and more |
-| 📈 Plotly graphs | Interactive — zoom, pan, hover for exact coordinates, download PNG |
-| 🔥 Streak counter | Tracks problems solved today + daily streak (🔥 after 3+ days) |
-| 📱 Mobile tweaks | Bigger touch targets, responsive layout on all phone screens |
-
----
-
-## ✨ What's New in V2
-
-### 🧠 Complete NCERT Knowledge Base (104 chapters, zero missing)
-
-| Class | Chapters | Topics Covered |
-|---|---|---|
-| Class 6 | 14 | Numbers, Fractions, Geometry, Mensuration, Algebra |
-| Class 7 | 15 | Integers, Equations, Triangles, Congruence, Exponents |
-| Class 8 | 16 | Quadrilaterals, CI/SI, Identities, Factorisation |
-| Class 9 | 15 | Irrationals, Polynomials, Circles, Heron's Formula |
-| Class 10 | 15 | Real Numbers, Quadratics, Trigonometry, Statistics |
-| Class 11 | 16 | Sets, Complex Numbers, P&C, Conics, Limits |
-| Class 12 | 13 | Matrices, Integrals, Differential Equations, Vectors |
-| JEE Advanced | 8 | L'Hopital, Theory of Equations, Cauchy-Schwarz, CRT |
-
-### 📊 Knowledge Base Stats
-- **118 RAG documents** (was 6 in V1)
-- **3,500+ ChromaDB vector chunks** (was ~610)
-- **Separate `knowledge_base.py`** — cleaner architecture, easier to extend
-- Metadata filtering by class level, topic, difficulty
-
----
-
-## ✨ All Features
-
-- 🧮 **Whiteboard-style solutions** — short lines, one idea per line, inline teacher reactions
-- 📚 **Complete NCERT coverage** — every chapter from Class 6 to Class 12, nothing missing
-- 🏆 **JEE Advanced level** — L'Hopital, Taylor series, Cauchy-Schwarz, Theory of Equations
-- 📱 **Class-wise sidebar** — browse 104 chapters by class, filter by topic
-- 🔢 **Topic filter** — Algebra, Calculus, Trigonometry, Geometry, Probability and more
-- 📤 **Share answer** — one-click copy of full solution to send to friends
-- 🔥 **Streak counter** — tracks daily problems solved and study streak
-- 📈 **Interactive graphs** — Plotly with zoom, pan, hover coordinates, PNG download
-- ⚡ **Symbolic computation** — exact derivatives, integrals, equation solving via SymPy
-- 📄 **PDF upload** — upload textbooks or question papers and ask anything
-- 📷 **Camera / image scan** — snap a photo of a handwritten problem, auto-solves
-- 💬 **Chat memory** — remembers conversation context (MongoDB or in-memory)
-- 🌗 **Dark / light theme** — toggle in sidebar
-- 🔄 **Auto model fallback** — if Groq daily limit hit, silently switches to backup model
-- 🔒 **Secure** — all API keys via environment variables
+| 📚 NCERT Quiz Mode | 505 questions, Class 9 & 10, pick your help level |
+| 🧮 Step-by-step solutions | Whiteboard style, one idea per line |
+| 💡 4 help modes | Hint / Steps / Answer / Ask AI |
+| 🤔 Stuck menu | 5 options for where you're stuck — no typing |
+| 🔁 Follow-up | AI adapts if you didn't understand |
+| 📈 Interactive graphs | Zoom, pan, hover — powered by Plotly |
+| ⚡ Symbolic compute | Exact derivatives, integrals, equation solving |
+| 📷 Camera scan | Photo any handwritten problem — auto solved |
+| 📄 PDF upload | Upload textbook pages and ask questions |
+| 🌗 Dark/light mode | Toggle anytime |
+| 🔥 Daily streak | Track your practice days |
 
 ---
 
@@ -112,156 +159,47 @@ One rule drives every answer: **"If a student can't follow in 5 seconds — you 
 
 | Layer | Technology |
 |---|---|
-| UI | Streamlit |
-| LLM | Groq (llama-3.3-70b-versatile) |
-| Embeddings | HuggingFace sentence-transformers/all-MiniLM-L6-v2 |
-| Vector DB | ChromaDB (default) or FAISS |
-| Knowledge Base | 118 NCERT documents (knowledge_base.py) |
-| Graphs | Plotly (interactive) |
+| LLM | LLaMA 3.3 70B via Groq API |
+| RAG Pipeline | LangChain + ChromaDB |
+| Embeddings | HuggingFace sentence-transformers |
 | Symbolic Math | SymPy |
+| Graphs | Plotly |
 | OCR | Tesseract + pytesseract |
-| Memory | MongoDB Atlas (optional) or in-memory |
-| RAG Framework | LangChain |
+| Memory | MongoDB Atlas |
+| UI | Streamlit |
+| Language | Python 3.11 |
 
 ---
 
-## 📁 Project Structure
-
-```
-AdvMAthAI/
-├── main.py               # UI + AI engine (7-step pipeline)
-├── knowledge_base.py     # All 118 NCERT + JEE documents + sidebar data
-├── .env                  # Your API keys (never commit this)
-├── .env.example          # Template — safe to commit
-├── .gitignore
-├── requirements.txt      # Python dependencies
-├── packages.txt          # System dependencies (tesseract)
-├── README.md
-├── screenshots/
-│   ├── dark_mode.png
-│   └── light_mode.png
-├── chroma_db/            # Vector DB (auto-created, gitignored)
-└── faiss_index/          # FAISS index (auto-created, gitignored)
-```
-
----
-
-## ⚙️ Local Setup
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Python 3.11+
-- [Groq API key](https://console.groq.com) (free)
-
-### 1. Clone the repo
-
 ```bash
-git clone https://github.com/sarika-stack23/AdvMAthAI.git
-cd AdvMAthAI
-```
-
-### 2. Create virtual environment
-
-```bash
-python3.11 -m venv venv
-source venv/bin/activate        # Mac/Linux
-venv\Scripts\activate           # Windows
-```
-
-### 3. Install dependencies
-
-```bash
+python3.11 --version  # Need 3.11+
 pip install -r requirements.txt
 ```
 
-### 4. Install Tesseract (for camera scan)
+### Setup
 
 ```bash
-# macOS
-brew install tesseract
+# 1. Clone the repo
+git clone https://github.com/sarika-stack23/AdvMAthAI.git
+cd AdvMAthAI
 
-# Linux
-sudo apt install tesseract-ocr
+# 2. Create .env file
+echo "GROQ_API_KEY=your_key_here" > .env
 
-# Windows — download installer:
-# https://github.com/UB-Mannheim/tesseract/wiki
-```
-
-### 5. Configure `.env`
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env` and fill in your keys:
-
-```env
-GROQ_API_KEY=your_groq_api_key_here        # Free at console.groq.com
-HUGGINGFACE_API_TOKEN=your_token_here      # Free at huggingface.co
-MONGODB_URI=                               # Optional — leave empty for in-memory
-```
-
-### 6. Build knowledge base and run
-
-```bash
-# First time — build the vector database
+# 3. Build knowledge base
 python3.11 main.py --rebuild
 
-# Launch the app
+# 4. Run
 python3.11 -m streamlit run main.py
 ```
 
-Open **http://localhost:8501** 🎉
+Get your free Groq API key at [console.groq.com](https://console.groq.com)
 
----
-
-## 🔑 Getting a Free Groq API Key
-
-1. Go to [console.groq.com](https://console.groq.com)
-2. Sign up (free)
-3. Go to **API Keys** → **Create API Key**
-4. Paste in `.env` as `GROQ_API_KEY=gsk_...`
-
-**Free tier limits — app handles all of this automatically:**
-
-| Model | Tokens/Day | Role |
-|---|---|---|
-| llama-3.3-70b-versatile | 100,000 | Primary (best quality) |
-| llama3-8b-8192 | 500,000 | Fallback 1 (auto-switch) |
-| mixtral-8x7b-32768 | 500,000 | Fallback 2 (auto-switch) |
-
----
-
-## ☁️ Deploy to Streamlit Cloud
-
-1. Push code to GitHub (both `main.py` and `knowledge_base.py`)
-2. Go to [share.streamlit.io](https://share.streamlit.io) → **New app**
-3. Select your repo → set main file to `main.py`
-4. Go to **Settings → Secrets** and paste:
-
-```toml
-GROQ_API_KEY = "your_groq_api_key_here"
-HUGGINGFACE_API_TOKEN = "your_token_here"
-LLM_MODEL = "llama-3.3-70b-versatile"
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-VECTOR_DB_TYPE = "chroma"
-CHROMA_PERSIST_DIR = "./chroma_db"
-FAISS_INDEX_PATH = "./faiss_index"
-MONGODB_URI = ""
-MONGODB_DB_NAME = "math_assistant"
-MONGODB_COLLECTION = "chat_history"
-CHUNK_SIZE = "1000"
-CHUNK_OVERLAP = "200"
-TOP_K_RESULTS = "5"
-APP_TITLE = "Advanced Mathematics Assistant"
-DEBUG = "False"
-```
-
-5. Click **Deploy** 🚀
-
----
-
-## 🧪 CLI Commands
+### Commands
 
 ```bash
 python3.11 -m streamlit run main.py   # Launch UI
@@ -278,63 +216,69 @@ python3.11 main.py --eval             # Evaluate RAG pipeline
 | Problem | Fix |
 |---|---|
 | No answer shown | Check Groq API key in `.env` or Streamlit Cloud Secrets |
+| Class 10 shows no exercises | Make sure you're using the latest `knowledge_base.py` (v3.2) |
 | Daily token limit | App auto-switches model — just keep using it |
 | ChromaDB error | Delete `chroma_db/` folder and run `--rebuild` |
 | Slow first load | Normal — embedding model downloads once, then instant |
 | knowledge_base import error | Make sure `knowledge_base.py` is in same folder as `main.py` |
 | Plotly graph not showing | Run `pip install plotly` and add `plotly>=5.0.0` to `requirements.txt` |
-| Meta tensor error on startup | Pinned versions in `requirements.txt` fix this |
 | OCR / camera scan not working | Run `pip install pytesseract` then `brew install tesseract` (Mac) |
-| Wrong image shows pytesseract error | Fixed in v1.2.1 — update to latest `requirements.txt` |
-| Math symbols look broken (π, ∑) | Fixed in v1.2.0 — app uses plain Unicode, no LaTeX |
 | App crashes on startup | Run with `python3.11 -m streamlit run main.py` |
 
 ---
 
 ## 📝 Changelog
 
-### Phase 3 — April 2026
-- ✅ **Whiteboard-style answers** — short lines, one idea per line, no paragraphs ever
+### v3.2 — April 2026
+- ✅ **NCERT Quiz Mode** — 505 questions, Class 9 & 10, all exercises
+- ✅ **4 help modes** — Hint / Steps / Answer / Ask AI
+- ✅ **Stuck menu** — 5 options, no typing required
+- ✅ **Follow-up system** — "Did that help?" after every response
+- ✅ **Replace not stack** — new button replaces previous answer
+- ✅ **Active question card** — always visible, never lose track
+- ✅ **Welcome screen** — 3-card guide for new students
+- ✅ **Smart cache** — quiz map rebuilds only when knowledge base changes
+- ✅ **HTML fix** — no more `</div>` leaking into chat
+
+### v3.0 (Phase 3) — April 2026
+- ✅ **Whiteboard-style answers** — short lines, one idea per line
 - ✅ **5-second rule** — if student can't follow in 5 seconds, AI writes shorter
-- ✅ **Share answer button** — one-click to expand and copy full solution
-- ✅ **Topic filter** — filter 104 chapters by Algebra, Calculus, Trigonometry, Geometry, Probability
-- ✅ **Plotly interactive graphs** — replaces matplotlib, adds zoom/pan/hover/download
-- ✅ **Streak counter** — daily problems solved + 🔥 streak after 3+ days
-- ✅ **Mobile tweaks** — bigger touch targets, responsive layout, cleaner phone UI
+- ✅ **Share answer button** — one-click to copy full solution
+- ✅ **Plotly interactive graphs** — zoom/pan/hover/download
+- ✅ **Streak counter** — daily problems solved + 🔥 streak
+- ✅ **Mobile tweaks** — bigger touch targets, responsive layout
 
 ### v2.0.0 — April 2026
-- ✅ **Complete NCERT coverage** — 104 chapters from Class 6 to Class 12, zero missing
-- ✅ **JEE Advanced** — 8 topic groups covering competition-level math
-- ✅ **118 RAG documents** — 20x more knowledge than v1 (was 6 documents)
-- ✅ **3,500+ ChromaDB chunks** — significantly improved retrieval accuracy
-- ✅ **Separate `knowledge_base.py`** — cleaner architecture, easier to extend
-- ✅ **Class-wise sidebar** — `st.selectbox` dropdown for all 8 class groups, 112 chapter buttons
-- ✅ **Mobile-first sidebar** — works perfectly on Android, iPhone, iPad, tablet, desktop
-- ✅ **Metadata-rich documents** — each document tagged with class_level, chapter, topic, difficulty
-
-### v1.2.1 — March 2026
-- ✅ Added `pytesseract>=0.3.10` to `requirements.txt`
-- ✅ Wrong image now correctly shows "❌ This is not a Math image" card
+- ✅ **Complete NCERT coverage** — 104 chapters from Class 6 to Class 12
+- ✅ **JEE Advanced** — 8 topic groups, competition-level math
+- ✅ **118 RAG documents** — 20x more knowledge than v1
+- ✅ **3,500+ ChromaDB chunks** — improved retrieval accuracy
+- ✅ **Metadata-rich documents** — tagged with class, chapter, topic, difficulty
 
 ### v1.2.0 — March 2026
-- ✅ Fixed OCR logic — wrong image no longer shows pytesseract install error
-- ✅ Fixed tesseract binary path for macOS Apple Silicon
-- ✅ OS-tabbed install instructions (macOS / Linux / Windows) in sidebar
-- ✅ Replaced broken LaTeX with clean Unicode
-- ✅ Pinned `sentence-transformers==2.7.0` + `transformers==4.40.2`
-
-### v1.1.0 — March 2026
-- ✅ Auto model fallback (70B → 8B → Mixtral) on daily token limit
-- ✅ Streamlit Cloud secrets support
-- ✅ Fixed widget key bug
-- ✅ Fixed LangChain template crash on math content with `{ }` braces
+- ✅ PDF upload — ask questions about any document
+- ✅ Camera scan — photo any handwritten problem
+- ✅ Dark/light mode toggle
+- ✅ Edit any question mid-conversation
 
 ### v1.0.0 — Initial Release
 - 🎉 Full RAG pipeline with ChromaDB / FAISS
 - 🎉 Streamlit UI with dark/light theme
 - 🎉 Symbolic math via SymPy
-- 🎉 PDF upload, camera scan, graph plotter
+- 🎉 Graph plotter
 - 🎉 MongoDB chat memory
+
+---
+
+## 🗺️ Roadmap
+
+```
+Now         v3.2 — NCERT Quiz Mode (505 questions) ✅
+Next        v4.0 — Firebase Auth (student login + profiles)
+Then        v4.1 — Progress tracking (questions attempted/solved)
+Then        v5.0 — Class 11 & 12 exercises
+Then        v6.0 — Mobile app (React Native)
+```
 
 ---
 
