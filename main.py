@@ -1647,7 +1647,7 @@ def run_streamlit_app():
                         )
 
                     import re as _re2
-                    # ── Render each question with 4 action buttons ────
+                    # ── Render each question with inline stuck menu ───
                     for _qi, _qtext in enumerate(_qs_list):
                         _first  = _qtext.split("\n")[0][:55].strip()
                         _nm     = _re2.match(r'(Q\d+)', _first)
@@ -1655,7 +1655,10 @@ def run_streamlit_app():
                         _rest   = _first[len(_qnum):].strip('. ').strip()[:38]
                         _label  = f"{_qnum}. {_rest}..." if _rest else _qnum
                         _q_only = _qtext.split("Answer:")[0].strip()
-                        _is_active = (_qnum == _active_qnum)
+                        _is_active   = (_qnum == _active_qnum)
+                        _stuck_here  = _is_active and _show_stuck
+                        _fu_here     = _is_active and _show_fu
+                        _q_stored_i  = _qtext.split("Answer:")[0].strip()
 
                         # Question label — highlight if active
                         _qlabel_style = (
@@ -1682,8 +1685,7 @@ def run_streamlit_app():
                                 st.session_state["qz_show_fu"]     = True
                                 st.session_state["quiz_replace"]   = True
                                 st.session_state.pending = (
-                                    f"Give ONE small hint for this question — "
-                                    f"just a nudge, no steps or answer:\n{_q_only}"
+                                    f"Give ONE small hint — just a nudge, no steps or answer:\n{_q_only}"
                                 )
                                 st.rerun()
                             if st.button("✅ Answer", key=f"{_bk}_a", use_container_width=True, type="primary"):
@@ -1704,8 +1706,7 @@ def run_streamlit_app():
                                 st.session_state["qz_show_fu"]     = True
                                 st.session_state["quiz_replace"]   = True
                                 st.session_state.pending = (
-                                    f"Show the method to solve this — "
-                                    f"no final answer, just the approach:\n{_q_only}"
+                                    f"Show the method only — no final answer:\n{_q_only}"
                                 )
                                 st.rerun()
                             if st.button("❓ Ask AI", key=f"{_bk}_q", use_container_width=True):
@@ -1715,52 +1716,100 @@ def run_streamlit_app():
                                 st.session_state["qz_show_fu"]     = False
                                 st.rerun()
 
-                    # ── Part B: Where are you stuck? (after ❓ Ask AI) ─
-                    _q_stored = _active_text.split("Answer:")[0].strip() if _active_text else ""
-
-                    if _active_text and _show_stuck:
-                        st.markdown(
-                            f"<div style='background:rgba(99,102,241,0.08);border:1px solid "
-                            f"rgba(99,102,241,0.28);border-radius:9px;padding:0.55rem 0.7rem;"
-                            f"margin:0.6rem 0 0.3rem;font-size:0.68rem;font-weight:700;"
-                            f"color:var(--tx2);text-transform:uppercase;letter-spacing:0.06em;'>"
-                            f"📌 {_active_qnum} — where are you stuck?</div>",
-                            unsafe_allow_html=True
-                        )
-                        _stuck_list = [
-                            ("🔢 No idea where to start",
-                             f"Student has no idea where to begin. Give ONE clear starting point — "
-                             f"just the very first step, nothing more:\n{_q_stored}"),
-                            ("➡️ Stuck in the middle",
-                             f"Student got stuck halfway. Explain the key middle step that is "
-                             f"usually hardest in this type of question:\n{_q_stored}"),
-                            ("❌ My answer is different",
-                             f"List the 3 most common mistakes students make in this question, "
-                             f"then show the correct approach:\n{_active_text}"),
-                            ("🤔 Don't understand the concept",
-                             f"Explain the concept in the simplest way with a real-life "
-                             f"example first, then apply to this question:\n{_q_stored}"),
-                            ("📐 Show a similar easier example",
-                             f"Create a simpler version of this question, solve it, "
-                             f"then show how same method applies to original:\n{_q_stored}"),
-                        ]
-                        for _slabel, _sprompt in _stuck_list:
-                            if st.button(_slabel, key=f"sk_{_active_qnum}_{_slabel[:6]}",
-                                         use_container_width=True):
+                        # ── INLINE stuck menu — shows right under THIS question ──
+                        if _stuck_here:
+                            st.markdown(
+                                f"<div style='background:rgba(99,102,241,0.08);border:1px solid "
+                                f"rgba(99,102,241,0.3);border-radius:9px;padding:0.45rem 0.6rem;"
+                                f"margin:0.3rem 0 0.2rem;font-size:0.65rem;font-weight:700;"
+                                f"color:rgba(99,102,241,0.9);text-transform:uppercase;"
+                                f"letter-spacing:0.06em;'>Where are you stuck?</div>",
+                                unsafe_allow_html=True
+                            )
+                            _stuck_list = [
+                                ("🔢 No idea where to start",
+                                 f"Student has no idea where to begin. Give ONE clear starting "
+                                 f"point — just the very first step, nothing more:\n{_q_stored_i}"),
+                                ("➡️ Stuck in the middle",
+                                 f"Student got stuck halfway. Explain the key middle step that "
+                                 f"is usually hardest in this type of question:\n{_q_stored_i}"),
+                                ("❌ My answer is different",
+                                 f"List the 3 most common mistakes in this question, "
+                                 f"then show correct approach:\n{_qtext}"),
+                                ("🤔 Don't understand concept",
+                                 f"Explain the concept simply with a real-life example first, "
+                                 f"then apply to this question:\n{_q_stored_i}"),
+                                ("📐 Show easier example first",
+                                 f"Create a simpler version, solve it step by step, then show "
+                                 f"how same method applies to original:\n{_q_stored_i}"),
+                            ]
+                            for _sl, _sp in _stuck_list:
+                                if st.button(_sl, key=f"sk_{_qnum}_{_bk}_{_sl[:5]}",
+                                             use_container_width=True):
+                                    st.session_state["qz_show_stuck"] = False
+                                    st.session_state["qz_show_fu"]    = True
+                                    st.session_state["quiz_replace"]  = True
+                                    st.session_state.pending = _sp
+                                    st.rerun()
+                            if st.button("✅ Full answer", key=f"sk_{_qnum}_{_bk}_full",
+                                         use_container_width=True, type="primary"):
                                 st.session_state["qz_show_stuck"] = False
                                 st.session_state["qz_show_fu"]    = True
                                 st.session_state["quiz_replace"]  = True
-                                st.session_state.pending = _sprompt
+                                st.session_state.pending = (
+                                    f"Explain step by step like a whiteboard teacher:\n{_qtext}"
+                                )
                                 st.rerun()
-                        if st.button("✅ Just show full answer", key=f"sk_{_active_qnum}_full",
-                                     use_container_width=True, type="primary"):
-                            st.session_state["qz_show_stuck"]  = False
-                            st.session_state["qz_show_fu"]     = True
-                            st.session_state["quiz_replace"]   = True
-                            st.session_state.pending = (
-                                f"Explain step by step like a whiteboard teacher:\n{_active_text}"
+
+                        # ── INLINE follow-up — shows right under THIS question ──
+                        if _fu_here:
+                            st.markdown(
+                                f"<div style='background:rgba(16,185,129,0.07);border:1px solid "
+                                f"rgba(16,185,129,0.25);border-radius:9px;padding:0.45rem 0.6rem;"
+                                f"margin:0.3rem 0 0.2rem;font-size:0.65rem;font-weight:700;"
+                                f"color:rgba(16,185,129,0.9);text-transform:uppercase;"
+                                f"letter-spacing:0.06em;'>💬 Did that help?</div>",
+                                unsafe_allow_html=True
                             )
-                            st.rerun()
+                            _fa, _fb = st.columns(2)
+                            _fk = f"fu_{_qnum}_{_bk}"
+                            with _fa:
+                                if st.button("✅ Yes!", key=f"{_fk}_y",
+                                             use_container_width=True, type="primary"):
+                                    st.session_state["qz_active_text"] = ""
+                                    st.session_state["qz_active_qnum"] = ""
+                                    st.session_state["qz_show_fu"]     = False
+                                    st.session_state["quiz_replace"]   = True
+                                    st.session_state.pending = (
+                                        "Student understood. Give 1-line encouragement only."
+                                    )
+                                    st.rerun()
+                                if st.button("❓ Doubt", key=f"{_fk}_d",
+                                             use_container_width=True):
+                                    st.session_state["qz_show_fu"]  = False
+                                    st.session_state["quiz_replace"] = True
+                                    st.session_state.pending = (
+                                        f"Student has a doubt. Ask which step is confusing:\n{_q_stored_i}"
+                                    )
+                                    st.rerun()
+                            with _fb:
+                                if st.button("🔁 Differently", key=f"{_fk}_r",
+                                             use_container_width=True):
+                                    st.session_state["qz_show_fu"]  = False
+                                    st.session_state["quiz_replace"] = True
+                                    st.session_state.pending = (
+                                        f"Explain using completely different approach — "
+                                        f"real-life analogy or simpler method:\n{_qtext}"
+                                    )
+                                    st.rerun()
+                                if st.button("✅ Full Ans", key=f"{_fk}_f",
+                                             use_container_width=True):
+                                    st.session_state["qz_show_fu"]     = False
+                                    st.session_state["quiz_replace"]   = True
+                                    st.session_state.pending = (
+                                        f"Explain complete solution step by step:\n{_qtext}"
+                                    )
+                                    st.rerun()
 
                     # ── Part A: Follow-up after hint/steps/stuck ──────
                     if _active_text and _show_fu:
